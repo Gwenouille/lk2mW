@@ -1,0 +1,153 @@
+.logo_container {
+  margin-right: 20px;
+}
+
+header,
+footer {
+  background-color: #393939;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+}
+
+header {
+  margin-bottom: 10px; /* L'espace de Poulette */
+  padding: 20px;
+}
+
+.title {
+  flex: 1;
+}
+
+.title h1 {
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 1.4;
+}
+
+.connection {
+  color: rgb(255, 255, 255);
+}
+
+/* css barre menu */
+nav ul {
+  margin-top: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li:first-child {
+  border-color: #d9e767;
+}
+
+nav ul li:first-child:hover {
+  background-color: #d9e767;
+}
+
+nav ul li:nth-child(2) {
+  border-color: #adda50;
+}
+
+nav ul li:nth-child(2):hover {
+  background-color: #adda50;
+}
+
+nav ul li:nth-child(3) {
+  border-color: #4fbec6;
+}
+
+nav ul li:nth-child(3):hover {
+  background-color: #4fbec6;
+}
+
+nav ul li:nth-child(4) {
+  border-color: #3e7c8c;
+}
+
+nav ul li:nth-child(4):hover {
+  background-color: #3e7c8c;
+}
+
+nav ul li:last-child {
+  border-color: #284659;
+}
+
+nav ul li:last-child:hover {
+  background-color: #284659;
+}
+
+nav ul li a {
+  transition-duration: 613ms;
+}
+
+nav ul li:hover a {
+  color: white;
+}
+
+nav li {
+  font-size: 23px;
+  text-align: center;
+  flex: 1;
+  border-top-color: #adda50;
+  border-top-width: 10px;
+  border-top-style: solid;
+  transition-duration: 613ms;
+}
+
+.nav {
+  margin-top: 10px;
+  display: block;
+  text-decoration: none;
+  color: #393939;
+}
+
+/* -----------------------------------------------
+Footer
+----------------------------------------------- */
+footer {
+  margin-top: auto;
+  padding: 0 1em;
+  justify-content: space-between;
+}
+
+.adresse {
+  text-align: center;
+}
+
+/* -----------------------------------------------
+  Responsive
+----------------------------------------------- */
+@media (max-width: 600px) {
+  /* La nav */
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    border-top: 0;
+    text-align: left;
+    padding-left: 1em;
+    border-left-width: 10px;
+    border-left-style: solid;
+  }
+
+  /* Le header */
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo_container {
+    margin-right: 0;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+
+  footer p:last-of-type {
+    margin-bottom: 0;
+  }
+}
