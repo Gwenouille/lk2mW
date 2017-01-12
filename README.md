@@ -1,20 +1,33 @@
+# lk2m
+Projet de groupe WebForce3
+Date: Décembre 2016 / Janvier 2017
+
+Theme:
+Digital Manufacture Innovation
+
+Équipe:
+Mélinda Khammar
+Sébastien Mouquet
+Nicolas Mollet
+Gwenael Le Page
+
+Répartition des compétences:
+
+Design
+
+Front
+Mélinda K.
+Nicolas M.
+
+Back
+Sebastien M.
+Gwenael L.P.
+
+
+
 ## W
 
-W est un framework minimaliste. Il suit les structures et les grand thèmes des frameworks PHP OO MVC actuels, tout en en facilitant l'approche. 
-
----
-
-####Pour télécharger le framework et en consulter la documentation :
-
-1. Dans un terminal : 
-
-  ```
-  cd c:/xampp/htdocs
-  composer create-project webforce3/w nom_de_mon_projet
-  ```
-
-2. Naviguez vers http://localhost/nom_de_mon_projet/docs/tuto/
-
+W est un framework minimaliste. Il suit les structures et les grand thèmes des frameworks PHP OO MVC actuels, tout en en facilitant l'approche.
 
 ####Auteurs :
 * Guillaume Sylvestre : [@gsylvestre](https://github.com/gsylvestre) (auteur original)
