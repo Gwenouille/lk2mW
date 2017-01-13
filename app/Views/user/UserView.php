@@ -20,7 +20,6 @@
     <span><a href="#">Mot de passe oublié ?</a></span>
   </form>
 
-
   <form class="form-inscription" method="post">
     <h3 class="form_section center">S'incrire</h3>
     <span class="asterix obligatoire center">* Champs Obligatoires</span>
