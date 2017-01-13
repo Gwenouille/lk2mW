@@ -10,16 +10,14 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/localBootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/master.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/header_footer.css') ?>">
-	<!-- <title><?php echo $title; ?></title> -->
-
 	<title><?= $this->e($title) ?></title>
 </head>
 <body>
 	<div class="page container">
 		<header>
 			<div class="logo_container">
-				<a href="/lk2m/index.php">
-					<img src="/lk2m/assets/logos/logoFerme.png" alt="page accueil">
+				<a href="<?= $this->url("default_home"); ?>">
+					<img src="<?= $this->assetUrl('logos/logoFerme.png');?>" alt="page accueil">
 				</a>
 			</div>
 			<div class="title"><h1>Digital Manufacture<br>INNOVATION</h1></div>
@@ -29,14 +27,14 @@
 			</div>
 		</header>
 
-		<nav>
+		<nav class='navigation'>
 			<div class='nav-container'>
 					<ul>
-						<li><a class="nav" href="/lk2m/pages/fabrication_additive.php">Fabrication additive</a></li>
-						<li><a class="nav" href="/lk2m/pages/creation_d_entreprises.php">Création d'entreprises</a></li>
-						<li><a class="nav" href="/lk2m/pages/espace_formation.php">Espace formation</a></li>
-						<li><a class="nav" href="/lk2m/pages/coworking.php">Coworking</a></li>
-						<li><a class="nav" href="/lk2m/pages/location_de_bureaux.php">Location de bureaux</a></li>
+						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "creation_d_entreprises"]); ?>">Création d'entreprises</a></li>
+						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "fabrication_additive"]); ?>.php">Fabrication additive</a></li>
+						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "espace_formation"]); ?>">Espace formation</a></li>
+						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "coworking"]); ?>">Coworking</a></li>
+						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "location_de_bureaux"]); ?>">Location de bureaux</a></li>
 					</ul>
 			</div>
 		</nav>
@@ -46,7 +44,19 @@
 		</section>
 
 		<footer>
+			<p>&copy;LK2M - 2017</p>
+			<address class="adresse">
+				DMI Digital Manufacture et Innovation :
+				6&#x2011;10&nbsp;Rue&nbsp;Verdier&nbsp;Monetti 76880&nbsp;Arques&#x2011;la&#x2011;Bataille
+			</address>
+			<address class="adresse">
+				Coordonnées GPS :
+				49°52'51"&nbsp;Nord 1°08'13"&nbsp;Est
+			</address>
 		</footer>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 </body>
 </html>
