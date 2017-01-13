@@ -1,11 +1,16 @@
 <?php $this->layout('layout', ['title' => 'Accueil']) ?>
 
+<!-- Ajoute un css pour cette page seulement, pour corriger l'affichage de la nav -->
+<?php $this->start('css') ?>
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/header_footer_index.css') ?>">
+<?php $this->stop('css') ?>
+
 <?php $this->start('main_content') ?>
 
 		<main class="main">
 
-			<p class="center">DMI (Digital Manufacture et Innovation) est un lieu dédié &agrave; l'innovation, &agrave; la création et au développement des entreprises, aux projets individuelset colaboratifs associant entreprises, écoles et laboratoires régionaux.</p>
-			<p class="center">Ce lieu, unique en territoire dieppois regroupe 5 p&ocirc;les d'activités :</p>
+			<p class="center">DMI (Digital Manufacture et Innovation) est un lieu dédié &agrave; l'innovation, &agrave; la création et au développement des entreprises, aux projets individuels et colaboratifs associant entreprises, écoles et laboratoires régionaux.</p>
+			<p class="center">Ce lieu, unique en territoire dieppois regroupe 5 p&ocirc;les d'activités.</p>
 
 			<div class="star_wrapper">
 				<div class="logo">

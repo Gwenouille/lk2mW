@@ -29,12 +29,7 @@ header {
   color: rgb(255, 255, 255);
 }
 
-/* css barre menu */
-.navigation {
-  display: none;
-}
-
-nav ul {
+.navigation ul {
   margin-top: 0;
   padding: 0;
   list-style: none;
@@ -42,55 +37,55 @@ nav ul {
   justify-content: space-around;
 }
 
-nav ul li:first-child {
+.navigation ul li:first-child {
   border-color: #d9e767;
 }
 
-nav ul li:first-child:hover {
+.navigation ul li:first-child:hover {
   background-color: #d9e767;
 }
 
-nav ul li:nth-child(2) {
+.navigation ul li:nth-child(2) {
   border-color: #adda50;
 }
 
-nav ul li:nth-child(2):hover {
+.navigation ul li:nth-child(2):hover {
   background-color: #adda50;
 }
 
-nav ul li:nth-child(3) {
+.navigation ul li:nth-child(3) {
   border-color: #4fbec6;
 }
 
-nav ul li:nth-child(3):hover {
+.navigation ul li:nth-child(3):hover {
   background-color: #4fbec6;
 }
 
-nav ul li:nth-child(4) {
+.navigation ul li:nth-child(4) {
   border-color: #3e7c8c;
 }
 
-nav ul li:nth-child(4):hover {
+.navigation ul li:nth-child(4):hover {
   background-color: #3e7c8c;
 }
 
-nav ul li:last-child {
+.navigation ul li:last-child {
   border-color: #284659;
 }
 
-nav ul li:last-child:hover {
+.navigation ul li:last-child:hover {
   background-color: #284659;
 }
 
-nav ul li a {
+.navigation ul li a {
   transition-duration: 613ms;
 }
 
-nav ul li:hover a {
+.navigation ul li:hover a {
   color: white;
 }
 
-nav li {
+.navigation li {
   font-size: 23px;
   text-align: center;
   flex: 1;
@@ -125,15 +120,11 @@ footer {
 ----------------------------------------------- */
 @media (max-width: 600px) {
   /* La nav */
-  .navigation {
-    display: block;
-  }
-
-  nav ul {
+  .navigation ul {
     flex-direction: column;
   }
 
-  nav ul li {
+  .navigation ul li {
     border-top: 0;
     text-align: left;
     padding-left: 1em;
