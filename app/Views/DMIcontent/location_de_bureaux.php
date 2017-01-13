@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Location de bureaux']) ?>
+<?php $this->layout('layout', ['title' => 'Location de bureaux','displayConnectLink' =>$connectLinkChoice]) ?>
 
 <?php $this->start('main_content') ?>
 

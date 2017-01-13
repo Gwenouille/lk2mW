@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Création d\'entreprise']) ?>
+<?php $this->layout('layout', ['title' => 'Création d\'entreprise','displayConnectLink' =>$connectLinkChoice]) ?>
 
 <?php $this->start('main_content') ?>
 
