@@ -10,7 +10,7 @@
 		<main class="main">
 
 			<p class="center">DMI (Digital Manufacture et Innovation) est un lieu dédié &agrave; l'innovation, &agrave; la création et au développement des entreprises, aux projets individuels et colaboratifs associant entreprises, écoles et laboratoires régionaux.</p>
-			<p class="center">Ce lieu, unique en territoire dieppois regroupe 5 p&ocirc;les d'activités :</p>
+			<p class="center">Ce lieu, unique en territoire dieppois regroupe 5 p&ocirc;les d'activités.</p>
 
 			<div class="star_wrapper">
 				<div class="logo">
