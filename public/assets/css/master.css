@@ -51,6 +51,15 @@ body {
 }
 
 /* -----------------------------------------------
+  Section <section> imposée par le framework
+----------------------------------------------- */
+.section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* -----------------------------------------------
   Section main centrale
 ----------------------------------------------- */
 .main {
@@ -100,6 +109,7 @@ body {
   Logo central et cercle de liens pour le site desktop
 ----------------------------------------------- */
 .star_wrapper {
+  margin: 2em;
   height: 500px;
   display: flex;
   justify-content: center;
@@ -144,7 +154,7 @@ body {
 .fabrication {
   background-image: url("/lk2mW/public/assets/logos/fabricationFond.png");
   top: -200px;
-  left: 20px;
+  left: 30px;
 }
 
 .fabrication:hover {
@@ -154,45 +164,45 @@ body {
 .coworking {
   background-image: url("/lk2mW/public/assets/logos/coworkingFond.png");
   top: -62px;
-  left: -170px;
+  left: -160px;
 }
 
 .coworking:hover {
   top: -67px;
-  left: -186px;
+  left: -176px;
 }
 
 .location {
   background-image: url("/lk2mW/public/assets/logos/locationFond.png");
   top: 160px;
-  left: -98px;
+  left: -88px;
 }
 
 .location:hover {
   top: 173px;
-  left: -108px;
+  left: -98px;
 }
 
 .formation {
   background-image: url("/lk2mW/public/assets/logos/formationFond.png");
   top: 160px;
-  left: 138px;
+  left: 148px;
 }
 
 .formation:hover {
   top: 173px;
-  left: 148px;
+  left: 158px;
 }
 
 .creation {
   background-image: url("/lk2mW/public/assets/logos/creationFond.png");
   top: -62px;
-  left: 210px;
+  left: 220px;
 }
 
 .creation:hover {
   top: -67px;
-  left: 226px;
+  left: 236px;
 }
 
 /* -----------------------------------------------

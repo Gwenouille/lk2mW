@@ -1,0 +1,13 @@
+/* -----------------------------------------------
+  La navigation horizontale doit etre invisible en mode desktop pour cette page uniquement.
+----------------------------------------------- */
+.navigation {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  /* La nav */
+  .navigation {
+    display: block;
+  }
+}
