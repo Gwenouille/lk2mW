@@ -25,15 +25,22 @@
 			<div class="title"><h1>Digital Manufacture<br>INNOVATION</h1></div>
 			<div class="connection">
 			<h3>Dieppe - Normandie</h3>
-			<h3><a href="login_membre.php">Se connecter</a></h3>
+			<?php
+			$connectLink= !empty($_SESSION) ? '<h3><a href="login_membre.php">Se deconnecter</a></h3>':'<h3><a href="login_membre.php">Se connecter</a></h3>';
+			if ($displayConnectLink) {
+				echo ($connectLink);
+			}
+			?>
 			</div>
 		</header>
+
+<?php echo $w_current_route; ?>
 
 		<nav class='navigation'>
 			<div class='nav-container'>
 					<ul>
 						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "creation_d_entreprises"]); ?>">Création d'entreprises</a></li>
-						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "fabrication_additive"]); ?>.php">Fabrication additive</a></li>
+						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a></li>
 						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "espace_formation"]); ?>">Espace formation</a></li>
 						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "coworking"]); ?>">Coworking</a></li>
 						<li><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "location_de_bureaux"]); ?>">Location de bureaux</a></li>

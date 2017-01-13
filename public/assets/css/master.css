@@ -366,29 +366,42 @@ CSS de la page Se Connecter / S'inscrire
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  border: 1px solid rgba(101, 101, 101, 0.25);
+  /*border: 1px solid rgba(101, 101, 101, 0.25);*/
   border-radius: 3px;
   margin: auto;
   padding: 20px;
-  background: #d9e767;
+  background: #adda50;
   min-width: 30%;
 }
 
-.obligatoire {
-  font-size: 10px;
-  margin: 0;
+.form_section {
+  font-size: 1.5em;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input {
+  padding: 5px;
 }
 
 .input-submit {
+  margin-top: 2em;
   border: 1px solid rgba(99, 99, 99, 1);
   border-radius: 5px;
   background: rgb(240, 240, 240);
   padding: 5px;
+  font-size: 1.5em;
+  transition-duration: 0.5s;
+}
+
+.input-submit:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .input-submit:active {
   transform: scale(0.9);
-  transition-duration: 0.5s;
 }
 
 @media (max-width: 600px) {

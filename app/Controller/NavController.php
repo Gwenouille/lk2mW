@@ -12,7 +12,12 @@ class NavController extends Controller
 	 */
 	public function linkNav($target)
 	{
-		$this->show("DMIcontent/$target");
+		if ($target=="fabrication_additive"){
+		$this->show("DMIcontent/$target", ['connectLinkChoice' => true]);
+	} else {
+		$this->show("DMIcontent/$target", ['connectLinkChoice' => false]);
+	}
+
 	}
 
 }

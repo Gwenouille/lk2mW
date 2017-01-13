@@ -11,7 +11,7 @@ class UserController extends \W\Controller\Controller
 {
     public function inscriptionUser() {
 
-// Variables qui précise si les champs sont bien remplis / si le mail existe / si l'inscription est effectuée
+// Variables qui précisent si les champs sont bien remplis / si le mail existe / si l'inscription est effectuée
 
     $errorChamp = true;
     $emailExist = true;
