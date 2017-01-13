@@ -1,5 +1,5 @@
 
-<?php $this->layout('layout', ['title' => 'Accueil']) ?>
+<?php $this->layout('layout', ['title' => 'Accueil','displayConnectLink' =>$connectLinkChoice]) ?>
 
 <!-- Ajoute un css pour cette page seulement, pour corriger l'affichage de la nav -->
 <?php $this->start('css') ?>
