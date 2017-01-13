@@ -4,15 +4,15 @@ namespace Controller;
 
 use \W\Controller\Controller;
 
-class DefaultController extends Controller
+class NavController extends Controller
 {
 
 	/**
 	 * Page d'accueil par défaut
 	 */
-	public function home()
+	public function linkNav($target)
 	{
-		$this->show('default/home');
+		$this->show("DMIcontent/$target");
 	}
 
 }
