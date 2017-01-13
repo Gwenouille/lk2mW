@@ -9,4 +9,7 @@
 		// route de redirection vers les pages DMI
 		['GET', '/[:target]', 'Nav#linkNav', 'nav_linkNav'],
 
+		// route de l'espace user
+		["GET", "/espaceMembre", "User#espaceMembre", "user_espaceMembre"],
+
 	);
