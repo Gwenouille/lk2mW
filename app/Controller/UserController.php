@@ -2,17 +2,26 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-// appeler notre model que l'on a creer
 use Model\UserModel;
-use \W\Model\ConnectionModel;
+use \W\Security\AuthentificationModel;
+use \W\Model\UsersModel;
 
 
 class UserController extends \W\Controller\Controller
 {
     public function inscriptionUser() {
 
+// Variables qui précise si les champs sont bien remplis / si le mail existe / si l'inscription est effectuée
+
+    $errorChamp = true;
+    $emailExist = true;
+    $inscriptionConfirm = false;
+
+//
+
+
       $this -> show ('user/UserView');
-      
+
     }
 
   }

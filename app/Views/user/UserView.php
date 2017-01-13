@@ -2,10 +2,12 @@
 
 <?php $this->start('main_content') ?>
 
+<h1>Rejoignez la communauté !</h1>
+
 <!--formulaire d'inscription du user -->
 <main class="main-login">
 
-<form class="form-connexion" action="index.html" method="post">
+<form class="form-connexion" method="post">
     <h3>Se Connecter</h3>
     <br>
     <label for="e-mail">
@@ -21,7 +23,7 @@
   </form>
 
 
-  <form class="form-inscription" action="index.html" method="post">
+  <form class="form-inscription" method="post">
     <h3>S'incrire</h3>
     <span class="asterix obligatoire">* Champs Obligatoires</span>
     <br>
