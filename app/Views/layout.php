@@ -26,8 +26,9 @@
 			<div class="connection">
 			<h3>Dieppe - Normandie</h3>
 			<?php
-			$connectLink= !empty($_SESSION['user']) ? '<h3><a href="'.$this->url("userConnect_logoutUser").'">Se deconnecter</a></h3>':'<h3><a href="'.$this->url("user_inscriptionUser").'">Se connecter/S\'inscrire</a></h3>';
-			if ($displayConnectLink) {
+			if (isset($displayConnectLink) && $displayConnectLink) {
+			//Récupération d'une variable via la view, qui la tient du controlleur. Cette variable est un booleen qui controle l'affichage ou non des possibilités de connections dans le header (seulement pour la page fabrication additive)
+			$connectLink= !empty($_SESSION['user']) ? '<h3><a class="connectLink" href="'.$this->url("userConnect_logoutUser").'" tabindex=1>Se deconnecter</a></h3>':'<h3><a class="connectLink" href="'.$this->url("user_inscriptionUser").'" tabindex=1>Se connecter/S\'inscrire</a></h3>';
 				echo ($connectLink);
 			}
 			?>
@@ -56,7 +57,7 @@
 			<p>&copy;LK2M - 2017</p>
 			<address class="adresse">
 				DMI Digital Manufacture et Innovation :
-				6&#x2011;10&nbsp;Rue&nbsp;Verdier&nbsp;Monetti 76880&nbsp;Arques&#x2011;la&#x2011;Bataille
+				6&#x2011;10&nbsp;Rue&nbsp;Verdier&nbsp;Monetti&nbsp;76880&nbsp;Arques&#x2011;la&#x2011;Bataille
 			</address>
 			<address class="adresse">
 				Coordonnées GPS :
