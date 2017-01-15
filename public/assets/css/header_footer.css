@@ -25,9 +25,32 @@ header {
   line-height: 1.4;
 }
 
-.connection {
-  color: rgb(255, 255, 255);
+/*************************************
+ LVHA pour le lien de connection/déconnection
+**************************************/
+.connectLink {
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition-duration: 300ms;
 }
+
+.connectLink:visited {
+  color: #ddd;
+}
+
+.connectLink:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.connectLink:active,
+.connectLink:focus {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ********************************* */
 
 .navigation ul {
   margin-top: 0;

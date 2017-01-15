@@ -26,8 +26,9 @@
 			<div class="connection">
 			<h3>Dieppe - Normandie</h3>
 			<?php
-			$connectLink= !empty($_SESSION) ? '<h3><a href="login_membre.php">Se deconnecter</a></h3>':'<h3><a href="login_membre.php">Se connecter</a></h3>';
-			if ($displayConnectLink) {
+			//Récupération d'une variable via la view, qui la tient du controlleur. Cette variable est un booleen qui controle l'affichage ou non des possibilités de connections dans le header (seulement pour la page fabrication additive)
+			$connectLink= !empty($_SESSION) ? '<h3><a class="connectLink" href="login_membre.php" tabindex=1>Se deconnecter</a></h3>':'<h3><a class="connectLink" href="login_membre.php" tabindex=1>Se connecter</a></h3>';
+			if (isset($displayConnectLink) && ($displayConnectLink)) {
 				echo ($connectLink);
 			}
 			?>
