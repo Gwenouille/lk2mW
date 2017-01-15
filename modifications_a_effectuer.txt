@@ -1,0 +1,31 @@
+----------------------------------------------------------------------
+				15/01/2017
+----------------------------------------------------------------------
+
+
+Ajout de colonnes dans la BDD :
+-------------------------------
+
+- colonne 'status' dans la table 'users' : confirmation ou non de l'inscription de l'utilisateur
+	->"0" (par défaut) :  utilisateur membre mais compte pas activé.
+	-> "1" : l'utilisateur a activé son compte avec le lien envoyé par mail.
+
+- colonne 'project_leader' dans la table "PROJECT_HAS_USER" : contient l'ID de l'utilisateur chef de projet.
+
+Ajout de données dans les colonnes :
+------------------------------------
+
+>"ROLES" :
+  - "1" : superadministrator
+  - "2" : administrator
+  - "3" : member
+
+Valeur par défaut de users/roles_id est 3.
+
+>"users/phone" : Valeur NULL par défaut.
+
+Corrections des Erreurs :
+-------------------------
+
+- inscriptionUser -> Erreurs dans le controller (corrigé)
+- config.php -> informations de la base de données erronnées ont été corrigées. (!! table 'users' changée en 'user' du à des problèmes de connexion à la BDD - Error SQLStatement)

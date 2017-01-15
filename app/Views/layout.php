@@ -26,7 +26,7 @@
 			<div class="connection">
 			<h3>Dieppe - Normandie</h3>
 			<?php
-			$connectLink= !empty($_SESSION) ? '<h3><a href="login_membre.php">Se deconnecter</a></h3>':'<h3><a href="login_membre.php">Se connecter</a></h3>';
+			$connectLink= !empty($_SESSION['user']) ? '<h3><a href="'.$this->url("userConnect_logoutUser").'">Se deconnecter</a></h3>':'<h3><a href="'.$this->url("user_inscriptionUser").'">Se connecter/S\'inscrire</a></h3>';
 			if ($displayConnectLink) {
 				echo ($connectLink);
 			}

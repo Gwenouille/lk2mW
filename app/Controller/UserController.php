@@ -3,40 +3,45 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use Model\UserModel;
-use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
 
-
-class UserController extends \W\Controller\Controller
+class UserController extends Controller
 {
-    public function inscriptionUser() {
-
-
-// Variables qui précisent si les champs sont bien remplis / si le mail existe / si l'inscription est effectuée
-
-
+  public function inscriptionUser() {
+    // Variables qui indiquent si les champs sont bien remplis / si l'adresse mail existe en BDD / si l'inscription est effectuée
     $errorChamp = true;
-    $emailExist = true;
+    $mailExist = true;
     $inscriptionConfirm = false;
+    // Vérifie si les champs sont remplis
+    if(!empty($_POST['lastname']) && !empty($_POST['firstname'])&& !empty($_POST['email']) && !empty($_POST['password'])) {
+      // les champs sont bien remplis
+      $errorChamp = false;
 
-// Vérifie si les champs sont remplis
-if(!empty($_POST['lastname']) && !empty($_POST['firstname'])&& !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['numTel'])) {
+      // Vérifie si l'adresse mail indiquée est déjà existante      
+      $testmail = new UsersModel();
+      if (!$testmail -> emailExists($_POST['email'])) {
+        // l'email n'est pas déjà enregistré en BDD
+        $mailExist = false;
+          
+        // inscription des données en BDD
+        $user = new UserModel();
+        $userData = $user -> inscription();
+        $flag = $user -> insert($userData, true);
+        // Confirmation de la création en bdd de l'Utilisateur
 
-$errorChamp = false;
-$testmail = new UsersModel();
-
-// Vérifie si l'adresse mail indiquée est déjà existante
-if ($testmail -> emailExist($_POST['email'])) {
-  $emailExist = false;
-  $user = new UserModel();
-  $userDate = $user -> inscription();
-// récupère la confirmation de la création en bdd de l'Utilisateur
-$flag = $user -> insert($userData, true);
-if($flag) {
-  $inscriptionConfirm = true;
+        if($flag) {
+          $inscriptionConfirm = true;
+        }
+      }
     }
+    $this -> show ('user/UserView', ["formAction" =>"inscription","inscriptionConfirm" => $inscriptionConfirm, "inscriptionError" => $errorChamp,"inscriptionMailExist" => $mailExist]);
   }
+
+  public function espaceMembre()
+  {
+
+    $this -> show ('user/UserView');
+
+  }
+
 }
-      $this -> show ('user/UserView', ["confirm" => $inscriptionConfirm, "error" => $errorChamp,"mail" => $emailExist]);
-    }
-  }
