@@ -10,6 +10,7 @@
 
 <!--formulaire d'inscription du user -->
 
+<div class="main-login_connexion">
   <form class="form-inscription" method="post">
 
     <h3 class="form_section center">S'incrire</h3>
@@ -36,7 +37,8 @@
     <input class="input-submit" type="submit" name="inscription" value="Inscription">
 
   </form>
-
+</div>
+  <div class="main-login_inscription">
   <!--formulaire de login du user -->
   <form class="form-connexion" method="post">
       <h3 class="form_section center">Se connecter</h3>
@@ -52,7 +54,7 @@
 
       <span><a href="#">Mot de passe oublié ?</a></span>
     </form>
-
+  </div>
   </main>
 
 <?php } else { ?>
