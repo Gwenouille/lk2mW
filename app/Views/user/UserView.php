@@ -73,7 +73,7 @@
       <label for="password">Votre Mot de passe : </label>
       <input type="text" name="password" placeholder="Mot De Passe" required>
 
-      <input class="input-submit" type="submit" name="connexion" value="Se Connecter">
+      <input class="input-submit" type="submit" name="connexion" value="Se connecter">
 
       <span><a href="#">Mot de passe oublié ?</a></span>
     </form>
