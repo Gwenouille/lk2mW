@@ -18,6 +18,7 @@ html {
 
 body {
   font-size: 1.5em;
+  background-color: #eee;
 }
 
 *, *::after, *::before {
@@ -34,10 +35,32 @@ body {
 
 
 /* -----------------------------------------------
+  LVHA général
+----------------------------------------------- */
+a {
+  color: #284659;
+  text-decoration: none;
+  transition-duration: 300ms;
+}
+
+a:visited {}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+a:active, a:focus {
+  text-decoration: underline;
+}
+
+/* -----------------------------------------------
   Un flex vertical est sur la div "page" pour renvoyer le footer au bas de page
 ----------------------------------------------- */
 
 .page {
+  background-color: white;
+  box-shadow: 0 0 50px #ccc;
   width: 100%;
   max-width: 1600px;
   padding: 0;
