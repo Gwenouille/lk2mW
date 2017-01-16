@@ -2,11 +2,17 @@
   Déclaration générales (body, html, polices, etc.)
 ----------------------------------------------- */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   font: 62.5%/1.4 'Rajdhani', sans-serif;
@@ -21,7 +27,9 @@ body {
   background-color: #eee;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: inherit;
 }
 
@@ -32,7 +40,6 @@ body {
 .center {
   text-align: center;
 }
-
 
 /* -----------------------------------------------
   LVHA général
@@ -50,7 +57,8 @@ a:hover {
   color: black;
 }
 
-a:active, a:focus {
+a:active,
+a:focus {
   text-decoration: underline;
 }
 
@@ -69,7 +77,6 @@ a:active, a:focus {
   min-height: 100vh;
 }
 
-
 /* -----------------------------------------------
   Section <section> imposée par le framework
 ----------------------------------------------- */
@@ -79,7 +86,6 @@ a:active, a:focus {
   flex-direction: column;
   flex: 1;
 }
-
 
 /* -----------------------------------------------
   Section main centrale
@@ -104,7 +110,6 @@ a:active, a:focus {
   margin-right: 1em;
 }
 
-
 /* -----------------------------------------------
   Responsive section centrale
 ----------------------------------------------- */
@@ -115,20 +120,20 @@ a:active, a:focus {
     padding: 1em;
     text-align: justify;
   }
+
   .titre_service {
     font-size: 2em;
   }
+
   .titre_service img {
     display: block;
     margin: 0 auto;
   }
 }
 
-
 /* -----------------------------------------------
   Page Accueil
 ----------------------------------------------- */
-
 
 /* -----------------------------------------------
   Logo central et cercle de liens pour le site desktop
@@ -231,17 +236,17 @@ a:active, a:focus {
   left: 236px;
 }
 
-
 /* -----------------------------------------------
 Responsive du cercle de liens
 ----------------------------------------------- */
 
 @media (max-width: 600px) {
-  .star_wrapper, .logo, .periph {
+  .star_wrapper,
+  .logo,
+  .periph {
     display: none;
   }
 }
-
 
 /* -----------------------------------------------
   Les partenaires
@@ -256,7 +261,6 @@ Responsive du cercle de liens
 .partenaires img {
   height: 40px;
 }
-
 
 /* -----------------------------------------------
   Page Fabrication Additive
@@ -307,9 +311,7 @@ Responsive du cercle de liens
   font-size: 1em;
 }
 
-
 /* Section Formation et Conception */
-
 .asterix {
   color: red;
 }
@@ -320,13 +322,10 @@ Responsive du cercle de liens
   padding-left: 8px;
 }
 
-
 /* Section Design 3D */
-
 .imprimante-3d {
   padding-left: 2em;
 }
-
 
 /* ---------------------------------
 Responsive de Fabrication Additive
@@ -336,32 +335,32 @@ Responsive de Fabrication Additive
   .content-section {
     flex-direction: column;
   }
+
   .section-fabrication-titre {
     display: block;
     margin: auto;
     text-align: center;
   }
+
   .description-section h5 {
     text-align: center;
   }
+
   .content-section img {
     display: block;
     margin: 0 auto 1em;
   }
 }
 
-
 /* -----------------------------------------------
   CSS de la carte de l'accueil
 ----------------------------------------------- */
-
 
 /* .carte {
   width: 415px;
   height: 232px;
   margin: 0 auto;
 } */
-
 
 /* -----------------------------------------------
   Le CSS du tableau de la page formation
@@ -395,18 +394,19 @@ CSS de la page Se Connecter / S'inscrire
 
 .main-login {
   display: flex;
-  margin: 2em 0;
   justify-content: space-around;
   /*align-items: center;*/
 }
 
-.main-login_connexion, .main-login_inscription {
+.main-login_connexion,
+.main-login_inscription {
   /*border: 1px solid rgba(101, 101, 101, 0.25);*/
   flex-grow: 1;
   margin: 12%;
 }
 
-.form-connexion, .form-inscription {
+.form-connexion,
+.form-inscription {
   /*border: 1px solid rgba(101, 101, 101, 0.25);*/
   display: flex;
   flex-direction: column;
