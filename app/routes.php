@@ -10,10 +10,12 @@
 		["GET|POST", "/loginUser","UserConnect#loginUser", "userConnect_loginUser"],
 		["GET|POST", "/logoutUser","UserConnect#logoutUser", "userConnect_logoutUser"],
 
-		// route de redirection vers les pages DMI
-		['GET', '/[:target]', 'Nav#linkNav', 'nav_linkNav'],
-
 		// route de l'espace user
 		["GET", "/espaceMembre", "User#espaceMembre", "user_espaceMembre"],
 
+		// route de l'envoi de mail
+		["GET", "/mail", "Mail#essai", "mail_essai"],
+		
+		// route de redirection vers les pages DMI
+		['GET', '/[:target]', 'Nav#linkNav', 'nav_linkNav'],
 	);
