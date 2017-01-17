@@ -4,13 +4,16 @@ namespace Controller;
 use \W\Controller\Controller;
 use Model\UserModel;
 use \W\Model\UsersModel;
+use \W\Security\AuthentificationModel;
 
 class UserController extends Controller
 {
   public function inscriptionUser() {
     
+    $userLog = new AuthentificationModel();
+
     // l'utilisateur est connecté ?
-    if(isset($_SESSION['user']) && !empty($_SESSION['user'])) { $connection = true; }
+    if(!is_null($userLog ->getLoggedUser())) { $connection = true; }
     else { $connection = false; }
     
     // Un post du formulaire d'inscription est soumis ?
@@ -52,9 +55,17 @@ class UserController extends Controller
     else { $this -> show ('user/UserView',['connectLinkChoice' => true]); }
   }
 
-  public function mycount()
+  public function myaccount()
   {
-    $this -> show ('user/UserView',['connectLinkChoice' => true]);
+     $userLog = new AuthentificationModel();
+    // l'utilisateur est connecté ?
+    if(!is_null($userLog ->getLoggedUser())) { $connection = true; }
+    else { $connection = false; }
+    if($connection) {
+      $this -> show ('user/UserView',['connectLinkChoice' => true]);
+    } else {
+      $this -> show ('user/InscriptionView');
+    }
   }
 
 }

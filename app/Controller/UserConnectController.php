@@ -10,8 +10,10 @@ class UserConnectController extends Controller
 
 	public function loginUser()
 	{
-   // l'utilisateur est connecté ?
-    if(isset($_SESSION['user']) && !empty($_SESSION['user'])) { $connection = true; }
+    
+     $userLog = new AuthentificationModel();
+    // l'utilisateur est connecté ?
+    if(!is_null($userLog ->getLoggedUser())) { $connection = true; }
     else { $connection = false; }
     
     // Un post du formulaire login est soumis ?
@@ -28,8 +30,7 @@ class UserConnectController extends Controller
 
 		if(!empty($_POST['e_mail']) && !empty($_POST['password'])) {
 
-			$user = new AuthentificationModel();
-			$userExist = $user->isValidLoginInfo($_POST['e_mail'], $_POST['password']);
+			$userExist = $userLog->isValidLoginInfo($_POST['e_mail'], $_POST['password']);
 			// L'utilisateur existe en BDD
         	if($userExist!= 0) {
 				$errorChamp = false;        		
@@ -38,7 +39,7 @@ class UserConnectController extends Controller
         	  	// si le compte n'est pas activé
         	  	if($userData['status'] != 0) { $activeSpace = true; }
        	  		if($activeSpace==true) {
-        	  		$user->logUserIn($userData);
+        	  		$userLog->logUserIn($userData);
         	  		$connectionSuccess = true;
         	  	}
         	}
@@ -51,8 +52,16 @@ class UserConnectController extends Controller
 
 	public function logoutUser()
 	{
-		$user = new AuthentificationModel();
-	    $user->logUserOut();
-    	$this->show("DMIcontent/fabrication_additive",['connectLinkChoice' => true]);
-	}
+
+        $userLog = new AuthentificationModel();
+        // l'utilisateur est connecté ?
+        if(!is_null($userLog ->getLoggedUser())) {
+           $userLog->logUserOut();
+           $this->show("user/InscriptionView",['connectLinkChoice' => true,"deconnexion" => true]);
+        } else {
+            $this->show("DMIcontent/fabrication_additive",['connectLinkChoice' => true]);
+        }
+
+
+	   }
 }

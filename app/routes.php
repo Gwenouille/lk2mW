@@ -13,6 +13,6 @@
 		// route de redirection vers les pages DMI
 		['GET', '/[:target]/', 'Nav#linkNav', 'nav_linkNav'],
 		// route de l'espace user
-		['GET', '/monCompte', 'User#mycount', 'user_myaccount'],
+		['GET', '/monCompte', 'User#myaccount', 'user_myaccount'],
 
 	);

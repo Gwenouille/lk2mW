@@ -3,8 +3,8 @@
 <?php $this->start('main_content'); ?>
 
 <?php 
-// affiche le formulaire si (pas de post) ou (un post mais inscription non réalisée)
-if(!isset($formAction) || (isset($formAction) && isset($inscriptionConfirm) && !$inscriptionConfirm) || (isset($formAction) && isset($connectionSuccess) && !$connectionSuccess)) {
+// Affichage du formulaire si (pas de post ni de deconnexion)  ou (un post mais inscription non réalisée) ou (un post mais connexion non réalisée)
+if((!isset($formAction) && !isset($deconnexion)) || (isset($formAction) && isset($inscriptionConfirm) && !$inscriptionConfirm) || (isset($formAction) && isset($connectionSuccess) && !$connectionSuccess)) {
 ?>
 <main class="main-login">
 
@@ -81,6 +81,10 @@ if(!isset($formAction) || (isset($formAction) && isset($inscriptionConfirm) && !
 ?>
     <p>Vous êtes connecté.</p>
     <p><a href="<?= $this->url("user_myaccount",['connectLinkChoice' => true]); ?>">Mon espace</a></p>
+<?php
+} elseif(isset($deconnexion)) { // déconnexion de l'utilisateur ?>
+    <p>Vous êtes déconnecté.</p>
+    <p><a class="nav" href="<?= $this->url("nav_linkNav", ["target" => "fabrication_additive",'connectLinkChoice' => true]); ?>">Fabrication additive</a></p>
 <?php
 }
 ?>
