@@ -11,9 +11,8 @@
 		["GET|POST", "/logoutUser","UserConnect#logoutUser", "userConnect_logoutUser"],
 
 		// route de redirection vers les pages DMI
-		['GET', '/[:target]', 'Nav#linkNav', 'nav_linkNav'],
-
+		['GET', '/[:target]/', 'Nav#linkNav', 'nav_linkNav'],
 		// route de l'espace user
-		["GET", "/espaceMembre", "User#espaceMembre", "user_espaceMembre"],
+		['GET', '/monCompte', 'User#mycount', 'user_myaccount'],
 
 	);

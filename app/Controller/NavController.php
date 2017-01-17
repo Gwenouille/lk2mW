@@ -14,10 +14,9 @@ class NavController extends Controller
 	{
 		if ($target=="fabrication_additive"){
 		$this->show("DMIcontent/$target", ['connectLinkChoice' => true]);
-	} else {
+		} else {
 		$this->show("DMIcontent/$target", ['connectLinkChoice' => false]);
-	}
-
+		}
 	}
 
 }

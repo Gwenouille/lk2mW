@@ -28,7 +28,10 @@
 			<?php
 			if (isset($displayConnectLink) && $displayConnectLink) {
 			//Récupération d'une variable via la view, qui la tient du controlleur. Cette variable est un booleen qui controle l'affichage ou non des possibilités de connections dans le header (seulement pour la page fabrication additive)
-			$connectLink= !empty($_SESSION['user']) ? '<h3><a class="connectLink" href="'.$this->url("userConnect_logoutUser").'" tabindex=1>Se deconnecter</a></h3>':'<h3><a class="connectLink" href="'.$this->url("user_inscriptionUser").'" tabindex=1>Se connecter/S\'inscrire</a></h3>';
+				$linkConnect= '<a class="connectLink" href="'.$this->url("user_inscriptionUser").'" tabindex=1>Se connecter/S\'inscrire</a>';
+				$linkDeconnect = '<a class="connectLink" href="'.$this->url("userConnect_logoutUser").'" tabindex=1>Se deconnecter</a>';
+				$linkAccount = '<a class="connectLink" href="'.$this->url("user_myaccount").'" tabindex=1>Mon compte</a>';
+			$connectLink= !empty($_SESSION['user']) ? '<h3>'.$linkDeconnect.'<p>'.$linkAccount.'</h3>':'<h3>'.$linkConnect.'</h3>';
 				echo ($connectLink);
 			}
 			?>

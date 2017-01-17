@@ -10,8 +10,18 @@ class UserConnectController extends Controller
 
 	public function loginUser()
 	{
+   // l'utilisateur est connecté ?
+    if(isset($_SESSION['user']) && !empty($_SESSION['user'])) { $connection = true; }
+    else { $connection = false; }
+    
+    // Un post du formulaire login est soumis ?
+    if(!empty($_POST) && $_POST['form_name'] === 'form_connection') { $submitForm = true; }
+    else { $submitForm = false; }
 
-		// variables indiquant champs mal remplis, compte existant mais pas activé, ou mauvais identifiants
+    // on arrive sur la page sans qu'un formulaire de connexion est soumis
+    if(!$connection && $submitForm) {
+	
+    	// variables indiquant champs mal remplis, compte existant mais pas activé, ou mauvais identifiants
 		$errorChamp = true;
 		$activeSpace = false;
 		$connectionSuccess = false;
@@ -33,13 +43,16 @@ class UserConnectController extends Controller
         	  	}
         	}
 		}
-		$this -> show ('user/UserView', ["formAction" => "connexion" ,"connectionSuccess"=>$connectionSuccess ,"connectionError" => $errorChamp,"activeSpace" => $activeSpace]);
+	}
+    if(!$connection && !$submitForm) { $this -> show ('user/InscriptionView'); }
+    elseif(!$connection && $submitForm) { $this -> show ('user/InscriptionView', ["formAction" => "connexion" ,"connectionSuccess"=>$connectionSuccess ,"connectionError" => $errorChamp,"activeSpace" => $activeSpace]); }
+    else { $this -> show ('user/UserView',['connectLinkChoice' => true]); }
 	}
 
 	public function logoutUser()
 	{
 		$user = new AuthentificationModel();
 	    $user->logUserOut();
-    	$this->show("DMIcontent/fabrication_additive", ['connectLinkChoice' => true]);
+    	$this->show("DMIcontent/fabrication_additive",['connectLinkChoice' => true]);
 	}
 }
