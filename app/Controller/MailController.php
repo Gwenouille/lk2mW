@@ -9,7 +9,18 @@ class MailController extends Controller
 {
 
 	/**
-	 * Page d'accueil par défaut
+	 * Test envoi de mail
+	 */
+	public function essai()
+	{
+		var_dump('class: '.__CLASS__);
+		var_dump('method: '.__METHOD__);
+		$mail=new MailModel();
+		$mail->essai();
+	}
+	
+	/**
+	 * Test envoi de mail
 	 */
 	public function essai()
 	{

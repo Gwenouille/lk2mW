@@ -148,7 +148,7 @@ a:focus {
 }
 
 .logo {
-  background-image: url("/lk2mW/public/assets/logos/logoFermeBleu.png");
+  background-image: url("../logos/logoFermeBleu.png");
   width: 150px;
   height: 80px;
   position: relative;
@@ -183,7 +183,7 @@ a:focus {
 }
 
 .fabrication {
-  background-image: url("/lk2mW/public/assets/logos/fabricationFond.png");
+  background-image: url("../logos/fabricationFond.png");
   top: -200px;
   left: 30px;
 }
@@ -193,7 +193,7 @@ a:focus {
 }
 
 .coworking {
-  background-image: url("/lk2mW/public/assets/logos/coworkingFond.png");
+  background-image: url("../logos/coworkingFond.png");
   top: -62px;
   left: -160px;
 }
@@ -204,7 +204,7 @@ a:focus {
 }
 
 .location {
-  background-image: url("/lk2mW/public/assets/logos/locationFond.png");
+  background-image: url("../logos/locationFond.png");
   top: 160px;
   left: -88px;
 }
@@ -215,7 +215,7 @@ a:focus {
 }
 
 .formation {
-  background-image: url("/lk2mW/public/assets/logos/formationFond.png");
+  background-image: url("../logos/formationFond.png");
   top: 160px;
   left: 148px;
 }
@@ -226,7 +226,7 @@ a:focus {
 }
 
 .creation {
-  background-image: url("/lk2mW/public/assets/logos/creationFond.png");
+  background-image: url("../logos/creationFond.png");
   top: -62px;
   left: 220px;
 }
