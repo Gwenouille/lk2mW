@@ -30,7 +30,7 @@ abstract class Model
 	 * Déduit le nom de la table en fonction du nom du modèle enfant
 	 * @return W\Model $this
 	 */
-	private function setTableFromClassName()
+	protected function setTableFromClassName()
 	{
 		$app = getApp();
 
