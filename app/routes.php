@@ -14,7 +14,9 @@
 		// route de l'espace user
 		['GET', '/user/account', 'User#account', 'user_account'],
 
-		// route de redirection vers les pages DMI
-		['GET', '/[:target]/', 'Nav#linkNav', 'nav_linkNav'],
+		// route de l'envoi de mail
+		["GET", "/mail", "Mail#essai", "mail_essai"],
 
+		// route de redirection vers les pages DMI
+		['GET', '/[:target]', 'Nav#linkNav', 'nav_linkNav'],
 	);
