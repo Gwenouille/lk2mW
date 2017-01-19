@@ -1,4 +1,4 @@
 #Cette ligne renvoie le visiteur à la page d'index et non sous la racine de lk2mW
-DirectoryIndex public/index.php/
+#DirectoryIndex public/index.php/
 
 #TODO: problem de 404: il ne passe pas le /public et la route est donc inexistante...

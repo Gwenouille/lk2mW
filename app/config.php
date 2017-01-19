@@ -28,4 +28,4 @@ $w_config = [
 ];
 
 require('routes.php');
-require_once realpath('..\vendor\phpmailer\phpmailer\test.php');
+require_once realpath('..\vendor\phpmailer\phpmailer\PHPMailerAutoload.php');

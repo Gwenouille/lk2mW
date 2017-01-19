@@ -12,7 +12,7 @@ class DefaultController extends Controller
 	 */
 	public function home()
 	{
-		$this->show("Default/home", ['connectLinkChoice' => false]);
+		$this->show("default/home", ['connectLinkChoice' => false]);
 	}
 
 }
