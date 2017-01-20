@@ -1,10 +1,8 @@
 <?php $this->layout('layout', ['title' => 'Utilisateur','displayConnectLink' =>$connectLinkChoice]); ?>
 
 <?php $this->start('main_content'); ?>
-<?php
-/*
- if( (!isset($successLogin) || (isset($successLogin) && $successLogin!= true )) || (!isset($successSignIn) || (isset($successSignIn) && $successSignIn!= true )) ){
- */ ?>
+
+<?php if(!isset($successSignIn) || !isset($successSignIn) || isset($errorSignIn) || isset($errorLogin)) { ?>
 <main class="main-login">
   <!--formulaire d'inscription du user -->
   <div class="main-login_connexion">
@@ -18,7 +16,7 @@
       <span class="asterix obligatoire center">* Champs Obligatoires</span>
 
       <label for="lastname">Votre Nom<span class="asterix">*</span> : </label>
-      <input type="text" name="lastname" placeholder="Nom">
+      <input type="text" name="lastname" placeholder="Nom" required>
 
       <label for="firstname">Votre Prénom<span class="asterix">*</span> : </label>
       <input type="text" name="firstname" placeholder="Prénom" required>
@@ -36,7 +34,7 @@
       <input class="input-submit" type="submit" name="inscription" value="Inscription">
     </form>
   </div>
-  
+
   <div class="main-login_inscription">
     <!--formulaire de login du user -->
     <form class="form-connexion" method="post" action="<?= $this->url("user_login"); ?>">
@@ -55,17 +53,11 @@
   </div>
 </main>
 <?php
-/*
- }
-
- elseif (isset($successLogin) && $successLogin==true) { ?>
-  <p>Vous êtes connecté !</p>
-  <p><a href="<?= $this->url("user_account",['connectLinkChoice' => true]); ?>">Mon espace</a></p>
-<?php } elseif (isset($successSignIn) && $successSignIn == true) { ?>
+} else { ?>
     <p>Votre compte vient d'être créé.</p>
     <p> Veuillez activer votre compte en validant le lien envoyé à l'adresse mail que vous  avez indiquée.</p>
-    <p><a href="<?= $this->url("user_signin"); ?>">Fabrication additive</a></p>
+    <p><a href="<?= $this->url("nav_linkNav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a></p>
 
 <?php }
-*/ ?>
+ ?>
 <?php $this->stop('main_content') ?>
