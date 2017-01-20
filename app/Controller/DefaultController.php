@@ -15,6 +15,9 @@ class DefaultController extends Controller
 		$this->show("default/home", ['connectLinkChoice' => false]);
 	}
 
+	/**
+	 * redirection: navigation pure
+	 */
 	public function nav($target)
 	{
 		if ($target=="fabrication_additive"){
@@ -22,6 +25,12 @@ class DefaultController extends Controller
 		} else {
 		$this->show("DMIcontent/$target", ['connectLinkChoice' => false]);
 		}
+	}
+
+	public function news()
+	{
+		var_dump('News');
+		$this->show("default/home", ['connectLinkChoice' => false]);
 	}
 
 }
