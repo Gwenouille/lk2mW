@@ -29,7 +29,7 @@ class UserController extends Controller
 
             $userLog = new UserModel();
             $errors = $userLog -> login($userData);
-            if(is_null($errors)) { $this->show("user/SignInView",['successLogin'=>true]); }
+            if(is_null($errors)) { $this->show("user/UserView",['successLogin'=>true]); }
             else {$this->show("user/SignInView",['errorLogin'=>$errors]); }
         }
 	}
@@ -44,7 +44,7 @@ class UserController extends Controller
         } else {
             $this->show("DMIcontent/fabrication_additive",['connectLinkChoice' => true]);
         }
-    } 
+    }
 
     public function signIn()
     {
