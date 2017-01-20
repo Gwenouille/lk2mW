@@ -17,6 +17,9 @@
 		// route de l'envoi de mail
 		["GET", "/mail", "Mail#essai", "mail_essai"],
 
+		// Affichage/modification d'une news en vue de la modification éventuelle: en fonction du $_POST ou du $_GET on appelle telle ou telle methode
+		["GET|POST", "/fabrication_additive/news/[:id]", "News#edit", "news_edit"],
+
 		// route de l'affichage des projets: demande au modele ProjectsModel de chercher les projets de l'utilisateur, envoie à la view ces projets, un projet vide a creer et le chat
 		["GET", "/fabrication_additive/projects/", "Projects#home", "projects_home"],
 
@@ -24,7 +27,7 @@
 		["GET|POST", "/fabrication_additive/projects/[:id]", "Projects#edit", "projects_edit"],
 
 		// envoi d'un message sur le chat
-		["POST", "/fabrication_additive/projects/", "Projects#sendmsg", "projects_edit"],
+		["POST", "/fabrication_additive/projects/", "Projects#sendmsg", "projects_sendmsg"],
 
 
 		// route de redirection vers les pages DMI grace au controller default
