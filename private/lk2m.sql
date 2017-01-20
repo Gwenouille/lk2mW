@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 20 Janvier 2017 à 12:33
+-- Généré le :  Ven 20 Janvier 2017 à 15:52
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -129,7 +129,10 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `name`, `date`, `description`) VALUES
-(1, '1er projet', '2017-01-20 00:00:00', '1er projet de Melinda');
+(1, '1er projet', '2017-01-20 00:00:00', '1er projet de Melinda'),
+(2, '2em projet', '2017-01-20 03:00:00', '2eme projet de Melinda'),
+(3, 'Pierre projet 1', '2017-01-20 00:00:00', '1er projet de Pierre'),
+(4, 'Gwen projet 1', '2017-01-20 03:00:00', '1er projet de Gwen');
 
 -- --------------------------------------------------------
 
@@ -148,7 +151,10 @@ CREATE TABLE `projects_has_users` (
 --
 
 INSERT INTO `projects_has_users` (`projects_id`, `users_id`, `chief_id`) VALUES
-(1, 1, 0);
+(1, 1, 1),
+(2, 1, 1),
+(3, 3, 3),
+(4, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -285,7 +291,7 @@ ALTER TABLE `newspictures`
 -- AUTO_INCREMENT pour la table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `roles`
 --
