@@ -15,4 +15,13 @@ class DefaultController extends Controller
 		$this->show("default/home", ['connectLinkChoice' => false]);
 	}
 
+	public function nav($target)
+	{
+		if ($target=="fabrication_additive"){
+		$this->show("DMIcontent/$target", ['connectLinkChoice' => true]);
+		} else {
+		$this->show("DMIcontent/$target", ['connectLinkChoice' => false]);
+		}
+	}
+
 }

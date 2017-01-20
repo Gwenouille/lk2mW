@@ -15,11 +15,11 @@
 
 			<div class="star_wrapper">
 				<div class="logo">
-					<a class="periph location" href="<?= $this->url("nav_linkNav", ["target" => "location_de_bureaux"]); ?>">Location de bureaux</a>
-					<a class="periph coworking" href="<?= $this->url("nav_linkNav", ["target" => "coworking"]); ?>">Coworking</a>
-					<a class="periph fabrication" href="<?= $this->url("nav_linkNav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a>
-					<a class="periph creation" href="<?= $this->url("nav_linkNav", ["target" => "creation_d_entreprises"]); ?>">Création d'entreprises</a>
-					<a class="periph formation" href="<?= $this->url("nav_linkNav", ["target" => "espace_formation"]); ?>">Espace formation</a>
+					<a class="periph location" href="<?= $this->url("default_nav", ["target" => "location_de_bureaux"]); ?>">Location de bureaux</a>
+					<a class="periph coworking" href="<?= $this->url("default_nav", ["target" => "coworking"]); ?>">Coworking</a>
+					<a class="periph fabrication" href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a>
+					<a class="periph creation" href="<?= $this->url("default_nav", ["target" => "creation_d_entreprises"]); ?>">Création d'entreprises</a>
+					<a class="periph formation" href="<?= $this->url("default_nav", ["target" => "espace_formation"]); ?>">Espace formation</a>
 				</div>
 			</div>
 

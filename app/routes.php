@@ -17,6 +17,6 @@
 		// route de l'envoi de mail
 		["GET", "/mail", "Mail#essai", "mail_essai"],
 
-		// route de redirection vers les pages DMI
-		['GET', '/[:target]', 'Nav#linkNav', 'nav_linkNav'],
+		// route de redirection vers les pages DMI grace au controller default
+		['GET', '/[:target]', 'Default#nav', 'default_nav'],
 	);

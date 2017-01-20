@@ -13,6 +13,7 @@ class MessagesModel extends Model {
   public $date;
   public $users_id;
 
+  //constructeur standard, redéfini sur celui hérité de Model
   public function __construct($id = 'NULL', $comment, $date, $users_id)
   {
     $this->setTableFromClassName();
@@ -22,8 +23,8 @@ class MessagesModel extends Model {
     $this->__set('date',$date);
     $this->__set('users_id',$users_id);
   }
-  
-  // on recupere une propriete de l'objet
+
+  //Getters: on recupere une propriete de l'objet
   public function __get($value) {
     if($value==="id") {
       return $this -> id;
@@ -38,7 +39,7 @@ class MessagesModel extends Model {
     }
   }
 
-  // on modifie une propriete d'un objet
+  //Setters: on modifie une propriete d'un objet
   public function __set($value, $arg) {
     if($value==="id") {
       $this -> id = $arg;
