@@ -1,0 +1,11 @@
+.userCheckbox {
+  margin-top: 0.5em;
+  font-size: 2em;
+  display: flex;
+  justify-content: space-around;
+  max-width: 20em;
+}
+
+input[type='checkbox'] {
+  
+}

@@ -16,9 +16,7 @@ class NewsModel extends Model {
   public $date_modification;
   public $state;
 
-  //Méthode init de peuplement des propriétés
-  public function init($id = 'NULL', $title, $comment, $users_id, $date_creation, $date_modification, $state)
-  {
+  public function init($id = 'NULL', $title = "NULL", $comment= "NULL", $users_id= "NULL", $date_creation= "NULL", $date_modification= "NULL", $state= "NULL") {
     $this->__set('id',$id);
     $this->__set('title',$title);
     $this->__set('comment',$comment);
@@ -67,10 +65,6 @@ class NewsModel extends Model {
       $this -> state = $arg;
     }
   }
-
-
-
-
 
 
 
