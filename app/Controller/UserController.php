@@ -11,7 +11,6 @@ class UserController extends Controller
 
 	public function login()
 	{
-
         $userLog = new AuthentificationModel();
         // si utilisateur connecté
         if(!is_null($userLog ->getLoggedUser())) { $this->show("user/UserView",['connectLinkChoice' => true]); }
@@ -29,7 +28,7 @@ class UserController extends Controller
 
             $userLog = new UserModel();
             $errors = $userLog -> login($userData);
-            if(is_null($errors)) { $this->show("user/SignInView",['successLogin'=>true]); }
+            if(is_null($errors)) { $this->show("user/UserView",['successLogin'=>true,'connectLinkChoice' => true]); }
             else {$this->show("user/SignInView",['errorLogin'=>$errors]); }
         }
 	}
@@ -40,11 +39,11 @@ class UserController extends Controller
         // l'utilisateur est connecté ?
         if(!is_null($userLog ->getLoggedUser())) {
            $userLog->logUserOut();
-           $this->show("user/SignInView",['connectLinkChoice' => true,"deconnexion" => true]);
+           $this->show("DMIcontent/fabrication_additive",['connectLinkChoice' => true,"deconnexion" => true]);
         } else {
             $this->show("DMIcontent/fabrication_additive",['connectLinkChoice' => true]);
         }
-    } 
+    }
 
     public function signIn()
     {
