@@ -24,7 +24,7 @@
 		["GET|POST", "/fabrication_additive/projects/[:id]", "Projects#edit", "projects_edit"],
 
 		// envoi d'un message sur le chat
-		["POST", "/fabrication_additive/projects/", "Projects#sendmsg", "projects_edit"],
+		["POST", "/fabrication_additive/projects/", "Projects#sendmsg", "projects_sendmsg"],
 
 
 		// route de redirection vers les pages DMI grace au controller default

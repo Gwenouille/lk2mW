@@ -5,7 +5,7 @@
 <?php if(!isset($successSignIn) || !isset($successSignIn) || isset($errorSignIn) || isset($errorLogin)) { ?>
 <main class="main-login">
   <!--formulaire d'inscription du user -->
-  <div class="main-login_connexion">
+  <div class="main-login_inscription">
     <form class="form-inscription" method="post" action="<?= $this->url("user_signin"); ?>">
       <h3 class="form_section center">S'incrire</h3>
       <!-- Erreurs dans les données inscrites dans les champs -->
@@ -35,8 +35,8 @@
     </form>
   </div>
 
-  <div class="main-login_inscription">
-    <!--formulaire de login du user -->
+  <!--formulaire de login du user -->
+  <div class="main-login_connexion">
     <form class="form-connexion" method="post" action="<?= $this->url("user_login"); ?>">
       <h3 class="form_section center">Se connecter</h3>
       <?php if(isset($errorLogin)) {
