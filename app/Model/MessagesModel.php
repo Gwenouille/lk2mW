@@ -13,11 +13,9 @@ class MessagesModel extends Model {
   public $date;
   public $users_id;
 
-  //constructeur standard, redéfini sur celui hérité de Model
-  public function __construct($id = 'NULL', $comment, $date, $users_id)
+  //Méthode init de peuplement des propriétés
+  public function init($id = 'NULL', $comment, $date, $users_id)
   {
-    $this->setTableFromClassName();
-    $this->dbh = ConnectionModel::getDbh();
     $this->__set('id',$id);
     $this->__set('comment',$comment);
     $this->__set('date',$date);

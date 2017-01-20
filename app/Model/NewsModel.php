@@ -16,10 +16,9 @@ class NewsModel extends Model {
   public $date_modification;
   public $state;
 
-  public function __construct($id = 'NULL', $title, $comment, $users_id, $date_creation, $date_modification, $state)
+  //Méthode init de peuplement des propriétés
+  public function init($id = 'NULL', $title, $comment, $users_id, $date_creation, $date_modification, $state)
   {
-    $this->setTableFromClassName();
-    $this->dbh = ConnectionModel::getDbh();
     $this->__set('id',$id);
     $this->__set('title',$title);
     $this->__set('comment',$comment);

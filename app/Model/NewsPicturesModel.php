@@ -17,10 +17,9 @@ class NewsPicturesModel extends Model {
   public $news_id;
   public $state;
 
-  public function __construct($id = 'NULL', $name, $real_name, $type, $size, $alt, $news_id, $state)
+  //Méthode init de peuplement des propriétés
+  public function init($id = 'NULL', $name, $real_name, $type, $size, $alt, $news_id, $state)
   {
-    $this->setTableFromClassName();
-    $this->dbh = ConnectionModel::getDbh();
     $this->__set('id',$id);
     $this->__set('name',$name);
     $this->__set('real_name',$real_name);

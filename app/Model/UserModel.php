@@ -18,8 +18,8 @@ class UserModel extends UsersModel {
       if($userLog->isValidLoginInfo($data['mail'], $data['password']) != 0) {
         $userConnect = new UsersModel();
         $userData = $userConnect -> getUserByUsernameOrEmail($data['mail']);
-        //si le compte est activé        
-        if($userData['status'] != 0) {
+        //si le compte est activé
+        if($userData['state'] != 0) {
           $userLog -> logUserIn($userData);
           // vérifie que l'utilisateur a bien sa session
           if(is_null($userLog ->getLoggedUser())) {
@@ -50,7 +50,7 @@ class UserModel extends UsersModel {
       $testmail = new UsersModel();
         // Vérifie si l'adresse mail indiquée est déjà existante
         if (!$testmail -> emailExists($data['mail'])) {
-          
+
           // inscription des données en BDD
           $mdp = new AuthentificationModel();
           $data['password'] = $mdp->hashPassword($data['password']);

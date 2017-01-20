@@ -5,7 +5,7 @@ namespace Model;
 use \W\Model\Model;
 use \W\Model\ConnectionModel;
 
-class MessagesModel extends Model {
+class FilesModel extends Model {
 
   //variables de la table correspondante en BDD
   public $id;
@@ -14,11 +14,9 @@ class MessagesModel extends Model {
   public $size;
   public $projects_id;
 
-  //constructeur standard, redéfini sur celui hérité de Model
-  public function __construct($id = 'NULL', $name, $type, $size, $projects_id)
+  //Méthode init de peuplement des propriétés
+  public function init($id = 'NULL', $name, $type, $size, $projects_id)
   {
-    $this->setTableFromClassName();
-    $this->dbh = ConnectionModel::getDbh();
     $this->__set('id',$id);
     $this->__set('name',$name);
     $this->__set('type',$type);
@@ -58,8 +56,23 @@ class MessagesModel extends Model {
     }
   }
 
+  /**
+	 * Récupère une ligne de la table en fonction d'un identifiant
+	 * @param  $projects_id L'id du projet listant ces fichiers
+	 */
+	public function findProjectsUserId($projects_id)
+	{
+		if (!is_numeric($projects_id)){
+			return false;
+		}
 
+		$sql = 'SELECT * FROM ' . $this->table . ' WHERE projects_id = :projects_id';
+		$sth = $this->dbh->prepare($sql);
+		$sth->bindValue(':projects_id', $projects_id);
+		$sth->execute();
 
+		return $sth->fetchAll();
+	}
 
 
 

@@ -11,13 +11,11 @@ class ProjectsModel extends Model {
   public $id;
   public $name;
   public $date;
-  public $descrition;
+  public $description;
 
-  //constructeur standard, redéfini sur celui hérité de Model
-  public function __construct($id = 'NULL', $name, $date, $description)
+  //Méthode init de peuplement des propriétés
+  public function init($id = 'NULL', $name='', $date='', $description='')
   {
-    $this->setTableFromClassName();
-    $this->dbh = ConnectionModel::getDbh();
     $this->__set('id',$id);
     $this->__set('name',$name);
     $this->__set('date',$date);
@@ -53,6 +51,21 @@ class ProjectsModel extends Model {
   }
 
 
+	/**
+	 * Récupère toutes les lignes de la table
+	 * @param $id L'utilisateur dont on veut récupérer les projets
+	 */
+	public function findAllFromUser($id)
+	{
+		$sql = 'SELECT * FROM ' . $this->table . ' INNER JOIN projects_has_users ON '.$this->table.'.id=projects_id';
+
+		$sql .= ' WHERE users_id = '.$id;
+
+		$sth = $this->dbh->prepare($sql);
+		$sth->execute();
+
+		return $sth->fetchAll();
+	}
 
 
 
