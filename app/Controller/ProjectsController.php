@@ -33,14 +33,14 @@ class ProjectsController extends Controller
 		$messages = $message -> search(array('users_id'=>$user_id, 'to_users_id'=>$user_id));
 
 		//Passage de ces arguments à la view
-		$this->show("projects/home", ['connectLinkChoice' => true,'projectsList' => $listOfProjects,'messages' => $messages]);
+		$this -> show("projects/home", ['connectLinkChoice' => true,'projectsList' => $listOfProjects,'messages' => $messages]);
 	}
 
 
 	public function sendmsg($to_users='3'){
 
-		//Récupération du contenu de POST
-		$message=$_POST['newMessage'];
+		//Récupération du contenu de POST et passage a la moulinette htmlspecialchars
+		$message=htmlspecialchars($_POST['newMessage']);
 
 		//Récupération de l'ID du user en session actuellement
 		$user_id=$_SESSION['user']['id'];
@@ -58,9 +58,9 @@ class ProjectsController extends Controller
 				'to_users_id'=>$newMessage->to_users_id );
 
 		//insertion dudit message en BDD
-		$newMessage->insert($data);
+		$newMessage -> insert($data);
 
-		$this->home();
+		$this -> home();
 	}
 
 }

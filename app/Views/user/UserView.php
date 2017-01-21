@@ -7,8 +7,9 @@
 
 <?php $this->start('main_content'); ?>
 
-<!--navigation  ckeckbox user-->
+<!--navigation ckeckbox user-->
 <div class="userCheckbox">
+	<!-- POURQUOI DES INPUT ? -->
 <!-- <label>
   <input type="checkbox" id="cbox1" value="checkbox1">
   MON COMPTE
@@ -29,22 +30,23 @@
 		<span class="asterix obligatoire center">* Champs Obligatoires</span>
 
 		<label for="lastname">Votre Nom<span class="asterix">*</span> : </label>
-		<input type="text" name="lastname" placeholder="Nom" required>
+		<input type="text" name="lastname" placeholder="Nom" value="<?= $_SESSION['user']['lastname']?>" required>
 
 		<label for="firstname">Votre Prénom<span class="asterix">*</span> : </label>
-		<input type="text" name="firstname" placeholder="Prénom" required>
+		<input type="text" name="firstname" placeholder="Prénom" value="<?= $_SESSION['user']['firstname']?>" required>
 
 		<label for="email">Votre E-mail<span class="asterix">*</span> : </label>
-		<input type="email" name="email" placeholder="E-Mail" required>
+		<input type="email" name="email" placeholder="E-Mail" value="<?= $_SESSION['user']['mail']?>" required>
 
 		<label for="numTel">Votre Numéro de Téléphone : </label>
-		<input type="text" name="numTel" placeholder="Téléphone (Optionnel)">
+		<input type="text" name="numTel" placeholder="Téléphone (Optionnel)" value="<?= $_SESSION['user']['phone']?>">
 
-		<input type="hidden" name="form_name" value="signIn">
+		<input type="hidden" name="form_name" value="modifyCoordinates">
 		<input class="input-submit" type="submit" name="inscription" value="Modifier">
 	</form>
 </div>
 
+<!-- COMMENTÉ CAR PAS A SA PLACE ? -->
 <!--bloc des projets utilisateurs  -->
 	<!-- <div>
 	<h3>Mes projets</h3>
