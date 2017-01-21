@@ -1,26 +1,59 @@
 	/*   DIV CONTENANT TOUT */
 .newsEditMain {
 	display:flex;
-	border:1px solid black;
 	margin-top:10px;
 }
 
 /* section partie gauche du site */
 .newsEditListArticle {
-	min-width:30%;
+	min-width:35%;
+	padding:5px;
 }
 
 /* section partie droite du site */
 .newsEditShowArticle {
 	flex:1;
-	padding:10px;
+	padding:5px;
 }
+
+/*	****************************************************************
+	 Partie gauche du site : affichage des articles
+	**************************************************************** */
+
+.newsEditListArticle .newsEditListing ul {
+	list-style: none;
+}
+
+.newsEditListArticle .newsEditListing ul li {
+	display:flex;
+	border:1px solid black;
+	padding:5px;
+}
+
+.newsEditListArticle input[value="Créer"] {
+	display:block;
+	margin-left:auto;
+}
+
+.newsListContent {
+	border:1px solid black;	
+	flex:1;
+	padding : 10px;
+}
+
+.newsListContent h2 + p {
+	font-size:0.8em;
+}
+
+
+/*	****************************************************************
+	 Partie droite du site pour création/modification d'articles 
+	**************************************************************** */
 
 .newsEditShowArticle h2 {
 	text-align: center;
 	font-size:1.8em;
 }
-
 
 .newsEditShowArticle .news {
 	margin:0 auto;
@@ -120,8 +153,13 @@
 	color:red;
 }
 
+/*	****************
+		Responsive
+	**************** */
+
 @media (max-width: 600px) {
 
+	/* partie de droite passe sous la partie de gauche */
 	.newsEditMain {
 		flex-direction: column;
 	}

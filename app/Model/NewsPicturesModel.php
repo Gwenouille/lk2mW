@@ -75,8 +75,8 @@ class NewsPicturesModel extends Model {
   }
 
   /**
-   * Récupère une ligne de la table en fonction d'un identifiant
-   * @param  $news_id L'id de l'article listant ses images
+   * Récupère les id des images correspondantes aux articles
+   * @param  $news_id L'id de l'article
    */
   public function findPicturesFromArticle($news_id)
   {
@@ -84,7 +84,7 @@ class NewsPicturesModel extends Model {
       return false;
     }
 
-    $sql = 'SELECT * FROM ' . $this->table . ' WHERE news_id = :news_id';
+    $sql = 'SELECT id FROM ' . $this->table . ' WHERE news_id = :news_id';
     $sth = $this->dbh->prepare($sql);
     $sth->bindValue(':news_id', $news_id);
     $sth->execute();

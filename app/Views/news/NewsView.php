@@ -13,9 +13,26 @@
   		<div class="newsEditListing">
   			<?php if(!empty($articleList)): ?>
   				<ul>
-	  			<?php	foreach ($articleList as $key => $value) :?>
-  					<li><?php echo($articleList[$key]['title']); ?>
-  				<?php 	endforeach ?>
+	  				<?php foreach ($articleList as $key => $value) :?>
+  						<li>
+  							<!-- div de la checkbox -->
+  							<div class="newsListCheckbox">
+  								<input type="checkbox" name="check_<?php echo $key ?>" checked>
+  							</div>
+  							<!-- div de la description de l'article -->
+  							<div class="newsListContent">
+  								<h2><?php echo($articleList[$key]['title']); ?></h2>
+  								<p>Créé le <?php echo($articleList[$key]['date_creation']); ?> - Modifié le <?php echo($articleList[$key]['date_modification']); ?></p>
+  								<p><?php echo($articleList[$key]['content']); ?></p>
+  							</div>
+  							<!-- div des boutons d'action -->
+  							<div class="newsListAction">
+  								<p><input type="submit" name="check_<?php echo $key ?>" value="Modifier"></p>
+  								<p><input type="submit" name="check_<?php echo $key ?>" value="effacer"></p>
+  								<input type="hidden" value="<?php echo $articleList[$key]['id'] ?>">
+  							</div>
+  						</li>
+  					<?php endforeach ?>
   				</ul>
   			<?php else : ?>
   				<p>Vide</p>
