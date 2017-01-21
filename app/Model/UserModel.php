@@ -12,6 +12,7 @@ class UserModel extends UsersModel {
 
   public function login(array $data) {
 
+    // les champs sont remplis ?
     if(!empty($data['mail']) && !empty($data['password'])) {
       $userLog = new AuthentificationModel();
       // L'utilisateur existe en BDD

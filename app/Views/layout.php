@@ -29,7 +29,7 @@
 			//Récupération d'une variable via la view, qui la tient du controlleur. Cette variable est un booleen qui controle l'affichage ou non des possibilités de connections dans le header (seulement pour la page fabrication additive)
 				$linkConnect= '<a class="connectLink" href="'.$this->url("user_signin").'" tabindex=1>Se connecter/S\'inscrire</a>';
 				$linkDeconnect = '<a class="connectLink" href="'.$this->url("user_logout").'" tabindex=1>> Se deconnecter</a>';
-				$linkAccount = '<a class="connectLink" href="'.$this->url("user_account").'" tabindex=1>> Mon compte</a>';
+				$linkAccount = '<a class="connectLink" href="'.$this->url("user_home").'" tabindex=1>> Mon espace</a>';
 				if(isset($_SESSION['user']) && !empty($_SESSION['user'])) $userAccount = $_SESSION['user']['firstname']." ".$_SESSION['user']['lastname'];
 				$connectLink= !empty($_SESSION['user']) ? '<p><h4>'.$userAccount."</h4></p>".$linkDeconnect.'<p>'.$linkAccount.'</p>':'<h3>Dieppe - Normandie</h3><p>'.$linkConnect.'</p>';
 				echo ($connectLink);

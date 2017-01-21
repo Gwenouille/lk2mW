@@ -21,7 +21,7 @@ $w_config = [
 	'security_role_property' => 'roles_id',				//nom de la colonne pour le "role"
 	'security_status_property' => 'status',				//nom de la colonne pour le "status"
 
-	'security_login_route_name' => 'login',			//nom de la route affichant le formulaire de connexion
+	'security_login_route_name' => 'user_signin',			//nom de la route affichant le formulaire de connexion
 
 	// configuration globale
 	'site_name'	=> 'Digital Manufacture Innovation', 								// contiendra le nom du site
