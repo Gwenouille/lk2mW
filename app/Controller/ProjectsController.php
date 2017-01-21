@@ -5,6 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 use Model\ProjectsModel;
 use Model\FilesModel;
+use Model\MessagesModel;
 
 class ProjectsController extends Controller
 {
@@ -12,27 +13,51 @@ class ProjectsController extends Controller
 	/**
 	 * Page d'accueil par défaut
 	 */
-	public function home()
-	{
-		var_dump($_SESSION);
+	public function home() {
+
+		//Récupération de l'ID du user en session actuellement
 		$user_id=$_SESSION['user']['id'];
-		var_dump($user_id);
+
+		//Récupération des projets à son actif
 		$project = new ProjectsModel();
-		// var_dump($project);
+		$listOfProjects = $project->findAllProjectsFromUser($user_id);
+
+		//Ajout des fichiers liés au projet dans le tableau, sous l'indice 'files'
 		$files = new FilesModel();
-		$projectFiles=$files->findProjectsUserId(1);
-		var_dump($projectFiles);
+		foreach ($listOfProjects as $key => $value) {
+			$listOfProjects[$key]['files']=$files->findFilesFromProjects(	$listOfProjects[$key]['projects_id']);
+		}
 
-		// $list=$project->findAll();
-		$list=$project->findAllFromUser($user_id);
-		// var_dump($list);
+		//Récupération des messages le concernant
+		$message = new MessagesModel();
+		$messages = $message -> search(array('users_id'=>$user_id, 'to_users_id'=>$user_id));
 
-		$html='<main class="main">';
-		$html.='Ceci est mon contenu';
-		$html.='</main>';
-
-		$this->show("projects/home", ['connectLinkChoice' => true, 'html'=>$html,'projectsList' => $list]);
+		//Passage de ces arguments à la view
+		$this->show("projects/home", ['connectLinkChoice' => true,'projectsList' => $listOfProjects,'messages' => $messages]);
 	}
 
+
+	public function sendmsg($message='test',$to_users='3'){
+
+		//Récupération de l'ID du user en session actuellement
+		$user_id=$_SESSION['user']['id'];
+
+		//Création de la chaine de date actuelle
+		$now = date('Y-m-d H:i:s');
+
+		$newMessage = new MessagesModel();
+		$newMessage->init(NULL, 'essai d\'envoi message', $now, $user_id, $to_users);
+
+		$data = array(
+				'content'=>$newMessage->content,
+				'date'=>$newMessage->date,
+				'users_id'=>$newMessage->users_id,
+				'to_users_id'=>$newMessage->to_users_id );
+
+		//insertion dudit message en BDD
+		$newMessage->insert($data);
+
+		$this->home();
+	}
 
 }
