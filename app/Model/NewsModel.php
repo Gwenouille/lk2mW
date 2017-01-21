@@ -10,16 +10,16 @@ class NewsModel extends Model {
   //variables de la table correspondante en BDD
   public $id;
   public $title;
-  public $comment;
+  public $content;
   public $users_id;
   public $date_creation;
   public $date_modification;
   public $state;
 
-  public function init($id = 'NULL', $title = "NULL", $comment= "NULL", $users_id= "NULL", $date_creation= "NULL", $date_modification= "NULL", $state= "NULL") {
+  public function init($id = 'NULL', $title = "NULL", $content= "NULL", $users_id= "NULL", $date_creation= "NULL", $date_modification= "NULL", $state= "NULL") {
     $this->__set('id',$id);
     $this->__set('title',$title);
-    $this->__set('comment',$comment);
+    $this->__set('content',$content);
     $this->__set('users_id',$users_id);
     $this->__set('date_creation',$date_creation);
     $this->__set('date_modification',$date_modification);
@@ -32,8 +32,8 @@ class NewsModel extends Model {
       return $this -> id;
     } elseif ($value==="title") {
       return $this -> title;
-    } elseif ($value==="comment") {
-      return $this -> comment;
+    } elseif ($value==="content") {
+      return $this -> content;
     } elseif ($value==="users_id") {
       return $this -> users_id;
     } elseif ($value==="date_creation") {
@@ -53,8 +53,8 @@ class NewsModel extends Model {
       $this -> id = $arg;
     } elseif ($value==="title") {
       $this -> title = $arg;
-    } elseif ($value==="comment") {
-      $this -> comment = $arg;
+    } elseif ($value==="content") {
+      $this -> content = $arg;
     } elseif ($value==="users_id") {
       $this -> users_id = $arg;
     } elseif ($value==="date_creation") {
@@ -67,11 +67,16 @@ class NewsModel extends Model {
   }
 
 
+  /**
+   * Récupère toutes les lignes de la table
+   * @param $id L'utilisateur dont on veut récupérer les articles
+   */
+  public function findNewsFromUser($id) {
 
-
-
-
-
-
+    $sql = 'SELECT * FROM ' . $this -> table . ' WHERE users_id = '.$id;
+    $sth = $this -> dbh -> prepare($sql);
+    $sth -> execute();
+    return $sth -> fetchAll();
+  }
 
 }
