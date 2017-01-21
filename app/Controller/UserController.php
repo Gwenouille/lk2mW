@@ -29,7 +29,7 @@ class UserController extends Controller
         $userLog = new UserModel();
         $errors = $userLog -> login($userData);
 
-        // pas d'erreur lors de la connexion donc rennvoi vers la page utilisateur
+        // pas d'erreur lors de la connexion donc renvoi vers la page utilisateur
         if(is_null($errors)) { $this->redirectToRoute('user_home'); }
         // retourne les erreurs à la page par défaut de la connexion
         else { $this->show("user/SignInView",['errorLogin'=>$errors]); }
@@ -71,10 +71,15 @@ class UserController extends Controller
         $errors = $userLog -> signIn($userData);
         // pas d'erreur lors de l'inscription donc renvoi vers la view d'inscription avec la donnée de réussite d'inscription
         if(is_null($errors)) { $this->show("user/SignInView",['successSignIn'=>true]); }
-        // Erreur lors de l'inscription donc rennvoi vers la view d'inscription avec la donnée des erreurs
+        // Erreur lors de l'inscription donc renvoi vers la view d'inscription avec la donnée des erreurs
         else { $this -> show("user/SignInView",['errorSignIn'=>$errors]); }
     }
   }
+// EST_CE QU@IL NE FAUT PAS PLUTOT UTILISER REDIRECT ?
+
+
+
+
 
   public function home()
   {
@@ -88,6 +93,46 @@ class UserController extends Controller
        $this->show("user/UserView",['connectLinkChoice' => true]);
     }
 
+  }
+
+  public function modifyCoordinates()
+  {
+    $userLog = new AuthentificationModel();
+
+		//NE DEVRAIT JAMAIS ARRIVER: A SUPPRIMER ?
+    // si aucun utilisateur n'est connecté, redirige vers la page de login
+    if(is_null($userLog ->getLoggedUser()))
+			{$this->redirectToRoute('user_home');}
+
+    // Pas de post ou un post mais pas du formulaire "modifycoordinates" donc affichage de la page par défaut de l'inscription
+    else if (!isset($_POST['form_name']) || (isset($_POST['form_name']) && $_POST['form_name'] !== 'modifyCoordinates'))
+			{$this->show("user/SignInView");}
+
+    else {
+        // prépare et envoie les données au modèle pour modification
+        $userData = array(
+            "lastname" => htmlspecialchars($_POST['lastname']),
+            "firstname" => htmlspecialchars($_POST['firstname']),
+            "mail" => htmlspecialchars($_POST['email']),
+            "phone" => htmlspecialchars($_POST['numTel']),
+        );
+
+				// récupération de l'ID de l'utilisateur connecté
+				$user_id=$_SESSION['user']['id'];
+
+        $userModel = new UserModel();
+        $errors = $userModel -> update($userData, $user_id);
+
+				// pas d'erreur lors de l'inscription donc renvoi vers la view de modification avec la donnée de réussite d'inscription
+        if($errors != false)
+					// {$this->show("user/UserView",['successModifyCoordinates'=>true]);}
+					//J'utilise plutot un redirect pour raffraichir les champs du formulaire
+					{$this->redirectToRoute('user_home');}
+
+        // Erreur lors de l'inscription donc renvoi vers la view de modification avec la donnée des erreurs
+        else {
+					$this -> show("user/UserView",['errorModifyCoordinates'=>$errors]);}
+    }
   }
 
 }

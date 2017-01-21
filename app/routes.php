@@ -16,7 +16,10 @@
 		['GET', '/fabrication_additive/user/', 'User#home', 'user_home'],
 
 		// route du compte de l'utilisateur(données personnelles: affichage/modification)
-		['GET', '/fabrication_additive/user/account', 'User#account', 'user_account'],
+		// ['GET', '/fabrication_additive/user/account', 'User#account', 'user_account'],
+
+		// route du compte de l'utilisateur(données personnelles: affichage/modification)
+		['POST', '/fabrication_additive/user/modifyCoordinates', 'User#modifyCoordinates', 'user_modifyCoordinates'],
 
 		// route de l'envoi de mail
 		["GET", "/mail", "Mail#essai", "mail_essai"],
