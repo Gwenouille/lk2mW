@@ -60,7 +60,7 @@ class FilesModel extends Model {
 	 * Récupère une ligne de la table en fonction d'un identifiant
 	 * @param  $projects_id L'id du projet listant ces fichiers
 	 */
-	public function findProjectsUserId($projects_id)
+	public function findFilesFromProjects($projects_id)
 	{
 		if (!is_numeric($projects_id)){
 			return false;
