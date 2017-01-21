@@ -60,7 +60,7 @@ class ProjectsController extends Controller
 		//insertion dudit message en BDD
 		$newMessage -> insert($data);
 
-		$this -> home();
+		$this->redirectToRoute('projects_home');
 	}
 
 }

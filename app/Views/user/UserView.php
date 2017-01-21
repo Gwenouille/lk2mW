@@ -22,9 +22,13 @@
 <a href="<?= $this->url("projects_home"); ?>">MES PROJETS</a>
 </div>
 
+<?php if (isset($errorModifyCoordinates)){
+	echo ('<h2>Probleme lors de la mise à jour de vos coordonnées. Veuillez réessayer</h2>');
+}?>
+
 <!--Formulaire compte utilisateur  -->
 <div class="main-login_connexion">
-	<form class="form-inscription" method="post" action="<?= $this->url("user_signin"); ?>">
+	<form class="form-inscription" method="post" action="<?= $this->url("user_modifyCoordinates"); ?>">
 		<h3 class="form_section center">Mes données utilisateur</h3>
 
 		<span class="asterix obligatoire center">* Champs Obligatoires</span>
@@ -53,8 +57,6 @@
 			<button type="button" name="createProject">Créer un projet</button>
 			<button type="button" name="openProject">Ouvrir un projet</button>
 </div> -->
-
-
 
 
 <?php $this->stop('main_content') ?>
