@@ -1,0 +1,129 @@
+	/*   DIV CONTENANT TOUT */
+.newsEditMain {
+	display:flex;
+	border:1px solid black;
+	margin-top:10px;
+}
+
+/* section partie gauche du site */
+.newsEditListArticle {
+	min-width:30%;
+}
+
+/* section partie droite du site */
+.newsEditShowArticle {
+	flex:1;
+	padding:10px;
+}
+
+.newsEditShowArticle h2 {
+	text-align: center;
+	font-size:1.8em;
+}
+
+
+.newsEditShowArticle .news {
+	margin:0 auto;
+	max-width:80%;
+	padding:20px;
+	border-radius: 10px;
+}
+
+	/*	Formulaire */
+.newsEditShowArticle .form_news {
+	display:flex;
+	flex-direction: column;
+}
+
+	/* DIV dans le form */
+.newsEditShowArticle .news_title,
+.newsEditShowArticle .news_content,
+.newsEditShowArticle .news_file,
+.newsEditShowArticle .news_file_preview {
+	display:flex;
+	flex-direction: column;
+}
+
+.newsEditShowArticle .default_inputFile {
+	padding-top:10px;
+}
+
+	/* titre des zones */
+.newsEditShowArticle .news_title label,
+.newsEditShowArticle .news_content label,
+.newsEditShowArticle .news_file label,
+.newsEditShowArticle .news_file_preview label {
+	padding-top:5px;
+	padding-bottom:5px;
+	font-weight:bold;
+	font-size:1.3em;
+}
+
+.newsEditShowArticle .news_title input[name="article_title"],
+.newsEditShowArticle .news_content textarea {
+	margin-top:10px;
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+
+.newsEditShowArticle .news_content textarea {
+	min-height:300px;
+}
+
+	/* bouton submit */
+.newsEditShowArticle .form_news [name="news_submit"] {
+	align-self:center;
+	margin-top: 20px;
+	padding: 10px 20px;
+	background: lightblue;
+	border: 1px solid lightblue;
+	font-weight:bold;
+}
+
+	/* zone affichage des images */
+.newsEditShowArticle .news_file_preview {
+	display: flex;
+	text-align: center;
+	flex-direction:row;
+	flex-wrap:wrap;
+}
+
+	/* div contenant input file+image+bouton supprimer */
+.newsEditShowArticle .news_file_preview .div_area {
+	border:1px solid grey;
+	position:relative;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-right:5px;
+	width:30%;
+	margin: 5px auto;
+}
+
+	/* bouton supprimer image */
+.newsEditShowArticle .file_delete {
+	position:absolute;
+	top:0;
+	right: 0;
+}
+
+	/* image preview */
+.newsEditShowArticle .news_file_preview .div_area img {
+	align-self:center;
+	max-width:33%;
+}
+
+.newsEditShowArticle .news_title .news_error,
+.newsEditShowArticle .news_content .news_error,
+.newsEditShowArticle .news_file .news_error,
+.newsEditShowArticle .news .news_error {
+	display:none;
+	color:red;
+}
+
+@media (max-width: 600px) {
+
+	.newsEditMain {
+		flex-direction: column;
+	}
+
+}

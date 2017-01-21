@@ -66,15 +66,4 @@ class ProjectsModel extends Model {
 
 		return $sth -> fetchAll();
 	}
-
-
-
-
-
-
-
-
-
-
-
 }

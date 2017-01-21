@@ -92,7 +92,6 @@ class UserController extends Controller
     } else {    // l'utilisateur connecté est un simple membre donc redirige vers la view utilisateur simple
        $this->show("user/UserView",['connectLinkChoice' => true]);
     }
-
   }
 
   public function modifyCoordinates()
@@ -134,5 +133,4 @@ class UserController extends Controller
 					$this -> show("user/UserView",['errorModifyCoordinates'=>$errors]);}
     }
   }
-
 }
