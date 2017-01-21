@@ -37,7 +37,10 @@ class ProjectsController extends Controller
 	}
 
 
-	public function sendmsg($message='test',$to_users='3'){
+	public function sendmsg($to_users='3'){
+
+		//Récupération du contenu de POST
+		$message=$_POST['newMessage'];
 
 		//Récupération de l'ID du user en session actuellement
 		$user_id=$_SESSION['user']['id'];
@@ -46,7 +49,7 @@ class ProjectsController extends Controller
 		$now = date('Y-m-d H:i:s');
 
 		$newMessage = new MessagesModel();
-		$newMessage->init(NULL, 'essai d\'envoi message', $now, $user_id, $to_users);
+		$newMessage->init(NULL, $message, $now, $user_id, $to_users);
 
 		$data = array(
 				'content'=>$newMessage->content,

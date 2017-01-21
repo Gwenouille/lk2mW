@@ -9,14 +9,16 @@
 
 <!--navigation  ckeckbox user-->
 <div class="userCheckbox">
-<label>
+<!-- <label>
   <input type="checkbox" id="cbox1" value="checkbox1">
   MON COMPTE
 </label>
 <label>
   <input type="checkbox" id="cbox2" value="checkbox2">
   MES PROJETS
-</label>
+</label> -->
+<a href="<?= $this->url("user_home"); ?>">MON COMPTE</a>
+<a href="<?= $this->url("projects_home"); ?>">MES PROJETS</a>
 </div>
 
 <!--Formulaire compte utilisateur  -->
@@ -44,12 +46,11 @@
 </div>
 
 <!--bloc des projets utilisateurs  -->
-	<div>
+	<!-- <div>
 	<h3>Mes projets</h3>
-
 			<button type="button" name="createProject">Créer un projet</button>
 			<button type="button" name="openProject">Ouvrir un projet</button>
-</div>
+</div> -->
 
 
 

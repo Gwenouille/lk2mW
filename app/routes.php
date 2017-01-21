@@ -28,11 +28,10 @@
 		["GET", "/fabrication_additive/projects/", "Projects#home", "projects_home"],
 
 		// envoi d'un message sur le chat
-		["GET", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],
+		["GET|POST", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],
 
 		// Affichage/modification d'UN projet en vue de la modification éventuelle: en fonction du $_POST ou du $_GET on appelle telle ou telle methode
 		["GET|POST", "/fabrication_additive/projects/[:id]", "Projects#edit", "projects_edit"],
-
 
 		// route de redirection vers les pages DMI grace au controller default
 		['GET', '/[:target]', 'Default#nav', 'default_nav'], // Cette ligne doit etre en dernière position afin de ne pas interpreter ce qui est derriere le slash en target par defaut

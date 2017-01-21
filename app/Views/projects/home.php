@@ -1,15 +1,14 @@
 
 <?php $this->layout('layout', ['title' => 'Projects Home','displayConnectLink' =>$connectLinkChoice]) ?>
 
-<!-- Ajoute un css pour cette page seulement, pour corriger l'affichage de la nav -->
+<!-- Ajoute un css pour cette page seulement, pour le chat-->
 <?php $this->start('css') ?>
-	<!--<link rel="stylesheet" href="<?= $this->assetUrl('css/header_footer_index.css') ?>">-->
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/chat.css') ?>">
 <?php $this->stop('css') ?>
 
 <?php $this->start('main_content') ?>
 
 	<main class="main">
-
 
 		<!--La section projects-->
 		<?php	foreach ($projectsList as $key => $value) :?>
@@ -31,14 +30,24 @@
 		<?php endforeach ?>
 
 		<!--La section messages-->
-		<ul>
-		<?php	foreach ($messages as $key => $value) :?>
-			<?php $class = ($messages[$key]['users_id']==='3') ? 'chat_user' : 'chat_admin';?>
-			<li class=<?=$class?>>
-				<p><?= $messages[$key]['content']?></p>
-			</li>
-		<?php endforeach ?>
-		</ul>
+		<div class="chat">
+			<ul class="chat_content">
+			<?php	foreach ($messages as $key => $value) :?>
+				<?php $class = ($messages[$key]['users_id']==='3') ? 'chat_users' : 'chat_admin';?>
+				<li>
+					<div class="chat_message <?=$class?>">
+						<p><?= $messages[$key]['content']?></p>
+
+						<p class="chat_date"><?= $messages[$key]['date']?></p>
+					</div>
+				</li>
+			<?php endforeach ?>
+			</ul>
+			<form class="chat_input" action="<?= $this->url("projects_sendmsg"); ?>" method="post">
+				<input type="text" name="newMessage" value="">
+				<button type="submit">Envoyer</button>
+			</form>
+		</div>
 
 	</main>
 
