@@ -1,17 +1,21 @@
 <?php
 
 	$w_routes = array(
+		//Route de la page du site par défaut
 		['GET', '/', 'Default#home', 'default_home'],
 		['GET', '/fabrication_additive/news', 'Default#news', 'default_news'],
 
 		// route pour l'inscription de l'utilisateur
-		["GET|POST", "/fabrication_additive/user/signin","User#signin", "user_signin"],
+		["GET|POST", "/fabrication_additive/signin","User#signin", "user_signin"],
 
 		// route pour le login et logout de l'utilisateur
-		["GET|POST", "/fabrication_additive/user/login","User#login", "user_login"],
-		["GET|POST", "/fabrication_additive/user/logout","User#logout", "user_logout"],
+		["GET|POST", "/fabrication_additive/login","User#login", "user_login"],
+		["GET|POST", "/fabrication_additive/logout","User#logout", "user_logout"],
 
-		// route de l'espace user: recupération des données de l'utilisateur afin de les afficher/modifier
+		// route de l'espace user: affichage de l'espace utilisateur
+		['GET', '/fabrication_additive/user/', 'User#home', 'user_home'],
+
+		// route du compte de l'utilisateur(données personnelles: affichage/modification)
 		['GET', '/fabrication_additive/user/account', 'User#account', 'user_account'],
 
 		// route de l'envoi de mail

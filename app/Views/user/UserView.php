@@ -19,23 +19,6 @@
 </label>
 </div>
 
-<!--navigation  ckeckbox admin-->
-<!-- <div>
-<label>
-  <input type="checkbox" id="cbox1" value="checkbox1">
-  MON COMPTE
-</label>
-<label>
-  <input type="checkbox" id="cbox2" value="checkbox2">
-  NEWS
-</label>
-<label>
-  <input type="checkbox" id="cbox2" value="checkbox2">
-  UTILISATEURS
-</label>
-</div> -->
-
-
 <!--Formulaire compte utilisateur  -->
 <div class="main-login_connexion">
 	<form class="form-inscription" method="post" action="<?= $this->url("user_signin"); ?>">

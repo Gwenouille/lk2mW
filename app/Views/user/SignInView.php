@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content'); ?>
 
-<?php if(!isset($successSignIn) || !isset($successSignIn) || isset($errorSignIn) || isset($errorLogin)) { ?>
+<?php if((isset($deconnection) && $deconnection!=true) || !isset($successSignIn) || !isset($successSignIn) || isset($errorSignIn) || isset($errorLogin)) { ?>
 <main class="main-login">
   <!--formulaire d'inscription du user -->
   <div class="main-login_inscription">
@@ -53,10 +53,14 @@
   </div>
 </main>
 <?php
-} else { ?>
+} else if(isset($deconnection) && $deconnection == true) { ?>
+  <p>Vous êtes déconnecté.</p>
+  <p><a href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>"> << Page d'accueil</a></p>
+
+<?php } else { ?>
     <p>Votre compte vient d'être créé.</p>
     <p> Veuillez activer votre compte en validant le lien envoyé à l'adresse mail que vous  avez indiquée.</p>
-    <p><a href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a></p>
+    <p><a href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>"><< Page d'accueil</a></p>
 
 <?php }
  ?>
