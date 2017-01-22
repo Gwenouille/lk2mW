@@ -1,11 +1,19 @@
-.userCheckbox {
-  margin-top: 0.5em;
+.userChoice {
+  margin: 1em auto 1em auto;
   font-size: 2em;
   display: flex;
   justify-content: space-around;
   max-width: 20em;
 }
 
-input[type='checkbox'] {
-  
+.glyphicon {
+  margin-right: 0.3em;
+}
+
+.userContent {
+  flex-grow: 1;
+}
+
+.main-login_connexion {
+  margin: 0 20% 3em 20%;
 }
