@@ -12,7 +12,10 @@
 
 		// route des news dans le compte admin (création/modification/affichage)
 		['GET', '/fabrication_additive/user/news', 'News#edit', 'news_edit'],
-
+		
+		// route vers les controleurs récupérant les requetes ajax
+		["POST", "/fabrication_additive/user/news/newsShow", "News#ShowNews", "news_showNews"],
+		["POST", "/fabrication_additive/user/news/newsModify", "News#newsModify", "news_newsModify"],
 
 
 		// route pour l'inscription de l'utilisateur

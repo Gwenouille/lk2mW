@@ -4,6 +4,7 @@ namespace Model;
 
 use \W\Model\Model;
 use \W\Model\ConnectionModel;
+use Model\NewsPicturesModel;
 
 class NewsModel extends Model {
 
@@ -66,17 +67,28 @@ class NewsModel extends Model {
     }
   }
 
-
   /**
    * Récupère toutes les lignes de la table
    * @param $id L'utilisateur dont on veut récupérer les articles
    */
-  public function findNewsFromUser($id) {
-
+  public function findNewsFromUser($id,$articleId) {
+    
     $sql = 'SELECT * FROM ' . $this -> table . ' WHERE users_id = '.$id;
+
+    if(is_numeric($articleId)) $sql .= " AND ".$this->table.".id=".$articleId;
+    
     $sth = $this -> dbh -> prepare($sql);
     $sth -> execute();
-    return $sth -> fetchAll();
+
+    $listArticles = $sth -> fetchAll();
+    
+    // Ajout des images liées aux articles dans le tableau, sous la clé 'pictures'
+    $pictures = new NewsPicturesModel();
+    foreach ($listArticles as $key => $value) {
+      $listArticles[$key]['pictures'] = $pictures -> findPicturesFromArticle($listArticles[$key]['id']);
+    }
+
+    return $listArticles;
   }
 
 }

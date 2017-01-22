@@ -5,47 +5,47 @@
 <?php $this->stop('css') ?>
 
 <?php $this->start('main_content') ?>
-
 <main class="newsEditMain">
 <section class="newsEditListArticle">
-	<form>
-  		<input type="submit" value="Créer">
+      <span class="confirmMsg"></span>
+  		<input type="button" value="Créer" name="news_creation" id="creationButton">
   		<div class="newsEditListing">
   			<?php if(!empty($articleList)): ?>
   				<ul>
 	  				<?php foreach ($articleList as $key => $value) :?>
   						<li>
+                <form action="<?= $this->url("news_showNews"); ?>" method="post" class="form_listArticle">
   							<!-- div de la checkbox -->
   							<div class="newsListCheckbox">
-  								<input type="checkbox" name="check_<?php echo $key ?>" checked>
+                  <?php $bCheck ="";
+                   if($articleList[$key]['state']==!0) $bCheck = "checked"; ?>
+  								<input type="checkbox" name="check" <?= $bCheck ?>>
   							</div>
   							<!-- div de la description de l'article -->
   							<div class="newsListContent">
-  								<h2><?php echo($articleList[$key]['title']); ?></h2>
-  								<p>Créé le <?php echo($articleList[$key]['date_creation']); ?> - Modifié le <?php echo($articleList[$key]['date_modification']); ?></p>
-  								<p><?php echo($articleList[$key]['content']); ?></p>
+  								<h2><?= $articleList[$key]['title'] ?></h2>
+  								<p>Créé le <?= $articleList[$key]['date_creation'] ?> - Modifié le <?= $articleList[$key]['date_modification'] ?></p>
+  								<p><?= $articleList[$key]['content'] ?></p>
   							</div>
   							<!-- div des boutons d'action -->
   							<div class="newsListAction">
-  								<p><input type="submit" name="check_<?php echo $key ?>" value="Modifier"></p>
-  								<p><input type="submit" name="check_<?php echo $key ?>" value="effacer"></p>
-  								<input type="hidden" value="<?php echo $articleList[$key]['id'] ?>">
+  								<p><input type="submit" name="modifyNews" value="Modifier"></p>
+  								<input type="hidden" value="<?= $articleList[$key]['id'] ?>" name="articleId">
   							</div>
+                        </form>
   						</li>
   					<?php endforeach ?>
   				</ul>
   			<?php else : ?>
   				<p>Vide</p>
   			<?php endif ?>
-
   		</div>
-	</form>
 </section>
 <section class="newsEditShowArticle">
 	<h2>Création d'un article</h2>
 	<div class="news">
 		<div class="news_error"></div>
-		<form enctype="multipart/form-data" id="news_form" name="news_form" method="post" class="form_news">
+		<form enctype="multipart/form-data" id="news_form" name="news_form" method="post" class="form_news" action="<?= $this->url("news_newsModify"); ?>">
 			<div class="news_title">
 				<label for="news_article_title">Titre de l'article</label>
 				<div class="news_error"></div>
@@ -61,7 +61,7 @@
 				<div class="news_error"></div>
 				<textarea id="news_content_title" name="news_content" placeholder="Mon contenu"></textarea>
 			</div>
-			<input type="submit" name="news_submit" value="Valider">
+      <div class="news_input_button"></div>
 		</form>
 	</div>
 </section>
