@@ -10,6 +10,7 @@
 <!--navigation ckeckbox user-->
 <div class="userCheckbox">
 	<!-- POURQUOI DES INPUT ? -->
+	<!-- Des input pour faire joli, gloussa Poulette -->
 <!-- <label>
   <input type="checkbox" id="cbox1" value="checkbox1">
   MON COMPTE

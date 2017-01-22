@@ -76,8 +76,8 @@ class UserController extends Controller
     }
   }
 // EST_CE QU@IL NE FAUT PAS PLUTOT UTILISER REDIRECT ?
-
-
+// Dans ton cas, la redirection est meilleure :) Pour mon cas de signin, j'affiche le message de confirmation d'inscription donc je sais pas si je peux envoyer le success dans le redirect.
+// pour la méthode home, le redirect est bien amusant !!
 
 
 
@@ -97,12 +97,10 @@ class UserController extends Controller
   public function modifyCoordinates()
   {
     $userLog = new AuthentificationModel();
-
-		//NE DEVRAIT JAMAIS ARRIVER: A SUPPRIMER ?
-    // si aucun utilisateur n'est connecté, redirige vers la page de login
+		
+    // si aucun utilisateur est connecté, redirige vers la page de login (bizarre dans ce cas puisque ta route est en POST)
     if(is_null($userLog ->getLoggedUser()))
 			{$this->redirectToRoute('user_home');}
-
     // Pas de post ou un post mais pas du formulaire "modifycoordinates" donc affichage de la page par défaut de l'inscription
     else if (!isset($_POST['form_name']) || (isset($_POST['form_name']) && $_POST['form_name'] !== 'modifyCoordinates'))
 			{$this->show("user/SignInView");}
@@ -116,17 +114,20 @@ class UserController extends Controller
             "phone" => htmlspecialchars($_POST['numTel']),
         );
 
-				// récupération de l'ID de l'utilisateur connecté
-				$user_id=$_SESSION['user']['id'];
+		// récupération de l'ID de l'utilisateur connecté
+		$user_id=$_SESSION['user']['id'];
 
         $userModel = new UserModel();
         $errors = $userModel -> update($userData, $user_id);
 
-				// pas d'erreur lors de l'inscription donc renvoi vers la view de modification avec la donnée de réussite d'inscription
+		// pas d'erreur lors de l'inscription donc renvoi vers la view de modification avec la donnée de réussite d'inscription
         if($errors != false)
 					// {$this->show("user/UserView",['successModifyCoordinates'=>true]);}
-					//J'utilise plutot un redirect pour raffraichir les champs du formulaire
-					{$this->redirectToRoute('user_home');}
+					//J'utilise plutot un redirect pour rafraichir les champs du formulaire
+					{   
+                        $userLog->refreshUser(); // rafraichissement de la session
+                        $this->redirectToRoute('user_home');
+                    }
 
         // Erreur lors de l'inscription donc renvoi vers la view de modification avec la donnée des erreurs
         else {
