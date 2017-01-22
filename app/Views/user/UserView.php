@@ -24,7 +24,9 @@
 </div>
 
 <?php if (isset($errorModifyCoordinates)){
-	echo ('<h2>Probleme lors de la mise à jour de vos coordonnées. Veuillez réessayer</h2>');
+	$feedback='Problème lors de la mise à jour de vos coordonnées. Veuillez réessayer.';
+} else {
+	$feedback='';
 }?>
 
 <!--Formulaire compte utilisateur  -->
@@ -48,6 +50,10 @@
 
 		<input type="hidden" name="form_name" value="modifyCoordinates">
 		<input class="input-submit" type="submit" name="inscription" value="Modifier">
+
+		<p class="center">
+			<?=$feedback?>
+		</p>
 	</form>
 </div>
 

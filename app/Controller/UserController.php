@@ -78,6 +78,7 @@ class UserController extends Controller
 // EST_CE QU@IL NE FAUT PAS PLUTOT UTILISER REDIRECT ?
 // Dans ton cas, la redirection est meilleure :) Pour mon cas de signin, j'affiche le message de confirmation d'inscription donc je sais pas si je peux envoyer le success dans le redirect.
 // pour la méthode home, le redirect est bien amusant !!
+//GWEN: je me suis posé exactement la meme question pour le modifyCoordinates: je voulais un affichage pour dire "OK, c'est bien modifié"...
 
 
 
@@ -97,7 +98,7 @@ class UserController extends Controller
   public function modifyCoordinates()
   {
     $userLog = new AuthentificationModel();
-		
+
     // si aucun utilisateur est connecté, redirige vers la page de login (bizarre dans ce cas puisque ta route est en POST)
     if(is_null($userLog ->getLoggedUser()))
 			{$this->redirectToRoute('user_home');}
@@ -124,8 +125,9 @@ class UserController extends Controller
         if($errors != false)
 					// {$this->show("user/UserView",['successModifyCoordinates'=>true]);}
 					//J'utilise plutot un redirect pour rafraichir les champs du formulaire
-					{   
+					{
                         $userLog->refreshUser(); // rafraichissement de la session
+												//Bien joué! Je ne connaissais pas ca: je pensais le faire manuellement et changer directement les valeurs de $_SESSION.
                         $this->redirectToRoute('user_home');
                     }
 
