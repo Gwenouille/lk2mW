@@ -1,4 +1,10 @@
-<?php $this->layout('layout', ['title' => 'Espace formation','displayConnectLink' =>$connectLinkChoice]) ?>
+<?php $this->layout('layout', ['title' => 'Espace formation',
+'link1'=>'',
+'link2'=>'',
+'link3'=>'link3',
+'link4'=>'',
+'link5'=>'',
+'displayConnectLink' =>$connectLinkChoice]) ?>
 
 <?php $this->start('main_content') ?>
 

@@ -1,5 +1,10 @@
-
-<?php $this->layout('layout', ['title' => 'Accueil','displayConnectLink' =>$connectLinkChoice]) ?>
+<?php $this->layout('layout', ['title' => 'Accueil',
+'link1'=>'link1',
+'link2'=>'',
+'link3'=>'',
+'link4'=>'',
+'link5'=>'',
+'displayConnectLink' =>$connectLinkChoice]) ?>
 
 <!-- Ajoute un css pour cette page seulement, pour corriger l'affichage de la nav -->
 <?php $this->start('css') ?>
@@ -10,16 +15,16 @@
 
 		<main class="main">
 
-			<p class="center">DMI (Digital Manufacture et Innovation) est un lieu dédié &agrave; l'innovation, &agrave; la création et au développement des entreprises, aux projets individuels et colaboratifs associant entreprises, écoles et laboratoires régionaux.</p>
-			<p class="center">Ce lieu, unique en territoire dieppois regroupe 5 p&ocirc;les d'activités.</p>
+			<h3><p class="center">DMI (Digital Manufacture et Innovation) est un lieu dédié &agrave; l'innovation, &agrave; la création et au développement des entreprises, aux projets individuels et colaboratifs associant entreprises, écoles et laboratoires régionaux.</p>
+			<p class="center">Ce lieu, unique en territoire dieppois regroupe 5 p&ocirc;les d'activités.</p></h3>
 
 			<div class="star_wrapper">
 				<div class="logo">
-					<a class="periph location" href="<?= $this->url("default_nav", ["target" => "location_de_bureaux"]); ?>">Location de bureaux</a>
-					<a class="periph coworking" href="<?= $this->url("default_nav", ["target" => "coworking"]); ?>">Coworking</a>
-					<a class="periph fabrication" href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a>
-					<a class="periph creation" href="<?= $this->url("default_nav", ["target" => "creation_d_entreprises"]); ?>">Création d'entreprises</a>
-					<a class="periph formation" href="<?= $this->url("default_nav", ["target" => "espace_formation"]); ?>">Espace formation</a>
+					<a class="periph location" href="<?= $this->url("default_nav", ["target" => "location_de_bureaux"]); ?>"><h3>Location de bureaux</h3></a>
+					<a class="periph coworking" href="<?= $this->url("default_nav", ["target" => "coworking"]); ?>"><h3>Coworking</h3></a>
+					<a class="periph fabrication" href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>"><h3>Fabrication additive</h3></a>
+					<a class="periph creation" href="<?= $this->url("default_nav", ["target" => "creation_d_entreprises"]); ?>"><h3>Création d'entreprises</h3></a>
+					<a class="periph formation" href="<?= $this->url("default_nav", ["target" => "espace_formation"]); ?>"><h3>Espace formation</h3></a>
 				</div>
 			</div>
 

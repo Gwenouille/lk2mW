@@ -75,12 +75,6 @@ class UserController extends Controller
         else { $this -> show("user/SignInView",['errorSignIn'=>$errors]); }
     }
   }
-// EST_CE QU@IL NE FAUT PAS PLUTOT UTILISER REDIRECT ?
-// Dans ton cas, la redirection est meilleure :) Pour mon cas de signin, j'affiche le message de confirmation d'inscription donc je sais pas si je peux envoyer le success dans le redirect.
-// pour la méthode home, le redirect est bien amusant !!
-//GWEN: je me suis posé exactement la meme question pour le modifyCoordinates: je voulais un affichage pour dire "OK, c'est bien modifié"...
-
-
 
   public function home()
   {
@@ -99,7 +93,7 @@ class UserController extends Controller
   {
     $userLog = new AuthentificationModel();
 
-    // si aucun utilisateur est connecté, redirige vers la page de login (bizarre dans ce cas puisque ta route est en POST)
+    // Si aucun utilisateur n'est connecté, redirige vers la page de login (bizarre dans ce cas puisque ta route est en POST)
     if(is_null($userLog ->getLoggedUser()))
 			{$this->redirectToRoute('user_home');}
     // Pas de post ou un post mais pas du formulaire "modifycoordinates" donc affichage de la page par défaut de l'inscription
@@ -115,25 +109,22 @@ class UserController extends Controller
             "phone" => htmlspecialchars($_POST['numTel']),
         );
 
-		// récupération de l'ID de l'utilisateur connecté
+		// Récupération de l'ID de l'utilisateur connecté
 		$user_id=$_SESSION['user']['id'];
 
-        $userModel = new UserModel();
-        $errors = $userModel -> update($userData, $user_id);
+		//Mise a jour des infos en BDD
+    $userModel = new UserModel();
+    $errors = $userModel -> update($userData, $user_id);
 
-		// pas d'erreur lors de l'inscription donc renvoi vers la view de modification avec la donnée de réussite d'inscription
-        if($errors != false)
-					// {$this->show("user/UserView",['successModifyCoordinates'=>true]);}
-					//J'utilise plutot un redirect pour rafraichir les champs du formulaire
-					{
-                        $userLog->refreshUser(); // rafraichissement de la session
-												//Bien joué! Je ne connaissais pas ca: je pensais le faire manuellement et changer directement les valeurs de $_SESSION.
-                        $this->redirectToRoute('user_home');
-                    }
+		// Pas d'erreur lors de l'inscription donc renvoi vers la view de modification avec la donnée de réussite d'inscription
+    if($errors != false){
+			$userLog->refreshUser(); // rafraichissement de la session
+      $this->redirectToRoute('user_home');
+    }
 
-        // Erreur lors de l'inscription donc renvoi vers la view de modification avec la donnée des erreurs
-        else {
-					$this -> show("user/UserView",['errorModifyCoordinates'=>$errors]);}
+    // Erreur lors de l'inscription donc renvoi vers la view de modification avec la donnée des erreurs
+    else {
+			$this -> show("user/UserView",['errorModifyCoordinates'=>$errors]);}
     }
   }
 }

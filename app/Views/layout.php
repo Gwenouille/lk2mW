@@ -22,7 +22,9 @@
 					<img src="<?= $this->assetUrl('logos/logoFerme.png');?>" alt="page accueil">
 				</a>
 			</div>
-			<div class="title"><h1>Digital Manufacture<br>INNOVATION</h1></div>
+			<div class="title">
+				<h1>Digital Manufacture<br>INNOVATION</h1>
+			</div>
 			<div class="connection">
 			<?php
 			if (isset($displayConnectLink) && $displayConnectLink) {
@@ -31,7 +33,7 @@
 				$linkDeconnect = '<a class="connectLink" href="'.$this->url("user_logout").'" tabindex=1>> Se deconnecter</a>';
 				$linkAccount = '<a class="connectLink" href="'.$this->url("user_home").'" tabindex=1>> Mon espace</a>';
 				if(isset($_SESSION['user']) && !empty($_SESSION['user'])) $userAccount = $_SESSION['user']['firstname']." ".$_SESSION['user']['lastname'];
-				$connectLink= !empty($_SESSION['user']) ? '<p><h4>'.$userAccount."</h4></p>".$linkDeconnect.'<p>'.$linkAccount.'</p>':'<h3>Dieppe - Normandie</h3><p>'.$linkConnect.'</p>';
+				$connectLink= !empty($_SESSION['user']) ? '<h4>'.$userAccount.'</h4><p>'.$linkDeconnect.'</p><p>'.$linkAccount.'</p>':'<h3>Dieppe - Normandie</h3><p>'.$linkConnect.'</p>';
 				echo ($connectLink);
 			}
 			?>
@@ -43,11 +45,11 @@
 		<nav class='navigation'>
 			<div class='nav-container'>
 					<ul>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "creation_d_entreprises"]); ?>">Création d'entreprises</a></li>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a></li>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "espace_formation"]); ?>">Espace formation</a></li>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "coworking"]); ?>">Coworking</a></li>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "location_de_bureaux"]); ?>">Location de bureaux</a></li>
+						<li><a class="nav <?=$link1?>" href="<?= $this->url("default_nav", ["target" => "creation_d_entreprises"]); ?>">Création d'entreprises</a></li>
+						<li><a class="nav <?=$link2?>" href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a></li>
+						<li><a class="nav <?=$link3?>" href="<?= $this->url("default_nav", ["target" => "espace_formation"]); ?>">Espace formation</a></li>
+						<li><a class="nav <?=$link4?>" href="<?= $this->url("default_nav", ["target" => "coworking"]); ?>">Coworking</a></li>
+						<li><a class="nav <?=$link5?>" href="<?= $this->url("default_nav", ["target" => "location_de_bureaux"]); ?>">Location de bureaux</a></li>
 					</ul>
 			</div>
 		</nav>

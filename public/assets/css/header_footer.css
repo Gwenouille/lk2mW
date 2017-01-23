@@ -25,6 +25,10 @@ header {
   line-height: 1.4;
 }
 
+.connection p{
+  margin: 0;
+}
+
 /*************************************
  LVHA pour le lien de connection/déconnection
 **************************************/
@@ -52,6 +56,13 @@ header {
 
 /* ********************************* */
 
+.nav {
+  padding-top: 10px;
+  display: block;
+  text-decoration: none;
+  color: #393939;
+}
+
 .navigation ul {
   margin-top: 0;
   padding: 0;
@@ -68,11 +79,19 @@ header {
   background-color: #d9e767;
 }
 
+.link1 {
+  background-color: #d9e767;
+}
+
 .navigation ul li:nth-child(2) {
   border-color: #adda50;
 }
 
 .navigation ul li:nth-child(2):hover {
+  background-color: #adda50;
+}
+
+.link2 {
   background-color: #adda50;
 }
 
@@ -84,6 +103,10 @@ header {
   background-color: #4fbec6;
 }
 
+.link3 {
+  background-color: #4fbec6;
+}
+
 .navigation ul li:nth-child(4) {
   border-color: #3e7c8c;
 }
@@ -92,12 +115,22 @@ header {
   background-color: #3e7c8c;
 }
 
+.link4 {
+  background-color: #3e7c8c;
+  color: white;
+}
+
 .navigation ul li:last-child {
   border-color: #284659;
 }
 
 .navigation ul li:last-child:hover {
   background-color: #284659;
+}
+
+.link5 {
+  background-color: #284659;
+  color: white;
 }
 
 .navigation ul li a {
@@ -116,13 +149,6 @@ header {
   border-top-width: 10px;
   border-top-style: solid;
   transition-duration: 613ms;
-}
-
-.nav {
-  margin-top: 10px;
-  display: block;
-  text-decoration: none;
-  color: #393939;
 }
 
 /* -----------------------------------------------
@@ -150,9 +176,12 @@ footer {
   .navigation ul li {
     border-top: 0;
     text-align: left;
-    padding-left: 1em;
     border-left-width: 10px;
     border-left-style: solid;
+  }
+
+  .nav {
+    padding-left: 1em;
   }
 
   /* Le header */

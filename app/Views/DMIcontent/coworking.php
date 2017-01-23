@@ -1,4 +1,10 @@
-<?php $this->layout('layout', ['title' => 'Coworking','displayConnectLink' =>$connectLinkChoice]) ?>
+<?php $this->layout('layout', ['title' => 'Coworking',
+'link1'=>'',
+'link2'=>'',
+'link3'=>'',
+'link4'=>'link4',
+'link5'=>'',
+'displayConnectLink' =>$connectLinkChoice]) ?>
 
 <?php $this->start('main_content') ?>
 
