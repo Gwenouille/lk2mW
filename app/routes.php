@@ -14,9 +14,9 @@
 		['GET', '/fabrication_additive/admin/news', 'News#edit', 'news_edit'],
 
 		// route vers les controleurs récupérant les requetes ajax
-		["POST", "/fabrication_additive/user/news/newsShow", "News#ShowNews", "news_showNews"],
-		["POST", "/fabrication_additive/user/news/newsModify", "News#newsModify", "news_newsModify"],
-		["POST", "/fabrication_additive/user/news/newsAjaxModify", "News#newsAjaxModify", "news_newsAjaxModify"],
+		["POST", "/fabrication_additive/admin/news/newsShow", "News#ShowNews", "news_showNews"],
+		["POST", "/fabrication_additive/admin/news/newsModify", "News#newsModify", "news_newsModify"],
+		["POST", "/fabrication_additive/admin/news/newsAjaxModify", "News#newsAjaxModify", "news_newsAjaxModify"],
 
 
 		// route pour l'inscription de l'utilisateur

@@ -50,12 +50,14 @@ $(function(){
 	$("#news_form").on("submit",function(e) {
 		e.preventDefault();
 
-		var data = $(this).serialize();
+		var data = new FormData($("#news_form")[0]);
 		$.ajax({
 			url: "news/newsModify",
 			type:"post",
 			data: data,
 			dataType:"json",
+			processData:false,
+			contentType:false,
 			success: function(value) {
 				emptyHide();
 				$(".confirmMsg").html(value.formConcern + " effectuée");
@@ -92,6 +94,8 @@ $(function(){
 	// clic sur le bouton créer
 	$("#creationButton").on("click",function() {
 		emptyHide();
+		$(".news_file").empty();
+		$(".news_file").append("<input type='file' name='news_files_input[]' multiple>");
 		// affichage du formulaire à droite
 		$(".newsEditShowArticle").show();
 		// affichage du titre (modification)

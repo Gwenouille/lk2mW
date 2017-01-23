@@ -68,6 +68,13 @@ class NewsController extends Controller
 	// récupère les données de l'article modifié pour faire une mise à jour de l'article en BDD
 	public function newsModify() {
 
+		$errors = array();
+
+		// format tolérés pour les images
+		$imgExt = array(".jpg",".jpeg",".gif",".png");
+		// répertoire où sont stockées les images
+		$imgTargetDir = "assets/images/";
+
 		// Vérifie que le champ du titre de l'article est bien rempli
 		if(isset($_POST['article_title']) && empty($_POST['article_title'])) {
 			$errors['title'] = true;
@@ -107,9 +114,89 @@ class NewsController extends Controller
      				"state" => 1
       			);
 				$errorMaj = $majArticle-> insert($ArticleData,false);
+		 		if($errorMaj != true) { $errors['creation'] = true; }
+		 		else {
+/*
+		 			// S'il y a des fichiers et pas d'erreur dans la création de l'article
+					if(isset($_FILES['news_files_input'])) {
+						// boucle pour examiner chaque input file
+						for($i = 0;$i < count($_FILES['news_files_input']['name']); $i++) {
+							// récupère les données des fichiers		
+							$fileData = array(
+								"name" => $_FILES['news_files_input']['name'][$i],
+								"type" => $_FILES['news_files_input']['type'][$i],
+								"tmp_name" => $_FILES['news_files_input']['tmp_name'][$i],
+								"error" => $_FILES['news_files_input']['error'][$i],
+								"size" => $_FILES['news_files_input']['size'][$i]
+							);
+*/
+
+							/* GESTION DES ERREURS */
+							// le fichier qui vient d'être ajouté est bien une image
+/*							if(getimagesize($fileData['tmp_name'])) {
+								// Poids de l'image ne dépasse pas celle autorisé pour l'upload
+								if(filesize($fileData["tmp_name"])!=false) {
+									//Image conforme aux formats d'image autorisés
+									if(in_array(strrchr($fileData['name'], '.'), $imgExt)) {
+										
+										// Récupère l'ID de l'article qui vient d'etre créé
+										$FileCreated = new NewsModel();
+										$FileCreatedId = $FileCreated ->lastInsertId();
+										
+										// création d'un dossier pour l'article (nom du dossier correspondant à l'ID de l'article)
+										$dossier = $imgTargetDir.$fileCreatedId['id'];
+										if(!is_dir($dossier)){	mkdir($dossier); }
+
+*/
+
+/*										// PARTIE A REFAIRE
+					//insère les images dans le dossier et dans la BDD
+					for($i = 1; $i < count($_FILES['inputFile']['name']); $i++) {
+						// enregistre l'image dans le dossier par numero
+						$imageFileType = pathinfo(basename($_FILES["inputFile"]["name"][$i]),PATHINFO_EXTENSION);
+						$realFileName = pathinfo($_FILES['inputFile']['name'][$i], PATHINFO_FILENAME);
+						$nameStorage = $i.".".$imageFileType;
+
+						// envoie des images dans le dossier concernant l'article créé
+						if (move_uploaded_file($_FILES["inputFile"]["tmp_name"][$i], $dossier."/".$nameStorage)) {
+    					   	// Entrée en BDD des données concernant l'image
+							$sql = "INSERT INTO news_pictures(name,name_origin,type,alt,news_id,state)
+									 VALUES(:name,:name_origin,:type,:alt,:news_id,:state)";
+							$requestImg = $instance ->prepare($sql);
+							$requestImgOk = $requestImg->execute(array(
+											"name"=>$i,
+											"name_origin"=>$realFileName,
+											"type"=> $imageFileType,
+											"alt"=>$nameStorage,
+											"news_id"=>$lastId['id'],
+											"state"=> 1,
+							));
+							// données image bien entrées dans la BDD
+							if(!$requestImgOk) {
+								$data["imgBddError"] = "Une erreur est survenue lors de l'enregistrement des données de l'image";
+							}
+    					} else {
+        					$data["imgUploadError"] = "Une erreur est survenue lors du transfert des images";
+					    }
+
+*/
+/*
+
+
+									} else {
+										$errors['fileError'][$i] = "L'image ".$fileData['name']." n'est pas conforme aux extensions autorisées : ".implode(', ', $imgExt);
+									}
+								} else {
+									$errors['fileError'][$i] = "le poids de l'image excède le poids autorisé pour l'upload.";
+								}
+							} else {
+								$errors['fileError'][$i] = "Le fichier ".$fileData['name']." n'est pas une image.";
+							}
+						}
+					}
+*/		 		}
 		 	}
 
-			if($errorMaj != true) { $errors['creation'] = true; }
 		}
 
 		if(isset($_POST['article_id'])) { $formConcern = "modification";}
