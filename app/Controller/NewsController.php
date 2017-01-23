@@ -13,7 +13,7 @@ class NewsController extends Controller
 	// affichage de la liste des news
 	public function home()
 	{
-	$this->show("user/UserView", ['connectLinkChoice' => false]);
+	$this->show("news/NewsView", ['connectLinkChoice' => false]);
 	}
 
 	// affichage d'une news particulière
@@ -81,8 +81,8 @@ class NewsController extends Controller
 
 		// les champs sont bien remplis
 		if(!isset($errors)) {
-			$majArticle = new NewsModel();			
-			
+			$majArticle = new NewsModel();
+
 			// si une ID est présente alors c'est une mise à jour de l'article
 			if(isset($_POST['article_id'])) {
 				// prépare les données qui seront mises en BDD
@@ -93,6 +93,8 @@ class NewsController extends Controller
       			);
 				// mise à jour des données en BDD
 				$errorMaj = $majArticle-> update($ArticleData,$_POST['article_id'],false);
+				if($errorMaj == false) { $errors['maj'] = true; }
+
 		 	} else { // création d'un article
 	 			// récupération de l'ID de l'utilisateur connecté
 				$user_id=$_SESSION['user']['id'];
@@ -107,14 +109,46 @@ class NewsController extends Controller
       			);
 				$errorMaj = $majArticle-> insert($ArticleData,false);
 		 	}
-			if($errorMaj != false) { $success = true; }
-			else { $success = false; }	
+			if($errorMaj != true) { $errors['creation'] = true; }
 		}
 
 		if(isset($_POST['article_id'])) { $formConcern = "modification";}
 		else {$formConcern = "creation";}
 
 		if (isset($errors)) $this->showJson(["formConcern" =>$formConcern, "success"=>false,"errors"=>$errors]);
-		else $this->showJson(["formConcern"=>$formConcern, "success"=>$success]);
+		else $this->showJson(["formConcern" =>$formConcern, "success"=>true]);
 	}
+
+	// Mise à jour du menu de gauche de la page d'éition de news
+	public function newsAjaxModify() {
+		// Récupération de l'ID du user en session actuellement
+		$user = new AuthentificationModel();
+		$userId = $user -> getLoggedUser()['id'];
+
+		// Récupération de l'article (content + images) à afficher
+		$newsList = new NewsModel();
+		$articleList = $newsList -> findNewsFromUser($userId,"");
+
+		$refreshData="";
+		foreach ($articleList as $key => $value) {
+			$refreshData .= '<li>';
+			$refreshData .= "<form action='".$this->generateUrl('news_edit')."' method='post' class='form_listArticle'>";
+			$refreshData .= '<div class="newsListCheckbox">';
+						$bCheck ="";
+						if($articleList[$key]['state']==!0) $bCheck = "checked";
+						$refreshData .= '<input type="checkbox" name="check" '.$bCheck.'>';
+						$refreshData .= '</div><div class="newsListContent">';
+						$refreshData .= '<h2>'.$articleList[$key]['title'].'</h2>';
+						$refreshData .= '<p>Créé le '.$articleList[$key]['date_creation'].' - Modifié le '.$articleList[$key]['date_modification'].'</p>';
+						$refreshData .= '<p>'.$articleList[$key]['content'].'</p></div>';
+						$refreshData .= '<div class="newsListAction">';
+							$refreshData .= '<p><input type="submit" name="modifyNews" value="Modifier"></p>';
+							$refreshData .= '<input type="hidden" value="'.$articleList[$key]['id'].'" name="articleId">';
+			$refreshData .= '</div>';
+			$refreshData .= '</form>';
+			$refreshData .= '</li>';
+		}
+		echo $refreshData;
+	}
+
 }

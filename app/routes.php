@@ -4,18 +4,19 @@
 		//Route de la page du site par défaut
 		['GET', '/', 'Default#home', 'default_home'],
 
-		// Affichage de la pge des news
+		// Affichage de la page des news
 		["GET|POST", "/fabrication_additive/news/", "News#home", "news_home"],
 
-		// Affichage d'une pge news particulière
+		// Affichage d'une page news particulière
 		["GET|POST", "/fabrication_additive/news/[:id]/", "News#page", "news_page"],
 
 		// route des news dans le compte admin (création/modification/affichage)
 		['GET', '/fabrication_additive/user/news', 'News#edit', 'news_edit'],
-		
+
 		// route vers les controleurs récupérant les requetes ajax
 		["POST", "/fabrication_additive/user/news/newsShow", "News#ShowNews", "news_showNews"],
 		["POST", "/fabrication_additive/user/news/newsModify", "News#newsModify", "news_newsModify"],
+		["POST", "/fabrication_additive/user/news/newsAjaxModify", "News#newsAjaxModify", "news_newsAjaxModify"],
 
 
 		// route pour l'inscription de l'utilisateur

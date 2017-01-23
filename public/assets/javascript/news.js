@@ -28,8 +28,6 @@ $(function(){
 		$(".news_input_button").empty();
 		$(".news_input_button").html('<input type="submit" name="news_submit" value="Modifier">');
 
-
-
 		var data = $(this).serialize();
 		$.ajax({
 			url: "news/newsShow",
@@ -59,9 +57,19 @@ $(function(){
 			dataType:"json",
 			success: function(value) {
 				emptyHide();
+				$(".confirmMsg").html(value.formConcern + " effectuée");
 				if(value.success) {
-					$(".confirmMsg").show();
-					$(".confirmMsg").html(value.formConcern + " effectuée");
+					$.ajax({
+						url: "news/newsAjaxModify",
+						type:"post",
+						data: data,
+						dataType:"html",
+						success: function(value) {
+							emptyHide();
+							$(".newsEditListing ul").html(value);
+							$(".confirmMsg").show();
+						}
+					});
 				} else {
 					$(".confirmMsg").show();
 					$(".confirmMsg").html("Erreur lors de la " + value.formConcern);
