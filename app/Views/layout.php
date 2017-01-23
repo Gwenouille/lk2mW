@@ -43,11 +43,11 @@
 		<nav class='navigation'>
 			<div class='nav-container'>
 					<ul>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "creation_d_entreprises"]); ?>">Création d'entreprises</a></li>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a></li>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "espace_formation"]); ?>">Espace formation</a></li>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "coworking"]); ?>">Coworking</a></li>
-						<li><a class="nav" href="<?= $this->url("default_nav", ["target" => "location_de_bureaux"]); ?>">Location de bureaux</a></li>
+						<li class="<?=$link1?>"><a class="nav" href="<?= $this->url("default_nav", ["target" => "creation_d_entreprises"]); ?>">Création d'entreprises</a></li>
+						<li class="<?=$link2?>"><a class="nav" href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>">Fabrication additive</a></li>
+						<li class="<?=$link3?>"><a class="nav" href="<?= $this->url("default_nav", ["target" => "espace_formation"]); ?>">Espace formation</a></li>
+						<li class="<?=$link4?>"><a class="nav" href="<?= $this->url("default_nav", ["target" => "coworking"]); ?>">Coworking</a></li>
+						<li class="<?=$link5?>"><a class="nav" href="<?= $this->url("default_nav", ["target" => "location_de_bureaux"]); ?>">Location de bureaux</a></li>
 					</ul>
 			</div>
 		</nav>

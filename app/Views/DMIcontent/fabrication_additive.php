@@ -1,4 +1,10 @@
-<?php $this->layout('layout', ['title' => 'Fabrication additive','displayConnectLink' =>$connectLinkChoice]) ?>
+<?php $this->layout('layout', ['title' => 'Fabrication additive',
+'link1'=>'',
+'link2'=>'link2',
+'link3'=>'',
+'link4'=>'',
+'link5'=>'',
+'displayConnectLink' =>$connectLinkChoice]) ?>
 
 <?php $this->start('main_content') ?>
 

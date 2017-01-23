@@ -68,11 +68,19 @@ header {
   background-color: #d9e767;
 }
 
+.link1 {
+  background-color: #d9e767;
+}
+
 .navigation ul li:nth-child(2) {
   border-color: #adda50;
 }
 
 .navigation ul li:nth-child(2):hover {
+  background-color: #adda50;
+}
+
+.link2 {
   background-color: #adda50;
 }
 
@@ -84,6 +92,10 @@ header {
   background-color: #4fbec6;
 }
 
+.link3 {
+  background-color: #4fbec6;
+}
+
 .navigation ul li:nth-child(4) {
   border-color: #3e7c8c;
 }
@@ -92,11 +104,19 @@ header {
   background-color: #3e7c8c;
 }
 
+.link4 {
+  background-color: #3e7c8c;
+}
+
 .navigation ul li:last-child {
   border-color: #284659;
 }
 
 .navigation ul li:last-child:hover {
+  background-color: #284659;
+}
+
+.link5 {
   background-color: #284659;
 }
 
