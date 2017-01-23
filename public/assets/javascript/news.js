@@ -11,9 +11,10 @@ $(function(){
 		$(".news_title .news_error").empty();
 	}
 
-
+	var list=$('#list');
+	
 	// clic sur le bouton modifier
-	$(".form_listArticle").on("submit",function(e) {
+		list.on("submit",'.form_listArticle',function(e) {
 		e.preventDefault();
 
 		emptyHide();
@@ -27,8 +28,6 @@ $(function(){
 		// affichage du bouton modifier
 		$(".news_input_button").empty();
 		$(".news_input_button").html('<input type="submit" name="news_submit" value="Modifier">');
-
-
 
 		var data = $(this).serialize();
 		$.ajax({
@@ -59,9 +58,19 @@ $(function(){
 			dataType:"json",
 			success: function(value) {
 				emptyHide();
+				$(".confirmMsg").html(value.formConcern + " effectuée");
 				if(value.success) {
-					$(".confirmMsg").show();
-					$(".confirmMsg").html(value.formConcern + " effectuée");
+					$.ajax({
+						url: "news/newsAjaxModify",
+						type:"post",
+						data: data,
+						dataType:"html",
+						success: function(value) {
+							emptyHide();
+							$(".newsEditListing ul").html(value);
+							$(".confirmMsg").show();
+						}
+					});
 				} else {
 					$(".confirmMsg").show();
 					$(".confirmMsg").html("Erreur lors de la " + value.formConcern);

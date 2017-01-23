@@ -20,9 +20,10 @@
   MON COMPTE
 </label>
 <label>
-  <input type="checkbox" id="cbox2" value="checkbox2">
-  NEWS
-</label>
+  <p>
+		<a href="<?= $this->url("news_edit") ?>">NEWS</a>
+	</p>
+  </label>
 <label>
   <input type="checkbox" id="cbox2" value="checkbox2">
   UTILISATEURS

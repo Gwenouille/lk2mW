@@ -70,18 +70,19 @@ class NewsModel extends Model {
   /**
    * Récupère toutes les lignes de la table
    * @param $id L'utilisateur dont on veut récupérer les articles
+   * @param $articleId L'id de l'article (int) dont on veut récupérer les données
    */
   public function findNewsFromUser($id,$articleId) {
-    
+
     $sql = 'SELECT * FROM ' . $this -> table . ' WHERE users_id = '.$id;
 
     if(is_numeric($articleId)) $sql .= " AND ".$this->table.".id=".$articleId;
-    
+
     $sth = $this -> dbh -> prepare($sql);
     $sth -> execute();
 
     $listArticles = $sth -> fetchAll();
-    
+
     // Ajout des images liées aux articles dans le tableau, sous la clé 'pictures'
     $pictures = new NewsPicturesModel();
     foreach ($listArticles as $key => $value) {

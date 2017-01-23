@@ -43,7 +43,7 @@ class UserController extends Controller
     // l'utilisateur est connecté
     if(!is_null($userLog ->getLoggedUser())) {
         $userLog->logUserOut();
-        $this->show("user/SignInView",["deconnection" => true]);
+        $this->show("user/SignInView",["deconnection" => true,"connectLinkChoice" => true]);
     } else {
         $this->redirectToRoute('user_login');
     }

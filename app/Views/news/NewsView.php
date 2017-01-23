@@ -17,28 +17,28 @@
   		<input type="button" value="Créer" name="news_creation" id="creationButton">
   		<div class="newsEditListing">
   			<?php if(!empty($articleList)): ?>
-  				<ul>
+  				<ul id="list">
 	  				<?php foreach ($articleList as $key => $value) :?>
   						<li>
-                <form action="<?= $this->url("news_showNews"); ?>" method="post" class="form_listArticle">
-  							<!-- div de la checkbox -->
-  							<div class="newsListCheckbox">
-                  <?php $bCheck ="";
-                   if($articleList[$key]['state']==!0) $bCheck = "checked"; ?>
-  								<input type="checkbox" name="check" <?= $bCheck ?>>
-  							</div>
-  							<!-- div de la description de l'article -->
-  							<div class="newsListContent">
-  								<h2><?= $articleList[$key]['title'] ?></h2>
-  								<p>Créé le <?= $articleList[$key]['date_creation'] ?> - Modifié le <?= $articleList[$key]['date_modification'] ?></p>
-  								<p><?= $articleList[$key]['content'] ?></p>
-  							</div>
-  							<!-- div des boutons d'action -->
-  							<div class="newsListAction">
-  								<p><input type="submit" name="modifyNews" value="Modifier"></p>
-  								<input type="hidden" value="<?= $articleList[$key]['id'] ?>" name="articleId">
-  							</div>
-                        </form>
+                <form action="<?= $this->url("news_edit"); ?>" method="post" class="form_listArticle">
+  								<!-- div de la checkbox -->
+  								<div class="newsListCheckbox">
+                  	<?php $bCheck ="";
+                   	if($articleList[$key]['state']==!0) $bCheck = "checked"; ?>
+  									<input type="checkbox" name="check" <?= $bCheck ?>>
+  								</div>
+  								<!-- div de la description de l'article -->
+  								<div class="newsListContent">
+  									<h2><?= $articleList[$key]['title'] ?></h2>
+  									<p>Créé le <?= $articleList[$key]['date_creation'] ?> - Modifié le <?= $articleList[$key]['date_modification'] ?></p>
+  									<p><?= $articleList[$key]['content'] ?></p>
+  								</div>
+  								<!-- div des boutons d'action -->
+  								<div class="newsListAction">
+  									<p><input type="submit" name="modifyNews" value="Modifier"></p>
+  									<input type="hidden" value="<?= $articleList[$key]['id'] ?>" name="articleId">
+  								</div>
+              	</form>
   						</li>
   					<?php endforeach ?>
   				</ul>
@@ -51,7 +51,7 @@
 	<h2>Création d'un article</h2>
 	<div class="news">
 		<div class="news_error"></div>
-		<form enctype="multipart/form-data" id="news_form" name="news_form" method="post" class="form_news" action="<?= $this->url("news_newsModify"); ?>">
+		<form enctype="multipart/form-data" id="news_form" name="news_form" method="post" class="form_news" action="<?= $this->url("news_newsAjaxModify"); ?>">
 			<div class="news_title">
 				<label for="news_article_title">Titre de l'article</label>
 				<div class="news_error"></div>
