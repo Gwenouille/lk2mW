@@ -17,7 +17,7 @@
   		<input type="button" value="Créer" name="news_creation" id="creationButton">
   		<div class="newsEditListing">
   			<?php if(!empty($articleList)): ?>
-  				<ul>
+  				<ul id="list">
 	  				<?php foreach ($articleList as $key => $value) :?>
   						<li>
                 <form action="<?= $this->url("news_edit"); ?>" method="post" class="form_listArticle">

@@ -11,9 +11,10 @@ $(function(){
 		$(".news_title .news_error").empty();
 	}
 
-
+	var list=$('#list');
+	
 	// clic sur le bouton modifier
-	$(".form_listArticle").on("submit",function(e) {
+		list.on("submit",'.form_listArticle',function(e) {
 		e.preventDefault();
 
 		emptyHide();

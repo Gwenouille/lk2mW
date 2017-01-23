@@ -108,12 +108,8 @@ class NewsController extends Controller
       			);
 				$errorMaj = $majArticle-> insert($ArticleData,false);
 		 	}
-<<<<<<< HEAD
-			if($errorMaj != false) { $success = true; }
-			else { $success = false; }
-=======
+
 			if($errorMaj != true) { $errors['creation'] = true; }
->>>>>>> e41d93e63db6a2bc6be10ca819e8f9a3f1ac2c1a
 		}
 
 		if(isset($_POST['article_id'])) { $formConcern = "modification";}
