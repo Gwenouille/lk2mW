@@ -290,12 +290,10 @@ Responsive du cercle de liens
 }
 
 .section-fabrication-titre {
-  /* border: 1px solid; */
   display: block;
   padding: 10px;
   background: #d9e767;
   background: #adda50;
-  /* D'apres moi meilleure correspondance des couleurs GLP */
   margin: 0 15px;
 }
 
@@ -313,9 +311,12 @@ Responsive du cercle de liens
   margin-left: 10px;
 }
 
-.description-section h5 {
+.description-section h3 {
+  color: rgba(50, 90, 112, 1);
+  font-weight: bold;
   margin-left: 1em;
   margin-top: 1em;
+  margin-bottom: 1.5em;
   font-size: 1em;
 }
 

@@ -13,7 +13,7 @@
       <img src="<?= $this->assetUrl('logos/fabricationFond.png')?>" alt="logo de l'espace fabrication additive">
       <span>Fabrication Additive</span>
     </h2>
-
+<!-- debut du carousel -->
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -52,19 +52,22 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+<!--  fin du carousel-->
 
     <div class="actu-fabrication">
-      <p>DMI propose un accompagnement pour réaliser vos maquettes et vos prototypes.</p>
-      <p>De la conception à la réalisation, des professeurs agrégés (du lycée Pablo Neruda de Dieppe), des ingénieurs d'écoles locales et des partenaires (CESI, INSA, ESIGELEC, l'entreprise Volum-e…) vous accompagnent dans l'apprentissage et la formation de vos collaborateurs.</p>
-      <p>Un parc d'imprimantes 3D dernière génération permet d'obtenir un résultat de qualité et un  niveau de détails élevé avec des prototypes multimatériaux ou en couleurs.</p>
+      <h4>
+        <p>DMI propose un accompagnement pour réaliser vos maquettes et vos prototypes.</p>
+        <p>De la conception à la réalisation, des professeurs agrégés (du lycée Pablo Neruda de Dieppe), des ingénieurs d'écoles locales et des partenaires (CESI, INSA, ESIGELEC, l'entreprise Volum-e…) vous accompagnent dans l'apprentissage et la formation de vos collaborateurs.</p>
+        <p>Un parc d'imprimantes 3D dernière génération permet d'obtenir un résultat de qualité et un  niveau de détails élevé avec des prototypes multimatériaux ou en couleurs.</p>
+      </h4>
     </div>
 
     <div class="section-fabrication">
-      <h3 class="section-fabrication-titre">Formation et Conception</h3>
+      <h2 class="section-fabrication-titre">Formation et Conception</h2>
       <div class="content-section">
-        <img class="img-right" src="https://placekitten.com/g/200/300" alt="">
+        <img class="img-right" src="../public/assets/images/FormConcept.jpg" alt="">
         <div class="description-section">
-          <h5>DMI est équipé de :</h5>
+          <h3>DMI est équipé de :</h3>
             <p>- 8 postes de sculpture</p>
             <p>- Logiciels de CAO<span class ="asterix">*</span>, de simulation comportementale, d'optimisation topologique</p>
             <p>- Scanners 3D</p>
@@ -77,11 +80,11 @@
     </div>
 
     <div class="section-fabrication">
-      <h3 class="section-fabrication-titre">Design 3D</h3>
+      <h2 class="section-fabrication-titre">Design 3D</h2>
       <div class="content-section">
-        <img class="img-left" src="https://placekitten.com/g/200/300" alt="">
+        <img class="img-left" src="../public/assets/images/desing3d.jpg" alt="">
         <div class="description-section">
-          <h5>DMI est équipé pour un rendu visuel réaliste :</h5>
+          <h3>DMI est équipé pour un rendu visuel réaliste :</h3>
             <p>- D'un bras de sculpture</p>
             <p>- D'une tablette graphique</p>
             <p>- Imprimante 3D 660 pro
@@ -92,11 +95,11 @@
     </div>
 
     <div class="section-fabrication">
-      <h3 class="section-fabrication-titre">Impression 3D</h3>
+      <h2 class="section-fabrication-titre">Impression 3D</h2>
       <div class="content-section">
-        <img class="img-right" src="https://placekitten.com/g/200/300" alt="">
+        <img class="img-right" src="../public/assets/images/3dPrinting.jpg" alt="">
         <div class="description-section">
-          <h5>DMI propose des imprimantes produisant des pieces de qualité :</h5>
+          <h3>DMI propose des imprimantes produisant des pieces de qualité :</h3>
             <p>- Imprimante 3D Projet 5500x</p>
             <p class="imprimante-3d">Multimateriaux</p> <p class="imprimante-3d">Volume de fabrication : 550 x 393 x 300 mm</p>
 
