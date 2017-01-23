@@ -68,8 +68,6 @@ class NewsController extends Controller
 	// récupère les données de l'article modifié pour faire une mise à jour de l'article en BDD
 	public function newsModify() {
 
-		$errors = array();
-
 		// format tolérés pour les images
 		$imgExt = array(".jpg",".jpeg",".gif",".png");
 		// répertoire où sont stockées les images
@@ -114,9 +112,9 @@ class NewsController extends Controller
      				"state" => 1
       			);
 				$errorMaj = $majArticle-> insert($ArticleData,false);
-		 		if($errorMaj != true) { $errors['creation'] = true; }
-		 		else {
-/*
+		 		if($errorMaj == false) { $errors['creation'] = true; }
+/*		 		else {
+
 		 			// S'il y a des fichiers et pas d'erreur dans la création de l'article
 					if(isset($_FILES['news_files_input'])) {
 						// boucle pour examiner chaque input file
@@ -194,14 +192,12 @@ class NewsController extends Controller
 							}
 						}
 					}
-*/		 		}
-		 	}
+		 		}
+*/		 	}
 
 		}
-
 		if(isset($_POST['article_id'])) { $formConcern = "modification";}
 		else {$formConcern = "creation";}
-
 		if (isset($errors)) $this->showJson(["formConcern" =>$formConcern, "success"=>false,"errors"=>$errors]);
 		else $this->showJson(["formConcern" =>$formConcern, "success"=>true]);
 	}
