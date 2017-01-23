@@ -1,4 +1,10 @@
-<?php $this->layout('layout', ['title' => 'News','displayConnectLink' =>$connectLinkChoice]) ?>
+<?php $this->layout('layout', ['title' => 'News',
+'link1'=>'',
+'link2'=>'link2',
+'link3'=>'',
+'link4'=>'',
+'link5'=>'',
+'displayConnectLink' =>$connectLinkChoice]) ?>
 
 <?php $this->start('css') ?>
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/NewsView.css') ?>">

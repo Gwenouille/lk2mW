@@ -1,4 +1,10 @@
-<?php $this->layout('layout', ['title' => 'Mon espace','displayConnectLink' =>$connectLinkChoice]); ?>
+<?php $this->layout('layout', ['title' => 'Mon espace',
+'link1'=>'',
+'link2'=>'link2',
+'link3'=>'',
+'link4'=>'',
+'link5'=>'',
+'displayConnectLink' =>$connectLinkChoice]); ?>
 
 <!-- Ajoute un css pour cette page seulement, pour corriger l'affichage de la nav -->
 <?php $this->start('css') ?>
