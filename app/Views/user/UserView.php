@@ -48,13 +48,6 @@
 	</form>
 </div>
 </div>
-<!--bloc des projets utilisateurs  -->
-	<!-- <div>
-	<h3>Mes projets</h3>
-			<button type="button" name="createProject">Créer un projet</button>
-			<button type="button" name="openProject">Ouvrir un projet</button>
-</div> -->
-
 
 
 
