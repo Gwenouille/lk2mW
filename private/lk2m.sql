@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 21 Janvier 2017 à 18:25
+-- Généré le :  Lun 23 Janvier 2017 à 08:11
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -67,7 +67,8 @@ INSERT INTO `messages` (`id`, `content`, `date`, `users_id`, `to_users_id`) VALU
 (3, 'Réponse de User 3', '2017-01-20 11:22:00', 3, 2),
 (4, 'Et retour de l\'utilisateur 2 à l\'admin', '2017-01-20 11:19:00', 2, 3),
 (5, 'Essai d\'envoi message', '2017-01-20 11:28:45', 2, 3),
-(9, 'essai d\'envoi message', '2017-01-21 15:26:07', 3, 2);
+(9, 'essai d\'envoi message', '2017-01-21 15:26:07', 3, 2),
+(20, 'Mouveau message c\'est tres mouveau', '2017-01-23 07:59:44', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -78,7 +79,7 @@ INSERT INTO `messages` (`id`, `content`, `date`, `users_id`, `to_users_id`) VALU
 CREATE TABLE `news` (
   `id` int(11) NOT NULL,
   `title` varchar(45) DEFAULT NULL,
-  `comment` longtext,
+  `content` longtext,
   `users_id` int(11) NOT NULL,
   `date_creation` date DEFAULT NULL,
   `date_modification` date DEFAULT NULL,
@@ -89,17 +90,17 @@ CREATE TABLE `news` (
 -- Contenu de la table `news`
 --
 
-INSERT INTO `news` (`id`, `title`, `comment`, `users_id`, `date_creation`, `date_modification`, `state`) VALUES
-(1, 'Creation de l\'espace Fabrication Additive !', 'Chers amis,\r\nBienvenue !\r\n\r\nAujourd\'hui est un grand jour: en effet, grace a l\'abnégation de tous, il nous est permis de rêver à un futur rose et souriant !', 2, '2017-01-18', '2017-01-20', 1),
-(2, 'Mise a jour', 'La grille tarifaire est disponible', 2, '2017-01-21', '2017-01-21', 1);
+INSERT INTO `news` (`id`, `title`, `content`, `users_id`, `date_creation`, `date_modification`, `state`) VALUES
+(1, 'Creation de l\'espace Fabrication Additive !', '<p>Chers amis, Bienvenue ! Aujourd\'hui est un grand jour: en effet, grace a l\'abn&eacute;gation de tous, il nous est permis de r&ecirc;ver &agrave; un futur rose et souriant !</p>\r\n<p>C\'est dans cette optique, vengeresse et conqu&eacute;rante, que nous devons aller de l\'avant !<br />Chers concitoyens, l\'heure est au mouvement !!!</p>', 3, '2017-01-18', '2017-01-23', 1),
+(2, 'Mise a jour', 'La grille tarifaire est disponible', 3, '2017-01-21', '2017-01-21', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `newspictures`
+-- Structure de la table `news_pictures`
 --
 
-CREATE TABLE `newspictures` (
+CREATE TABLE `news_pictures` (
   `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `real_name` varchar(45) DEFAULT NULL,
@@ -111,10 +112,10 @@ CREATE TABLE `newspictures` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `newspictures`
+-- Contenu de la table `news_pictures`
 --
 
-INSERT INTO `newspictures` (`id`, `name`, `real_name`, `type`, `size`, `alt`, `news_id`, `state`) VALUES
+INSERT INTO `news_pictures` (`id`, `name`, `real_name`, `type`, `size`, `alt`, `news_id`, `state`) VALUES
 (1, '1', 'image1', 'jpg', 258, 'une image', 1, 1),
 (2, '2', 'image2', 'jpg', 258, 'une image', 2, 1);
 
@@ -238,9 +239,9 @@ ALTER TABLE `news`
   ADD KEY `fk_news_users1_idx` (`users_id`);
 
 --
--- Index pour la table `newspictures`
+-- Index pour la table `news_pictures`
 --
-ALTER TABLE `newspictures`
+ALTER TABLE `news_pictures`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_pictures_news1_idx` (`news_id`);
 
@@ -285,16 +286,16 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT pour la table `newspictures`
+-- AUTO_INCREMENT pour la table `news_pictures`
 --
-ALTER TABLE `newspictures`
+ALTER TABLE `news_pictures`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `projects`
@@ -334,9 +335,9 @@ ALTER TABLE `news`
   ADD CONSTRAINT `fk_news_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `newspictures`
+-- Contraintes pour la table `news_pictures`
 --
-ALTER TABLE `newspictures`
+ALTER TABLE `news_pictures`
   ADD CONSTRAINT `fk_pictures_news1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
