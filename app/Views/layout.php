@@ -33,7 +33,7 @@
 				$linkDeconnect = '<a class="connectLink" href="'.$this->url("user_logout").'" tabindex=1>> Se deconnecter</a>';
 				$linkAccount = '<a class="connectLink" href="'.$this->url("user_home").'" tabindex=1>> Mon espace</a>';
 				if(isset($_SESSION['user']) && !empty($_SESSION['user'])) $userAccount = $_SESSION['user']['firstname']." ".$_SESSION['user']['lastname'];
-				$connectLink= !empty($_SESSION['user']) ? '<p><h4>'.$userAccount."</h4></p>".$linkDeconnect.'<p>'.$linkAccount.'</p>':'<h3>Dieppe - Normandie</h3><p>'.$linkConnect.'</p>';
+				$connectLink= !empty($_SESSION['user']) ? '<h4>'.$userAccount.'</h4><p>'.$linkDeconnect.'</p><p>'.$linkAccount.'</p>':'<h3>Dieppe - Normandie</h3><p>'.$linkConnect.'</p>';
 				echo ($connectLink);
 			}
 			?>
