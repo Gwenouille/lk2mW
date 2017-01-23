@@ -1,9 +1,13 @@
 .userChoice {
-  margin: 1em auto 1em auto;
+  margin: 0.5em auto 0;
   font-size: 2em;
   display: flex;
   justify-content: space-around;
   max-width: 20em;
+}
+
+.userChoice_icons {
+  margin-right: 1em;
 }
 
 .glyphicon {
@@ -15,5 +19,5 @@
 }
 
 .main-login_connexion {
-  margin: 0 20% 3em 20%;
+  margin: 0 20% 3em;
 }

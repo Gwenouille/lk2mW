@@ -11,7 +11,7 @@
 		["GET|POST", "/fabrication_additive/news/[:id]/", "News#page", "news_page"],
 
 		// route des news dans le compte admin (création/modification/affichage)
-		['GET', '/fabrication_additive/user/news', 'News#edit', 'news_edit'],
+		['GET', '/fabrication_additive/admin/news', 'News#edit', 'news_edit'],
 
 		// route vers les controleurs récupérant les requetes ajax
 		["POST", "/fabrication_additive/user/news/newsShow", "News#ShowNews", "news_showNews"],

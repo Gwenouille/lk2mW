@@ -13,6 +13,11 @@
 
 <?php $this->start('main_content') ?>
 
+	<div class="userChoice">
+		<a href="<?= $this->url("user_home"); ?>"><span class="glyphicon glyphicon-user"></span>MON COMPTE</a>&nbsp;&nbsp;
+		<a href="<?= $this->url("projects_home"); ?>"><span class="glyphicon glyphicon-list-alt"></span>MES PROJETS</a>
+	</div>
+
 	<main class="main">
 
 			<!--La section projects-->

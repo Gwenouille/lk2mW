@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/localBootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/master.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/header_footer.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/userView.css') ?>">
 	<!-- PERMET D'AJOUTER DES CSS ICI -->
 	<?= $this->section('css') ?>
 	<title><?= $this->e($title) ?></title>

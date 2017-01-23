@@ -13,20 +13,11 @@
 
 <?php $this->start('main_content'); ?>
 
-<!--navigation  ckeckbox admin-->
-<div>
-<label>
-  <input type="checkbox" id="cbox1" value="checkbox1">
-  MON COMPTE
-</label>
-<label>
-  <p>
-		<a href="<?= $this->url("news_edit") ?>">NEWS</a>
-	</p>
-  </label>
-<label>
-  <input type="checkbox" id="cbox2" value="checkbox2">
-  UTILISATEURS
-</label>
+<!--navigation  choix de l'user-->
+<div class="userChoice">
+	<a class="userChoice_icons" href="<?= $this->url("user_home"); ?>"><span class="glyphicon glyphicon-user"></span>MON&nbsp;COMPTE</a>&nbsp;&nbsp;
+	<a class="userChoice_icons" href="<?= $this->url("projects_home"); ?>"><span class="glyphicon glyphicon-list-alt"></span>PROJETS</a>&nbsp;&nbsp;
+	<a class="userChoice_icons" href="<?= $this->url("news_edit"); ?>"><span class="glyphicon glyphicon-globe"></span>NEWS</a>
 </div>
+
 <?php $this->stop('main_content') ?>
