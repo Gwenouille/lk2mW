@@ -16,28 +16,30 @@
 	<main class="main">
 
 			<!--La section projects-->
-		<div class="project">
+		<div class="projectSection">
 
 			<!-- La section liste des projets -->
 			<div class="listProject">
 				<h3 class="blocTitleProject">Liste de mes projets :</h3>
 				<div class="listProjectContent">
 					<?php	foreach ($projectsList as $key => $value) :?>
-						<h4><span class="glyphicon glyphicon-eye-open"></span>&nbsp;<?= $projectsList[$key]['name']?></h4>
-						<p><em><?= $projectsList[$key]['date']?></em></p>
-						<p><?= $projectsList[$key]['description']?></p>
-						<ul>
-							<?php
-								if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
-									$files=$projectsList[$key]['files'];
+						<div class="project">
+							<h4><a href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;<?= $projectsList[$key]['name']?></h4>
+							<p><em><?= $projectsList[$key]['date']?></em></p>
+							<p><?= $projectsList[$key]['description']?></p>
+							<ul>
+								<?php
+									if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
+										$files=$projectsList[$key]['files'];
 
-							 	foreach ($files as $key => $value) :?>
-									<li>
-										<?php echo($files[$key]['name'].".".$files[$key]['type']) ?>
-									</li>
-							 	<?php endforeach;
-								} ?>
-						</ul>
+								 	foreach ($files as $key => $value) :?>
+										<li>
+											<?php echo($files[$key]['name'].".".$files[$key]['type']) ?>
+										</li>
+								 	<?php endforeach;
+									} ?>
+							</ul>
+						</div>
 					<?php endforeach ?>
 				</div>
 			</div>

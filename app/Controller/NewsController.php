@@ -13,6 +13,7 @@ class NewsController extends Controller
 	// affichage de la liste des news
 	public function home()
 	{
+	
 	$this->show("user/UserView", ['connectLinkChoice' => false]);
 	}
 
@@ -81,8 +82,8 @@ class NewsController extends Controller
 
 		// les champs sont bien remplis
 		if(!isset($errors)) {
-			$majArticle = new NewsModel();			
-			
+			$majArticle = new NewsModel();
+
 			// si une ID est présente alors c'est une mise à jour de l'article
 			if(isset($_POST['article_id'])) {
 				// prépare les données qui seront mises en BDD
@@ -108,7 +109,7 @@ class NewsController extends Controller
 				$errorMaj = $majArticle-> insert($ArticleData,false);
 		 	}
 			if($errorMaj != false) { $success = true; }
-			else { $success = false; }	
+			else { $success = false; }
 		}
 
 		if(isset($_POST['article_id'])) { $formConcern = "modification";}
