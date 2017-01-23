@@ -22,7 +22,9 @@
 					<img src="<?= $this->assetUrl('logos/logoFerme.png');?>" alt="page accueil">
 				</a>
 			</div>
-			<div class="title"><h1>Digital Manufacture<br>INNOVATION</h1></div>
+			<div class="title">
+				<h1>Digital Manufacture<br>INNOVATION</h1>
+			</div>
 			<div class="connection">
 			<?php
 			if (isset($displayConnectLink) && $displayConnectLink) {

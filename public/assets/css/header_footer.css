@@ -172,9 +172,12 @@ footer {
   .navigation ul li {
     border-top: 0;
     text-align: left;
-    padding-left: 1em;
     border-left-width: 10px;
     border-left-style: solid;
+  }
+
+  .nav {
+    padding-left: 1em;
   }
 
   /* Le header */
