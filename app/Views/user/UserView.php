@@ -23,7 +23,7 @@
 	}?>
 
 	<!--Formulaire compte utilisateur  -->
-	<div class="main-login_connexion">
+	<div class="main-login_modify">
 		<form class="form-inscription" method="post" action="<?= $this->url("user_modifyCoordinates"); ?>">
 		 	<h3 class="form_section center">Mes données utilisateur</h3>
 

@@ -93,7 +93,7 @@ class UserController extends Controller
   {
     $userLog = new AuthentificationModel();
 
-    // Si aucun utilisateur n'est connecté, redirige vers la page de login (bizarre dans ce cas puisque ta route est en POST)
+    // Si aucun utilisateur n'est connecté, redirige vers la page de login
     if(is_null($userLog ->getLoggedUser()))
 			{$this->redirectToRoute('user_home');}
     // Pas de post ou un post mais pas du formulaire "modifycoordinates" donc affichage de la page par défaut de l'inscription
