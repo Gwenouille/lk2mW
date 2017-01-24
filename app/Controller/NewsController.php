@@ -223,7 +223,7 @@ class NewsController extends Controller
 			$refreshData .= '<div class="newsListCheckbox">';
 			$bCheck ="";
 			if($articleList[$key]['state']==!0) $bCheck = "checked";
-			$refreshData .= '<input type="checkbox" name="check" '.$bCheck.'>';
+			$refreshData .= 'En ligne : <input id="checkbox'.$articleList[$key]['id'].'" class="newsCheckbox" type="checkbox" name="check" '.$bCheck.'>';
 			$refreshData .= '</div><div class="newsListContent">';
 			$refreshData .= '<h2>'.$articleList[$key]['title'].'</h2>';
 			$refreshData .= '<p>Créé le '.$articleList[$key]['date_creation'].' - Modifié le '.$articleList[$key]['date_modification'].'</p>';
