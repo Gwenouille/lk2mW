@@ -46,6 +46,26 @@ $(function(){
 		});
 	});
 
+	list.on("change",'.newsCheckbox',function(e) {
+		// console.log('ici');
+		// console.log($(this).attr('id'));
+		// console.log($(this).prop('checked'));
+		var data= {
+			'id':$(this).attr('id'),
+			'state':$(this).prop('checked')
+		};
+		console.log(data);
+		$.ajax({
+			url: "news/newsToggleCheckbox",
+			type: "post",
+			data: data,
+			success: function(){
+				console.log('CHECKBOX SUCCESS MIRACLE DRAGON FLYAWAY PINBALL STAR');
+			}
+		});
+	});
+
+
 	// valide le formulaire de droite
 	$("#news_form").on("submit",function(e) {
 		e.preventDefault();

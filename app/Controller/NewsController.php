@@ -238,4 +238,19 @@ class NewsController extends Controller
 		echo $refreshData;
 	}
 
+	// Bascule de la visibilité d'une news qd on presse le checkbox: changement de state en BDD dans la table news.
+	public function newsToggleCheckbox() {
+
+		$news_id=$_POST['id'];
+		$news_id=substr($_POST['id'],8,strlen($news_id)-8 );
+		if ($_POST['state']==='true'){$state=1;}
+		else {$state=0;}
+
+		$data= array(
+			'state'=>$state
+		);
+		$majArticle = new NewsModel();
+		$errorMaj = $majArticle-> update($data,$news_id,true);
+		if($errorMaj == false) { $errors['maj'] = true; }
+	}
 }

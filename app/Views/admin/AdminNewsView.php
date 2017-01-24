@@ -25,7 +25,7 @@
 								<div class="newsListCheckbox">
                 	<?php $bCheck ="";
                  	if($articleList[$key]['state']==!0) $bCheck = "checked"; ?>
-									<input type="checkbox" name="check" <?= $bCheck ?>>
+									En ligne : <input id="checkbox<?=$articleList[$key]['id']?>" class="newsCheckbox" type="checkbox" name="check" <?= $bCheck ?>>
 								</div>
 								<!-- div de la description de l'article -->
 								<div class="newsListContent">
@@ -52,7 +52,6 @@
 		<div class="news">
 			<div class="news_error"></div>
 			<form enctype="multipart/form-data" id="news_form" name="news_form" method="post" class="form_news" action="<?= $this->url("news_newsAjaxModify"); ?>">
-			<!-- <form enctype="multipart/form-data" id="news_form" name="news_form" method="post" class="form_news" action="<?= $this->url("news_newsModify"); ?>"> -->
 				<div class="news_title">
 					<label for="news_article_title">Titre de l'article</label>
 					<div class="news_error"></div>
