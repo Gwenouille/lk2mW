@@ -14,17 +14,20 @@ class NewsController extends Controller
 	// affichage de la liste des news dans la vue idoine
 	public function home()
 	{
-		$this->show("DMIcontent/NewsView", ['connectLinkChoice' => true]);
+		$news = new NewsModel();
+		$newsList=$news->findNewsFromUser(3); //3 is admin...
+		// die(var_dump($newsList));
+		$this->show("DMIcontent/NewsView", ['connectLinkChoice' => true, 'newsList' => $newsList]);
 	}
 
 	// affichage d'une news particulière TO DO ?
-	public function page($id)
-	{
-    var_dump($id);
-    $newsList = new NewsModel();
-    $list = $newsList -> find($id);
-		$this->show("admin/AdminNewsView", ['connectLinkChoice' => false]);
-	}
+	// public function page($id)
+	// {
+  //   var_dump($id);
+  //   $newsList = new NewsModel();
+  //   $list = $newsList -> find($id);
+	// 	$this->show("admin/AdminNewsView", ['connectLinkChoice' => false]);
+	// }
 
 	// création/modification d'une news
 	public function edit() {

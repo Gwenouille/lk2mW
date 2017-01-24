@@ -84,7 +84,7 @@ class NewsPicturesModel extends Model {
       return false;
     }
 
-    $sql = 'SELECT id FROM ' . $this->table . ' WHERE news_id = :news_id';
+    $sql = 'SELECT * FROM ' . $this->table . ' WHERE news_id = :news_id';
     $sth = $this->dbh->prepare($sql);
     $sth->bindValue(':news_id', $news_id);
     $sth->execute();
