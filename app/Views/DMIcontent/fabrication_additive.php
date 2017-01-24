@@ -14,6 +14,7 @@
       <span>Fabrication Additive</span>
     </h2>
 <!-- debut du carousel -->
+    <a href="<?= $this->url("news_home"); ?>">news</a>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>

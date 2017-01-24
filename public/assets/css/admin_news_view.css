@@ -1,5 +1,6 @@
 	/*   DIV CONTENANT TOUT */
 .newsEditMain {
+<<<<<<< HEAD
 	width: 80%;
 	margin: 0 auto;
 	display:flex;
@@ -17,15 +18,15 @@
 
 /* section partie gauche du site */
 .newsEditListArticle {
-	padding:5px;
-	flex:1;
+  padding: 5px;
+  flex: 1;
 }
 
 /* section partie droite du site */
 .newsEditShowArticle {
-	flex:2;
-	padding:5px;
-	display:none;
+  flex: 2;
+  padding: 5px;
+	/*display:none;*/
 }
 
 .newsEditListing {

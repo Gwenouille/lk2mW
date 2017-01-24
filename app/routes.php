@@ -8,7 +8,7 @@
 		["GET|POST", "/fabrication_additive/news/", "News#home", "news_home"],
 
 		// Affichage d'une page news particulière
-		["GET|POST", "/fabrication_additive/news/[:id]/", "News#page", "news_page"],
+		// ["GET|POST", "/fabrication_additive/news/[:id]/", "News#page", "news_page"],A developper si le temps le permet
 
 		// route des news dans le compte admin (création/modification/affichage)
 		['GET', '/fabrication_additive/admin/news', 'News#edit', 'news_edit'],
@@ -17,6 +17,7 @@
 		["POST", "/fabrication_additive/admin/news/newsShow", "News#ShowNews", "news_showNews"],
 		["POST", "/fabrication_additive/admin/news/newsModify", "News#newsModify", "news_newsModify"],
 		["POST", "/fabrication_additive/admin/news/newsAjaxModify", "News#newsAjaxModify", "news_newsAjaxModify"],
+		["POST", "/fabrication_additive/admin/news/newsToggleCheckbox", "News#newsToggleCheckbox", "news_newsToggleCheckbox"],
 
 
 		// route pour l'inscription de l'utilisateur
