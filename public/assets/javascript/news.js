@@ -12,7 +12,7 @@ $(function(){
 	}
 
 	var list=$('#list');
-	
+
 	// clic sur le bouton modifier
 		list.on("submit",'.form_listArticle',function(e) {
 		e.preventDefault();
@@ -49,15 +49,16 @@ $(function(){
 	// valide le formulaire de droite
 	$("#news_form").on("submit",function(e) {
 		e.preventDefault();
+		var form=document.getElementById('news_form');
+		var data = new FormData(form);
 
-		// var data = new FormData($(this)[0]);
-		var data = $(this).serialize();
 		$.ajax({
 			url: "news/newsModify",
 			type:"post",
 			data: data,
 			dataType:"json",
 			processData:false,
+			contentType:false,
 			success: function(value) {
 				emptyHide();
 				$(".confirmMsg").html(value.formConcern + " effectuée");
@@ -67,6 +68,7 @@ $(function(){
 						type:"post",
 						data: data,
 						dataType:"html",
+						processData:false,
 						success: function(value) {
 							emptyHide();
 							$(".newsEditListing ul").html(value);
