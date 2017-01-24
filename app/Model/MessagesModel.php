@@ -55,17 +55,4 @@ class MessagesModel extends Model {
       $this -> to_users_id = $arg;
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

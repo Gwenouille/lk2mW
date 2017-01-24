@@ -7,10 +7,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/normalize.css') ?>">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/localBootstrap.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/local_bootstrap.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/master.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/header_footer.css') ?>">
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/userView.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/user_view.css') ?>">
 	<!-- PERMET D'AJOUTER DES CSS ICI -->
 	<?= $this->section('css') ?>
 	<title><?= $this->e($title) ?></title>

@@ -7,7 +7,7 @@
 'displayConnectLink' =>$connectLinkChoice]) ?>
 
 <?php $this->start('css') ?>
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/NewsView.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/admin_news_view.css') ?>">
 <?php $this->stop('css') ?>
 
 <?php $this->start('main_content') ?>

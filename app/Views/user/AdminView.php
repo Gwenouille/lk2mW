@@ -6,11 +6,6 @@
 'link5'=>'',
 'displayConnectLink' =>$connectLinkChoice]); ?>
 
-<!-- Ajoute un css pour cette page seulement, pour corriger l'affichage de la nav -->
-<?php $this->start('css') ?>
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/UserView.css') ?>">
-<?php $this->stop('css') ?>
-
 <?php $this->start('main_content'); ?>
 
 <!--navigation  choix de l'user-->
