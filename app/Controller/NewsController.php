@@ -46,7 +46,7 @@ class NewsController extends Controller
     	"content" => "",
      ];
 
-	$this->show("news/NewsView", ['connectLinkChoice' => false, "articleList" => $listArticles, "showArticleData" => $article[0]]);
+	$this->show("news/NewsView", ['connectLinkChoice' => true, "articleList" => $listArticles, "showArticleData" => $article[0]]);
 
 	}
 
@@ -119,7 +119,7 @@ class NewsController extends Controller
 					if(isset($_FILES['news_files_input'])) {
 						// boucle pour examiner chaque input file
 						for($i = 0;$i < count($_FILES['news_files_input']['name']); $i++) {
-							// récupère les données des fichiers		
+							// récupère les données des fichiers
 							$fileData = array(
 								"name" => $_FILES['news_files_input']['name'][$i],
 								"type" => $_FILES['news_files_input']['type'][$i],
@@ -136,11 +136,11 @@ class NewsController extends Controller
 								if(filesize($fileData["tmp_name"])!=false) {
 									//Image conforme aux formats d'image autorisés
 									if(in_array(strrchr($fileData['name'], '.'), $imgExt)) {
-										
+
 										// Récupère l'ID de l'article qui vient d'etre créé
 										$FileCreated = new NewsModel();
 										$FileCreatedId = $FileCreated ->lastInsertId();
-										
+
 										// création d'un dossier pour l'article (nom du dossier correspondant à l'ID de l'article)
 										$dossier = $imgTargetDir.$fileCreatedId['id'];
 										if(!is_dir($dossier)){	mkdir($dossier); }

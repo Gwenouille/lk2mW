@@ -392,6 +392,10 @@ Responsive de Fabrication Additive
   border-color: #d9e767;
 }
 
+.table_tarifs thead th {
+  text-align: center;
+}
+
 .light_blue {
   color: #4fbec6;
 }

@@ -22,23 +22,24 @@
 	**************************************************************** */
 
 .newsEditListArticle .newsEditListing ul {
-	list-style: none;
+  list-style: none;
 }
 
 .newsEditListArticle .newsEditListing ul li {
-	display:flex;
-	padding:5px;
-	border:1px solid black;
+  background-color: white;
+  display: flex;
+  padding: 5px;
+  border: 1px solid black;
 }
 
 .newsEditListArticle input[value="Créer"] {
-	display:block;
-	margin-left:auto;
+  display: block;
+  margin-left: auto;
 }
 
 .newsListContent {
-	flex:1;
-	padding : 10px;
+  flex: 1;
+  padding: 10px;
 }
 
 .newsListContent h2 + p {
