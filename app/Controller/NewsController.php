@@ -122,7 +122,7 @@ class NewsController extends Controller
 				} else {
 
 		 			// S'il y a des fichiers et pas d'erreur dans la création de l'article
-					if(isset($_FILES['news_files_input'])) {
+					if(isset($_FILES['news_files_input']['size']) && ($_FILES['news_files_input']['size']=='0')) {
 
 						// boucle pour examiner chaque input file
 						for($i = 0;$i < count($_FILES['news_files_input']['name']); $i++) {
