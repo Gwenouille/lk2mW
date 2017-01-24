@@ -47,7 +47,7 @@ $(function(){
 	});
 
 	list.on("change",'.newsCheckbox',function(e) {
-		var data= {
+		var data = {
 			'id':$(this).attr('id'),
 			'state':$(this).prop('checked')
 		};

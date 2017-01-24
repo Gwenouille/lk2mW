@@ -27,8 +27,7 @@ class NewsController extends Controller
 	}
 
 	// création/modification d'une news
-	public function edit()
-	{
+	public function edit() {
     // cette page n'est accessible qu'à l'admin ou superadmin
     $this-> AllowTo(['1','2']);
 
@@ -121,7 +120,7 @@ class NewsController extends Controller
 				} else {
 
 		 			// S'il y a des fichiers et pas d'erreur dans la création de l'article
-					if(isset($_FILES['news_files_input']['size']) && ($_FILES['news_files_input']['size']=='0')) {
+					if(isset($_FILES['news_files_input']['size']) && ($_FILES['news_files_input']['size']!='0')) {
 
 						// boucle pour examiner chaque input file
 						for($i = 0;$i < count($_FILES['news_files_input']['name']); $i++) {
