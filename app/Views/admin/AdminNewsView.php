@@ -60,6 +60,7 @@
 				<div class="news_file">
 					<label for="news_files_title">Illustrations</label>
 					<div class="news_error"></div>
+					<input type='file' name='news_files_input[]' multiple>
 				</div>
 				<div class="news_file_preview"></div>
 				<div class="news_content">

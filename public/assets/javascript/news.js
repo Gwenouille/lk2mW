@@ -114,8 +114,7 @@ $(function(){
 	// clic sur le bouton créer
 	$("#creationButton").on("click",function() {
 		emptyHide();
-		$(".news_file").empty();
-		$(".news_file").append("<input type='file' name='news_files_input[]' multiple>");
+
 		// affichage du formulaire à droite
 		$(".newsEditShowArticle").show();
 		// affichage du titre (modification)
@@ -128,7 +127,5 @@ $(function(){
 		$("#news_article_title").val("");
 		tinyMCE.get('news_content_title').setContent("");
 	});
-
-
 
 })

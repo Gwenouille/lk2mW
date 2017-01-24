@@ -29,7 +29,6 @@ class NewsController extends Controller
 	// création/modification d'une news
 	public function edit()
 	{
-
     // cette page n'est accessible qu'à l'admin ou superadmin
     $this-> AllowTo(['1','2']);
 
