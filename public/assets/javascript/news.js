@@ -47,19 +47,14 @@ $(function(){
 	});
 
 	list.on("change",'.newsCheckbox',function(e) {
-
 		var data= {
 			'id':$(this).attr('id'),
 			'state':$(this).prop('checked')
 		};
-		console.log(data);
 		$.ajax({
 			url: "news/newsToggleCheckbox",
 			type: "post",
-			data: data,
-			success: function(){
-				console.log('CHECKBOX SUCCESS MIRACLE DRAGON FLYAWAY PINBALL STAR');
-			}
+			data: data
 		});
 	});
 

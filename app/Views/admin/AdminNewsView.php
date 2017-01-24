@@ -14,7 +14,7 @@
 <main class="newsEditMain">
 	<section class="newsEditListArticle">
     <span class="confirmMsg"></span>
-		<input type="button" value="Créer" name="news_creation" id="creationButton">
+
 		<div class="newsEditListing">
 			<?php if(!empty($articleList)): ?>
 				<ul id="list">
@@ -49,6 +49,7 @@
 	</section>
 	<section class="newsEditShowArticle">
 		<h2>Création d'un article</h2>
+		<input type="button" value="Créer un nouvel article" name="news_creation" id="creationButton">
 		<div class="news">
 			<div class="news_error"></div>
 			<form enctype="multipart/form-data" id="news_form" name="news_form" method="post" class="form_news" action="<?= $this->url("news_newsAjaxModify"); ?>">
@@ -68,7 +69,9 @@
 					<div class="news_error"></div>
 					<textarea id="news_content_title" name="news_content" placeholder="Mon contenu"></textarea>
 				</div>
-	      <div class="news_input_button"></div>
+	      <div class="news_input_button">
+					<input type="submit" name="news_submit" value="Créer">
+				</div>
 			</form>
 		</div>
 	</section>
