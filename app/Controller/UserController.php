@@ -17,7 +17,7 @@ class UserController extends Controller
     // si utilisateur connecté, redirige vers la page utilisateur
     if(!is_null($userLog ->getLoggedUser())) { $this->redirectToRoute('user_home'); }
     // Pas de post ou un post mais pas du formulaire "connexion" donc affichage de la page par défaut du login
-    else if(!isset($_POST['form_name']) || (isset($_POST['form_name']) && $_POST['form_name'] !== 'connection')) { $this->show("user/SignInView"); }
+    else if(!isset($_POST['form_name']) || (isset($_POST['form_name']) && $_POST['form_name'] !== 'connection')) { $this->show("default/SignInView"); }
     // utilisateur non connecté et un post du formulaire de connexion
     else {
         // prépare et envoie les données au modèle pour vérification
@@ -32,7 +32,7 @@ class UserController extends Controller
         // pas d'erreur lors de la connexion donc renvoi vers la page utilisateur
         if(is_null($errors)) { $this->redirectToRoute('user_home'); }
         // retourne les erreurs à la page par défaut de la connexion
-        else { $this->show("user/SignInView",['errorLogin'=>$errors]); }
+        else { $this->show("default/SignInView",['errorLogin'=>$errors]); }
     }
 	}
 
@@ -43,7 +43,7 @@ class UserController extends Controller
     // l'utilisateur est connecté
     if(!is_null($userLog ->getLoggedUser())) {
         $userLog->logUserOut();
-        $this->show("user/SignInView",["deconnection" => true,"connectLinkChoice" => true]);
+        $this->show("default/SignInView",["deconnection" => true,"connectLinkChoice" => true]);
     } else {
         $this->redirectToRoute('user_login');
     }
@@ -56,7 +56,7 @@ class UserController extends Controller
     // si utilisateur connecté, redirige vers la page utilisateur
     if(!is_null($userLog ->getLoggedUser())) { $this->redirectToRoute('user_home'); }
     // Pas de post ou un post mais pas du formulaire "inscription" donc affichage de la page par défaut de l'inscription
-    else if (!isset($_POST['form_name']) || (isset($_POST['form_name']) && $_POST['form_name'] !== 'signIn')) { $this->show("user/SignInView"); }
+    else if (!isset($_POST['form_name']) || (isset($_POST['form_name']) && $_POST['form_name'] !== 'signIn')) { $this->show("default/SignInView"); }
     else {
         // prépare et envoie les données au modèle pour vérification
         $userData = array(
@@ -70,9 +70,9 @@ class UserController extends Controller
         $userLog = new UserModel();
         $errors = $userLog -> signIn($userData);
         // pas d'erreur lors de l'inscription donc renvoi vers la view d'inscription avec la donnée de réussite d'inscription
-        if(is_null($errors)) { $this->show("user/SignInView",['successSignIn'=>true]); }
+        if(is_null($errors)) { $this->show("default/SignInView",['successSignIn'=>true]); }
         // Erreur lors de l'inscription donc renvoi vers la view d'inscription avec la donnée des erreurs
-        else { $this -> show("user/SignInView",['errorSignIn'=>$errors]); }
+        else { $this -> show("default/SignInView",['errorSignIn'=>$errors]); }
     }
   }
 
@@ -83,7 +83,7 @@ class UserController extends Controller
 
     $userGrant = new AuthorizationModel();
     if($userGrant->isGranted('1') || $userGrant->isGranted('2')) { // l'utilisateur connecté est un (super-)administrateur donc redirige vers la view admin
-       $this->show("user/AdminView",['connectLinkChoice' => true]);
+       $this->show("admin/AdminView",['connectLinkChoice' => true]);
     } else {    // l'utilisateur connecté est un simple membre donc redirige vers la view utilisateur simple
        $this->show("user/UserView",['connectLinkChoice' => true]);
     }
@@ -98,7 +98,7 @@ class UserController extends Controller
 			{$this->redirectToRoute('user_home');}
     // Pas de post ou un post mais pas du formulaire "modifycoordinates" donc affichage de la page par défaut de l'inscription
     else if (!isset($_POST['form_name']) || (isset($_POST['form_name']) && $_POST['form_name'] !== 'modifyCoordinates'))
-			{$this->show("user/SignInView");}
+			{$this->show("default/SignInView");}
 
     else {
         // prépare et envoie les données au modèle pour modification

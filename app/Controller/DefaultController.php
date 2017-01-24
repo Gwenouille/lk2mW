@@ -12,7 +12,7 @@ class DefaultController extends Controller
 	 */
 	public function home()
 	{
-		$this->show("default/home", ['connectLinkChoice' => false]);
+		$this->show("default/Home", ['connectLinkChoice' => false]);
 	}
 
 	/**
@@ -30,7 +30,7 @@ class DefaultController extends Controller
 	public function news()
 	{
 		var_dump('News');
-		$this->show("default/home", ['connectLinkChoice' => false]);
+		$this->show("default/Home", ['connectLinkChoice' => false]);
 	}
 
 }

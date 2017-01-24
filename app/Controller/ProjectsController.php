@@ -33,7 +33,7 @@ class ProjectsController extends Controller
 		$messages = $message -> search(array('users_id'=>$user_id, 'to_users_id'=>$user_id));
 
 		//Passage de ces arguments à la view
-		$this -> show("projects/home", ['connectLinkChoice' => true,'projectsList' => $listOfProjects,'messages' => $messages]);
+		$this -> show("user/UserProjectsView", ['connectLinkChoice' => true,'projectsList' => $listOfProjects,'messages' => $messages]);
 	}
 
 

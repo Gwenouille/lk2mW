@@ -13,7 +13,7 @@ class NewsController extends Controller
 	// affichage de la liste des news
 	public function home()
 	{
-	$this->show("news/NewsView", ['connectLinkChoice' => false]);
+	$this->show("admin/AdminNewsView", ['connectLinkChoice' => false]);
 	}
 
 	// affichage d'une news particulière
@@ -22,7 +22,7 @@ class NewsController extends Controller
     var_dump($id);
     $newsList = new NewsModel();
     $list = $newsList -> find($id);
-	$this->show("news/NewsView", ['connectLinkChoice' => false]);
+	$this->show("admin/AdminNewsView", ['connectLinkChoice' => false]);
 	}
 
 	// création/modification d'une news
@@ -46,7 +46,7 @@ class NewsController extends Controller
     	"content" => "",
      ];
 
-	$this->show("news/NewsView", ['connectLinkChoice' => true, "articleList" => $listArticles, "showArticleData" => $article[0]]);
+	$this->show("admin/AdminNewsView", ['connectLinkChoice' => true, "articleList" => $listArticles, "showArticleData" => $article[0]]);
 
 	}
 
