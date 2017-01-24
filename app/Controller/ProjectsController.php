@@ -37,7 +37,8 @@ class ProjectsController extends Controller
 	}
 
 
-	public function sendmsg($to_users='3'){
+	public function sendmsg($to_users_id='3'){
+
 
 		//Récupération du contenu de POST et passage a la moulinette htmlspecialchars
 		$message=htmlspecialchars($_POST['newMessage']);
@@ -45,11 +46,15 @@ class ProjectsController extends Controller
 		//Récupération de l'ID du user en session actuellement
 		$user_id=$_SESSION['user']['id'];
 
+		if ($user_id==='3'){
+			$to_users_id=2;
+		}
+
 		//Création de la chaine de date actuelle
 		$now = date('Y-m-d H:i:s');
 
 		$newMessage = new MessagesModel();
-		$newMessage->init(NULL, $message, $now, $user_id, $to_users);
+		$newMessage->init(NULL, $message, $now, $user_id, $to_users_id);
 
 		$data = array(
 				'content'=>$newMessage->content,
