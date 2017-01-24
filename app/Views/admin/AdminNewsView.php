@@ -11,10 +11,14 @@
 <?php $this->stop('css') ?>
 
 <?php $this->start('main_content') ?>
+<!-- listes des news -->
 <main class="newsEditMain">
 <section class="newsEditListArticle">
+	<h3 class="titleListeNews">Liste de mes articles :</h3>
       <span class="confirmMsg"></span>
-  		<input type="button" value="Créer" name="news_creation" id="creationButton">
+				<div class="buttonCreateNews">
+				<input class="buttonCreateNews" type="button" value="Créer un article" name="news_creation" id="creationButton">
+				</div>
   		<div class="newsEditListing">
   			<?php if(!empty($articleList)): ?>
   				<ul id="list">
@@ -30,12 +34,13 @@
   								<!-- div de la description de l'article -->
   								<div class="newsListContent">
   									<h2><?= $articleList[$key]['title'] ?></h2>
+										<hr>
   									<p>Créé le <?= $articleList[$key]['date_creation'] ?> - Modifié le <?= $articleList[$key]['date_modification'] ?></p>
   									<p><?= $articleList[$key]['content'] ?></p>
   								</div>
   								<!-- div des boutons d'action -->
   								<div class="newsListAction">
-  									<p><input type="submit" name="modifyNews" value="Modifier"></p>
+  									<p><input type="submit" name="modifyNews" value="Modifier l'article"></p>
   									<input type="hidden" value="<?= $articleList[$key]['id'] ?>" name="articleId">
   								</div>
               	</form>

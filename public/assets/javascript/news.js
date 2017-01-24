@@ -12,7 +12,7 @@ $(function(){
 	}
 
 	var list=$('#list');
-	
+
 	// clic sur le bouton modifier
 		list.on("submit",'.form_listArticle',function(e) {
 		e.preventDefault();
@@ -107,8 +107,9 @@ $(function(){
 		// vide les champs du formulaire de droite
 		$("#news_article_title").val("");
 		tinyMCE.get('news_content_title').setContent("");
+		
 	});
 
 
 
-})
+});

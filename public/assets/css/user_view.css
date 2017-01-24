@@ -1,13 +1,13 @@
 .userChoice {
-  margin: 0.5em auto;
-  font-size: 2em;
+  margin: 2em auto;
+  font-size: 1.7em;
   display: flex;
   justify-content: space-around;
   max-width: 20em;
 }
 
 .userChoice_icons {
-  margin-right: 1em;
+  margin-right: 0.5em;
 }
 
 .glyphicon {

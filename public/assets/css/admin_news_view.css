@@ -1,7 +1,18 @@
 	/*   DIV CONTENANT TOUT */
 .newsEditMain {
+	width: 80%;
+	margin: 0 auto;
 	display:flex;
 	margin-top:10px;
+}
+
+.titleListeNews {
+	color: #456789;
+}
+
+.buttonCreateNews {
+	margin: 0.2em 0 0.3em 0;
+	text-align: right;
 }
 
 /* section partie gauche du site */
@@ -17,6 +28,11 @@
 	display:none;
 }
 
+.newsEditListing {
+	border-style: none;
+}
+
+
 /*	****************************************************************
 	 Partie gauche du site : affichage des articles
 	**************************************************************** */
@@ -29,8 +45,9 @@
   background-color: white;
   display: flex;
   padding: 5px;
-  border: 1px solid black;
-}
+  border: 1px solid grey;
+	margin: 1em 0 2em 0;
+}*/
 
 .newsEditListArticle input[value="Créer"] {
   display: block;
@@ -54,6 +71,7 @@
 .newsEditShowArticle h2 {
 	text-align: center;
 	font-size:1.8em;
+	color: #456789;
 }
 
 .newsEditShowArticle .news {
@@ -109,8 +127,6 @@
 	align-self:center;
 	margin-top: 20px;
 	padding: 10px 20px;
-	background: lightblue;
-	border: 1px solid lightblue;
 	font-weight:bold;
 }
 
