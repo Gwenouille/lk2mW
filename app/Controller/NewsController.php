@@ -10,13 +10,13 @@ use \W\Security\AuthentificationModel;
 
 class NewsController extends Controller
 {
-	// affichage de la liste des news
+	// affichage de la liste des news dans la vue idoine
 	public function home()
 	{
-	$this->show("admin/AdminNewsView", ['connectLinkChoice' => false]);
+	$this->show("DMIcontent/NewsView", ['connectLinkChoice' => true]);
 	}
 
-	// affichage d'une news particulière
+	// affichage d'une news particulière TO DO ?
 	public function page($id)
 	{
     var_dump($id);
