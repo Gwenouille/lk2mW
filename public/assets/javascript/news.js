@@ -12,7 +12,7 @@ $(function(){
 	}
 
 	var list=$('#list');
-	
+
 	// clic sur le bouton modifier
 		list.on("submit",'.form_listArticle',function(e) {
 		e.preventDefault();
@@ -46,18 +46,37 @@ $(function(){
 		});
 	});
 
+	list.on("change",'.newsCheckbox',function(e) {
+
+		var data= {
+			'id':$(this).attr('id'),
+			'state':$(this).prop('checked')
+		};
+		console.log(data);
+		$.ajax({
+			url: "news/newsToggleCheckbox",
+			type: "post",
+			data: data,
+			success: function(){
+				console.log('CHECKBOX SUCCESS MIRACLE DRAGON FLYAWAY PINBALL STAR');
+			}
+		});
+	});
+
+
 	// valide le formulaire de droite
 	$("#news_form").on("submit",function(e) {
 		e.preventDefault();
+		var form=document.getElementById('news_form');
+		var data = new FormData(form);
 
-		// var data = new FormData($(this)[0]);
-		var data = $(this).serialize();
 		$.ajax({
 			url: "news/newsModify",
 			type:"post",
 			data: data,
 			dataType:"json",
 			processData:false,
+			contentType:false,
 			success: function(value) {
 				emptyHide();
 				$(".confirmMsg").html(value.formConcern + " effectuée");
@@ -67,6 +86,7 @@ $(function(){
 						type:"post",
 						data: data,
 						dataType:"html",
+						processData:false,
 						success: function(value) {
 							emptyHide();
 							$(".newsEditListing ul").html(value);
@@ -94,8 +114,7 @@ $(function(){
 	// clic sur le bouton créer
 	$("#creationButton").on("click",function() {
 		emptyHide();
-		$(".news_file").empty();
-		$(".news_file").append("<input type='file' name='news_files_input[]' multiple>");
+
 		// affichage du formulaire à droite
 		$(".newsEditShowArticle").show();
 		// affichage du titre (modification)
@@ -108,7 +127,5 @@ $(function(){
 		$("#news_article_title").val("");
 		tinyMCE.get('news_content_title').setContent("");
 	});
-
-
 
 })

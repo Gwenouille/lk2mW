@@ -1,20 +1,20 @@
 	/*   DIV CONTENANT TOUT */
 .newsEditMain {
-	display:flex;
-	margin-top:10px;
+  display: flex;
+  margin-top: 10px;
 }
 
 /* section partie gauche du site */
 .newsEditListArticle {
-	padding:5px;
-	flex:1;
+  padding: 5px;
+  flex: 1;
 }
 
 /* section partie droite du site */
 .newsEditShowArticle {
-	flex:2;
-	padding:5px;
-	display:none;
+  flex: 2;
+  padding: 5px;
+	/*display:none;*/
 }
 
 /*	****************************************************************
