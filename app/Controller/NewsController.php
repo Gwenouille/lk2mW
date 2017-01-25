@@ -258,4 +258,23 @@ class NewsController extends Controller
 		$errorMaj = $majArticle-> update($data,$news_id,true);
 		if($errorMaj == false) { $errors['maj'] = true; }
 	}
+
+	// Bascule de la visibilité d'une news qd on presse le checkbox: changement de state en BDD dans la table news.
+	public function newsToggleImgCheckbox() {
+		$data=$_POST['id'];
+		$data=substr($_POST['id'],11,strlen($data)-11 );
+		$news_id=explode('_',$data)[0];
+		$img_id=explode('_',$data)[1];
+		// die(var_dump($news_id,$img_id));
+
+		if ($_POST['state']==='true'){$state=1;}
+		else {$state=0;}
+
+		$data= array(
+			'state'=>$state
+		);
+		$majImage = new NewsPicturesModel();
+		$errorMaj = $majImage-> update($data,$img_id,true);
+		if($errorMaj == false) { $errors['maj'] = true; }
+	}
 }

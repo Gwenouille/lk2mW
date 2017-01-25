@@ -59,6 +59,19 @@ $(function(){
 		});
 	});
 
+	list.on("change",'.newsImgCheckbox',function(e) {
+		var data = {
+			'id':$(this).attr('id'),
+			'state':$(this).prop('checked')
+		};
+		console.log(data);
+		$.ajax({
+			url: "news/newsToggleImgCheckbox",
+			type: "post",
+			data: data
+		});
+	});
+
 
 	// valide le formulaire de droite
 	$("#news_form").on("submit",function(e) {

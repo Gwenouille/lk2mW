@@ -32,6 +32,9 @@
 				<div class="listNewsContent">
 					<ul id="list">
 						<?php if(!empty($articleList)): ?>
+							<?php
+							//  die(var_dump($articleList[1]['pictures']));
+							 ?>
 	  				<?php foreach ($articleList as $key => $value) :?>
 							<li>
 	              <form action="<?= $this->url("news_edit"); ?>" method="post" class="form_listArticle">
@@ -47,6 +50,22 @@
 										<p>Créé le <?= $articleList[$key]['date_creation'] ?> - Modifié le <?= $articleList[$key]['date_modification'] ?></p>
 										<p><?= $articleList[$key]['content'] ?></p>
 									</div>
+
+									<?php if (!empty($articleList[$key]['pictures'])) :?>
+										<!-- divs des checkboxes des images-->
+										<div class="newsListImgCheckbox">
+										<?php $pictures=$articleList[$key]['pictures'];
+											foreach ($pictures as $key2 => $value2) {
+
+												$bCheck ="";
+												if($pictures[$key2]['state']==!0){
+													$bCheck = "checked";}?>
+												<p><input id="imgcheckbox<?=$articleList[$key]['id']?>_<?=$pictures[$key2]['id']?>" class="newsImgCheckbox" type="checkbox" name="check" <?= $bCheck ?>><?=$pictures[$key2]['real_name']?></p>
+
+											<?php }?>
+									</div>
+									<?php endif ?>
+
 									<!-- div des boutons d'action -->
 									<div class="newsListAction">
 										<p><input type="submit" name="modifyNews" value="Modifier"></p>
