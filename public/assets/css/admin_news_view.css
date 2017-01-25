@@ -1,5 +1,6 @@
 .titleList {
 	color: #456789;
+	display: inline-block;
 }
 
 .buttonCreateNews {
@@ -13,8 +14,6 @@
 
 .newsSection {
   display: flex;
-  /*margin-bottom: 3em;*/
-	border: 1px solid red;
   align-items: stretch;
 }
 
@@ -34,20 +33,14 @@
 /* section partie gauche du site */
 .listNewsContent {
 	overflow-y: scroll;
-	border: 1px solid silver;
-	margin-right: 3em;
+	/*border: 1px solid silver;*/
 	padding: 0.5em;
-	flex-grow: 1;
+	max-height: 600px;
 }
 
 .newsEditListArticle {
-	padding: 5px;
+	padding: 1em 2em;
 	flex: 1;
-	/*display: flex;*/
-	margin-top: 1em;
-	margin-bottom: 3em;
-	align-items: stretch;
-			border: 1px solid green;
 }
 
 .newsEditListArticle .listNewsContent ul {
@@ -69,12 +62,14 @@
 }
 
 .newsListContent {
-  flex: 1;
-  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .newsListContent h2 + p {
-	font-size:0.8em;
+  font-size: 0.8em;
 }
 
 /*	****************************************************************
@@ -84,8 +79,7 @@
 /* section partie droite du site */
 .newsEditShowArticle {
   flex: 2;
-  padding: 5px;
-	border: 1px solid green;
+  padding: 1em 2em;
 }
 
 .newsEditShowArticle h2 {
@@ -95,15 +89,13 @@
 }
 
 .newsEditShowArticle .news {
-	margin:0 auto;
-	max-width:80%;
-	padding:20px;
+	/*max-width: 80%;*/
 	border-radius: 10px;
 }
 
 	/*	Formulaire */
 .newsEditShowArticle .form_news {
-	display:flex;
+	display: flex;
 	flex-direction: column;
 }
 
@@ -112,7 +104,7 @@
 .newsEditShowArticle .news_content,
 .newsEditShowArticle .news_file,
 .newsEditShowArticle .news_file_preview {
-	display:flex;
+	display: flex;
 	flex-direction: column;
 }
 
@@ -126,7 +118,6 @@
 .newsEditShowArticle .news_file label,
 .newsEditShowArticle .news_file_preview label {
 	padding-top:5px;
-	padding-bottom:5px;
 	font-weight:bold;
 	font-size:1.3em;
 }
@@ -139,7 +130,7 @@
 }
 
 .newsEditShowArticle .news_content textarea {
-	min-height:300px;
+	min-height:200px;
 }
 
 	/* bouton submit */
