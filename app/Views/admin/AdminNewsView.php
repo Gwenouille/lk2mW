@@ -30,8 +30,8 @@
 			<h3 class="titleList">Liste des articles :</h3>
 			<div class="listNews">
 				<div class="listNewsContent">
-				<?php if(!empty($articleList)): ?>
 					<ul id="list">
+						<?php if(!empty($articleList)): ?>
 	  				<?php foreach ($articleList as $key => $value) :?>
 							<li>
 	              <form action="<?= $this->url("news_edit"); ?>" method="post" class="form_listArticle">
@@ -55,10 +55,12 @@
 	            	</form>
 							</li>
 						<?php endforeach ?>
+						<?php
+						else :
+							?>
+							<p>Vide</p>
+						<?php endif ?>
 					</ul>
-				<?php else : ?>
-					<p>Vide</p>
-				<?php endif ?>
 				</div>
 			</div>
 		</div>
