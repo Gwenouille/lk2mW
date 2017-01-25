@@ -29,7 +29,7 @@
 	/*display:none;*/
 }
 
-.newsEditListing {
+.listNewsContent {
 	border-style: none;
 }
 
@@ -38,11 +38,11 @@
 	 Partie gauche du site : affichage des articles
 	**************************************************************** */
 
-.newsEditListArticle .newsEditListing ul {
+.newsEditListArticle .listNewsContent ul {
   list-style: none;
 }
 
-.newsEditListArticle .newsEditListing ul li {
+.newsEditListArticle .listNewsContent ul li {
   background-color: white;
   display: flex;
   padding: 5px;

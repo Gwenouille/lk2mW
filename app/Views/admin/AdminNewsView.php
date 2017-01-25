@@ -17,7 +17,7 @@
 	<section class="newsEditListArticle">
     <span class="confirmMsg"></span>
 
-		<div class="newsEditListing">
+		<div class="listNewsContent">
 			<?php if(!empty($articleList)): ?>
 				<ul id="list">
   				<?php foreach ($articleList as $key => $value) :?>
