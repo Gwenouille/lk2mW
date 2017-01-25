@@ -41,7 +41,7 @@
 									<!-- div de la checkbox -->
 									<div class="newsListCheckbox">
 	                	<?php $bCheck ="";
-	                 	if($articleList[$key]['state']==!0) $bCheck = "checked"; ?>
+	                 	if($articleList[$key]['state']!=0) $bCheck = "checked"; ?>
 										En ligne : <input id="checkbox<?=$articleList[$key]['id']?>" class="newsCheckbox" type="checkbox" name="check" <?= $bCheck ?>>
 									</div>
 									<!-- div de la description de l'article -->
@@ -58,7 +58,7 @@
 											foreach ($pictures as $key2 => $value2) {
 
 												$bCheck ="";
-												if($pictures[$key2]['state']==!0){
+												if($pictures[$key2]['state']!=0){
 													$bCheck = "checked";}?>
 												<p><input id="imgcheckbox<?=$articleList[$key]['id']?>_<?=$pictures[$key2]['id']?>" class="newsImgCheckbox" type="checkbox" name="check" <?= $bCheck ?>><?=$pictures[$key2]['real_name']?></p>
 

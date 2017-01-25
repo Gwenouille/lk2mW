@@ -220,19 +220,28 @@ class NewsController extends Controller
 		// Récupération de l'article (content + images) à afficher
 		$newsList = new NewsModel();
 		$articleList = $newsList -> findNewsFromUser($userId,"");
-
 		$refreshData="";
 		foreach ($articleList as $key => $value) {
 			$refreshData .= '<li>';
 			$refreshData .= "<form action='".$this->generateUrl('news_edit')."' method='post' class='form_listArticle'>";
 			$refreshData .= '<div class="newsListCheckbox">';
 			$bCheck ="";
-			if($articleList[$key]['state']==!0) $bCheck = "checked";
+			if($articleList[$key]['state']!=0) $bCheck = "checked";
 			$refreshData .= 'En ligne : <input id="checkbox'.$articleList[$key]['id'].'" class="newsCheckbox" type="checkbox" name="check" '.$bCheck.'>';
 			$refreshData .= '</div><div class="newsListContent">';
 			$refreshData .= '<h2>'.$articleList[$key]['title'].'</h2>';
 			$refreshData .= '<p>Créé le '.$articleList[$key]['date_creation'].' - Modifié le '.$articleList[$key]['date_modification'].'</p>';
 			$refreshData .= '<p>'.$articleList[$key]['content'].'</p></div>';
+			if (!empty($articleList[$key]['pictures'])) {
+				$refreshData .= "<div class='newsListImgCheckbox'>";
+				$pictures = $articleList[$key]['pictures'];
+				foreach ($pictures as $key2 => $value2) {
+					$bCheck2 ="";
+					if($pictures[$key2]['state']!=0)	{	$bCheck2 = "checked"; }
+						$refreshData .= "<p><input id='imgcheckbox'". $articleList[$key]['id'] . "_" . $pictures[$key2]['id'] . " class='newsImgCheckbox' type='checkbox' name='check' ". $bCheck2 .">". $pictures[$key2]['real_name'] . "</p>";
+				}
+				$refreshData .= "</div>";
+			}
 			$refreshData .= '<div class="newsListAction">';
 			$refreshData .= '<p><input type="submit" name="modifyNews" value="Modifier"></p>';
 			$refreshData .= '<input type="hidden" value="'.$articleList[$key]['id'].'" name="articleId">';
