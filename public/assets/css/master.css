@@ -1,7 +1,6 @@
 /* -----------------------------------------------
   Déclaration générales (body, html, polices, etc.)
 ----------------------------------------------- */
-
 h1,
 h2,
 h3,
@@ -44,7 +43,6 @@ body {
 .big {
   font-size: 1.3em;
 }
-
 /* -----------------------------------------------
   LVHA général
 ----------------------------------------------- */
@@ -65,11 +63,9 @@ a:active,
 a:focus {
   text-decoration: underline;
 }
-
 /* -----------------------------------------------
   Un flex vertical est sur la div "page" pour renvoyer le footer au bas de page
 ----------------------------------------------- */
-
 .page {
   background-color: white;
   box-shadow: 0 0 50px #ccc;
@@ -80,11 +76,9 @@ a:focus {
   flex-direction: column;
   min-height: 100vh;
 }
-
 /* -----------------------------------------------
   Section <section> imposée par le framework
 ----------------------------------------------- */
-
 .section {
   background-image: url("../logos/LB.png"), url("../logos/etoileFA.png");
   background-repeat: no-repeat;
@@ -94,11 +88,9 @@ a:focus {
   flex-direction: column;
   flex: 1;
 }
-
 /* -----------------------------------------------
   Section main centrale
 ----------------------------------------------- */
-
 .main {
   width: 80%;
   margin: 0 auto;
@@ -117,11 +109,9 @@ a:focus {
 .titre_service img {
   margin-right: 1em;
 }
-
 /* -----------------------------------------------
   Responsive section centrale
 ----------------------------------------------- */
-
 @media (max-width: 600px) {
   .main {
     width: 100%;
@@ -142,15 +132,12 @@ a:focus {
     background-image: none;
   }
 }
-
 /* -----------------------------------------------
   Page Accueil
 ----------------------------------------------- */
-
 /* -----------------------------------------------
   Logo central et cercle de liens pour le site desktop
 ----------------------------------------------- */
-
 .star_wrapper {
   margin: 2em;
   height: 500px;
@@ -247,23 +234,19 @@ a:focus {
   top: -67px;
   left: 236px;
 }
-
 /* -----------------------------------------------
 Responsive du cercle de liens
 ----------------------------------------------- */
-
 @media (max-width: 600px) {
-  .star_wrapper,
   .logo,
-  .periph {
+  .periph,
+  .star_wrapper {
     display: none;
   }
 }
-
 /* -----------------------------------------------
   Les partenaires
 ----------------------------------------------- */
-
 .partenaires {
   padding: 10px 0;
   display: flex;
@@ -273,11 +256,9 @@ Responsive du cercle de liens
 .partenaires img {
   height: 40px;
 }
-
 /* -----------------------------------------------
   Page Fabrication Additive
 ----------------------------------------------- */
-
 .main-fabrication {
   margin: 0 auto;
 }
@@ -323,7 +304,6 @@ Responsive du cercle de liens
   margin-bottom: 1.5em;
   font-size: 1em;
 }
-
 /* Section Formation et Conception */
 .asterix {
   color: red;
@@ -334,16 +314,13 @@ Responsive du cercle de liens
   font-size: 12px;
   padding-left: 8px;
 }
-
 /* Section Design 3D */
 .imprimante-3d {
   padding-left: 2em;
 }
-
 /* ---------------------------------
 Responsive de Fabrication Additive
 ----------------------------------- */
-
 @media (max-width: 600px) {
   .content-section {
     flex-direction: column;
@@ -364,21 +341,17 @@ Responsive de Fabrication Additive
     margin: 0 auto 1em;
   }
 }
-
 /* -----------------------------------------------
   CSS de la carte de l'accueil
 ----------------------------------------------- */
-
 /* .carte {
   width: 415px;
   height: 232px;
   margin: 0 auto;
 } */
-
 /* -----------------------------------------------
   Le CSS du tableau de la page formation
 ----------------------------------------------- */
-
 .table_tarifs {
   width: 100%;
   text-align: center;
@@ -403,12 +376,9 @@ Responsive de Fabrication Additive
 .middle_blue {
   color: #3e7c8c;
 }
-
-
 /* --------------------------------------------
 CSS de la page Se Connecter / S'inscrire
 -------------------------------------------- */
-
 .main-login {
   display: flex;
   justify-content: space-around;
@@ -419,7 +389,8 @@ CSS de la page Se Connecter / S'inscrire
 .main-login_inscription {
   /*border: 1px solid rgba(101, 101, 101, 0.25);*/
   flex-grow: 1;
-  margin: 12%;/* 10 ? */
+  margin: 12%;
+  /* 10 ? */
 }
 
 .form-connexion,
@@ -463,9 +434,30 @@ input {
 .input-submit:active {
   transform: scale(0.9);
 }
-
 @media (max-width: 600px) {
   .main-login {
     flex-direction: column;
+  }
+}
+/* -------------------------------------
+    CSS de la partie "Contactez-noys"
+--------------------------------------*/
+.main-content {
+  display: flex;
+  justify-content: space-around;
+  padding: 25px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width : 800px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .contact {
+    margin: 20px auto;
   }
 }
