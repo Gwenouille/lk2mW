@@ -21,6 +21,7 @@
 		["POST", "/fabrication_additive/admin/news/newsModify", "News#newsModify", "news_newsModify"],
 		["POST", "/fabrication_additive/admin/news/newsAjaxModify", "News#newsAjaxModify", "news_newsAjaxModify"],
 		["POST", "/fabrication_additive/admin/news/newsToggleCheckbox", "News#newsToggleCheckbox", "news_newsToggleCheckbox"],
+		["POST", "/fabrication_additive/admin/news/newsToggleImgCheckbox", "News#newsToggleImgCheckbox", "news_newsToggleImgCheckbox"],
 
 
 		// route pour l'inscription de l'utilisateur
