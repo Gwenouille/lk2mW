@@ -33,8 +33,13 @@ class DefaultController extends Controller
 
 	public function news()
 	{
-		var_dump('News');
 		$this->show("default/Home", ['connectLinkChoice' => false]);
 	}
+
+	public function contact()
+	{
+		$this->show("default/ContactView", ['connectLinkChoice' => false]);
+	}
+
 
 }
