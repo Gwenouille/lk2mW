@@ -38,7 +38,7 @@
           if (empty($newsList[$key]['pictures'])){
             $url="images/news/empty.jpg";
           } else {
-          $url="images/";
+          $url="images/news/";
           $url.=$newsList[$key]['id'];
           $url.="/";
           $url.=$newsList[$key]['pictures'][0]['name'];
