@@ -39,7 +39,6 @@ class ProjectsController extends Controller
 
 	public function sendmsg($to_users_id='3'){
 
-
 		//Récupération du contenu de POST et passage a la moulinette htmlspecialchars
 		$message=htmlspecialchars($_POST['newMessage']);
 

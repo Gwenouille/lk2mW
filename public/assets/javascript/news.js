@@ -84,7 +84,7 @@ $(function(){
 						processData:false,
 						success: function(value) {
 							emptyHide();
-							$(".newsEditListing ul").html(value);
+							$(".listNewsContent ul").html(value);
 							$(".confirmMsg").show();
 						}
 					});

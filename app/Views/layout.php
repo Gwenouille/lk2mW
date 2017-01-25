@@ -41,7 +41,9 @@
 			</div>
 		</header>
 
-<?php echo $w_current_route; ?>
+<?php
+ // echo $w_current_route;
+  ?>
 
 		<nav class='navigation'>
 			<div class='nav-container'>

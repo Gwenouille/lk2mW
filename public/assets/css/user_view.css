@@ -1,5 +1,5 @@
 .userChoice {
-  margin: 2em auto;
+  margin: 1em auto 0;
   font-size: 1.7em;
   display: flex;
   justify-content: space-around;
@@ -15,6 +15,7 @@
 }
 
 .userContent {
+  padding: 2em;
   flex-grow: 1;
 }
 

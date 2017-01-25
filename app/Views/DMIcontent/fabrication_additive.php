@@ -117,7 +117,7 @@
           <h3>DMI propose des imprimantes produisant des pieces de qualité :</h3>
             <p>- Imprimante 3D Projet 5500x</p>
             <p class="imprimante-3d">Multimateriaux</p> <p class="imprimante-3d">Volume de fabrication : 550 x 393 x 300 mm</p>
-
+            
             <p>- Imprimante MarkForged</p>
             <p class="imprimante-3d">Multimateriaux</p> <p class="imprimante-3d">Volume de fabrication : 320 x 132 x 154 mm</p>
           </p>
