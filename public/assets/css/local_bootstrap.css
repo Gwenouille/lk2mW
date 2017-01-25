@@ -6,7 +6,7 @@
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-item img {
+.item img {
   min-width: 320px;
   min-height: 200px;
   max-height: 200px;
