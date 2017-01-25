@@ -20,7 +20,28 @@
 
 	<main class="main">
 
-			<!--La section projects-->
+		<!--La section messages-->
+		<div class="chat">
+			<p><h3 class="blocTitleProject">Mes messages :</h3></p>
+			<ul class="chat_content">
+				<?php	foreach ($messages as $key => $value) :?>
+					<?php $class = ($messages[$key]['users_id']==='3') ? 'chat_users' : 'chat_admin';?>
+					<li>
+						<div class="chat_message <?=$class?>">
+							<p><?= $messages[$key]['content']?></p>
+
+							<p class="chat_date"><?= $messages[$key]['date']?></p>
+						</div>
+					</li>
+				<?php endforeach ?>
+			</ul>
+			<form class="chat_input" action="<?= $this->url("projects_sendmsg"); ?>" method="post">
+				<input class ="chatMessage" type="text" name="newMessage" value="">
+				<button type="submit">Envoyer</button>
+			</form>
+		</div>
+
+		<!--La section projects-->
 		<div class="projectSection">
 
 			<!-- La section liste des projets -->
@@ -68,7 +89,7 @@
 						<label for="detailProject" class="labelProject">
 							Description du projet :
 						</label>
-								<textarea class="formControl" rows="10"></textarea>
+						<textarea class="formControl" rows="10"></textarea>
 
 						<label for="fileProject" class="labelProject">
 							Fichiers joints au projet :
@@ -81,28 +102,8 @@
 					</div>
 				</form>
 			</div>
-		</div>
 
-		<!--La section messages-->
-		<div class="chat">
-			<p><h3 class="blocTitleProject">Mes messages :</h3></p>
-			<ul class="chat_content">
-			<?php	foreach ($messages as $key => $value) :?>
-				<?php $class = ($messages[$key]['users_id']==='3') ? 'chat_users' : 'chat_admin';?>
-				<li>
-					<div class="chat_message <?=$class?>">
-						<p><?= $messages[$key]['content']?></p>
-
-						<p class="chat_date"><?= $messages[$key]['date']?></p>
-					</div>
-				</li>
-			<?php endforeach ?>
-			</ul>
-			<form class="chat_input" action="<?= $this->url("projects_sendmsg"); ?>" method="post">
-				<input class ="chatMessage" type="text" name="newMessage" value="">
-				<button type="submit">Envoyer</button>
-			</form>
-		</div>
+		</div><!--Fin de la section projets-->
 
 	</main>
 

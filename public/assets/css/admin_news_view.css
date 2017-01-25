@@ -1,14 +1,6 @@
-	/*   DIV CONTENANT TOUT */
-.newsEditMain {
-<<<<<<< HEAD
-	width: 80%;
-	margin: 0 auto;
-	display:flex;
-	margin-top:10px;
-}
-
-.titleListeNews {
+.titleList {
 	color: #456789;
+	display: inline-block;
 }
 
 .buttonCreateNews {
@@ -16,39 +8,53 @@
 	text-align: right;
 }
 
-/* section partie gauche du site */
-.newsEditListArticle {
-  padding: 5px;
-  flex: 1;
+/* -----------------------------------------------
+  La section des news
+----------------------------------------------- */
+
+.newsSection {
+  display: flex;
+  align-items: stretch;
 }
 
-/* section partie droite du site */
-.newsEditShowArticle {
-  flex: 2;
-  padding: 5px;
-	/*display:none;*/
-}
-
-.newsEditListing {
-	border-style: none;
-}
-
-
-/*	****************************************************************
+/* ****************************************************************
 	 Partie gauche du site : affichage des articles
 	**************************************************************** */
 
-.newsEditListArticle .newsEditListing ul {
-  list-style: none;
+.listNews {
+	min-width: 23%;
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+	background-color: white;
+
 }
 
-.newsEditListArticle .newsEditListing ul li {
+/* section partie gauche du site */
+.listNewsContent {
+	overflow-y: scroll;
+	/*border: 1px solid silver;*/
+	padding: 0.5em;
+	max-height: 600px;
+}
+
+.newsEditListArticle {
+	padding: 1em 2em;
+	flex: 1;
+}
+
+.newsEditListArticle .listNewsContent ul {
+  list-style: none;
+	padding: 0;
+}
+
+.newsEditListArticle .listNewsContent ul li {
   background-color: white;
   display: flex;
   padding: 5px;
   border: 1px solid grey;
-	margin: 1em 0 2em 0;
-}*/
+  margin: 1em 0 2em;
+}
 
 .newsEditListArticle input[value="Créer"] {
   display: block;
@@ -56,18 +62,25 @@
 }
 
 .newsListContent {
-  flex: 1;
-  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .newsListContent h2 + p {
-	font-size:0.8em;
+  font-size: 0.8em;
 }
-
 
 /*	****************************************************************
 	 Partie droite du site pour création/modification d'articles
 	**************************************************************** */
+
+/* section partie droite du site */
+.newsEditShowArticle {
+  flex: 2;
+  padding: 1em 2em;
+}
 
 .newsEditShowArticle h2 {
 	text-align: center;
@@ -76,15 +89,13 @@
 }
 
 .newsEditShowArticle .news {
-	margin:0 auto;
-	max-width:80%;
-	padding:20px;
+	/*max-width: 80%;*/
 	border-radius: 10px;
 }
 
 	/*	Formulaire */
 .newsEditShowArticle .form_news {
-	display:flex;
+	display: flex;
 	flex-direction: column;
 }
 
@@ -93,7 +104,7 @@
 .newsEditShowArticle .news_content,
 .newsEditShowArticle .news_file,
 .newsEditShowArticle .news_file_preview {
-	display:flex;
+	display: flex;
 	flex-direction: column;
 }
 
@@ -107,7 +118,6 @@
 .newsEditShowArticle .news_file label,
 .newsEditShowArticle .news_file_preview label {
 	padding-top:5px;
-	padding-bottom:5px;
 	font-weight:bold;
 	font-size:1.3em;
 }
@@ -120,7 +130,7 @@
 }
 
 .newsEditShowArticle .news_content textarea {
-	min-height:300px;
+	min-height:200px;
 }
 
 	/* bouton submit */
@@ -141,34 +151,33 @@
 
 	/* div contenant input file+image+bouton supprimer */
 .newsEditShowArticle .news_file_preview .div_area {
-	border:1px solid grey;
-	position:relative;
-	padding-top:10px;
-	padding-bottom:10px;
-	margin-right:5px;
-	width:30%;
-	margin: 5px auto;
+  border: 1px solid grey;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 30%;
+  margin: 5px auto;
 }
 
-	/* bouton supprimer image */
+  /* bouton supprimer image */
 .newsEditShowArticle .file_delete {
-	position:absolute;
-	top:0;
-	right: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-	/* image preview */
+  /* image preview */
 .newsEditShowArticle .news_file_preview .div_area img {
-	align-self:center;
-	max-width:33%;
+  align-self: center;
+  max-width: 33%;
 }
 
 .newsEditShowArticle .news_title .news_error,
 .newsEditShowArticle .news_content .news_error,
 .newsEditShowArticle .news_file .news_error,
 .newsEditShowArticle .news .news_error {
-	display:none;
-	color:red;
+  display: none;
+  color: red;
 }
 
 /*	****************

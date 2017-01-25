@@ -27,17 +27,22 @@
 					<?php
 						$pictures=$newsList[$key]['pictures'];
 						foreach ($pictures as $key2=>$value2) {
-							$url="images/news/";
-							$url.=$newsList[$key]['id'];
-							$url.="/";
-							$url.=$pictures[$key2]['name'];
-							$url.=".";
-							$url.=$pictures[$key2]['type'];
-					?>
+							if ($pictures[$key2]['state']=='1'){
+
+								$url="images/news/";
+								$url.=$newsList[$key]['id'];
+								$url.="/";
+								$url.=$pictures[$key2]['name'];
+								$url.=".";
+								$url.=$pictures[$key2]['type'];?>
+
 					<div class="img_content">
 						<img src="<?= $this->assetUrl($url); ?>" alt="">
 					</div>
-					<?php } ?>
+
+							<?php
+							}
+				 		} ?>
 					<p><?=$newsList[$key]['content']?>
 					</p>
 	      </div>
