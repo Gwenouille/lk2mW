@@ -62,8 +62,7 @@
 		<footer>
 			<p>&copy;LK2M - 2017</p>
 			<address class="adresse">
-				DMI Digital Manufacture et Innovation :
-				6&#x2011;10&nbsp;Rue&nbsp;Verdier&nbsp;Monetti&nbsp;76880&nbsp;Arques&#x2011;la&#x2011;Bataille
+				<a class="adresse" href="<?=$this->url("default_contact")?>"><h4>Contactez-nous</h4></a>
 			</address>
 			<address class="adresse">
 				Coordonnées GPS :
@@ -74,7 +73,8 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<!-- PERMET D'AJOUTER DES JS ICI -->
 	<?= $this->section('js') ?>
 

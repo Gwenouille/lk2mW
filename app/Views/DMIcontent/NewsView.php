@@ -27,7 +27,7 @@
 					<?php
 						$pictures=$newsList[$key]['pictures'];
 						foreach ($pictures as $key2=>$value2) {
-							$url="images/";
+							$url="images/news/";
 							$url.=$newsList[$key]['id'];
 							$url.="/";
 							$url.=$pictures[$key2]['name'];

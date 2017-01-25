@@ -4,6 +4,9 @@
 		//Route de la page du site par défaut
 		['GET', '/', 'Default#home', 'default_home'],
 
+		//Route de la page contactez-nous
+		['GET', '/', 'Default#contact', 'default_contact'],
+
 		// Affichage de la page des news
 		["GET|POST", "/fabrication_additive/news/", "News#home", "news_home"],
 
