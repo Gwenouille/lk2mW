@@ -16,7 +16,7 @@ class NewsController extends Controller
 	{
 		$news = new NewsModel();
 		$newsList=$news->findNewsFromUser(3); //3 is admin...
-		// die(var_dump($newsList));
+
 		$this->show("DMIcontent/NewsView", ['connectLinkChoice' => true, 'newsList' => $newsList]);
 	}
 
