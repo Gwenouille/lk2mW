@@ -275,6 +275,19 @@ Responsive du cercle de liens
 }
 
 /* -----------------------------------------------
+Responsive des logos partenaires
+----------------------------------------------- */
+
+@media (max-width: 600px) {
+  .partenaires {
+    align-items: center;
+    max-width: 400px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+}
+
+/* -----------------------------------------------
   Page Fabrication Additive
 ----------------------------------------------- */
 
