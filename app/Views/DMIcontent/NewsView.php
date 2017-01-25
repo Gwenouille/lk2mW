@@ -34,9 +34,12 @@
 							$url.=".";
 							$url.=$pictures[$key2]['type'];
 					?>
-						<img src="<?= $this->assetUrl($url)?>" alt="">
+					<div class="img_content">
+						<img src="<?= $this->assetUrl($url); ?>" alt="">
+					</div>
 					<?php } ?>
-					<p><?=$newsList[$key]['content']?></p>
+					<p><?=$newsList[$key]['content']?>
+					</p>
 	      </div>
 	  </div>
 
