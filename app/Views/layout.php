@@ -62,8 +62,7 @@
 		<footer>
 			<p>&copy;LK2M - 2017</p>
 			<address class="adresse">
-				DMI Digital Manufacture et Innovation :
-				6&#x2011;10&nbsp;Rue&nbsp;Verdier&nbsp;Monetti&nbsp;76880&nbsp;Arques&#x2011;la&#x2011;Bataille
+				<a class="adresse" href="<?=$this->url("default_contact")?>"><h4>Contactez-nous</h4></a>
 			</address>
 			<address class="adresse">
 				Coordonnées GPS :
