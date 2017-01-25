@@ -29,21 +29,26 @@
       </ol>
 
       <div class="carousel-inner" role="listbox">
+      <?php $var=null; ?>
       <?php foreach ($newsList as $key=>$value) {
-        if ($newsList[$key]['state']==='1'){?>
 
-        <div class="item <?php if($key==0){echo('active');}?>">
+        if ($newsList[$key]['state']==='1'){?>
+          <?php if(is_null($var)){$var=$key;}?>
+        <div class="item <?php if($var===$key){echo('active');}?>">
           <?php
           // S'il n'y a pas d'image dans cette news, on renvoie l'image noire.
           if (empty($newsList[$key]['pictures'])){
             $url="images/news/empty.jpg";
           } else {
-          $url="images/news/";
-          $url.=$newsList[$key]['id'];
-          $url.="/";
-          $url.=$newsList[$key]['pictures'][0]['name'];
-          $url.=".";
-          $url.=$newsList[$key]['pictures'][0]['type'];
+            $url="images/news/";
+            $url.=$newsList[$key]['id'];
+            $url.="/";
+            $url.=$newsList[$key]['pictures'][0]['name'];
+            $url.=".";
+            $url.=$newsList[$key]['pictures'][0]['type'];
+            if ($newsList[$key]['pictures'][0]['state']=='1'){
+              $url="images/news/empty.jpg";
+            }
           }
           ?>
           <img src="<?= $this->assetUrl($url); ?>" alt="First slide">
@@ -117,7 +122,7 @@
           <h3>DMI propose des imprimantes produisant des pieces de qualité :</h3>
             <p>- Imprimante 3D Projet 5500x</p>
             <p class="imprimante-3d">Multimateriaux</p> <p class="imprimante-3d">Volume de fabrication : 550 x 393 x 300 mm</p>
-            
+
             <p>- Imprimante MarkForged</p>
             <p class="imprimante-3d">Multimateriaux</p> <p class="imprimante-3d">Volume de fabrication : 320 x 132 x 154 mm</p>
           </p>
