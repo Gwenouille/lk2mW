@@ -19,6 +19,7 @@
 	<a class="userChoice_icons" href="<?= $this->url("news_edit"); ?>"><span class="glyphicon glyphicon-globe"></span>NEWS</a>
 </div>
 
+
 <main class="main">
 
 	<!--La section news-->
@@ -60,7 +61,6 @@
 				<?php endif ?>
 				</div>
 			</div>
-
 		</div>
 
 		<!-- La section visualisation/édition des news -->
