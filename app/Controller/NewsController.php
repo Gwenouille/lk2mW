@@ -237,6 +237,7 @@ class NewsController extends Controller
 				$pictures = $articleList[$key]['pictures'];
 				foreach ($pictures as $key2 => $value2) {
 					$bCheck2 ="";
+					// var_dump($pictures[$key2]['state']);
 					if($pictures[$key2]['state']!=0)	{	$bCheck2 = "checked"; }
 						$refreshData .= "<p><input id='imgcheckbox'". $articleList[$key]['id'] . "_" . $pictures[$key2]['id'] . " class='newsImgCheckbox' type='checkbox' name='check' ". $bCheck2 .">". $pictures[$key2]['real_name'] . "</p>";
 				}

@@ -48,7 +48,7 @@
 
 		// envoi d'un message sur le chat
 		["GET|POST", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],
-
+		["POST", "/fabrication_additive/projects/reloadmsg", "Projects#reloadmsg", "projects_reloadmsg"],
 		// Affichage/modification d'UN projet en vue de la modification éventuelle: en fonction du $_POST ou du $_GET on appelle telle ou telle methode
 		["GET|POST", "/fabrication_additive/projects/[:id]", "Projects#edit", "projects_edit"],
 
