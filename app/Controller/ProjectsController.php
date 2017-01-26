@@ -44,9 +44,8 @@ class ProjectsController extends Controller
 
 		//Récupération de l'ID du user en session actuellement
 		$user_id=$_SESSION['user']['id'];
-
-		if ($user_id==='3'){
-			$to_users_id=2;
+		if ($user_id=='3'){
+			$to_users_id=$_SESSION['to_user']['to_users_id'];
 		}
 
 		//Création de la chaine de date actuelle
@@ -64,7 +63,37 @@ class ProjectsController extends Controller
 		//insertion dudit message en BDD
 		$newMessage -> insert($data);
 
-		$this->redirectToRoute('projects_home');
+		//Récupération des messages le concernant
+		$message = new MessagesModel();
+		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
+
+		$this->showJson(["Success" =>true]);
 	}
 
+
+	public function reloadmsg($to_users_id='3') {
+
+		//Récupération de l'ID du user en session actuellement
+		$user_id=$_SESSION['user']['id'];
+		if ($user_id=='3'){
+			$to_users_id=$_SESSION['to_user']['to_users_id'];
+		}
+
+		//Récupération des messages le concernant
+		$message = new MessagesModel();
+		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
+
+		$newChat ="";
+		foreach ($messages as $key => $value) {
+			$class = ($messages[$key]['users_id']!=='3') ? 'chat_users' : 'chat_admin';
+			$newChat .= "<li>";
+			$newChat .= "<div class='chat_message ". $class."'>";
+			$newChat .= "<p>".$messages[$key]['content']."</p>";
+			$newChat .= "<p class='chat_date'>".$messages[$key]['date']."</p>";
+			$newChat .= "</div>";
+			$newChat .= "</li>";
+		}
+
+		$this->showJson(["Success" =>true,'reloadChat' => $newChat]);
+	}
 }
