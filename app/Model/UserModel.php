@@ -9,6 +9,20 @@ use \W\Security\AuthentificationModel;
 
 class UserModel extends UsersModel {
 
+  /**
+	 * Récupère tous les users dont le statut est confirmé.
+	 */
+	public function findAllConfirmedMembers()
+	{
+		$sql = 'SELECT * FROM ' . $this -> table;
+
+		$sql .= ' WHERE state = 1 and roles_id = 3';
+
+		$sth = $this -> dbh -> prepare($sql);
+		$sth -> execute();
+
+		return $sth -> fetchAll();
+	}
 
   public function login(array $data) {
 
