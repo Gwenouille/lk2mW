@@ -1,22 +1,14 @@
 $(function(){
 
 
-  var clkBtn = "";
-  $('input[type="submit"]').click(function(evt) { clkBtn = evt.target.id;  });
-
-  // $("#modifyProject").hide();
   var list = $('.project');
 
   // clic sur le bouton de visualisation du projet
   list.on("click",'.glyphicon',function(e) {
-    //$("#modifyProject").show();
-    //$("#createProject").attr({"type":"button"});
-    //$("#createProject").empty();
-    //$("#createProject").html("Vider le formulaire");
 
     var data = { 'id':$(this).attr('id') };
     $.ajax({
-      url: "ProjectsShow",
+      url: "projectsShow",
       type: "post",
       data: data,
       success: function(value) {
@@ -31,10 +23,17 @@ $(function(){
 
   // clic sur le bouton créer
   $(".detailProject").on("submit",function(e) {
-    var btnID = clkBtn;
     e.preventDefault();
-    console.log(btnID);
-    var data = $(this).serialize();
+    var buttonActive = $(document.activeElement).attr('id');
+    var data = $(this).serialize() + "&action=" + buttonActive;
+    $.ajax({
+      url: "projectsModify",
+      type: "post",
+      data: data,
+      success: function(value) {
+      }
+    });
+
 
   });
 

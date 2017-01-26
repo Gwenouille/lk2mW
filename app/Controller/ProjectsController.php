@@ -7,6 +7,7 @@ use Model\ProjectsModel;
 use Model\FilesModel;
 use Model\MessagesModel;
 use W\Model\Model;
+use \W\Model\ConnectionModel;
 
 class ProjectsController extends Controller
 {
@@ -38,7 +39,7 @@ class ProjectsController extends Controller
 	}
 
 
-	public function ProjectsShow() {
+	public function projectsShow() {
 		$projectId=substr($_POST['id'],9,strlen($_POST['id'])-9 );
 
 		$projectModel = new ProjectsModel();
@@ -46,6 +47,71 @@ class ProjectsController extends Controller
 
 		$this->showJson(["Success" => true,"projectData" => $projectData ]);
 	}
+
+	public function projectsModify() {
+
+				// Vérifie que le champ du titre de l'article est bien rempli
+		if(isset($_POST['titleProject']) && empty($_POST['titleProject'])) {
+			$errors['title'] = true;
+		}
+
+		// Vérifie que le champ du textarea est bien rempli
+		if(isset($_POST['contentProject']) && empty($_POST['contentProject'])) {
+			$errors['content'] = true;
+		}
+
+		// fait la différence entre modification et création
+		if(isset($_POST['action']) && $_POST['action']==='modifyProject') {
+			$actionProject = "modification";
+		} else  {
+			$actionProject = "creation";
+		}
+
+		// // les champs sont bien remplis
+		if(!isset($errors)) {
+			$modelProject = new ProjectsModel();
+			// si on effectue une mise à jour
+			if($actionProject === 'modification') {
+				// prépare les données qui seront mises en BDD
+				$dataProject = array(
+					"name" => htmlentities($_POST['titleProject']),
+					"description" => htmlentities($_POST['contentProject']),
+      			);
+				// mise à jour des données en BDD
+				$updateProject = $modelProject-> update($dataProject,$_POST['idProject'],true);
+				if($updateProject == false) {
+					$errors['update'] = true;
+				}
+		 	} else { 
+				// création d'un article dans la table projects
+				$user_id=$_SESSION['user']['id'];
+
+				$dataProject = array(
+					"name" => htmlentities($_POST['titleProject']),
+					"description" => htmlentities($_POST['contentProject']),
+					"date" => date('Y-m-d H:i:s'),
+    			);
+				$createProject = $modelProject ->insert($dataProject,true);
+
+				// récupère l'ID deu projet qui vient d'être créé
+				$idProject = $modelProject -> lastInsertId();
+
+				// crée une entrée dans la table projects_has_users pour le projet qui vient d'être créé
+				$sth = 'INSERT INTO projects_has_users(users_id,chief_id) VALUES(:users_id,:chief_id)';
+				$sth = ConnectionModel::getDbh() -> prepare($sth);
+				$sth->bindValue(':users_id', $idProject);
+				$sth->bindValue(':chief_id', $idProject);
+		 		if($createProject == false || !$sth -> execute()) {
+					$errors['creationLiaison'] = true;
+				}
+			}
+
+		} else {  // Si les champs titre et contenu ne sont pas remplis correctement
+			$this->showJson(["actionProject" =>$actionProject, "success"=>false,"errors"=>true,"errorsChamp" => $errors]);
+		}
+
+	}
+
 
 	public function sendmsg($to_users_id='3'){
 
