@@ -9,17 +9,6 @@ use Model\MessagesModel;
 
 class ProjectsController extends Controller
 {
-	public function getProjectsFromUser($user_id){
-		//Récupération des projets à son actif
-		$project = new ProjectsModel();
-		return ($project->findAllProjectsFromUser($user_id));
-	}
-
-	public function getMessagesFromUser($user_id){
-		//Récupération des messages le concernant
-		$message = new MessagesModel();
-		$messages = $message -> search(array('users_id'=>$user_id, 'to_users_id'=>$user_id));
-	}
 
 	/**
 	 * Page d'accueil par défaut
@@ -55,9 +44,8 @@ class ProjectsController extends Controller
 
 		//Récupération de l'ID du user en session actuellement
 		$user_id=$_SESSION['user']['id'];
-
-		if (!$user_id==='3'){
-			$to_users_id=$user_id;
+		if ($user_id=='3'){
+			$to_users_id=$_SESSION['to_user']['to_users_id'];
 		}
 
 		//Création de la chaine de date actuelle
@@ -77,9 +65,9 @@ class ProjectsController extends Controller
 
 		//Récupération des messages le concernant
 		$message = new MessagesModel();
-		$messages = $message -> search(array('users_id'=>$user_id, 'to_users_id'=>$user_id));
+		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
 
-		$this->showJson(["Success" =>true,'reloadChat' => $newChat]);
+		$this->showJson(["Success" =>true]);
 	}
 
 
@@ -87,13 +75,13 @@ class ProjectsController extends Controller
 
 		//Récupération de l'ID du user en session actuellement
 		$user_id=$_SESSION['user']['id'];
-		if (!$user_id==='3'){
-			$to_users_id=$user_id;
+		if ($user_id=='3'){
+			$to_users_id=$_SESSION['to_user']['to_users_id'];
 		}
 
 		//Récupération des messages le concernant
 		$message = new MessagesModel();
-		$messages = $message -> search(array('users_id'=>$user_id, 'to_users_id'=>$user_id));
+		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
 
 		$newChat ="";
 		foreach ($messages as $key => $value) {

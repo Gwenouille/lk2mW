@@ -62,6 +62,16 @@
 
 		<!-- La section liste des projects des utilisateurs -->
 		<div class="infosUser">
+			<div>
+			<p>Prenom Nom
+			</p>
+			<p>Mail</p>
+			<p>Phone</p>
+		</div>
+			<?php
+			//  var_dump($usersList);
+			 ?>
+
 
 		</div>
 
@@ -74,5 +84,7 @@
 <?php $this->start('js') ?>
   	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
   	<script>tinymce.init({ selector:'textarea',plugins: "link" });</script>
-		<script type="text/javascript" src="<?= $this->assetUrl('javascript/news.js') ?>"></script>
+		<script type="text/javascript" src="<?= $this->assetUrl('javascript/chat.js') ?>"></script>
+		<script type="text/javascript" src="<?= $this->assetUrl('javascript/users.js') ?>"></script>
+
 <?php $this->stop('js') ?>

@@ -55,4 +55,22 @@ class MessagesModel extends Model {
       $this -> to_users_id = $arg;
     }
   }
+
+  /**
+   * Effectue une recherche
+   * @param array $data Un tableau associatif des valeurs à rechercher
+   * @return mixed false si erreur, le résultat de la recherche sinon
+   */
+  public function searchMessages(array $search){
+
+    $sql = 'SELECT * FROM ' . $this->table.' WHERE (users_id='.$search['users_id'].' AND to_users_id='.$search['to_users_id'].') OR (users_id='.$search['to_users_id'].' AND to_users_id='.$search['users_id'].')';
+
+    $sth = $this->dbh->prepare($sql);
+
+    if(!$sth->execute()){
+      return false;
+    }
+        return $sth->fetchAll();
+  }
+
 }

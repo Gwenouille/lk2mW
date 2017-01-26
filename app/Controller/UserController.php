@@ -6,12 +6,34 @@ use \W\Security\AuthorizationModel;
 use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
 use Model\UserModel;
+use Model\ProjectsModel;
 
 class UserController extends Controller
 {
 
+	public function getProjectsFromUser($user_id=''){
+		$user_id=$_POST['id'];
+		$user_id=substr($_POST['id'],6,strlen($user_id)-6 );
+
+		//Inscription en session de l'id du user avec lequel l'admin converse
+		$_SESSION['to_user']=array('to_users_id'=>$user_id);
+
+		//Récupération des projets à son actif
+		$project = new ProjectsModel();
+		$this->showJson(["projects" =>$project->findAllProjectsFromUser($user_id)]);
+		// return ($project->findAllProjectsFromUser($user_id));
+	}
+
+	public function getMessagesFromUser($user_id=''){
+		//Récupération des messages le concernant
+		$message = new MessagesModel();
+		return($message->search(array('users_id'=>$user_id, 'to_users_id'=>$user_id)));
+	}
+
 	// récupère la liste des utilisateurs
 	public function showUsers() {
+		unset($_SESSION['to_user']);
+		var_dump($_SESSION);
 
 		// cette page est accessible si on est admin ou superadmin seulement.
 		$this-> AllowTo(['1','2']);

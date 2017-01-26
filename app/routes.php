@@ -25,6 +25,7 @@
 
 		// route vers les controleurs récupérant les requetes Ajax
 		["GET", "/fabrication_additive/admin/user/usersShow", "User#ShowUsers", "user_showUsers"],
+		["POST", "/fabrication_additive/admin/user/getProjects", "User#getProjectsFromUser", "user_getProjectsFromUser"],
 
 
 		// route pour l'inscription de l'utilisateur
