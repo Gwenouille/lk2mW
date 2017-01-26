@@ -13,39 +13,39 @@ $(function(){
 
 	var list=$('#list');
 
-	// Mise à jour des champs de droite sur le clic du bouton modifier d'un article de gauche
-		list.on("submit",'.form_listArticle',function(e) {
-			e.preventDefault();
+// Mise à jour des champs de droite sur le clic du bouton modifier d'un article de gauche
+	list.on("submit",'.form_listArticle',function(e) {
+		e.preventDefault();
 
-			emptyHide();
+		emptyHide();
 
-			// enlève l'input file qui contient des images par celle de l'article qu'on modifie
-			$(".news_file input[type='file']").remove();
-			$(".news_file").append("<input type='file' name='news_files_input[]' multiple>");
+		// enlève l'input file qui contient des images par celle de l'article qu'on modifie
+		$(".news_file input[type='file']").remove();
+		$(".news_file").append("<input type='file' name='news_files_input[]' multiple>");
 
-			// affichage du titre (modification)
-			$(".newsEditShowArticle h2").empty();
-			$(".newsEditShowArticle h2").html("Modification de l'article");
+		// affichage du titre (modification)
+		$(".newsEditShowArticle h2").empty();
+		$(".newsEditShowArticle h2").html("Modification de l'article");
 
-			// affichage du bouton modifier
-			$(".news_input_button").empty();
-			$(".news_input_button").html('<input type="submit" name="news_submit" value="Modifier">');
+		// affichage du bouton modifier
+		$(".news_input_button").empty();
+		$(".news_input_button").html('<input type="submit" name="news_submit" value="Modifier">');
 
-			var data = $(this).serialize();
-			$.ajax({
-				url: "news/newsShow",
-				type:"post",
-				data: data,
-				dataType:"json",
-				success: function(value) {
-					// entre les données de l'article dans les champs
-					$("#news_article_title").val(value.ArticleData['title']);
-					tinyMCE.get('news_content_title').setContent(value.ArticleData['content']);
-					// incorpore l'ID de l'article qui sera changé dans le formulaire
-					$(".news_input_button").append("<input type='hidden' value='"+value.ArticleData['id']+"' name='article_id'>");
-				}
-			});
+		var data = $(this).serialize();
+		$.ajax({
+			url: "news/newsShow",
+			type:"post",
+			data: data,
+			dataType:"json",
+			success: function(value) {
+				// entre les données de l'article dans les champs
+				$("#news_article_title").val(value.ArticleData['title']);
+				tinyMCE.get('news_content_title').setContent(value.ArticleData['content']);
+				// incorpore l'ID de l'article qui sera changé dans le formulaire
+				$(".news_input_button").append("<input type='hidden' value='"+value.ArticleData['id']+"' name='article_id'>");
+			}
 		});
+	});
 
 	list.on("change",'.newsCheckbox',function(e) {
 		var data = {

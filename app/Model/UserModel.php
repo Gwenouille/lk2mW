@@ -15,7 +15,6 @@ class UserModel extends UsersModel {
 	public function findAllConfirmedMembers()
 	{
 		$sql = 'SELECT * FROM ' . $this -> table;
-
 		$sql .= ' WHERE state = 1 and roles_id = 3';
 
 		$sth = $this -> dbh -> prepare($sql);

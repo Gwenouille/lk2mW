@@ -1,0 +1,42 @@
+.titleList {
+	color: #456789;
+	display: inline-block;
+}
+
+.buttonCreateNews {
+	margin: 0.2em 0 0.3em 0;
+	text-align: right;
+}
+
+/* -----------------------------------------------
+  La section des utilisateurs
+----------------------------------------------- */
+
+.usersSection {
+  display: flex;
+  align-items: stretch;
+}
+
+/* ****************************************************************
+	 Partie gauche du site : affichage des utilisateurs
+	**************************************************************** */
+
+.listUsers {
+	min-width: 23%;
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+	background-color: white;
+	border: 1px solid green;
+}
+
+.listUsersContent {
+	overflow-y: scroll;
+	/*border: 1px solid silver;*/
+	padding: 0.5em;
+	max-height: 600px;
+}
+
+/*	****************************************************************
+	 Partie droite du site : affichage des données utilisateurs
+	**************************************************************** */

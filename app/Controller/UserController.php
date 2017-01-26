@@ -10,10 +10,10 @@ use Model\UserModel;
 class UserController extends Controller
 {
 
-	// récupère les données du formulaire de gauche pour les renvoyer vers le formulaire de droite (voir l'article à droite pour le modifier)
+	// récupère la liste des utilisateurs
 	public function showUsers() {
 
-		// cette page est accessible si on est dmin ou superadmin seulement.
+		// cette page est accessible si on est admin ou superadmin seulement.
 		$this-> AllowTo(['1','2']);
 
 		// Récupération de l'ID du user en session actuellement
@@ -24,9 +24,8 @@ class UserController extends Controller
 	  $usersList = new UserModel();
     $listUsers = $usersList -> findAllConfirmedMembers();
 
-		var_dump($listUsers);
-		die();
-		// $this->showJson(["ArticleData"=>$listArticles]);
+		// die(var_dump($listUsers));
+		$this->show("admin/adminUsersView",['usersList'=>$listUsers]);
 	}
 
 	public function login()

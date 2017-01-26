@@ -9,6 +9,17 @@ use Model\MessagesModel;
 
 class ProjectsController extends Controller
 {
+	public function getProjectsFromUser($user_id){
+		//Récupération des projets à son actif
+		$project = new ProjectsModel();
+		return ($project->findAllProjectsFromUser($user_id));
+	}
+
+	public function getMessagesFromUser($user_id){
+		//Récupération des messages le concernant
+		$message = new MessagesModel();
+		$messages = $message -> search(array('users_id'=>$user_id, 'to_users_id'=>$user_id));
+	}
 
 	/**
 	 * Page d'accueil par défaut
