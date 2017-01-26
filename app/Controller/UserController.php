@@ -33,7 +33,6 @@ class UserController extends Controller
 	// récupère la liste des utilisateurs
 	public function showUsers() {
 		unset($_SESSION['to_user']);
-		var_dump($_SESSION);
 
 		// cette page est accessible si on est admin ou superadmin seulement.
 		$this-> AllowTo(['1','2']);
@@ -47,7 +46,7 @@ class UserController extends Controller
     $listUsers = $usersList -> findAllConfirmedMembers();
 
 		// die(var_dump($listUsers));
-		$this->show("admin/adminUsersView",['usersList'=>$listUsers]);
+		$this->show("admin/adminUsersView",['usersList'=>$listUsers,"connectLinkChoice" => true]);
 	}
 
 	public function login()

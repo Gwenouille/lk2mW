@@ -8,7 +8,7 @@
 
 <?php $this->start('css') ?>
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/admin_users_view.css') ?>">
-	<link rel="stylesheet" href="<?= $this->assetUrl('css/user_projects.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/chat.css') ?>">
 <?php $this->stop('css') ?>
 
 <?php $this->start('main_content') ?>
@@ -51,29 +51,84 @@
 		<!-- La section liste des utilisateurs -->
 		<div id="listUsers" class="listUsers">
 			<h3 class="blocTitleProject">Liste des utilisateurs actifs :</h3>
-			<div class="listUsersContent">
+			<ul class="listUsersContent">
 				<?php	foreach ($usersList as $key => $value) :?>
-					<div class="user">
+					<li class="user">
 						<h4><a class="userGlyphicon" id="userID<?=$usersList[$key]['id']?>" href=""><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;<?= $usersList[$key]['firstname'].' '.$usersList[$key]['lastname']?></h4>
-					</div>
+					</li>
 				<?php endforeach ?>
+			</ul>
+		</div>
+
+		<!-- La section infos de l' utilisateur -->
+		<div class="infosUser">
+			<h3 class="blocTitleProject">Infos utilisateur :</h3>
+			<div class=coordinates>
+				<p class="usercoordinate">Prenom Nom</p>
+				<p class="usercoordinate">Mail</p>
+				<p class="usercoordinate">Phone</p>
 			</div>
 		</div>
 
-		<!-- La section liste des projects des utilisateurs -->
-		<div class="infosUser">
-			<div>
-			<p>Prenom Nom
-			</p>
-			<p>Mail</p>
-			<p>Phone</p>
+		<div class="listProject">
+			<h3 class="blocTitleProject">Liste de mes projets :</h3>
+			<div id="listProjectContent" class="listProjectContent">
+
+				<div class="project">
+					<h4>titre</h4>
+					<p><em>20-12-2016</em></p>
+					<p>Ceci est le projet de l'ueser exemple</p>
+					<ul>
+
+								<li>
+									Fichier1.ext
+								</li>
+								<li>
+									Fichier2.ext
+								</li>
+
+					</ul>
+				</div>
+				<div class="project">
+					<h4>titre</h4>
+					<p><em>20-12-2016</em></p>
+					<p>Ceci est le projet de l'ueser exemple</p>
+					<ul>
+
+								<li>
+									Fichier1.ext
+								</li>
+								<li>
+									Fichier2.ext
+								</li>
+
+					</ul>
+				</div>
+				<div class="project">
+					<h4>titre</h4>
+					<p><em>20-12-2016</em></p>
+					<p>Ceci est le projet de l'ueser exemple</p>
+					<ul>
+
+								<li>
+									Fichier1.ext
+								</li>
+								<li>
+									Fichier2.ext
+								</li>
+
+					</ul>
+				</div>
+
+
+			</div>
 		</div>
+
+
 			<?php
 			//  var_dump($usersList);
 			 ?>
 
-
-		</div>
 
 	</div>
 </main>
