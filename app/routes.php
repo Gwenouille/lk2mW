@@ -27,7 +27,6 @@
 		["GET", "/fabrication_additive/admin/user/usersShow", "User#ShowUsers", "user_showUsers"],
 		["POST", "/fabrication_additive/admin/user/getProjects", "User#getProjectsFromUser", "user_getProjectsFromUser"],
 
-
 		// route pour l'inscription de l'utilisateur
 		["GET|POST", "/fabrication_additive/signin","User#signin", "user_signin"],
 
@@ -49,6 +48,8 @@
 
 		// route de l'affichage des projets: demande au modele ProjectsModel de chercher les projets de l'utilisateur, envoie à la view ces projets, un projet vide a creer et le chat
 		["GET", "/fabrication_additive/projects/", "Projects#home", "projects_home"],
+		// route vers les controleurs récupérant les requetes Ajax
+		["POST", "/fabrication_additive/projects/ProjectsShow", "Projects#ProjectsShow", "Projects_Show"],
 
 		// envoi d'un message sur le chat
 		["GET|POST", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],

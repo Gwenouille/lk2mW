@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use Model\ProjectsModel;
 use Model\FilesModel;
 use Model\MessagesModel;
+use W\Model\Model;
 
 class ProjectsController extends Controller
 {
@@ -36,6 +37,15 @@ class ProjectsController extends Controller
 		$this -> show("user/UserProjectsView", ['connectLinkChoice' => true,'projectsList' => $listOfProjects,'messages' => $messages]);
 	}
 
+
+	public function ProjectsShow() {
+		$projectId=substr($_POST['id'],9,strlen($_POST['id'])-9 );
+
+		$projectModel = new ProjectsModel();
+		$projectData = $projectModel -> find($projectId);
+
+		$this->showJson(["Success" => true,"projectData" => $projectData ]);
+	}
 
 	public function sendmsg($to_users_id='3'){
 
