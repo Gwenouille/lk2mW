@@ -24,7 +24,7 @@
 		["POST", "/fabrication_additive/admin/news/newsToggleImgCheckbox", "News#newsToggleImgCheckbox", "news_newsToggleImgCheckbox"],
 
 		// route vers les controleurs récupérant les requetes Ajax
-		["POST", "/fabrication_additive/admin/users/usersShow", "Users#ShowUsers", "news_showUsers"],
+		["POST", "/fabrication_additive/admin/users/usersShow", "Users#ShowUsers", "users_showUsers"],
 
 
 		// route pour l'inscription de l'utilisateur
