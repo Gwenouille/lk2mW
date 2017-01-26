@@ -22,3 +22,19 @@
 .main-login_modify {
   margin: 0 20% 3em;
 }
+
+/* ---------------------------------
+Responsive de la page user views
+----------------------------------- */
+@media (max-width: 600px) {
+  .userChoice {
+    width: 80%;
+    text-align: center;
+    font-size: 1.3em;
+  }
+
+  .main-login_modify {
+    margin: 0;
+  }
+
+}

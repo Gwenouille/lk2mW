@@ -9,6 +9,7 @@
 <!-- Ajoute un css pour cette page seulement, pour le chat-->
 <?php $this->start('css') ?>
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/user_projects.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/chat.css') ?>">
 <?php $this->stop('css') ?>
 
 <?php $this->start('main_content') ?>

@@ -17,15 +17,15 @@
 		['GET', '/fabrication_additive/admin/news', 'News#edit', 'news_edit'],
 
 		// route vers les controleurs récupérant les requetes Ajax
-		["POST", "/fabrication_additive/admin/news/newsShow", "News#ShowNews", "news_showNews"],
+		["POST", "/fabrication_additive/admin/news/newsShow", "News#showNews", "news_showNews"],
 		["POST", "/fabrication_additive/admin/news/newsModify", "News#newsModify", "news_newsModify"],
 		["POST", "/fabrication_additive/admin/news/newsAjaxModify", "News#newsAjaxModify", "news_newsAjaxModify"],
 		["POST", "/fabrication_additive/admin/news/newsToggleCheckbox", "News#newsToggleCheckbox", "news_newsToggleCheckbox"],
 		["POST", "/fabrication_additive/admin/news/newsToggleImgCheckbox", "News#newsToggleImgCheckbox", "news_newsToggleImgCheckbox"],
 
-		// route vers les controleurs récupérant les requetes Ajax
-		["GET", "/fabrication_additive/admin/user/usersShow", "User#ShowUsers", "user_showUsers"],
-		["POST", "/fabrication_additive/admin/user/getProjects", "User#getProjectsFromUser", "user_getProjectsFromUser"],
+		// route vers les controleurs récupérant les requetes Ajax pour le chat et les infos users
+		["GET", "/fabrication_additive/admin/user/usersShow", "User#showUsers", "user_showUsers"],
+		["POST", "/fabrication_additive/admin/user/getUserData", "User#getUserData", "user_getUserData"],
 
 		// route pour l'inscription de l'utilisateur
 		["GET|POST", "/fabrication_additive/signin","User#signin", "user_signin"],

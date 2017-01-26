@@ -13,13 +13,11 @@
 ----------------------------------------------- */
 
 .usersSection {
+	margin-top: 1em;
   display: flex;
   align-items: stretch;
+	max-height: 300px;
 }
-
-/* ****************************************************************
-	 Partie gauche du site : affichage des utilisateurs
-	**************************************************************** */
 
 .listUsers {
 	min-width: 23%;
@@ -27,7 +25,6 @@
 	align-items: stretch;
 	flex-direction: column;
 	background-color: white;
-	border: 1px solid green;
 }
 
 .listUsersContent {
@@ -37,6 +34,53 @@
 	max-height: 600px;
 }
 
-/*	****************************************************************
-	 Partie droite du site : affichage des données utilisateurs
-	**************************************************************** */
+	/* -----------------------------------------------
+		La section des coordonnées de l'utilisateur
+	----------------------------------------------- */
+	.infosUser {
+	  flex: 1;
+	  padding: 0 2em;
+		min-width: 250px;
+	}
+
+	.usercoordinate {
+		margin: 0;
+	}
+
+	.projectsListSection {
+	  flex: 2;
+		padding: 0 2em;
+	}
+
+
+	/* -----------------------------------------------
+	  La section des projets
+	----------------------------------------------- */
+	.listProject {
+	  display: flex;
+		flex: 2;
+	  align-items: stretch;
+	  flex-direction: column;
+	  background-color: white;
+	}
+
+	.listProjectContent {
+	  overflow-y: scroll;
+	  border: 1px solid silver;
+	  padding: 0.5em;
+	  flex-grow: 1;
+	}
+
+	.project {
+	  padding: 0.5em;
+	  margin-bottom: 1em;
+	  background-color: #f8f8f8;
+	}
+
+	.project ul {
+		margin: 0;
+	}
+
+	.blocTitleProject {
+	  margin-bottom: 0.5em;
+	}
