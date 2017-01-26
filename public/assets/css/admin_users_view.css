@@ -19,14 +19,12 @@
 	max-height: 300px;
 }
 
-
 .listUsers {
 	min-width: 23%;
 	display: flex;
 	align-items: stretch;
 	flex-direction: column;
 	background-color: white;
-	border: 1px solid green;
 }
 
 .listUsersContent {
@@ -42,7 +40,7 @@
 	.infosUser {
 	  flex: 1;
 	  padding: 0 2em;
-		border: 1px solid red;
+		min-width: 250px;
 	}
 
 	.usercoordinate {
@@ -52,7 +50,6 @@
 	.projectsListSection {
 	  flex: 2;
 		padding: 0 2em;
-		border: 1px solid blue;
 	}
 
 
@@ -60,8 +57,8 @@
 	  La section des projets
 	----------------------------------------------- */
 	.listProject {
-	  min-width: 23%;
 	  display: flex;
+		flex: 2;
 	  align-items: stretch;
 	  flex-direction: column;
 	  background-color: white;
@@ -70,15 +67,18 @@
 	.listProjectContent {
 	  overflow-y: scroll;
 	  border: 1px solid silver;
-	  margin-right: 3em;
 	  padding: 0.5em;
 	  flex-grow: 1;
 	}
 
 	.project {
-	  padding: 1em;
+	  padding: 0.5em;
 	  margin-bottom: 1em;
 	  background-color: #f8f8f8;
+	}
+
+	.project ul {
+		margin: 0;
 	}
 
 	.blocTitleProject {

@@ -11,6 +11,59 @@ use Model\ProjectsModel;
 class UserController extends Controller
 {
 
+	public function getUserData(){
+
+		$user_id = substr($_POST['id'],6,strlen($_POST['id'])-6 );
+
+		//Inscription en session de l'id du user avec lequel l'admin converse
+		$_SESSION['to_user']=array('to_users_id'=>$user_id);
+
+		//Récupération des données personnelles de l'utilisateur
+		$user = new UserModel();
+		$userData = $user->find($user_id);
+
+		$coordsContent='<p class="usercoordinate">';
+		$coordsContent.=$userData['firstname']." ".$userData['lastname'];
+		$coordsContent.='</p>';
+		$coordsContent.='<p class="usercoordinate">';
+		$coordsContent.=$userData['mail'];
+		$coordsContent.='</p>';
+		$coordsContent.='<p class="usercoordinate">';
+		$coordsContent.=$userData['phone'];
+		$coordsContent.='</p>';
+
+		//Récupération des projets à son actif
+		$project = new ProjectsModel();
+		$projectsList = $project->findAllProjectsFromUser($user_id);
+
+		// die(var_dump())
+		$projectsContent='';
+		foreach ($projectsList as $key => $value){
+
+			$projectsContent.='<div class="project">';
+		  $projectsContent.="<h4>".$projectsList[$key]['name']."</h4>";
+		  $projectsContent.="<p><em>".$projectsList[$key]['date']."</em></p>";
+		  $projectsContent.="<p>".$projectsList[$key]['description']."</p>";
+		  $projectsContent.="<ul>";
+	        if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
+	          $files=$projectsList[$key]['files'];
+
+		        foreach ($files as $key2 => $value){
+						  $projectsContent.="<li>";
+						  $projectsContent.=$files[$key2]['name'].".".$files[$key2]['type'];
+						  $projectsContent.="</li>";
+					}
+		    }
+		    $projectsContent.="</ul>";
+		  $projectsContent.="</div>";
+		}
+		$content= array("coords" =>$coordsContent,"projects"=>$projectsContent);
+
+		// die(var_dump($content));
+		$this->showJson(["coords" =>$coordsContent,"projects"=>$projectsContent]);
+	}
+
+
 	public function getProjectsFromUser($user_id=''){
 		$user_id=$_POST['id'];
 		$user_id=substr($_POST['id'],6,strlen($user_id)-6 );

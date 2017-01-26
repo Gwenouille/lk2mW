@@ -63,72 +63,21 @@
 		<!-- La section infos de l' utilisateur -->
 		<div class="infosUser">
 			<h3 class="blocTitleProject">Infos utilisateur :</h3>
-			<div class=coordinates>
-				<p class="usercoordinate">Prenom Nom</p>
-				<p class="usercoordinate">Mail</p>
-				<p class="usercoordinate">Phone</p>
+			<div id="userCoordinates" class="coordinates">
+
+				<p class="center">Selectionnez un utilisateur</p>
+
 			</div>
 		</div>
 
 		<div class="listProject">
-			<h3 class="blocTitleProject">Liste de mes projets :</h3>
+			<h3 class="blocTitleProject">Ses projets :</h3>
 			<div id="listProjectContent" class="listProjectContent">
 
-				<div class="project">
-					<h4>titre</h4>
-					<p><em>20-12-2016</em></p>
-					<p>Ceci est le projet de l'ueser exemple</p>
-					<ul>
-
-								<li>
-									Fichier1.ext
-								</li>
-								<li>
-									Fichier2.ext
-								</li>
-
-					</ul>
-				</div>
-				<div class="project">
-					<h4>titre</h4>
-					<p><em>20-12-2016</em></p>
-					<p>Ceci est le projet de l'ueser exemple</p>
-					<ul>
-
-								<li>
-									Fichier1.ext
-								</li>
-								<li>
-									Fichier2.ext
-								</li>
-
-					</ul>
-				</div>
-				<div class="project">
-					<h4>titre</h4>
-					<p><em>20-12-2016</em></p>
-					<p>Ceci est le projet de l'ueser exemple</p>
-					<ul>
-
-								<li>
-									Fichier1.ext
-								</li>
-								<li>
-									Fichier2.ext
-								</li>
-
-					</ul>
-				</div>
-
+				<p class="center">Selectionnez un utilisateur</p>
 
 			</div>
 		</div>
-
-
-			<?php
-			//  var_dump($usersList);
-			 ?>
-
 
 	</div>
 </main>

@@ -5,16 +5,25 @@ $(function(){
   list.on("click",'.userGlyphicon',function(e) {
     e.preventDefault();
     reloadChat()
-    console.log('ici');
     var data = {
       'id':$(this).attr('id')
     };
-    console.log(data);
     $.ajax({
-      url: "getProjects",
+      url: "getUserData",
       type: "post",
       data: data,
       success: function(value) {
+        console.log(value);
+        console.log(value.coords);
+
+        var coords=value.coords;
+        $("#userCoordinates").empty();
+        $("#userCoordinates").append(coords);
+        
+        var projects=value.projects;
+        $("#listProjectContent").empty();
+        $("#listProjectContent").append(projects);
+
 				// entre les données de l'article dans les champs
 				// $("#news_article_title").val(value.ArticleData['title']);
 				// tinyMCE.get('news_content_title').setContent(value.ArticleData['content']);
