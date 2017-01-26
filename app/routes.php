@@ -16,12 +16,15 @@
 		// route des news dans le compte admin (création/modification/affichage)
 		['GET', '/fabrication_additive/admin/news', 'News#edit', 'news_edit'],
 
-		// route vers les controleurs récupérant les requetes ajax
+		// route vers les controleurs récupérant les requetes Ajax
 		["POST", "/fabrication_additive/admin/news/newsShow", "News#ShowNews", "news_showNews"],
 		["POST", "/fabrication_additive/admin/news/newsModify", "News#newsModify", "news_newsModify"],
 		["POST", "/fabrication_additive/admin/news/newsAjaxModify", "News#newsAjaxModify", "news_newsAjaxModify"],
 		["POST", "/fabrication_additive/admin/news/newsToggleCheckbox", "News#newsToggleCheckbox", "news_newsToggleCheckbox"],
 		["POST", "/fabrication_additive/admin/news/newsToggleImgCheckbox", "News#newsToggleImgCheckbox", "news_newsToggleImgCheckbox"],
+
+		// route vers les controleurs récupérant les requetes Ajax
+		["POST", "/fabrication_additive/admin/users/usersShow", "Users#ShowUsers", "news_showUsers"],
 
 
 		// route pour l'inscription de l'utilisateur
