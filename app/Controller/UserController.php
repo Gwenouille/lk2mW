@@ -63,20 +63,6 @@ class UserController extends Controller
 		$this->showJson(["coords" =>$coordsContent,"projects"=>$projectsContent]);
 	}
 
-
-	public function getProjectsFromUser($user_id=''){
-		$user_id=$_POST['id'];
-		$user_id=substr($_POST['id'],6,strlen($user_id)-6 );
-
-		//Inscription en session de l'id du user avec lequel l'admin converse
-		$_SESSION['to_user']=array('to_users_id'=>$user_id);
-
-		//Récupération des projets à son actif
-		$project = new ProjectsModel();
-		$this->showJson(["projects" =>$project->findAllProjectsFromUser($user_id)]);
-		// return ($project->findAllProjectsFromUser($user_id));
-	}
-
 	public function getMessagesFromUser($user_id=''){
 		//Récupération des messages le concernant
 		$message = new MessagesModel();

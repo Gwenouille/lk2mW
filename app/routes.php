@@ -23,10 +23,9 @@
 		["POST", "/fabrication_additive/admin/news/newsToggleCheckbox", "News#newsToggleCheckbox", "news_newsToggleCheckbox"],
 		["POST", "/fabrication_additive/admin/news/newsToggleImgCheckbox", "News#newsToggleImgCheckbox", "news_newsToggleImgCheckbox"],
 
-		// route vers les controleurs récupérant les requetes Ajax
+		// route vers les controleurs récupérant les requetes Ajax pour le chat et les infos users
 		["GET", "/fabrication_additive/admin/user/usersShow", "User#showUsers", "user_showUsers"],
 		["POST", "/fabrication_additive/admin/user/getUserData", "User#getUserData", "user_getUserData"],
-		["POST", "/fabrication_additive/admin/user/getProjects", "User#getProjectsFromUser", "user_getProjectsFromUser"],
 
 
 		// route pour l'inscription de l'utilisateur
