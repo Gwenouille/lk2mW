@@ -16,12 +16,15 @@
 		// route des news dans le compte admin (création/modification/affichage)
 		['GET', '/fabrication_additive/admin/news', 'News#edit', 'news_edit'],
 
-		// route vers les controleurs récupérant les requetes ajax
+		// route vers les controleurs récupérant les requetes Ajax
 		["POST", "/fabrication_additive/admin/news/newsShow", "News#ShowNews", "news_showNews"],
 		["POST", "/fabrication_additive/admin/news/newsModify", "News#newsModify", "news_newsModify"],
 		["POST", "/fabrication_additive/admin/news/newsAjaxModify", "News#newsAjaxModify", "news_newsAjaxModify"],
 		["POST", "/fabrication_additive/admin/news/newsToggleCheckbox", "News#newsToggleCheckbox", "news_newsToggleCheckbox"],
 		["POST", "/fabrication_additive/admin/news/newsToggleImgCheckbox", "News#newsToggleImgCheckbox", "news_newsToggleImgCheckbox"],
+
+		// route vers les controleurs récupérant les requetes Ajax
+		["POST", "/fabrication_additive/admin/users/usersShow", "Users#ShowUsers", "users_showUsers"],
 
 
 		// route pour l'inscription de l'utilisateur
@@ -48,7 +51,7 @@
 
 		// envoi d'un message sur le chat
 		["GET|POST", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],
-
+		["POST", "/fabrication_additive/projects/reloadmsg", "Projects#reloadmsg", "projects_reloadmsg"],
 		// Affichage/modification d'UN projet en vue de la modification éventuelle: en fonction du $_POST ou du $_GET on appelle telle ou telle methode
 		["GET|POST", "/fabrication_additive/projects/[:id]", "Projects#edit", "projects_edit"],
 

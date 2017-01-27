@@ -25,7 +25,7 @@
 			<p><h3 class="blocTitleProject">Mes messages :</h3></p>
 			<ul class="chat_content">
 				<?php	foreach ($messages as $key => $value) :?>
-					<?php $class = ($messages[$key]['users_id']==='3') ? 'chat_users' : 'chat_admin';?>
+					<?php $class = ($messages[$key]['users_id']!=='3') ? 'chat_users' : 'chat_admin';?>
 					<li>
 						<div class="chat_message <?=$class?>">
 							<p><?= $messages[$key]['content']?></p>
@@ -108,3 +108,6 @@
 	</main>
 
 <?php $this->stop('main_content') ?>
+<?php $this->start('js') ?>
+		<script type="text/javascript" src="<?= $this->assetUrl('javascript/chat.js') ?>"></script>
+<?php $this->stop('js') ?>

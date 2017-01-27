@@ -20,7 +20,7 @@
 					<div class="">
 						<h4 style="font-weight:bold;">DMI DIGITAL MANUFACTURE INNOVATION</h4>
 						6-10 rue Verdier Monetti <br>
-						76880 Arques-lz-Bataille <br>
+						76880 Arques-la-Bataille <br>
 						Tél : 06 25 75 02 26
 					</div>
 				</section>
