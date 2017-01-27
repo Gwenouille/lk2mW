@@ -147,7 +147,8 @@ a:focus {
 }
 
 .logo {
-  background-image: url("../logos/logoFermeBleu.png");
+  background-image: url("../logos/logoFermeBleu2.png");
+  background-repeat: no-repeat;
   width: 150px;
   height: 80px;
   position: relative;
