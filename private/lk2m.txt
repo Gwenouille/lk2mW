@@ -1,0 +1,19 @@
+http://lk2m.fredericnoel.com
+
+PHPMyAdmin : https://5.196.73.56/phpmyadmin/
+
+
+
+MySQL
+-----
+User : c1lk2m
+Database : c1lk2m
+Password : bajZKkV#4
+
+
+
+FTP
+---
+IP : 5.196.73.56
+User : fredericnoellk2m
+Password : zR#Pfu6L6

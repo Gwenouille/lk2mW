@@ -6,14 +6,73 @@ use \W\Security\AuthorizationModel;
 use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
 use Model\UserModel;
+use Model\ProjectsModel;
 
 class UserController extends Controller
 {
 
-	// récupère les données du formulaire de gauche pour les renvoyer vers le formulaire de droite (voir l'article à droite pour le modifier)
-	public function showUsers() {
+	public function getUserData(){
 
-		// cette page est accessible si on est dmin ou superadmin seulement.
+		$user_id = substr($_POST['id'],6,strlen($_POST['id'])-6 );
+
+		//Inscription en session de l'id du user avec lequel l'admin converse
+		$_SESSION['to_user']=array('to_users_id'=>$user_id);
+
+		//Récupération des données personnelles de l'utilisateur
+		$user = new UserModel();
+		$userData = $user->find($user_id);
+
+		$coordsContent='<p class="usercoordinate">';
+		$coordsContent.=$userData['firstname']." ".$userData['lastname'];
+		$coordsContent.='</p>';
+		$coordsContent.='<p class="usercoordinate">';
+		$coordsContent.=$userData['mail'];
+		$coordsContent.='</p>';
+		$coordsContent.='<p class="usercoordinate">';
+		$coordsContent.=$userData['phone'];
+		$coordsContent.='</p>';
+
+		//Récupération des projets à son actif
+		$project = new ProjectsModel();
+		$projectsList = $project->findAllProjectsFromUser($user_id);
+
+		// die(var_dump())
+		$projectsContent='';
+		foreach ($projectsList as $key => $value){
+
+			$projectsContent.='<div class="project">';
+		  $projectsContent.="<h4>".$projectsList[$key]['name']."</h4>";
+		  $projectsContent.="<p><em>".$projectsList[$key]['date']."</em></p>";
+		  $projectsContent.="<p>".$projectsList[$key]['description']."</p>";
+		  $projectsContent.="<ul>";
+	        if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
+	          $files=$projectsList[$key]['files'];
+
+		        foreach ($files as $key2 => $value){
+						  $projectsContent.="<li>";
+						  $projectsContent.=$files[$key2]['name'].".".$files[$key2]['type'];
+						  $projectsContent.="</li>";
+					}
+		    }
+		    $projectsContent.="</ul>";
+		  $projectsContent.="</div>";
+		}
+		$content= array("coords" =>$coordsContent,"projects"=>$projectsContent);
+
+		$this->showJson(["coords" =>$coordsContent,"projects"=>$projectsContent]);
+	}
+
+	public function getMessagesFromUser($user_id=''){
+		//Récupération des messages le concernant
+		$message = new MessagesModel();
+		return($message->search(array('users_id'=>$user_id, 'to_users_id'=>$user_id)));
+	}
+
+	// récupère la liste des utilisateurs
+	public function showUsers() {
+		unset($_SESSION['to_user']);
+
+		// cette page est accessible si on est admin ou superadmin seulement.
 		$this-> AllowTo(['1','2']);
 
 		// Récupération de l'ID du user en session actuellement
@@ -24,9 +83,8 @@ class UserController extends Controller
 	  $usersList = new UserModel();
     $listUsers = $usersList -> findAllConfirmedMembers();
 
-		var_dump($listUsers);
-		die();
-		// $this->showJson(["ArticleData"=>$listArticles]);
+		// die(var_dump($listUsers));
+		$this->show("admin/adminUsersView",['usersList'=>$listUsers,"connectLinkChoice" => true]);
 	}
 
 	public function login()

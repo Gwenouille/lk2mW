@@ -17,15 +17,15 @@
 		['GET', '/fabrication_additive/admin/news', 'News#edit', 'news_edit'],
 
 		// route vers les controleurs récupérant les requetes Ajax
-		["POST", "/fabrication_additive/admin/news/newsShow", "News#ShowNews", "news_showNews"],
+		["POST", "/fabrication_additive/admin/news/newsShow", "News#showNews", "news_showNews"],
 		["POST", "/fabrication_additive/admin/news/newsModify", "News#newsModify", "news_newsModify"],
 		["POST", "/fabrication_additive/admin/news/newsAjaxModify", "News#newsAjaxModify", "news_newsAjaxModify"],
 		["POST", "/fabrication_additive/admin/news/newsToggleCheckbox", "News#newsToggleCheckbox", "news_newsToggleCheckbox"],
 		["POST", "/fabrication_additive/admin/news/newsToggleImgCheckbox", "News#newsToggleImgCheckbox", "news_newsToggleImgCheckbox"],
 
-		// route vers les controleurs récupérant les requetes Ajax
-		["POST", "/fabrication_additive/admin/users/usersShow", "Users#ShowUsers", "users_showUsers"],
-
+		// route vers les controleurs récupérant les requetes Ajax pour le chat et les infos users
+		["GET", "/fabrication_additive/admin/user/usersShow", "User#showUsers", "user_showUsers"],
+		["POST", "/fabrication_additive/admin/user/getUserData", "User#getUserData", "user_getUserData"],
 
 		// route pour l'inscription de l'utilisateur
 		["GET|POST", "/fabrication_additive/signin","User#signin", "user_signin"],
@@ -48,6 +48,9 @@
 
 		// route de l'affichage des projets: demande au modele ProjectsModel de chercher les projets de l'utilisateur, envoie à la view ces projets, un projet vide a creer et le chat
 		["GET", "/fabrication_additive/projects/", "Projects#home", "projects_home"],
+		// route vers les controleurs récupérant les requetes Ajax
+		["POST", "/fabrication_additive/projects/projectsShow", "Projects#projectsShow", "Projects_show"],
+		["POST", "/fabrication_additive/projects/projectsModify", "Projects#projectsModify", "Projects_modify"],
 
 		// envoi d'un message sur le chat
 		["GET|POST", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],

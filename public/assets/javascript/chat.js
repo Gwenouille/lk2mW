@@ -1,3 +1,17 @@
+function reloadChat(){
+  $.ajax({
+    url:"http://localhost/lk2mW/public/fabrication_additive/projects/reloadmsg",
+    type:"POST",
+    success:function(value){
+      if(value.Success) {
+        $(".chat_content").empty();
+        $(".chat_content").html(value.reloadChat);
+
+      }
+    }
+  });
+}
+
 $(function(){
 
   $(".chat_input").on("submit",function(e){
@@ -5,33 +19,21 @@ $(function(){
 
     var data = $(this).serialize();
     $.ajax({
-      url:"sendmsg",
+      url:"http://localhost/lk2mW/public/fabrication_additive/projects/sendmsg",
       type:"POST",
       data: data,
       success:function(value){
         if(value.Success) {
-         $(".chat_content").empty();
-         $(".chat_content").html(value.reloadChat);
+          reloadChat()
+        //  $(".chat_content").empty();
+        //  $(".chat_content").html(value.reloadChat);
         }
       }
     });
   });
 
-  function reloadChat(){
-    $.ajax({
-      url:"reloadmsg",
-      type:"POST",
-      success:function(value){
-        if(value.Success) {
-          console.log('prout');
-         $(".chat_content").empty();
-         $(".chat_content").html(value.reloadChat);
 
-        }
-      }
-    });
-  }
 
-timeout= setInterval(reloadChat,3000);
+timeout= setInterval(reloadChat,10000);
 
 });

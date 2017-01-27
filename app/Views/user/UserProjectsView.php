@@ -9,6 +9,7 @@
 <!-- Ajoute un css pour cette page seulement, pour le chat-->
 <?php $this->start('css') ?>
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/user_projects.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/chat.css') ?>">
 <?php $this->stop('css') ?>
 
 <?php $this->start('main_content') ?>
@@ -50,7 +51,7 @@
 				<div class="listProjectContent">
 					<?php	foreach ($projectsList as $key => $value) :?>
 						<div class="project">
-							<h4><a href="<?= $this->url("default_nav", ["target" => "fabrication_additive"]); ?>"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;<?= $projectsList[$key]['name']?></h4>
+							<h4><span id="projectID<?= $projectsList[$key]['id']  ?>" class="glyphicon glyphicon-eye-open"></span>&nbsp;<?= $projectsList[$key]['name']?></h4>
 							<p><em><?= $projectsList[$key]['date']?></em></p>
 							<p><?= $projectsList[$key]['description']?></p>
 							<ul>
@@ -74,7 +75,7 @@
 			<div class="previewProject">
 				<h3 class="blocTitleProject">Description de mes projets :</h3>
 
-				<form class="detailProject" action="" method="">
+				<form class="detailProject" action="" method="post">
 
 						<label for="titleProject" class="labelProject">
 							Titre du projet :
@@ -84,21 +85,21 @@
 						<label for="dateProject" class="labelProject">
 							Date de début du projet :
 						</label>
-						<input class="formControl" type="text" name="dateProject" value="...">
+						<input class="formControl" type="text" name="dateProject" value="..." disabled>
 
 						<label for="detailProject" class="labelProject">
 							Description du projet :
 						</label>
-						<textarea class="formControl" rows="10"></textarea>
+						<textarea class="formControl" rows="10" name="contentProject" id="contentProject"></textarea>
 
 						<label for="fileProject" class="labelProject">
 							Fichiers joints au projet :
 						</label>
-						<input class="formControl" type="text" name="fileProject" value="...">
-
+						<input class="formControl" type="file" name="fileProject[]" value="...">
+						<input type="hidden" name="idProject" id="idProject">
 					<div class="formButton">
-					<button type="submit">Modifier</button>
-					<button type="submit">Créer un nouveau projet</button>
+					<button type="submit" id="modifyProject">Modifier</button>
+					<button type="submit" id="createProject">Créer un nouveau projet</button>
 					</div>
 				</form>
 			</div>
@@ -110,4 +111,5 @@
 <?php $this->stop('main_content') ?>
 <?php $this->start('js') ?>
 		<script type="text/javascript" src="<?= $this->assetUrl('javascript/chat.js') ?>"></script>
+		<script type="text/javascript" src="<?= $this->assetUrl('javascript/projects.js') ?>"></script>
 <?php $this->stop('js') ?>

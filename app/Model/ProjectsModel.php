@@ -50,20 +50,19 @@ class ProjectsModel extends Model {
     }
   }
 
-
 	/**
-	 * Récupère toutes les lignes de la table
+	 * Récupère tous les projets de l'utilisateur passé en parametre
 	 * @param $id L'utilisateur dont on veut récupérer les projets
 	 */
 	public function findAllProjectsFromUser($id)
 	{
-		$sql = 'SELECT * FROM ' . $this -> table . ' INNER JOIN projects_has_users ON '.$this -> table.'.id=projects_id';
-
-		$sql .= ' WHERE users_id = '.$id;
+		$sql = 'SELECT projects.*,projects_has_users.projects_id,projects_has_users.users_id,projects_has_users.chief_id FROM ' . $this -> table . ' INNER JOIN projects_has_users ON '.$this -> table.'.id=projects_has_users.projects_id';
+		$sql .= ' WHERE projects_has_users.users_id = '.$id;
 
 		$sth = $this -> dbh -> prepare($sql);
 		$sth -> execute();
 
 		return $sth -> fetchAll();
 	}
+
 }

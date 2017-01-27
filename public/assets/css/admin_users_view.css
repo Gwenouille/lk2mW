@@ -1,0 +1,86 @@
+.titleList {
+	color: #456789;
+	display: inline-block;
+}
+
+.buttonCreateNews {
+	margin: 0.2em 0 0.3em 0;
+	text-align: right;
+}
+
+/* -----------------------------------------------
+  La section des utilisateurs
+----------------------------------------------- */
+
+.usersSection {
+	margin-top: 1em;
+  display: flex;
+  align-items: stretch;
+	max-height: 300px;
+}
+
+.listUsers {
+	min-width: 23%;
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+	background-color: white;
+}
+
+.listUsersContent {
+	overflow-y: scroll;
+	/*border: 1px solid silver;*/
+	padding: 0.5em;
+	max-height: 600px;
+}
+
+	/* -----------------------------------------------
+		La section des coordonnées de l'utilisateur
+	----------------------------------------------- */
+	.infosUser {
+	  flex: 1;
+	  padding: 0 2em;
+		min-width: 250px;
+	}
+
+	.usercoordinate {
+		margin: 0;
+	}
+
+	.projectsListSection {
+	  flex: 2;
+		padding: 0 2em;
+	}
+
+
+	/* -----------------------------------------------
+	  La section des projets
+	----------------------------------------------- */
+	.listProject {
+	  display: flex;
+		flex: 2;
+	  align-items: stretch;
+	  flex-direction: column;
+	  background-color: white;
+	}
+
+	.listProjectContent {
+	  overflow-y: scroll;
+	  border: 1px solid silver;
+	  padding: 0.5em;
+	  flex-grow: 1;
+	}
+
+	.project {
+	  padding: 0.5em;
+	  margin-bottom: 1em;
+	  background-color: #f8f8f8;
+	}
+
+	.project ul {
+		margin: 0;
+	}
+
+	.blocTitleProject {
+	  margin-bottom: 0.5em;
+	}

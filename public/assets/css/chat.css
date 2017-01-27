@@ -1,0 +1,48 @@
+
+	/* -----------------------------------------------
+	  Le chat
+	----------------------------------------------- */
+	.chat {
+	  background-color: white;
+	}
+
+	.chat_content {
+	  overflow-y: scroll;
+	  height: 20vh;
+	  padding: 1em;
+	  list-style: none;
+	  background-color: white;
+	}
+
+	.chat_message {
+	  border-radius: 5px;
+	  padding: 0.2em 0.5em;
+	  margin: 0.5em 0;
+	}
+
+	.chat_admin {
+	  text-align: left;
+	  color: black;
+	  background-color: #eee;
+	}
+
+	.chat_users {
+	  text-align: right;
+	  color: white;
+	  background-color: #adda50;
+	}
+
+	.chat_date {
+	  font-size: 0.7em;
+	  font-style: italic;
+	  margin: 0;
+	}
+
+	.chat_input {
+	  border-radius: 5px;
+	  display: flex;
+	}
+
+	.chatMessage {
+	  flex-grow: 1;
+	}
