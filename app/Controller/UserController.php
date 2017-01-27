@@ -59,7 +59,6 @@ class UserController extends Controller
 		}
 		$content= array("coords" =>$coordsContent,"projects"=>$projectsContent);
 
-		// die(var_dump($content));
 		$this->showJson(["coords" =>$coordsContent,"projects"=>$projectsContent]);
 	}
 

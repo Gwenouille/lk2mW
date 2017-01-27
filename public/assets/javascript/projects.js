@@ -5,13 +5,14 @@ $(function(){
 
   // clic sur le bouton de visualisation du projet
   list.on("click",'.glyphicon',function(e) {
-
     var data = { 'id':$(this).attr('id') };
+    console.log(data);
     $.ajax({
       url: "projectsShow",
       type: "post",
       data: data,
       success: function(value) {
+        console.log(value);
 				// Entre les données du projet dans les champs
 				$(".formControl[name='titleProject']").val(value.projectData['name']);
         $(".formControl[name='dateProject']").val(value.projectData['date']);

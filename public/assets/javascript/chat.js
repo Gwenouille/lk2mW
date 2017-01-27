@@ -34,6 +34,6 @@ $(function(){
 
 
 
-timeout= setInterval(reloadChat,1000);
+timeout= setInterval(reloadChat,10000);
 
 });
