@@ -147,7 +147,7 @@ class ProjectsController extends Controller
 		$this->showJson(["Success" =>true]);
 	}
 
-
+	// Fonction de reload du chat pour les utilisateurs lambda
 	public function reloadmsg($to_users_id='3') {
 
 		//Récupération de l'ID du user en session actuellement

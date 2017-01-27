@@ -38,9 +38,6 @@
 		['GET', '/fabrication_additive/user/', 'User#home', 'user_home'],
 
 		// route du compte de l'utilisateur(données personnelles: affichage/modification)
-		// ['GET', '/fabrication_additive/user/account', 'User#account', 'user_account'],
-
-		// route du compte de l'utilisateur(données personnelles: affichage/modification)
 		['POST', '/fabrication_additive/user/modifyCoordinates', 'User#modifyCoordinates', 'user_modifyCoordinates'],
 
 		// route de l'envoi de mail
@@ -52,12 +49,14 @@
 		["POST", "/fabrication_additive/projects/projectsShow", "Projects#projectsShow", "Projects_show"],
 		["POST", "/fabrication_additive/projects/projectsModify", "Projects#projectsModify", "Projects_modify"],
 
-		// envoi d'un message sur le chat
+		// envoi d'un message sur le chat et rechargement automatique pour l'utilisateur lambda
 		["GET|POST", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],
 		["POST", "/fabrication_additive/projects/reloadmsg", "Projects#reloadmsg", "projects_reloadmsg"],
-		// envoi d'un message sur le chat
-		["GET|POST", "/fabrication_additive/admin/user/sendmsg", "User#sendmsg", "user_sendmsg"],//Ajout
-		["POST", "/fabrication_additive/admin/user/reloadmsg", "User#reloadmsg", "user_reloadmsg"],//ajout, ainsi que dans le UserController
+
+		// envoi d'un message sur le chat et rechargement automatique pour l'admin'
+		["GET|POST", "/fabrication_additive/admin/user/sendmsg", "User#sendmsg", "user_sendmsg"],
+		["POST", "/fabrication_additive/admin/user/reloadmsg", "User#reloadmsg", "user_reloadmsg"],
+		
 		// Affichage/modification d'UN projet en vue de la modification éventuelle: en fonction du $_POST ou du $_GET on appelle telle ou telle methode
 		["GET|POST", "/fabrication_additive/projects/[:id]", "Projects#edit", "projects_edit"],
 

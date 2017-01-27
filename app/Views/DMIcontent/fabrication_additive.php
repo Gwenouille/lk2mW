@@ -46,7 +46,7 @@
             $url.=$newsList[$key]['pictures'][0]['name'];
             $url.=".";
             $url.=$newsList[$key]['pictures'][0]['type'];
-            if ($newsList[$key]['pictures'][0]['state']=='1'){
+            if ($newsList[$key]['pictures'][0]['state']!='1'){
               $url="images/news/empty.jpg";
             }
           }

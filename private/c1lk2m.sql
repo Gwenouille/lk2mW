@@ -1,0 +1,394 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Client :  127.0.0.1
+-- Généré le :  Ven 27 Janvier 2017 à 15:49
+-- Version du serveur :  5.7.14
+-- Version de PHP :  7.0.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `c1lk2m`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `files`
+--
+
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `size` int(11) DEFAULT NULL,
+  `projects_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `files`
+--
+
+INSERT INTO `files` (`id`, `name`, `type`, `size`, `projects_id`) VALUES
+(1, 'fichier1', 'pdf', 1024, 1),
+(2, 'fichier2', 'pdf', 1024, 5),
+(3, 'fichier3', 'pdf', 1024, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `content` longtext,
+  `date` datetime DEFAULT NULL,
+  `users_id` int(11) NOT NULL,
+  `to_users_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `content`, `date`, `users_id`, `to_users_id`) VALUES
+(1, 'Ceci est le message 1', '2017-01-20 11:09:00', 2, 3),
+(2, 'Ceci est le 2eme message', '2017-01-20 11:19:00', 2, 3),
+(3, 'Réponse de User 3', '2017-01-20 11:22:00', 3, 2),
+(4, 'Et retour de l\'utilisateur 2 à l\'admin', '2017-01-20 11:19:00', 2, 3),
+(5, 'Essai d\'envoi message', '2017-01-20 11:28:45', 2, 3),
+(9, 'essai d\'envoi message', '2017-01-21 15:26:07', 3, 2),
+(20, 'Mouveau message c\'est tres mouveau', '2017-01-23 07:59:44', 2, 3),
+(21, 'essai', '2017-01-26 10:29:45', 3, 1),
+(22, 'Message de Gwen', '2017-01-26 10:30:45', 2, 1),
+(23, 'Message de Gwen', '2017-01-26 10:30:47', 2, 1),
+(24, '456', '2017-01-26 12:05:08', 3, 3),
+(25, 'Coucou', '2017-01-26 12:08:37', 3, 3),
+(26, 'Coucou', '2017-01-26 12:12:11', 3, 2),
+(27, 'Essai 154198458498', '2017-01-26 12:27:15', 3, 2),
+(28, 'Nouveau message', '2017-01-26 14:04:33', 3, 2),
+(29, 'Nouveau message', '2017-01-26 14:04:38', 3, 2),
+(30, 'fawwef', '2017-01-26 14:04:42', 3, 2),
+(31, 'Merde alors', '2017-01-27 14:16:09', 3, 2),
+(32, 'Essai', '2017-01-27 14:30:40', 2, 3),
+(33, 'reponse', '2017-01-27 14:33:40', 2, 3),
+(34, 'Bonjour', '2017-01-27 14:37:41', 2, 3),
+(35, 'Ça va Poulette ?', '2017-01-27 14:38:01', 3, 2),
+(36, 'oui mon doudou !!!', '2017-01-27 14:38:17', 2, 3),
+(37, 'Je te permets pas !', '2017-01-27 14:38:25', 3, 2),
+(38, 'Arrete de zieuter Alexandre !', '2017-01-27 14:38:48', 3, 2),
+(39, 'Je folatre pas, c\'est Mel qui me regarde avec ses yeux terrifiants', '2017-01-27 14:39:41', 2, 3),
+(40, 'Coucou !', '2017-01-27 14:40:54', 3, 2),
+(41, 'kikou', '2017-01-27 14:41:03', 2, 3),
+(42, 'kikou', '2017-01-27 14:41:17', 2, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `title` varchar(45) DEFAULT NULL,
+  `content` longtext,
+  `users_id` int(11) NOT NULL,
+  `date_creation` date DEFAULT NULL,
+  `date_modification` date DEFAULT NULL,
+  `state` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `content`, `users_id`, `date_creation`, `date_modification`, `state`) VALUES
+(93, 'Ouverture', '<h3>L\'espace Fabrication Additive a ouvert ses portes avec la r&eacute;ception de machines ce 24 octobre.</h3>\r\n<p>De la conception &agrave; la r&eacute;alisation, des sp&eacute;cialistes (dont un partenariat avec le lyc&eacute;e de Pablo Neruda &agrave; Dieppe) de la fabrication additive accompagnent les entreprises et forment leurs collaborateurs &agrave; ces nouvelles technologies. Un parc d\'imprimantes 3D derni&egrave;re g&eacute;n&eacute;ration permet d\'obtenir des prototypes multi-mat&eacute;riaux ou en couleur de qualit&eacute; avec un niveau de d&eacute;tail &eacute;lev&eacute;.</p>', 3, '2016-10-24', '2017-01-27', 1),
+(94, 'Espace de codeurs', '<h3>Dans l\'espace de formation DMI</h3>\r\n<p>Depuis le 10 octobre dernier, l\'espace de formation de DMI accueille la premi&egrave;re session de l\'&eacute;cole de codeur du secteur Dieppois (WebForce3). 20 stagiaires, issus de P&ocirc;le Emploi Dieppe, vont suivre une formation intensive de 3.5 mois et sont pratiquement assur&eacute;s d\'opportunit&eacute;s professionnelles &agrave; la fin.</p>', 3, '2016-11-02', '2017-01-27', 1),
+(95, 'Formation en cours', '<h3>Une formation courte et cibl&eacute;e</h3>\r\n<p>Une quinzaine d\'&eacute;tudiants sont actuellement en formation dans nos locaux, pour une p&eacute;riode de 6 jours. Cette formation, &agrave; l\'initiative de la CCI, a pour but de sensibiliser les lyc&eacute;ens Dieppois aux possibilit&eacute;s nouvelles offertes par la fabrication additive.</p>\r\n<p>Une journ&eacute;e "portes ouvertes" aura lieu le 1 f&eacute;vrier 2017</p>', 3, '2016-12-11', '2017-01-27', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `news_pictures`
+--
+
+CREATE TABLE `news_pictures` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `real_name` varchar(45) DEFAULT NULL,
+  `type` varchar(5) DEFAULT NULL,
+  `size` int(11) DEFAULT NULL,
+  `alt` varchar(255) DEFAULT NULL,
+  `news_id` int(11) NOT NULL,
+  `state` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `news_pictures`
+--
+
+INSERT INTO `news_pictures` (`id`, `name`, `real_name`, `type`, `size`, `alt`, `news_id`, `state`) VALUES
+(18, '1', '19-01-2017-INSA-DMI-7932', 'jpg', 92740, '1.jpg', 95, 1),
+(19, '1', 'IMG_0979', 'jpg', 1644385, '1.jpg', 94, 1),
+(20, '1', 'image_content_21446303_20161204205520', 'jpg', 50003, '1.jpg', 93, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `projects`
+--
+
+CREATE TABLE `projects` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `description` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `projects`
+--
+
+INSERT INTO `projects` (`id`, `name`, `date`, `description`) VALUES
+(1, '1er projet', '2017-01-20 00:00:00', '1er projet de Melinda'),
+(2, '2em projet', '2017-01-20 03:00:00', '2eme projet de Melinda'),
+(3, 'Pierre projet 1', '2017-01-20 00:00:00', '1er projet de Pierre'),
+(4, 'Gwen projet 1', '2017-01-20 03:00:00', '1er projet de Gwen'),
+(5, 'Gwen projet 2', '2017-01-21 03:00:00', 'Mon 2eme projet'),
+(9, 'Gwen Projet 3', '2017-01-27 13:05:09', 'fsdfafsdfsdfsad');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `projects_has_users`
+--
+
+CREATE TABLE `projects_has_users` (
+  `id` int(11) NOT NULL,
+  `projects_id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL,
+  `chief_id` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `projects_has_users`
+--
+
+INSERT INTO `projects_has_users` (`id`, `projects_id`, `users_id`, `chief_id`) VALUES
+(1, 1, 1, 1),
+(2, 2, 1, 1),
+(3, 3, 3, 3),
+(4, 4, 2, 2),
+(5, 5, 2, 2),
+(7, 9, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`) VALUES
+(1, 'superadministrator'),
+(2, 'administrator'),
+(3, 'member');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `lastname` varchar(45) NOT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `mail` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `log` datetime DEFAULT NULL,
+  `state` tinyint(1) DEFAULT '0',
+  `roles_id` int(11) NOT NULL DEFAULT '3'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `phone`, `log`, `state`, `roles_id`) VALUES
+(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', NULL, 1, 3),
+(2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$BAIDb13ttkZ9Bif8bfFxuOGvMCwB6LRHlmKq3BvOa9ePvEFeOx9/i', '', NULL, 1, 3),
+(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '2017-01-20 00:00:00', 1, 2),
+(4, 'Regis', 'Regis', 'reg@reg.fr', '$2y$10$GW1w93Flml3uKx57MPabBuqK2LCDYpPTe9FBJFMTRwqqBR6sO8Yi6', '', NULL, 0, 3);
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_files_project1_idx` (`projects_id`);
+
+--
+-- Index pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_messages_users1_idx` (`users_id`);
+
+--
+-- Index pour la table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_news_users1_idx` (`users_id`);
+
+--
+-- Index pour la table `news_pictures`
+--
+ALTER TABLE `news_pictures`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_pictures_news1_idx` (`news_id`);
+
+--
+-- Index pour la table `projects`
+--
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `projects_has_users`
+--
+ALTER TABLE `projects_has_users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `fk_project_has_user_user1_idx` (`users_id`),
+  ADD KEY `fk_project_has_user_project1_idx` (`projects_id`),
+  ADD KEY `id_2` (`id`),
+  ADD KEY `id_3` (`id`);
+
+--
+-- Index pour la table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `mail_UNIQUE` (`mail`),
+  ADD KEY `fk_user_roles_idx` (`roles_id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+--
+-- AUTO_INCREMENT pour la table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+--
+-- AUTO_INCREMENT pour la table `news_pictures`
+--
+ALTER TABLE `news_pictures`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT pour la table `projects`
+--
+ALTER TABLE `projects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT pour la table `projects_has_users`
+--
+ALTER TABLE `projects_has_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT pour la table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `files`
+--
+ALTER TABLE `files`
+  ADD CONSTRAINT `fk_files_project1` FOREIGN KEY (`projects_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `fk_messages_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `news`
+--
+ALTER TABLE `news`
+  ADD CONSTRAINT `fk_news_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `news_pictures`
+--
+ALTER TABLE `news_pictures`
+  ADD CONSTRAINT `fk_pictures_news1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `projects_has_users`
+--
+ALTER TABLE `projects_has_users`
+  ADD CONSTRAINT `fk_project_has_user_project1` FOREIGN KEY (`projects_id`) REFERENCES `projects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_project_has_user_user1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `fk_user_roles` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
