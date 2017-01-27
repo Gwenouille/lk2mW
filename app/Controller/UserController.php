@@ -7,6 +7,7 @@ use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
 use Model\UserModel;
 use Model\ProjectsModel;
+use Model\MessagesModel;
 
 class UserController extends Controller
 {
@@ -204,4 +205,64 @@ class UserController extends Controller
 			$this -> show("user/UserView",['errorModifyCoordinates'=>$errors]);}
     }
   }
+
+	public function sendmsg($to_users_id='3'){
+
+		//Récupération du contenu de POST et passage a la moulinette htmlspecialchars
+		$message=htmlspecialchars($_POST['newMessage']);
+
+		//Récupération de l'ID du user en session actuellement
+		$user_id=$_SESSION['user']['id'];
+		if ($user_id=='3'){
+			$to_users_id=$_SESSION['to_user']['to_users_id'];
+		}
+
+		//Création de la chaine de date actuelle
+		$now = date('Y-m-d H:i:s');
+
+		$newMessage = new MessagesModel();
+		$newMessage->init(NULL, $message, $now, $user_id, $to_users_id);
+
+		$data = array(
+				'content'=>$newMessage->content,
+				'date'=>$newMessage->date,
+				'users_id'=>$newMessage->users_id,
+				'to_users_id'=>$newMessage->to_users_id );
+
+		//insertion dudit message en BDD
+		$newMessage -> insert($data);
+
+		//Récupération des messages le concernant
+		$message = new MessagesModel();
+		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
+
+		$this->showJson(["Success" =>true]);
+	}
+
+	public function reloadmsg($to_users_id='3') {
+
+		//Récupération de l'ID du user en session actuellement
+		$user_id=$_SESSION['user']['id'];
+		if ($user_id=='3'){
+			$to_users_id=$_SESSION['to_user']['to_users_id'];
+		}
+
+		//Récupération des messages le concernant
+		$message = new MessagesModel();
+		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
+
+		$newChat ="";
+		foreach ($messages as $key => $value) {
+			$class = ($messages[$key]['users_id']!=='3') ? 'chat_users' : 'chat_admin';
+			$newChat .= "<li>";
+			$newChat .= "<div class='chat_message ". $class."'>";
+			$newChat .= "<p>".$messages[$key]['content']."</p>";
+			$newChat .= "<p class='chat_date'>".$messages[$key]['date']."</p>";
+			$newChat .= "</div>";
+			$newChat .= "</li>";
+		}
+
+		$this->showJson(["Success" =>true,'reloadChat' => $newChat]);
+	}
+
 }

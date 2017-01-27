@@ -1,6 +1,6 @@
 function reloadChat(){
   $.ajax({
-    url:"http://localhost/lk2mW/public/fabrication_additive/projects/reloadmsg",
+    url:"reloadmsg",
     type:"POST",
     success:function(value){
       if(value.Success) {
@@ -19,7 +19,7 @@ $(function(){
 
     var data = $(this).serialize();
     $.ajax({
-      url:"http://localhost/lk2mW/public/fabrication_additive/projects/sendmsg",
+      url:"sendmsg",
       type:"POST",
       data: data,
       success:function(value){
@@ -34,6 +34,6 @@ $(function(){
 
 
 
-timeout= setInterval(reloadChat,10000);
+timeout= setInterval(reloadChat,1000);
 
 });

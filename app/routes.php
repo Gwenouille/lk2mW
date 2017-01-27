@@ -55,6 +55,9 @@
 		// envoi d'un message sur le chat
 		["GET|POST", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],
 		["POST", "/fabrication_additive/projects/reloadmsg", "Projects#reloadmsg", "projects_reloadmsg"],
+		// envoi d'un message sur le chat
+		["GET|POST", "/fabrication_additive/admin/user/sendmsg", "User#sendmsg", "user_sendmsg"],//Ajout
+		["POST", "/fabrication_additive/admin/user/reloadmsg", "User#reloadmsg", "user_reloadmsg"],//ajout, ainsi que dans le UserController
 		// Affichage/modification d'UN projet en vue de la modification éventuelle: en fonction du $_POST ou du $_GET on appelle telle ou telle methode
 		["GET|POST", "/fabrication_additive/projects/[:id]", "Projects#edit", "projects_edit"],
 
