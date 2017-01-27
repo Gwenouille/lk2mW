@@ -147,7 +147,8 @@ a:focus {
 }
 
 .logo {
-  background-image: url("../logos/logoFermeBleu.png");
+  background-image: url("../logos/logoFermeBleu2.png");
+  background-repeat: no-repeat;
   width: 150px;
   height: 80px;
   position: relative;
@@ -245,12 +246,18 @@ Responsive du cercle de liens
   }
 }
 /* -----------------------------------------------
-  Les partenaires
+  Les partenaires / Class Partenaires-contact corrige le probleme avec la page "Contactez-nous"
 ----------------------------------------------- */
-.partenaires {
+.partenaires,
+.partenaires-contact {
   padding: 10px 0;
   display: flex;
   justify-content: space-around;
+}
+
+.partenaires-contact {
+  margin-bottom: 0;
+  margin-top: 195px;
 }
 
 .partenaires img {
@@ -259,16 +266,15 @@ Responsive du cercle de liens
 /* -----------------------------------------------
 Responsive des logos partenaires
 ----------------------------------------------- */
-
 @media (max-width: 600px) {
-  .partenaires {
+  .partenaires,
+  .partenaires-contact {
     align-items: center;
     max-width: 400px;
     flex-wrap: wrap;
     margin: 0 auto;
   }
 }
-
 /* -----------------------------------------------
   Page Fabrication Additive
 ----------------------------------------------- */
@@ -458,7 +464,9 @@ input {
 .main-content {
   display: flex;
   justify-content: space-around;
-  padding: 25px;
+  padding-left: 110px;
+  padding-right: 110px;
+  padding-top: 50px;
 }
 
 .contact {
@@ -472,5 +480,34 @@ input {
 
   .contact {
     margin: 20px auto;
+  }
+
+  .map {
+    margin: 20px auto;
+  }
+
+  .map iframe {
+    width: 500px;
+    height: 500px;
+  }
+}
+@media (max-width : 600px) {
+  .map {
+    margin: 20px auto;
+  }
+
+  .map iframe {
+    width: 300px;
+    height: 300px;
+  }
+}
+@media (max-width : 400px) {
+  .map {
+    margin: 20px auto;
+  }
+
+  .map iframe {
+    width: 150px;
+    height: 150px;
   }
 }

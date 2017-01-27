@@ -21,7 +21,7 @@
 		<header>
 			<div class="logo_container">
 				<a href="<?= $this->url("default_home"); ?>">
-					<img src="<?= $this->assetUrl('logos/logoFerme.png');?>" alt="page accueil">
+					<img src="<?= $this->assetUrl('logos/logoFerme2.png');?>" alt="page accueil">
 				</a>
 			</div>
 			<div class="title">
