@@ -82,7 +82,7 @@ class ProjectsController extends Controller
 				if($updateProject == false) {
 					$errors['update'] = true;
 				}
-		 	} else { 
+		 	} else {
 				// création d'un article dans la table projects
 				$user_id=$_SESSION['user']['id'];
 
@@ -93,14 +93,15 @@ class ProjectsController extends Controller
     			);
 				$createProject = $modelProject ->insert($dataProject,true);
 
-				// récupère l'ID deu projet qui vient d'être créé
-				$idProject = $modelProject -> lastInsertId();
+				// récupère l'ID du projet qui vient d'être créé
+				$idProject = $createProject['id'];
 
 				// crée une entrée dans la table projects_has_users pour le projet qui vient d'être créé
-				$sth = 'INSERT INTO projects_has_users(users_id,chief_id) VALUES(:users_id,:chief_id)';
+				$sth = 'INSERT INTO projects_has_users(projects_id,users_id,chief_id) VALUES(:projects_id,:users_id,:chief_id)';
 				$sth = ConnectionModel::getDbh() -> prepare($sth);
-				$sth->bindValue(':users_id', $idProject);
-				$sth->bindValue(':chief_id', $idProject);
+				$sth->bindValue(':projects_id', $idProject);
+				$sth->bindValue(':users_id', $user_id);
+				$sth->bindValue(':chief_id', $user_id);
 		 		if($createProject == false || !$sth -> execute()) {
 					$errors['creationLiaison'] = true;
 				}
