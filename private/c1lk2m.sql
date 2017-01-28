@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 27 Janvier 2017 à 15:49
+-- Généré le :  Sam 28 Janvier 2017 à 16:50
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -56,41 +56,6 @@ CREATE TABLE `messages` (
   `users_id` int(11) NOT NULL,
   `to_users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `messages`
---
-
-INSERT INTO `messages` (`id`, `content`, `date`, `users_id`, `to_users_id`) VALUES
-(1, 'Ceci est le message 1', '2017-01-20 11:09:00', 2, 3),
-(2, 'Ceci est le 2eme message', '2017-01-20 11:19:00', 2, 3),
-(3, 'Réponse de User 3', '2017-01-20 11:22:00', 3, 2),
-(4, 'Et retour de l\'utilisateur 2 à l\'admin', '2017-01-20 11:19:00', 2, 3),
-(5, 'Essai d\'envoi message', '2017-01-20 11:28:45', 2, 3),
-(9, 'essai d\'envoi message', '2017-01-21 15:26:07', 3, 2),
-(20, 'Mouveau message c\'est tres mouveau', '2017-01-23 07:59:44', 2, 3),
-(21, 'essai', '2017-01-26 10:29:45', 3, 1),
-(22, 'Message de Gwen', '2017-01-26 10:30:45', 2, 1),
-(23, 'Message de Gwen', '2017-01-26 10:30:47', 2, 1),
-(24, '456', '2017-01-26 12:05:08', 3, 3),
-(25, 'Coucou', '2017-01-26 12:08:37', 3, 3),
-(26, 'Coucou', '2017-01-26 12:12:11', 3, 2),
-(27, 'Essai 154198458498', '2017-01-26 12:27:15', 3, 2),
-(28, 'Nouveau message', '2017-01-26 14:04:33', 3, 2),
-(29, 'Nouveau message', '2017-01-26 14:04:38', 3, 2),
-(30, 'fawwef', '2017-01-26 14:04:42', 3, 2),
-(31, 'Merde alors', '2017-01-27 14:16:09', 3, 2),
-(32, 'Essai', '2017-01-27 14:30:40', 2, 3),
-(33, 'reponse', '2017-01-27 14:33:40', 2, 3),
-(34, 'Bonjour', '2017-01-27 14:37:41', 2, 3),
-(35, 'Ça va Poulette ?', '2017-01-27 14:38:01', 3, 2),
-(36, 'oui mon doudou !!!', '2017-01-27 14:38:17', 2, 3),
-(37, 'Je te permets pas !', '2017-01-27 14:38:25', 3, 2),
-(38, 'Arrete de zieuter Alexandre !', '2017-01-27 14:38:48', 3, 2),
-(39, 'Je folatre pas, c\'est Mel qui me regarde avec ses yeux terrifiants', '2017-01-27 14:39:41', 2, 3),
-(40, 'Coucou !', '2017-01-27 14:40:54', 3, 2),
-(41, 'kikou', '2017-01-27 14:41:03', 2, 3),
-(42, 'kikou', '2017-01-27 14:41:17', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -166,7 +131,7 @@ INSERT INTO `projects` (`id`, `name`, `date`, `description`) VALUES
 (3, 'Pierre projet 1', '2017-01-20 00:00:00', '1er projet de Pierre'),
 (4, 'Gwen projet 1', '2017-01-20 03:00:00', '1er projet de Gwen'),
 (5, 'Gwen projet 2', '2017-01-21 03:00:00', 'Mon 2eme projet'),
-(9, 'Gwen Projet 3', '2017-01-27 13:05:09', 'fsdfafsdfsdfsad');
+(9, 'Gwen Projet 3', '2017-01-27 13:05:09', 'Et voici le 3eme');
 
 -- --------------------------------------------------------
 
@@ -227,6 +192,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `log` datetime DEFAULT NULL,
+  `last_message_time` datetime DEFAULT NULL,
   `state` tinyint(1) DEFAULT '0',
   `roles_id` int(11) NOT NULL DEFAULT '3'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -235,11 +201,10 @@ CREATE TABLE `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `phone`, `log`, `state`, `roles_id`) VALUES
-(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', NULL, 1, 3),
-(2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$BAIDb13ttkZ9Bif8bfFxuOGvMCwB6LRHlmKq3BvOa9ePvEFeOx9/i', '', NULL, 1, 3),
-(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '2017-01-20 00:00:00', 1, 2),
-(4, 'Regis', 'Regis', 'reg@reg.fr', '$2y$10$GW1w93Flml3uKx57MPabBuqK2LCDYpPTe9FBJFMTRwqqBR6sO8Yi6', '', NULL, 0, 3);
+INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `phone`, `log`, `last_message_time`, `state`, `roles_id`) VALUES
+(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', NULL, NULL, 1, 3),
+(2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$BAIDb13ttkZ9Bif8bfFxuOGvMCwB6LRHlmKq3BvOa9ePvEFeOx9/i', '0631230409', '2017-01-28 16:37:04', '2017-01-28 16:36:54', 1, 3),
+(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '2017-01-28 16:37:26', NULL, 1, 2);
 
 --
 -- Index pour les tables exportées
@@ -317,7 +282,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT pour la table `news`
 --
@@ -347,7 +312,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Contraintes pour les tables exportées
 --

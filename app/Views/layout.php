@@ -34,8 +34,19 @@
 				$linkConnect= '<a class="connectLink" href="'.$this->url("user_signin").'" tabindex=1>Se connecter/S\'inscrire</a>';
 				$linkDeconnect = '<a class="connectLink" href="'.$this->url("user_logout").'" tabindex=1>> Se deconnecter</a>';
 				$linkAccount = '<a class="connectLink" href="'.$this->url("user_home").'" tabindex=1>> Mon espace</a>';
-				if(isset($_SESSION['user']) && !empty($_SESSION['user'])) $userAccount = $_SESSION['user']['firstname']." ".$_SESSION['user']['lastname'];
-				$connectLink= !empty($_SESSION['user']) ? '<h4>'.$userAccount.'</h4><p>'.$linkDeconnect.'</p><p>'.$linkAccount.'</p>':'<h3>Dieppe - Normandie</h3><p>'.$linkConnect.'</p>';
+
+				if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
+					$userAccount = $_SESSION['user']['firstname']." ".$_SESSION['user']['lastname'];
+					if (isset($_SESSION['nouveau_message']) && $_SESSION['nouveau_message']===true){
+						$nouveau_message='<p class=nouveau_message>Nouveau message !</p>';
+					} else {
+						$nouveau_message='';
+					}
+
+					$connectLink='<h4>'.$userAccount.'</h4><p>'.$linkDeconnect.'</p><p>'.$linkAccount.'</p>'.$nouveau_message;
+				} else {
+					$connectLink='<h3>Dieppe - Normandie</h3><p>'.$linkConnect.'</p>';
+				}
 				echo ($connectLink);
 			}
 			?>

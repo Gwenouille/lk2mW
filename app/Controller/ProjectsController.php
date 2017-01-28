@@ -113,10 +113,10 @@ class ProjectsController extends Controller
 
 	}
 
-
+//Fonction d'envoi de message du point de vue utilisateur lambda
 	public function sendmsg($to_users_id='3'){
 
-		//Récupération du contenu de POST et passage a la moulinette htmlspecialchars
+		//Récupération du contenu de POST et passage à la moulinette htmlspecialchars
 		$message=htmlspecialchars($_POST['newMessage']);
 
 		//Récupération de l'ID du user en session actuellement

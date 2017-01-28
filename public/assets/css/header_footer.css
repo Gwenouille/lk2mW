@@ -29,6 +29,11 @@ header {
   margin: 0;
 }
 
+.nouveau_message {
+  color: red;
+  font-weight: bold;
+}
+
 /*************************************
  LVHA pour le lien de connection/déconnection
 **************************************/

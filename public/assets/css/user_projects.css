@@ -67,6 +67,11 @@
   margin-top: 1.5em;
 }
 
+/* Le glyphicon des projets */
+.glyphicon:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
   .projectSection {
     flex-direction: column;

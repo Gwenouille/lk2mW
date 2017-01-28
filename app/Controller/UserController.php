@@ -116,8 +116,10 @@ class UserController extends Controller
 
 	public function logout()
 	{
-    $userLog = new AuthentificationModel();
+		//destruction du contenu de la variable superglobale $_SESSION
+		$_SESSION = array();
 
+    $userLog = new AuthentificationModel();
     // l'utilisateur est connecté
     if(!is_null($userLog ->getLoggedUser())) {
         $userLog->logUserOut();
@@ -125,6 +127,7 @@ class UserController extends Controller
     } else {
         $this->redirectToRoute('user_login');
     }
+		//Remise à zéro de la super-globale $_SESSION
   }
 
   public function signIn()
@@ -161,9 +164,9 @@ class UserController extends Controller
 
     $userGrant = new AuthorizationModel();
     if($userGrant->isGranted('1') || $userGrant->isGranted('2')) { // l'utilisateur connecté est un (super-)administrateur donc redirige vers la view admin
-       $this->show("admin/AdminView",['connectLinkChoice' => true]);
+      $this->show("admin/AdminView",['connectLinkChoice' => true]);
     } else {    // l'utilisateur connecté est un simple membre donc redirige vers la view utilisateur simple
-       $this->show("user/UserView",['connectLinkChoice' => true]);
+			$this->show("user/UserView",['connectLinkChoice' => true]);
     }
   }
 
@@ -206,6 +209,8 @@ class UserController extends Controller
     }
   }
 
+
+	//Fonction d'envoi de message du point de vue admin
 	public function sendmsg($to_users_id='3'){
 
 		//Récupération du contenu de POST et passage a la moulinette htmlspecialchars
@@ -232,6 +237,13 @@ class UserController extends Controller
 		//insertion dudit message en BDD
 		$newMessage -> insert($data);
 
+		//mise a jour en BDD sur la table du user concerné de la date du dernier message envoyé.
+		$userModel = new UserModel();
+		$last_message_time = array(
+				'last_message_time'=>$now);
+		$userModel -> update($last_message_time, $to_users_id);
+
+
 		//Récupération des messages le concernant
 		$message = new MessagesModel();
 		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
@@ -239,6 +251,7 @@ class UserController extends Controller
 		$this->showJson(["Success" =>true]);
 	}
 
+	//Fonction de reload des messages du point de vue admin
 	public function reloadmsg($to_users_id='3') {
 
 		//Récupération de l'ID du user en session actuellement

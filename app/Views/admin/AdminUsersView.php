@@ -27,7 +27,7 @@
 	<?php $messages=[];?>
 	<div class="chat">
 		<p><h3 class="blocTitleProject">Mes messages :</h3></p>
-		<ul class="chat_content">
+		<ul id= "chat_content" class="chat_content">
 			<?php	foreach ($messages as $key => $value) :?>
 				<?php $class = ($messages[$key]['users_id']==='3') ? 'chat_users' : 'chat_admin';?>
 				<li>

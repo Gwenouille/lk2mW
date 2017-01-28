@@ -35,6 +35,29 @@ class UserModel extends UsersModel {
         //si le compte est activé
         if($userData['state'] != 0) {
           $userLog -> logUserIn($userData);
+
+          // Uniquement pour les utilisateurs lambda !
+          if ($userData['roles_id']=='3'){
+            //récupère le timestamp du dernier log
+            $lastLog=\strtotime($userData['log']);
+
+            //recupère le timestamp du dernier message si celui-ci n'est pas nul
+            if (!empty($userData['last_message_time'])){
+              $lastMessageTime=\strtotime($userData['last_message_time']);
+            }
+
+            //Si le dernier message est posterieur login précédent, affiche 'nouveau message', sinon 'pas de nouveau message'
+            if ($lastMessageTime-$lastLog>0){
+              $_SESSION['nouveau_message']=true;
+            } else {
+              $_SESSION['nouveau_message']=false;
+            }
+          }
+
+          // inscrit le timestamp actuel en BDD sous l'indication log
+          $logTime= date('Y-m-d H:i:s');
+          $userConnect -> update (array('log'=>$logTime),$userData['id']);
+
           // vérifie que l'utilisateur a bien sa session
           if(is_null($userLog ->getLoggedUser())) {
             $errors = "Erreur de session !";
