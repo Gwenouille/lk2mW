@@ -69,7 +69,7 @@ class NewsController extends Controller
 	// récupère les données de l'article modifié pour faire une mise à jour de l'article en BDD
 	public function newsModify() {
 		// format tolérés pour les images
-		$imgExt = array(".jpg",".jpeg",".gif",".png",".JPG",".JPEG",".GIF",".PNG");
+		$imgExt = array(".jpg",".jpeg",".gif",".png");
 		// répertoire où sont stockées les images
 		$dir = __DIR__;
 		$cherche="app\Controller";
