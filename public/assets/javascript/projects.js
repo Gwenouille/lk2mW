@@ -2,8 +2,8 @@ $(function(){
 
   var list = $('.project');
 
-  // clic sur le bouton de visualisation du projet
-  list.on("click",'.glyphicon-eye-open',function(e) {
+
+  function ajaxFillForm(e) {
     var data = { 'id':$(this).attr('id') };
     $.ajax({
       url: "projectsShow",
@@ -16,9 +16,8 @@ $(function(){
         $("#contentProject").val(value.projectData['description']);
         $("#idProject").val(value.projectData['id']);
       }
-    });
-  });
-
+     });
+  }
 
   // clic sur le bouton créer ou Modifier
   $(".detailProject").on("submit",function(e) {
@@ -49,7 +48,7 @@ $(function(){
             success: function(value) {
               $(".listProjectContent").html(value);
               $('.project').on("click",'.glyphicon-trash', ajaxDelete);
-
+              $('.project').on("click",'.glyphicon-eye-open',ajaxFillForm);
             }
           });
         }
@@ -77,6 +76,9 @@ $(function(){
       }
     });
   };
+
+  // clic sur le bouton de visualisation du projet
+  list.on("click",'.glyphicon-eye-open',ajaxFillForm);
 
   // clic sur le bouton de suppression d'un fichier
   list.on("click",'.glyphicon-trash', ajaxDelete);

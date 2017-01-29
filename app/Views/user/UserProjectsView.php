@@ -58,18 +58,18 @@
 								<?php
 								if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
 									$files=$projectsList[$key]['files'];
-									foreach ($files as $key => $value) :?>
-										<li id=lifileID<?= $files[$key]['id'] ?>>
+									foreach ($files as $key2 => $value2) :?>
+										<li id=lifileID<?= $files[$key2]['id'] ?>>
 								 			<?php
 								 			$dir = $this->url($w_current_route);
 											$cherche = "public/fabrication_additive/projects/";
-											$remplace = "private/projects/".$files[$key]['projects_id']."/";
+											$remplace = "private/projects/".$files[$key2]['projects_id']."/";
 											$projectTargetDir = str_replace($cherche,$remplace,$dir);
 								 			?>
-											<a href="<?= $projectTargetDir.$files[$key]['name'].'.'.$files[$key]['type'] ?>" download="<?php echo($files[$key]['real_name'].".".$files[$key]['type']) ?>">
-												<?php echo($files[$key]['real_name'].".".$files[$key]['type']) ?>
+											<a href="<?= $projectTargetDir.$files[$key2]['name'].'.'.$files[$key2]['type'] ?>" download="<?php echo($files[$key2]['real_name'].".".$files[$key2]['type']) ?>">
+												<?php echo($files[$key2]['real_name'].".".$files[$key2]['type']) ?>
 											</a>
-											<span id="fileID<?= $files[$key]['id'] ?>" class="glyphicon glyphicon-trash">
+											<span id="fileID<?= $files[$key2]['id'] ?>" class="glyphicon glyphicon-trash">
 										</li>
 								 	<?php endforeach;
 								} ?>
@@ -87,7 +87,7 @@
 					<div class="projects_title">
 						<label for="titleProject" class="labelProject">Titre du projet :</label>
 						<div class="projects_error"></div>
-						<input class="formControl" type="text" name="titleProject" value="...">
+						<input class="formControl" type="text" name="titleProject" placeholder="Mon titre">
 					</div>
 					<div class="projects_description">
 						<label for="detailProject" class="labelProject">Description du projet :</label>
