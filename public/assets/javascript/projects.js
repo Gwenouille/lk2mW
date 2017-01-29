@@ -48,7 +48,7 @@ $(function(){
             processData:false,
             success: function(value) {
               $(".listProjectContent").html(value);
-
+              $('.project').on("click",'.glyphicon-trash', ajaxDelete);
 
             }
           });
@@ -57,8 +57,7 @@ $(function(){
     });
   });
 
-  // clic sur le bouton de suppression d'un fichier
-  list.on("click",'.glyphicon-trash',function(e) {
+  function ajaxDelete(e) {
     var data = { 'id':$(this).attr('id') };
     $.ajax({
       url: "deleteFile",
@@ -75,9 +74,12 @@ $(function(){
           $(li).append("<p>Le fichier n'a pu être supprimé</li>");
         }
 
-			}
+      }
     });
-  });
+  };
+
+  // clic sur le bouton de suppression d'un fichier
+  list.on("click",'.glyphicon-trash', ajaxDelete);
 
 
 });
