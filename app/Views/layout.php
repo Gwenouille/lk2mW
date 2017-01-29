@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/normalize.css') ?>">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/local_bootstrap.css') ?>">
+	<link rel="stylesheet" href="<?= $this->assetUrl('css/ekko-lightbox.min.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/master.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/header_footer.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/user_view.css') ?>">
@@ -89,6 +90,13 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="<?= $this->assetUrl('javascript/ekko-lightbox.min.js') ?>"></script>
+	<script>
+	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+	    event.preventDefault();
+	    $(this).ekkoLightbox();
+	});
+	</script>
 	<!-- PERMET D'AJOUTER DES JS ICI -->
 	<?= $this->section('js') ?>
 
