@@ -49,6 +49,7 @@
 		["POST", "/fabrication_additive/projects/projectsShow", "Projects#projectsShow", "Projects_show"],
 		["POST", "/fabrication_additive/projects/projectsModify", "Projects#projectsModify", "Projects_modify"],
 		["POST", "/fabrication_additive/projects/projectsAjaxModify", "Projects#projectsAjaxModify", "Projects_Ajaxmodify"],
+		["POST", "/fabrication_additive/projects/deleteFile", "Projects#deleteFile", "Projects_deleteFile"],
 
 		// envoi d'un message sur le chat et rechargement automatique pour l'utilisateur lambda
 		["GET|POST", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],
@@ -57,7 +58,7 @@
 		// envoi d'un message sur le chat et rechargement automatique pour l'admin'
 		["GET|POST", "/fabrication_additive/admin/user/sendmsg", "User#sendmsg", "user_sendmsg"],
 		["POST", "/fabrication_additive/admin/user/reloadmsg", "User#reloadmsg", "user_reloadmsg"],
-		
+
 		// Affichage/modification d'UN projet en vue de la modification éventuelle: en fonction du $_POST ou du $_GET on appelle telle ou telle methode
 		["GET|POST", "/fabrication_additive/projects/[:id]", "Projects#edit", "projects_edit"],
 

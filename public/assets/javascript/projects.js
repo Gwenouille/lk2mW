@@ -4,7 +4,7 @@ $(function(){
   var list = $('.project');
 
   // clic sur le bouton de visualisation du projet
-  list.on("click",'.glyphicon',function(e) {
+  list.on("click",'.glyphicon-eye-open',function(e) {
     var data = { 'id':$(this).attr('id') };
     console.log(data);
     $.ajax({
@@ -55,18 +55,29 @@ $(function(){
 
             }
           });
-
-
-
         }
-
       }
     });
-
-
   });
 
+  // clic sur le bouton de suppression d'un fichier
+  list.on("click",'.glyphicon-trash',function(e) {
+    var data = { 'id':$(this).attr('id') };
+    $.ajax({
+      url: "deleteFile",
+      type: "post",
+      data: data,
+      success: function(value) {
+        var li='#lifileID'+value.id;
+        if (value.success){
+          $(li).replaceWith('<li>Fichier supprimé</li>');
+        } else {
+          $(li).append("<p>Le fichier n'a pu être supprimé</li>");
+        }
 
+			}
+    });
+  });
 
 
 });

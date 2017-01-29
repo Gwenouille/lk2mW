@@ -59,7 +59,7 @@
 								if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
 									$files=$projectsList[$key]['files'];
 									foreach ($files as $key => $value) :?>
-										<li>
+										<li id=lifileID<?= $files[$key]['id'] ?>>
 								 			<?php
 								 			$dir = $this->url($w_current_route);
 											$cherche = "public/fabrication_additive/projects/";
@@ -69,6 +69,7 @@
 											<a href="<?= $projectTargetDir.$files[$key]['name'].'.'.$files[$key]['type'] ?>" download="<?php echo($files[$key]['real_name'].".".$files[$key]['type']) ?>">
 												<?php echo($files[$key]['real_name'].".".$files[$key]['type']) ?>
 											</a>
+											<span id="fileID<?= $files[$key]['id'] ?>" class="glyphicon glyphicon-trash">
 										</li>
 								 	<?php endforeach;
 								} ?>

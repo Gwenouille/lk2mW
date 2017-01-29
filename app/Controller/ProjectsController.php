@@ -259,4 +259,17 @@ class ProjectsController extends Controller
 
 		$this->showJson(["Success" =>true,'reloadChat' => $newChat]);
 	}
+
+	// Fonction de suppression d'un fichier d'un projet de l'utilisateur
+	public function deleteFile() {
+		$file = new FilesModel();
+		$fileId=substr($_POST['id'],6,strlen($_POST['id'])-6 );
+		try {
+			$file->delete($fileId);
+			$this->showJson(["Success" =>true,'id' => $fileId]);
+		} catch(PDOException $e){
+			$this->showJson(["Success" =>false,'id' => $fileId]);
+		}
+	}
+
 }
