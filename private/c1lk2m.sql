@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 28 Janvier 2017 à 16:50
+-- Généré le :  Dim 29 Janvier 2017 à 11:22
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `files` (
   `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
+  `real_name` varchar(45) DEFAULT NULL,
   `type` varchar(45) DEFAULT NULL,
   `size` int(11) DEFAULT NULL,
   `projects_id` int(11) NOT NULL
@@ -38,10 +39,10 @@ CREATE TABLE `files` (
 -- Contenu de la table `files`
 --
 
-INSERT INTO `files` (`id`, `name`, `type`, `size`, `projects_id`) VALUES
-(1, 'fichier1', 'pdf', 1024, 1),
-(2, 'fichier2', 'pdf', 1024, 5),
-(3, 'fichier3', 'pdf', 1024, 5);
+INSERT INTO `files` (`id`, `name`, `real_name`, `type`, `size`, `projects_id`) VALUES
+(1, 'fichier1', '', 'pdf', 1024, 1),
+(2, 'fichier2', '', 'pdf', 1024, 5),
+(3, 'fichier3', '', 'pdf', 1024, 5);
 
 -- --------------------------------------------------------
 
@@ -56,6 +57,15 @@ CREATE TABLE `messages` (
   `users_id` int(11) NOT NULL,
   `to_users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `content`, `date`, `users_id`, `to_users_id`) VALUES
+(56, 'Bonjour Melinda', '2017-01-28 17:31:48', 3, 1),
+(57, 'Ah, Pierre… Ou es-tu ?', '2017-01-28 17:32:03', 1, 3),
+(58, 'Au Brésil !', '2017-01-28 17:32:20', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -202,9 +212,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `phone`, `log`, `last_message_time`, `state`, `roles_id`) VALUES
-(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', NULL, NULL, 1, 3),
+(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', '2017-01-28 17:32:32', '2017-01-28 17:32:20', 1, 3),
 (2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$BAIDb13ttkZ9Bif8bfFxuOGvMCwB6LRHlmKq3BvOa9ePvEFeOx9/i', '0631230409', '2017-01-28 16:37:04', '2017-01-28 16:36:54', 1, 3),
-(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '2017-01-28 16:37:26', NULL, 1, 2);
+(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '2017-01-28 17:31:17', NULL, 1, 2);
 
 --
 -- Index pour les tables exportées
@@ -282,7 +292,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT pour la table `news`
 --

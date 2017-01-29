@@ -16,7 +16,6 @@
 
 <!-- Div contenants les news -->
 <main class="main_news">
-
 	<?php
 	foreach ($newsList as $key=>$value) {
 		if ($newsList[$key]['state']==='1'){
@@ -37,7 +36,9 @@
 								$url.=$pictures[$key2]['type'];?>
 
 					<div class="img_content">
-						<img src="<?= $this->assetUrl($url); ?>" alt="">
+						<a href="<?= $this->assetUrl($url); ?>" data-toggle="lightbox" data-title="<?= $newsList[$key]['title']?>">
+							<img src="<?= $this->assetUrl($url); ?>" alt="<?= $newsList[$key]['title']?>" class="img-fluid">
+						</a>
 					</div>
 
 							<?php

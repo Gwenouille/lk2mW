@@ -85,7 +85,9 @@
     <div class="section-fabrication">
       <h2 class="section-fabrication-titre">Formation et Conception</h2>
       <div class="content-section">
-        <img class="img-right" src="../public/assets/images/FormConcept.jpg" alt="">
+        <a href="<?= $this->assetUrl("images/FormConcept.jpg"); ?>" data-toggle="lightbox" data-title="Formation et Conception" data-footer="8 postes de sculpture">
+          <img class="img-right" src="<?= $this->assetUrl("images/FormConcept.jpg"); ?>" alt="8 postes de sculpture" class="img-fluid">
+        </a>
         <div class="description-section">
           <h3>DMI est équipé de :</h3>
             <p>- 8 postes de sculpture</p>
@@ -102,7 +104,9 @@
     <div class="section-fabrication">
       <h2 class="section-fabrication-titre">Design 3D</h2>
       <div class="content-section">
-        <img class="img-left" src="../public/assets/images/desing3d.jpg" alt="">
+        <a href="<?= $this->assetUrl("images/desing3d.jpg"); ?>" data-toggle="lightbox" data-title="Design 3D" data-footer="DMI est équipé pour un rendu photo-réaliste">
+          <img class="img-left" src="<?= $this->assetUrl("images/desing3d.jpg"); ?>" alt="DMI est équipé pour un rendu photo-réaliste" class="img-fluid">
+        </a>
         <div class="description-section">
           <h3>DMI est équipé pour un rendu visuel réaliste :</h3>
             <p>- D'un bras de sculpture</p>
@@ -117,7 +121,9 @@
     <div class="section-fabrication">
       <h2 class="section-fabrication-titre">Impression 3D</h2>
       <div class="content-section">
-        <img class="img-right" src="../public/assets/images/3dPrinting.jpg" alt="">
+        <a href="<?= $this->assetUrl("images/3dPrinting.jpg"); ?>" data-toggle="lightbox" data-title="Impression 3D" data-footer="DMI propose des imprimantes produisant des pieces de qualité">
+          <img class="img-right" src="<?= $this->assetUrl("images/3dPrinting.jpg"); ?>" alt="DMI propose des imprimantes produisant des pieces de qualité" class="img-fluid">
+        </a>
         <div class="description-section">
           <h3>DMI propose des imprimantes produisant des pieces de qualité :</h3>
             <p>- Imprimante 3D Projet 5500x</p>
