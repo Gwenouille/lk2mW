@@ -26,6 +26,7 @@
   margin-right: 3em;
   padding: 0.5em;
   flex-grow: 1;
+	max-height: 500px;
 }
 
 .project {
