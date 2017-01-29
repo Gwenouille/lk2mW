@@ -49,15 +49,15 @@ class ProjectsController extends Controller
 	}
 
 	public function projectsModify() {
-		// format tolérés pour les images
+		// format tolérés pour les fichiers
 		$projectExt = array(".pdf",".zip",".rar");
-		// répertoire où sont stockées les images
+		// répertoire où sont stockées les fichiers
 		$dir = __DIR__;
 		$cherche="app\Controller";
 		$remplace="private\\projects\\";
 		$projectTargetDir = str_replace($cherche,$remplace,$dir);
 
-		// Vérifie que le champ du titre de l'article est bien rempli
+		// Vérifie que le champ du titre du projet est bien rempli
 		if(isset($_POST['titleProject']) && empty($_POST['titleProject'])) {
 			$errors['title'] = true;
 		}
@@ -110,12 +110,7 @@ class ProjectsController extends Controller
 				$sth->bindValue(':users_id', $user_id);
 				$sth->bindValue(':chief_id', $user_id);
 
-				if (!$sth->execute()) {
-					$errorLiaison = false;
-				} else {
-					$errorLiaison = $modelProject->find($modelProject->lastInsertId());
-				}
-		 		if($createProject == false || $errorLiaison == false) {
+		 		if($createProject == false || !$sth->execute()) {
 					$errors['creation'] = true;
 				}
 			}
@@ -184,6 +179,12 @@ class ProjectsController extends Controller
 						}
 					}
 				}
+				// si des erreurs dans les fichiers
+				if(isset($errors['fileError'])) {
+					$this->showJson(["actionProject" =>$actionProject, "success"=>true, "errors" =>true, "errorsType" =>$errors['fileError']]);
+				} else {
+					$this->showJson(["actionProject" =>$actionProject, "success"=>true, "errors" =>false]);
+				}
 			}
 		} else {  // Si les champs titre et contenu ne sont pas remplis correctement
 			$this->showJson(["actionProject" =>$actionProject, "success"=>false,"errors"=>true,"errorsChamp" => $errors]);
@@ -192,10 +193,47 @@ class ProjectsController extends Controller
 	}
 
 	public function projectsAjaxModify() {
+		//Récupération de l'ID du user en session actuellement
+		$user_id=$_SESSION['user']['id'];
 
-		echo('toutouyoutou');
+		//Récupération des projets à son actif
+		$project = new ProjectsModel();
+		$listOfProjects = $project->findAllProjectsFromUser($user_id);
 
+		//Ajout des fichiers liés au projet dans le tableau, sous l'indice 'files'
+		$files = new FilesModel();
+		foreach ($listOfProjects as $key => $value) {
+			$listOfProjects[$key]['files']= $files -> findFilesFromProjects($listOfProjects[$key]['projects_id']);
+		}
 
+		$newLeftMenu = "";
+
+		foreach ($listOfProjects as $key => $value) {
+			$newLeftMenu .= "<div class='project'>";
+			$newLeftMenu .= "<h4><span id='projectID".$listOfProjects[$key]['id']."' class='glyphicon glyphicon-eye-open'></span>&nbsp;".$listOfProjects[$key]['name']."</h4>";
+			$newLeftMenu .= "<p><em>".$listOfProjects[$key]['date']."</em></p>";
+			$newLeftMenu .= "<p>".$listOfProjects[$key]['description']."</p>";
+			$newLeftMenu .= "<ul>";
+			if (isset($listOfProjects[$key]['files']) && !empty ($listOfProjects[$key]['files'])) {
+				$files=$listOfProjects[$key]['files'];
+				foreach ($files as $key => $value) {
+					$newLeftMenu .= "<li>";
+					$app = getApp();
+		 			$dir = $app->getCurrentRoute();
+					$cherche = "public/fabrication_additive/projects/";
+					$remplace = "private/projects/".$files[$key]['projects_id']."/";
+					$projectTargetDir = str_replace($cherche,$remplace,$dir);
+					$newLeftMenu .= "<a href='".$projectTargetDir.$files[$key]['name'].".".$files[$key]['type']."' download='".$files[$key]['real_name'].".".$files[$key]['type']."'>";
+					$newLeftMenu .= $files[$key]['real_name'].".".$files[$key]['type'];
+					$newLeftMenu .= "</a>";
+					$newLeftMenu .= "</li>";
+				}
+			}
+			$newLeftMenu .= "</ul>";
+			$newLeftMenu .= "</div>";
+		}
+
+		echo $newLeftMenu;
 
 	}
 

@@ -40,16 +40,16 @@ $(function(){
       processData:false,
       contentType:false,
       success: function(value) {
+        console.log(value);
         if(value.success) {
           // vide la partie du menu de gauche et la remplace par sa maj
           $.ajax({
-            url: "news/projectAjaxModify",
+            url: "projectsAjaxModify",
             type:"post",
             data: data,
             dataType:"html",
             processData:false,
             success: function(value) {
-              console.log("rou");
               $(".listProjectContent").html(value);
 
 
