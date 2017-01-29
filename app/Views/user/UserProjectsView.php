@@ -56,15 +56,22 @@
 							<p><?= $projectsList[$key]['description']?></p>
 							<ul>
 								<?php
-									if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
-										$files=$projectsList[$key]['files'];
-
-								 	foreach ($files as $key => $value) :?>
+								if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
+									$files=$projectsList[$key]['files'];
+									foreach ($files as $key => $value) :?>
 										<li>
-											<?php echo($files[$key]['name'].".".$files[$key]['type']) ?>
+								 			<?php
+								 			$dir = $this->url($w_current_route);
+											$cherche = "public/fabrication_additive/projects/";
+											$remplace = "private/projects/".$files[$key]['projects_id']."/";
+											$projectTargetDir = str_replace($cherche,$remplace,$dir);
+								 			?>
+											<a href="<?= $projectTargetDir.$files[$key]['name'].'.'.$files[$key]['type'] ?>" download="<?php echo($files[$key]['real_name'].".".$files[$key]['type']) ?>">
+												<?php echo($files[$key]['real_name'].".".$files[$key]['type']) ?>
+											</a>
 										</li>
 								 	<?php endforeach;
-									} ?>
+								} ?>
 							</ul>
 						</div>
 					<?php endforeach ?>

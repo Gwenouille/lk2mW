@@ -48,6 +48,7 @@
 		// route vers les controleurs récupérant les requetes Ajax
 		["POST", "/fabrication_additive/projects/projectsShow", "Projects#projectsShow", "Projects_show"],
 		["POST", "/fabrication_additive/projects/projectsModify", "Projects#projectsModify", "Projects_modify"],
+		["POST", "/fabrication_additive/projects/projectsAjaxModify", "Projects#projectsAjaxModify", "Projects_Ajaxmodify"],
 
 		// envoi d'un message sur le chat et rechargement automatique pour l'utilisateur lambda
 		["GET|POST", "/fabrication_additive/projects/sendmsg", "Projects#sendmsg", "projects_sendmsg"],

@@ -119,17 +119,16 @@ class ProjectsController extends Controller
 					$errors['creation'] = true;
 				}
 			}
-
 			if( (isset($errors['creation']) && $errors['creation'] === true ) || ( isset($errors['update']) && $errors['update'] === true ) ) {
 				$this->showJson(["actionProject" =>$actionProject, "success"=>false,"errors"=>true,"errorsChampBDD"=>$errors]);
 			} else {
 				// Récupère l'ID de l'article concerné
-				if($actionProject === "modification") $project_id=$updateProject['id'];
+				if($actionProject === "modification") $project_id = $updateProject['id'];
 				else $project_id = $idProject;
 				// boucle pour examiner chaque input file
 				for($i = 0; $i < count($_FILES['fileProject']['name']); $i++) {
 					if($_FILES['fileProject']['size'][$i] != 0 && $_FILES['fileProject']['error'][$i] != 4 ) {
-												// récupère les données des fichiers
+						// récupère les données des fichiers
 						$fileData = array(
 							"name" => $_FILES['fileProject']['name'][$i],
 							"type" => $_FILES['fileProject']['type'][$i],
@@ -147,27 +146,36 @@ class ProjectsController extends Controller
 								if(!is_dir($dossier)){
 									mkdir($dossier);
 								}
+
 								// enregistre l'image dans le dossier par numero
 								$projectFileType = pathinfo(basename($fileData["name"]),PATHINFO_EXTENSION);
-								$projectFileName = pathinfo($fileData['name'], PATHINFO_FILENAME);
+								$realFileName = pathinfo($fileData['name'], PATHINFO_FILENAME);
 								$nameStorage = ($i+1).".".$projectFileType;
 
 								$instance=ConnectionModel::getDbh();
-								$sql = "INSERT INTO news_pictures(name,real_name,type,size,alt,news_id,state) VALUES(:name,:real_name,:type,:size,:alt,:news_id,:state)";
-								$requestImg = $instance ->prepare($sql);
-								$requestImgOk = $requestImg->execute(array(
+								$sql = "INSERT INTO files(name,real_name,type,size,projects_id) VALUES(:name,:real_name,:type,:size,:projects_id)";
+								$requestProject = $instance ->prepare($sql);
+								$requestProjectOk = $requestProject->execute(array(
 									"name"=>(string)($i+1),
 									"real_name"=>$realFileName,
-									"type"=> $imageFileType,
+									"type"=> $projectFileType,
 									"size"=> $fileData['size'],
-									"alt"=> $nameStorage,
-									"news_id"=>$news_id,
-									"state"=> 1,
+									"projects_id"=>$project_id,
 								));
-
-
-
-
+								// données fichier bien entrées dans la BDD
+								if($requestProjectOk) {
+									// envoie des images dans le dossier concernant l'article créé
+									if (!move_uploaded_file($fileData["tmp_name"], $dossier."/".$nameStorage)) {
+										// récupère l'ID de l'image en BDD
+										$projectMod = new NewsPicturesModel();
+										$projectId = $projectMod->lastInsert();
+										// efface les données de l'image en BDD
+										$projectMod-> delete($projectId);
+										$errors["fileError"][$i] = "Une erreur est survenue lors du transfert du fichier ".$realFileName;
+									}
+								} else {
+									$errors["fileError"][$i] = "Une erreur est survenue lors de l'enregistrement des données du fichier ".$realFileName;
+								}
 							} else {
 								$errors['fileError'][$i] = "Le fichier ".$fileData['name']." n'est pas conforme aux extensions autorisées : ".implode(', ', $projectExt);
 							}
@@ -180,6 +188,14 @@ class ProjectsController extends Controller
 		} else {  // Si les champs titre et contenu ne sont pas remplis correctement
 			$this->showJson(["actionProject" =>$actionProject, "success"=>false,"errors"=>true,"errorsChamp" => $errors]);
 		}
+
+	}
+
+	public function projectsAjaxModify() {
+
+		echo('toutouyoutou');
+
+
 
 	}
 
