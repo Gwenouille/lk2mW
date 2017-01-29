@@ -46,9 +46,10 @@
 		// route de l'affichage des projets: demande au modele ProjectsModel de chercher les projets de l'utilisateur, envoie à la view ces projets, un projet vide a creer et le chat
 		["GET", "/fabrication_additive/projects/", "Projects#home", "projects_home"],
 		// route vers les controleurs récupérant les requetes Ajax
-		["POST", "/fabrication_additive/projects/projectsShow", "Projects#projectsShow", "Projects_show"],
-		["POST", "/fabrication_additive/projects/projectsModify", "Projects#projectsModify", "Projects_modify"],
-		["POST", "/fabrication_additive/projects/projectsAjaxModify", "Projects#projectsAjaxModify", "Projects_Ajaxmodify"],
+
+		["POST", "/fabrication_additive/projects/projectsShow", "Projects#projectsShow", "projects_show"],
+		["POST", "/fabrication_additive/projects/projectsModify", "Projects#projectsModify", "projects_modify"],
+		["POST", "/fabrication_additive/projects/projectsAjaxModify", "Projects#projectsAjaxModify", "projects_projectsAjaxmodify"],
 		["POST", "/fabrication_additive/projects/deleteFile", "Projects#deleteFile", "Projects_deleteFile"],
 
 		// envoi d'un message sur le chat et rechargement automatique pour l'utilisateur lambda
