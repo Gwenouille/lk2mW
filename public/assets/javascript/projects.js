@@ -12,7 +12,6 @@ $(function(){
       type: "post",
       data: data,
       success: function(value) {
-        console.log(value);
 				// Entre les données du projet dans les champs
 				$(".formControl[name='titleProject']").val(value.projectData['name']);
         $(".formControl[name='dateProject']").val(value.projectData['date']);
@@ -40,7 +39,6 @@ $(function(){
       processData:false,
       contentType:false,
       success: function(value) {
-        console.log(value);
         if(value.success) {
           // vide la partie du menu de gauche et la remplace par sa maj
           $.ajax({
@@ -69,7 +67,7 @@ $(function(){
       data: data,
       success: function(value) {
         var li='#lifileID'+value.id;
-        if (value.success){
+        if (value.Success===true){
           $(li).replaceWith('<li>Fichier supprimé</li>');
         } else {
           $(li).append("<p>Le fichier n'a pu être supprimé</li>");

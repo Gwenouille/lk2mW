@@ -217,7 +217,7 @@ class ProjectsController extends Controller
 			if (isset($listOfProjects[$key]['files']) && !empty ($listOfProjects[$key]['files'])) {
 				$files=$listOfProjects[$key]['files'];
 				foreach ($files as $key => $value) {
-					$newLeftMenu .= "<li>";
+					$newLeftMenu .= "<li id=lifileID".$files[$key]['id']." >";
 					$app = getApp();
 		 			$dir = $app->getCurrentRoute();
 					$cherche = "public/fabrication_additive/projects/";
@@ -225,7 +225,8 @@ class ProjectsController extends Controller
 					$projectTargetDir = str_replace($cherche,$remplace,$dir);
 					$newLeftMenu .= "<a href='".$projectTargetDir.$files[$key]['name'].".".$files[$key]['type']."' download='".$files[$key]['real_name'].".".$files[$key]['type']."'>";
 					$newLeftMenu .= $files[$key]['real_name'].".".$files[$key]['type'];
-					$newLeftMenu .= "</a>";
+					$newLeftMenu .= "</a> ";
+					$newLeftMenu .= "<span id=fileID".$files[$key]['id']." class=\"glyphicon glyphicon-trash\">";
 					$newLeftMenu .= "</li>";
 				}
 			}
@@ -304,9 +305,9 @@ class ProjectsController extends Controller
 		$fileId=substr($_POST['id'],6,strlen($_POST['id'])-6 );
 		try {
 			$file->delete($fileId);
-			$this->showJson(["Success" =>true,'id' => $fileId]);
+			$this->showJson(["Success"=>true,'id' => $fileId]);
 		} catch(PDOException $e){
-			$this->showJson(["Success" =>false,'id' => $fileId]);
+			$this->showJson(["Success"=>false,'id' => $fileId]);
 		}
 	}
 
