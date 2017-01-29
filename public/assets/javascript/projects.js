@@ -5,20 +5,20 @@ $(function(){
   // clic sur le bouton de visualisation du projet
   list.on("click",'.glyphicon-eye-open',function(e) {
     var data = { 'id':$(this).attr('id') };
-    // console.log(data);
     $.ajax({
       url: "projectsShow",
       type: "post",
       data: data,
       success: function(value) {
-				// Entre les données du projet dans les champs
-				$(".formControl[name='titleProject']").val(value.projectData['name']);
+        // Entre les données du projet dans les champs
+        $(".formControl[name='titleProject']").val(value.projectData['name']);
         $(".formControl[name='dateProject']").val(value.projectData['date']);
         $("#contentProject").val(value.projectData['description']);
         $("#idProject").val(value.projectData['id']);
-			}
+      }
     });
   });
+
 
   // clic sur le bouton créer ou Modifier
   $(".detailProject").on("submit",function(e) {
