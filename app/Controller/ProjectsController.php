@@ -218,7 +218,7 @@ class ProjectsController extends Controller
 				$files=$listOfProjects[$key]['files'];
 
 				foreach ($files as $key2 => $value2) {
-					$newLeftMenu .= "<li id=lifileID".$files[$key]['id']." >";
+					$newLeftMenu .= "<li id=lifileID".$files[$key2]['id']." >";
 
 					$app = getApp();
 		 			$dir = $this->generateUrl($app->getCurrentRoute());
