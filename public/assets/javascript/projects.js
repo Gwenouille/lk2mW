@@ -28,7 +28,6 @@ $(function(){
     var data = new FormData(form);
     // Ajout du bouton du formulaire qui est cliqué dans le formData
     data.append("action", buttonActive);
-
     $.ajax({
       url: "projectsModify",
       type: "post",
@@ -38,6 +37,11 @@ $(function(){
       contentType:false,
       success: function(value) {
         if(value.success) {
+          // vide les champs si tous les données,champs sont respectés
+          $(".projects_title input[name='titleProject']").val("");
+          $(".projects_description textarea[name='contentProject']").val("");
+          $(".projects_file input[type='file']").val("");
+
           // vide la partie du menu de gauche et la remplace par sa maj
           $.ajax({
             url: "projectsAjaxModify",
@@ -46,11 +50,22 @@ $(function(){
             dataType:"html",
             processData:false,
             success: function(value) {
+              console.log("fdfd");
               $(".listProjectContent").html(value);
               $('.project').on("click",'.glyphicon-trash', ajaxDelete);
               $('.project').on("click",'.glyphicon-eye-open',ajaxFillForm);
             }
           });
+        } else { // affichage des messages d'erreur pour les champs mal remplis
+            
+            if(typeof(value.errorsChamp) != "undefined") {
+              if(typeof(value.errorsChamp['content']) != "undefined") {
+                $(".projects_description .projects_error").val(value.errorsChamp['content']);
+              }
+              if(typeof(value.errorsChamp['title']) != "undefined") {
+                $(".projects_title .projects_error").val(value.errorsChamp['title']);
+              }
+            }
         }
       }
     });

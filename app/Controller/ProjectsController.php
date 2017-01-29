@@ -6,7 +6,7 @@ use \W\Controller\Controller;
 use Model\ProjectsModel;
 use Model\FilesModel;
 use Model\MessagesModel;
-use W\Model\Model;
+use \W\Model\Model;
 use \W\Model\ConnectionModel;
 
 class ProjectsController extends Controller
@@ -27,7 +27,7 @@ class ProjectsController extends Controller
 		//Ajout des fichiers liés au projet dans le tableau, sous l'indice 'files'
 		$files = new FilesModel();
 		foreach ($listOfProjects as $key => $value) {
-			$listOfProjects[$key]['files']=$files->findFilesFromProjects(	$listOfProjects[$key]['projects_id']);
+			$listOfProjects[$key]['files']=$files->findFilesFromProjects($listOfProjects[$key]['projects_id']);
 		}
 
 		//Récupération des messages le concernant
@@ -49,147 +49,10 @@ class ProjectsController extends Controller
 	}
 
 	public function projectsModify() {
-		// format tolérés pour les fichiers
-		$projectExt = array(".pdf",".zip",".rar");
-		// répertoire où sont stockées les fichiers
-		$dir = __DIR__;
-		$cherche="app\Controller";
-		$remplace="private\\projects\\";
-		$projectTargetDir = str_replace($cherche,$remplace,$dir);
 
-		// Vérifie que le champ du titre du projet est bien rempli
-		if(isset($_POST['titleProject']) && empty($_POST['titleProject'])) {
-			$errors['title'] = true;
-		}
-
-		// Vérifie que le champ du textarea est bien rempli
-		if(isset($_POST['contentProject']) && empty($_POST['contentProject'])) {
-			$errors['content'] = true;
-		}
-
-		// fait la différence entre modification et création
-		if(isset($_POST['action']) && $_POST['action']==='modifyProject') {
-			$actionProject = "modification";
-		} else  {
-			$actionProject = "creation";
-		}
-
-		// // les champs sont bien remplis
-		if(!isset($errors)) {
-			$modelProject = new ProjectsModel();
-			// si on effectue une mise à jour
-			if($actionProject === 'modification') {
-				// prépare les données qui seront mises en BDD
-				$dataProject = array(
-					"name" => htmlentities($_POST['titleProject']),
-					"description" => htmlentities($_POST['contentProject']),
-      			);
-				// mise à jour des données en BDD
-				$updateProject = $modelProject-> update($dataProject,$_POST['idProject'],true);
-				if($updateProject == false) {
-					$errors['update'] = true;
-				}
-		 	} else {
-				// création d'un article dans la table projects
-				$user_id=$_SESSION['user']['id'];
-
-				$dataProject = array(
-					"name" => htmlentities($_POST['titleProject']),
-					"description" => htmlentities($_POST['contentProject']),
-					"date" => date('Y-m-d H:i:s'),
-    			);
-				$createProject = $modelProject ->insert($dataProject,true);
-
-				// récupère l'ID du projet qui vient d'être créé
-				$idProject = $createProject['id'];
-
-				// crée une entrée dans la table projects_has_users pour le projet qui vient d'être créé
-				$sth = 'INSERT INTO projects_has_users(projects_id,users_id,chief_id) VALUES(:projects_id,:users_id,:chief_id)';
-				$sth = ConnectionModel::getDbh() -> prepare($sth);
-				$sth->bindValue(':projects_id', $idProject);
-				$sth->bindValue(':users_id', $user_id);
-				$sth->bindValue(':chief_id', $user_id);
-
-		 		if($createProject == false || !$sth->execute()) {
-					$errors['creation'] = true;
-				}
-			}
-			if( (isset($errors['creation']) && $errors['creation'] === true ) || ( isset($errors['update']) && $errors['update'] === true ) ) {
-				$this->showJson(["actionProject" =>$actionProject, "success"=>false,"errors"=>true,"errorsChampBDD"=>$errors]);
-			} else {
-				// Récupère l'ID de l'article concerné
-				if($actionProject === "modification") $project_id = $updateProject['id'];
-				else $project_id = $idProject;
-				// boucle pour examiner chaque input file
-				for($i = 0; $i < count($_FILES['fileProject']['name']); $i++) {
-					if($_FILES['fileProject']['size'][$i] != 0 && $_FILES['fileProject']['error'][$i] != 4 ) {
-						// récupère les données des fichiers
-						$fileData = array(
-							"name" => $_FILES['fileProject']['name'][$i],
-							"type" => $_FILES['fileProject']['type'][$i],
-							"tmp_name" => $_FILES['fileProject']['tmp_name'][$i],
-							"error" => $_FILES['fileProject']['error'][$i],
-							"size" => $_FILES['fileProject']['size'][$i]
-						);
-
-						// Poids du fichier ne dépasse pas celui autorisé pour l'upload
-						if(filesize($fileData["tmp_name"]) != false) {
-							// fichier conforme aux formats autorisés
-							if(in_array(strtolower(strrchr($fileData['name'], '.')), $projectExt)) {
-								// création d'un dossier pour le projet (nom du dossier correspondant à l'ID du projet)
-								$dossier = $projectTargetDir.$project_id;
-								if(!is_dir($dossier)){
-									mkdir($dossier);
-								}
-
-								// enregistre l'image dans le dossier par numero
-								$projectFileType = pathinfo(basename($fileData["name"]),PATHINFO_EXTENSION);
-								$realFileName = pathinfo($fileData['name'], PATHINFO_FILENAME);
-								$nameStorage = ($i+1).".".$projectFileType;
-
-								$instance=ConnectionModel::getDbh();
-								$sql = "INSERT INTO files(name,real_name,type,size,projects_id) VALUES(:name,:real_name,:type,:size,:projects_id)";
-								$requestProject = $instance ->prepare($sql);
-								$requestProjectOk = $requestProject->execute(array(
-									"name"=>(string)($i+1),
-									"real_name"=>$realFileName,
-									"type"=> $projectFileType,
-									"size"=> $fileData['size'],
-									"projects_id"=>$project_id,
-								));
-								// données fichier bien entrées dans la BDD
-								if($requestProjectOk) {
-									// envoie des images dans le dossier concernant l'article créé
-									if (!move_uploaded_file($fileData["tmp_name"], $dossier."/".$nameStorage)) {
-										// récupère l'ID de l'image en BDD
-										$projectMod = new NewsPicturesModel();
-										$projectId = $projectMod->lastInsert();
-										// efface les données de l'image en BDD
-										$projectMod-> delete($projectId);
-										$errors["fileError"][$i] = "Une erreur est survenue lors du transfert du fichier ".$realFileName;
-									}
-								} else {
-									$errors["fileError"][$i] = "Une erreur est survenue lors de l'enregistrement des données du fichier ".$realFileName;
-								}
-							} else {
-								$errors['fileError'][$i] = "Le fichier ".$fileData['name']." n'est pas conforme aux extensions autorisées : ".implode(', ', $projectExt);
-							}
-						} else {
-							$errors['fileError'][$i] = "le poids du fichier ".$fileData['name']." excède le poids autorisé pour l'upload.";
-						}
-					}
-				}
-				// si des erreurs dans les fichiers
-				if(isset($errors['fileError'])) {
-					$this->showJson(["actionProject" =>$actionProject, "success"=>true, "errors" =>true, "errorsType" =>$errors['fileError']]);
-				} else {
-					$this->showJson(["actionProject" =>$actionProject, "success"=>true, "errors" =>false]);
-				}
-			}
-		} else {  // Si les champs titre et contenu ne sont pas remplis correctement
-			$this->showJson(["actionProject" =>$actionProject, "success"=>false,"errors"=>true,"errorsChamp" => $errors]);
-		}
-
+		$myProject = new ProjectsModel();
+		$fulfillMyProject = $myProject ->fulfillForm($_POST,$_FILES);
+		$this->showJson($fulfillMyProject);
 	}
 
 	public function projectsAjaxModify() {
@@ -236,9 +99,7 @@ class ProjectsController extends Controller
 			$newLeftMenu .= "</ul>";
 			$newLeftMenu .= "</div>";
 		}
-
 		echo $newLeftMenu;
-
 	}
 
 //Fonction d'envoi de message du point de vue utilisateur lambda
