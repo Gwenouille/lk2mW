@@ -64,7 +64,7 @@ $(function(){
 			'id':$(this).attr('id'),
 			'state':$(this).prop('checked')
 		};
-		console.log(data);
+		// console.log(data);
 		$.ajax({
 			url: "news/newsToggleImgCheckbox",
 			type: "post",

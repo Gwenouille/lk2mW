@@ -226,7 +226,7 @@ class ProjectsController extends Controller
 					$newLeftMenu .= "<a href='".$projectTargetDir.$files[$key]['name'].".".$files[$key]['type']."' download='".$files[$key]['real_name'].".".$files[$key]['type']."'>";
 					$newLeftMenu .= $files[$key]['real_name'].".".$files[$key]['type'];
 					$newLeftMenu .= "</a> ";
-					$newLeftMenu .= "<span id=fileID".$files[$key]['id']." class=\"glyphicon glyphicon-trash\">";
+					$newLeftMenu .= "<span id=fileID".$files[$key]['id'].' class="glyphicon glyphicon-trash">';
 					$newLeftMenu .= "</li>";
 				}
 			}

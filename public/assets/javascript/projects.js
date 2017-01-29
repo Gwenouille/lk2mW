@@ -1,12 +1,11 @@
 $(function(){
 
-
   var list = $('.project');
 
   // clic sur le bouton de visualisation du projet
   list.on("click",'.glyphicon-eye-open',function(e) {
     var data = { 'id':$(this).attr('id') };
-    console.log(data);
+    // console.log(data);
     $.ajax({
       url: "projectsShow",
       type: "post",
@@ -68,7 +67,10 @@ $(function(){
       success: function(value) {
         var li='#lifileID'+value.id;
         if (value.Success===true){
-          $(li).replaceWith('<li>Fichier supprimé</li>');
+          text='<li id="lifileID'+value.id+'">Fichier supprimé</li>'
+          $(li).replaceWith(text);
+          $(li).delay(1500).hide(300);
+
         } else {
           $(li).append("<p>Le fichier n'a pu être supprimé</li>");
         }

@@ -84,25 +84,26 @@
 				<h3 class="blocTitleProject">Description de mes projets :</h3>
 
 				<form class="detailProject" action="" method="post" id="projectForm">
-
-						<label for="titleProject" class="labelProject">
-							Titre du projet :
-						</label>
+					<div class="projects_title">
+						<label for="titleProject" class="labelProject">Titre du projet :</label>
+						<div class="projects_error"></div>
 						<input class="formControl" type="text" name="titleProject" value="...">
-
-						<label for="detailProject" class="labelProject">
-							Description du projet :
-						</label>
+					</div>
+					<div class="projects_description">
+						<label for="detailProject" class="labelProject">Description du projet :</label>
+						<div class="projects_error"></div>
 						<textarea class="formControl" rows="10" name="contentProject" id="contentProject"></textarea>
-
-						<label for="fileProject" class="labelProject">
-							Fichiers joints au projet :
-						</label>
+					</div>
+					<div class="projects_file">
+						<label for="fileProject" class="labelProject">Fichiers joints au projet :</label>
+						<div class="projects_error"></div>
 						<input class="formControl" type="file" name="fileProject[]" multiple>
 						<input type="hidden" name="idProject" id="idProject">
+					</div>
+
 					<div class="formButton">
-					<button type="submit" id="modifyProject">Modifier</button>
-					<button type="submit" id="createProject">Créer un nouveau projet</button>
+						<button type="submit" id="modifyProject">Modifier</button>
+						<button type="submit" id="createProject">Créer un nouveau projet</button>
 					</div>
 				</form>
 			</div>

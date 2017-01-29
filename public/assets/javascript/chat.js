@@ -7,10 +7,6 @@ function reloadChat(){
         $(".chat_content").empty();
         $(".chat_content").html(value.reloadChat);
 
-        // Scrolle le chat vers le bas automatiquement.
-        var objDiv = document.getElementById("chat_content");
-        objDiv.scrollTop = objDiv.scrollHeight;
-
       }
     }
   });
@@ -29,8 +25,10 @@ $(function(){
       success:function(value){
         if(value.Success) {
           reloadChat()
-        //  $(".chat_content").empty();
-        //  $(".chat_content").html(value.reloadChat);
+
+          // Scrolle le chat vers le bas automatiquement.
+          var objDiv = document.getElementById("chat_content");
+          objDiv.scrollTop = objDiv.scrollHeight;
         }
       }
     });
