@@ -216,15 +216,15 @@ class ProjectsController extends Controller
 			$newLeftMenu .= "<ul>";
 			if (isset($listOfProjects[$key]['files']) && !empty ($listOfProjects[$key]['files'])) {
 				$files=$listOfProjects[$key]['files'];
-				foreach ($files as $key => $value) {
+				foreach ($files as $key2 => $value2) {
 					$newLeftMenu .= "<li>";
 					$app = getApp();
-		 			$dir = $app->getCurrentRoute();
-					$cherche = "public/fabrication_additive/projects/";
-					$remplace = "private/projects/".$files[$key]['projects_id']."/";
+		 			$dir = $this->generateUrl($app->getCurrentRoute());
+					$cherche = "public/fabrication_additive/projects/projectsAjaxModify";
+					$remplace = "private/projects/".$files[$key2]['projects_id']."/";
 					$projectTargetDir = str_replace($cherche,$remplace,$dir);
-					$newLeftMenu .= "<a href='".$projectTargetDir.$files[$key]['name'].".".$files[$key]['type']."' download='".$files[$key]['real_name'].".".$files[$key]['type']."'>";
-					$newLeftMenu .= $files[$key]['real_name'].".".$files[$key]['type'];
+					$newLeftMenu .= "<a href='".$projectTargetDir.$files[$key2]['name'].".".$files[$key2]['type']."' download='".$files[$key2]['real_name'].".".$files[$key2]['type']."'>";
+					$newLeftMenu .= $files[$key2]['real_name'].".".$files[$key2]['type'];
 					$newLeftMenu .= "</a>";
 					$newLeftMenu .= "</li>";
 				}
