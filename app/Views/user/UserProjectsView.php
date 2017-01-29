@@ -75,17 +75,12 @@
 			<div class="previewProject">
 				<h3 class="blocTitleProject">Description de mes projets :</h3>
 
-				<form class="detailProject" action="" method="post">
+				<form class="detailProject" action="" method="post" id="projectForm">
 
 						<label for="titleProject" class="labelProject">
 							Titre du projet :
 						</label>
 						<input class="formControl" type="text" name="titleProject" value="...">
-
-						<label for="dateProject" class="labelProject">
-							Date de début du projet :
-						</label>
-						<input class="formControl" type="text" name="dateProject" value="..." disabled>
 
 						<label for="detailProject" class="labelProject">
 							Description du projet :
@@ -95,7 +90,7 @@
 						<label for="fileProject" class="labelProject">
 							Fichiers joints au projet :
 						</label>
-						<input class="formControl" type="file" name="fileProject[]" value="...">
+						<input class="formControl" type="file" name="fileProject[]" multiple>
 						<input type="hidden" name="idProject" id="idProject">
 					<div class="formButton">
 					<button type="submit" id="modifyProject">Modifier</button>

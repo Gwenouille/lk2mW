@@ -147,7 +147,7 @@ class NewsController extends Controller
 							// Poids de l'image ne dépasse pas celle autorisé pour l'upload
 							if(filesize($fileData["tmp_name"]) != false) {
 								//Image conforme aux formats d'image autorisés
-								if(in_array(strrchr($fileData['name'], '.'), $imgExt)) {
+								if(in_array(strtolower(strrchr($fileData['name'], '.')), $imgExt)) {
 									// création d'un dossier pour l'article (nom du dossier correspondant à l'ID de l'article)
 									$dossier = $imgTargetDir.$news_id;
 									if(!is_dir($dossier)){
@@ -188,7 +188,7 @@ class NewsController extends Controller
 									$errors['fileError'][$i] = "L'image ".$fileData['name']." n'est pas conforme aux extensions autorisées : ".implode(', ', $imgExt);
 								}
 							} else {
-									$errors['fileError'][$i] = "le poids de l'image excède le poids autorisé pour l'upload.";
+									$errors['fileError'][$i] = "le poids de l'image ".$fileData['name']." excède le poids autorisé pour l'upload.";
 							}
 						} else {
 								$errors['fileError'][$i] = "Le fichier ".$fileData['name']." n'est pas une image.";

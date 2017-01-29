@@ -22,24 +22,29 @@ $(function(){
     });
   });
 
-  // clic sur le bouton créer
+  // clic sur le bouton créer ou Modifier
   $(".detailProject").on("submit",function(e) {
     e.preventDefault();
     var buttonActive = $(document.activeElement).attr('id');
-    var data = $(this).serialize() + "&action=" + buttonActive;
+
+    var form = document.getElementById('projectForm');
+    var data = new FormData(form);
+    // Ajout du bouton du formulaire qui est cliqué dans le formData
+    data.append("action", buttonActive);
+
     $.ajax({
       url: "projectsModify",
       type: "post",
       data: data,
+      dataType:"json",
+      processData:false,
+      contentType:false,
       success: function(value) {
       }
     });
 
 
   });
-
-  // clic sur le bouton Modifier
-
 
 
 

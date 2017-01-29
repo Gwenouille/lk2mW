@@ -49,8 +49,15 @@ class ProjectsController extends Controller
 	}
 
 	public function projectsModify() {
+		// format tolérés pour les images
+		$projectExt = array(".pdf",".zip",".rar");
+		// répertoire où sont stockées les images
+		$dir = __DIR__;
+		$cherche="app\Controller";
+		$remplace="private\\projects\\";
+		$projectTargetDir = str_replace($cherche,$remplace,$dir);
 
-				// Vérifie que le champ du titre de l'article est bien rempli
+		// Vérifie que le champ du titre de l'article est bien rempli
 		if(isset($_POST['titleProject']) && empty($_POST['titleProject'])) {
 			$errors['title'] = true;
 		}
@@ -102,11 +109,74 @@ class ProjectsController extends Controller
 				$sth->bindValue(':projects_id', $idProject);
 				$sth->bindValue(':users_id', $user_id);
 				$sth->bindValue(':chief_id', $user_id);
-		 		if($createProject == false || !$sth -> execute()) {
-					$errors['creationLiaison'] = true;
+
+				if (!$sth->execute()) {
+					$errorLiaison = false;
+				} else {
+					$errorLiaison = $modelProject->find($modelProject->lastInsertId());
+				}
+		 		if($createProject == false || $errorLiaison == false) {
+					$errors['creation'] = true;
 				}
 			}
 
+			if( (isset($errors['creation']) && $errors['creation'] === true ) || ( isset($errors['update']) && $errors['update'] === true ) ) {
+				$this->showJson(["actionProject" =>$actionProject, "success"=>false,"errors"=>true,"errorsChampBDD"=>$errors]);
+			} else {
+				// Récupère l'ID de l'article concerné
+				if($actionProject === "modification") $project_id=$updateProject['id'];
+				else $project_id = $idProject;
+				// boucle pour examiner chaque input file
+				for($i = 0; $i < count($_FILES['fileProject']['name']); $i++) {
+					if($_FILES['fileProject']['size'][$i] != 0 && $_FILES['fileProject']['error'][$i] != 4 ) {
+												// récupère les données des fichiers
+						$fileData = array(
+							"name" => $_FILES['fileProject']['name'][$i],
+							"type" => $_FILES['fileProject']['type'][$i],
+							"tmp_name" => $_FILES['fileProject']['tmp_name'][$i],
+							"error" => $_FILES['fileProject']['error'][$i],
+							"size" => $_FILES['fileProject']['size'][$i]
+						);
+
+						// Poids du fichier ne dépasse pas celui autorisé pour l'upload
+						if(filesize($fileData["tmp_name"]) != false) {
+							// fichier conforme aux formats autorisés
+							if(in_array(strtolower(strrchr($fileData['name'], '.')), $projectExt)) {
+								// création d'un dossier pour le projet (nom du dossier correspondant à l'ID du projet)
+								$dossier = $projectTargetDir.$project_id;
+								if(!is_dir($dossier)){
+									mkdir($dossier);
+								}
+								// enregistre l'image dans le dossier par numero
+								$projectFileType = pathinfo(basename($fileData["name"]),PATHINFO_EXTENSION);
+								$projectFileName = pathinfo($fileData['name'], PATHINFO_FILENAME);
+								$nameStorage = ($i+1).".".$projectFileType;
+
+								$instance=ConnectionModel::getDbh();
+								$sql = "INSERT INTO news_pictures(name,real_name,type,size,alt,news_id,state) VALUES(:name,:real_name,:type,:size,:alt,:news_id,:state)";
+								$requestImg = $instance ->prepare($sql);
+								$requestImgOk = $requestImg->execute(array(
+									"name"=>(string)($i+1),
+									"real_name"=>$realFileName,
+									"type"=> $imageFileType,
+									"size"=> $fileData['size'],
+									"alt"=> $nameStorage,
+									"news_id"=>$news_id,
+									"state"=> 1,
+								));
+
+
+
+
+							} else {
+								$errors['fileError'][$i] = "Le fichier ".$fileData['name']." n'est pas conforme aux extensions autorisées : ".implode(', ', $projectExt);
+							}
+						} else {
+							$errors['fileError'][$i] = "le poids du fichier ".$fileData['name']." excède le poids autorisé pour l'upload.";
+						}
+					}
+				}
+			}
 		} else {  // Si les champs titre et contenu ne sont pas remplis correctement
 			$this->showJson(["actionProject" =>$actionProject, "success"=>false,"errors"=>true,"errorsChamp" => $errors]);
 		}
