@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 30 Janvier 2017 à 09:16
+-- Généré le :  Lun 30 Janvier 2017 à 14:22
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -40,7 +40,8 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`id`, `name`, `real_name`, `type`, `size`, `projects_id`) VALUES
-(1, 'fichier1', '', 'pdf', 1024, 1);
+(8, '1', 'CVFrancais2017', 'pdf', 17617, 4),
+(9, '1', 'CVFrancais2017', 'pdf', 17617, 4);
 
 -- --------------------------------------------------------
 
@@ -55,18 +56,6 @@ CREATE TABLE `messages` (
   `users_id` int(11) NOT NULL,
   `to_users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `messages`
---
-
-INSERT INTO `messages` (`id`, `content`, `date`, `users_id`, `to_users_id`) VALUES
-(56, 'Bonjour Melinda', '2017-01-28 17:31:48', 3, 1),
-(57, 'Ah, Pierre… Ou es-tu ?', '2017-01-28 17:32:03', 1, 3),
-(58, 'Au Brésil !', '2017-01-28 17:32:20', 3, 1),
-(59, 'Bonjour', '2017-01-30 08:09:43', 3, 2),
-(60, 'Comment vas-tu ?', '2017-01-30 08:09:49', 2, 3),
-(61, 'Ça va bien ?', '2017-01-30 08:10:45', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -91,8 +80,7 @@ CREATE TABLE `news` (
 INSERT INTO `news` (`id`, `title`, `content`, `users_id`, `date_creation`, `date_modification`, `state`) VALUES
 (93, 'Ouverture', '<h3>L\'espace Fabrication Additive a ouvert ses portes avec la r&eacute;ception de machines ce 24 octobre.</h3>\r\n<p>De la conception &agrave; la r&eacute;alisation, des sp&eacute;cialistes (dont un partenariat avec le lyc&eacute;e de Pablo Neruda &agrave; Dieppe) de la fabrication additive accompagnent les entreprises et forment leurs collaborateurs &agrave; ces nouvelles technologies. Un parc d\'imprimantes 3D derni&egrave;re g&eacute;n&eacute;ration permet d\'obtenir des prototypes multi-mat&eacute;riaux ou en couleur de qualit&eacute; avec un niveau de d&eacute;tail &eacute;lev&eacute;.</p>', 3, '2016-10-24', '2017-01-27', 1),
 (94, 'Espace de codeurs', '<h3>Dans l\'espace de formation DMI</h3>\r\n<p>Depuis le 10 octobre dernier, l\'espace de formation de DMI accueille la premi&egrave;re session de l\'&eacute;cole de codeur du secteur Dieppois (WebForce3). 20 stagiaires, issus de P&ocirc;le Emploi Dieppe, vont suivre une formation intensive de 3.5 mois et sont pratiquement assur&eacute;s d\'opportunit&eacute;s professionnelles &agrave; la fin.</p>', 3, '2016-11-02', '2017-01-27', 1),
-(95, 'Formation en cours', '<h3>Une formation courte et cibl&eacute;e</h3>\r\n<p>Une quinzaine d\'&eacute;tudiants sont actuellement en formation dans nos locaux, pour une p&eacute;riode de 6 jours. Cette formation, &agrave; l\'initiative de la CCI, a pour but de sensibiliser les lyc&eacute;ens Dieppois aux possibilit&eacute;s nouvelles offertes par la fabrication additive.</p>\r\n<p>Une journ&eacute;e "portes ouvertes" aura lieu le 1 f&eacute;vrier 2017</p>', 3, '2016-12-11', '2017-01-27', 1),
-(96, 'asdfsd', '<p>asdfsad</p>', 3, '2017-01-30', '2017-01-30', 1);
+(95, 'Formation en cours', '<h3>Une formation courte et cibl&eacute;e</h3>\r\n<p>Une quinzaine d\'&eacute;tudiants sont actuellement en formation dans nos locaux, pour une p&eacute;riode de 6 jours. Cette formation, &agrave; l\'initiative de la CCI, a pour but de sensibiliser les lyc&eacute;ens Dieppois aux possibilit&eacute;s nouvelles offertes par la fabrication additive.</p>\r\n<p>Une journ&eacute;e "portes ouvertes" aura lieu le 1 f&eacute;vrier 2017</p>', 3, '2016-12-11', '2017-01-27', 1);
 
 -- --------------------------------------------------------
 
@@ -140,11 +128,9 @@ CREATE TABLE `projects` (
 INSERT INTO `projects` (`id`, `name`, `date`, `description`) VALUES
 (1, '1er projet', '2017-01-20 00:00:00', '1er projet de Melinda'),
 (2, '2em projet', '2017-01-20 03:00:00', '2eme projet de Melinda'),
-(3, 'Pierre projet 1', '2017-01-20 00:00:00', '1er projet de Pierre'),
 (4, 'Gwen projet 1', '2017-01-20 03:00:00', '1er projet de Gwen'),
 (5, 'Gwen projet 2', '2017-01-21 03:00:00', 'Mon 2eme projet'),
-(9, 'Gwen Projet 3', '2017-01-27 13:05:09', 'Et voici le 3eme'),
-(10, '', '2017-01-30 08:34:04', '');
+(9, 'Gwen Projet 3', '2017-01-27 13:05:09', 'Et voici le 3eme');
 
 -- --------------------------------------------------------
 
@@ -166,11 +152,9 @@ CREATE TABLE `projects_has_users` (
 INSERT INTO `projects_has_users` (`id`, `projects_id`, `users_id`, `chief_id`) VALUES
 (1, 1, 1, 1),
 (2, 2, 1, 1),
-(3, 3, 3, 3),
-(4, 4, 2, 2),
-(5, 5, 2, 2),
-(7, 9, 2, 2),
-(8, 10, 2, 2);
+(9, 4, 2, 2),
+(10, 5, 2, 2),
+(11, 9, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -204,6 +188,7 @@ CREATE TABLE `users` (
   `firstname` varchar(45) NOT NULL,
   `mail` varchar(45) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `temp_hash` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `log` datetime DEFAULT NULL,
   `last_message_time` datetime DEFAULT NULL,
@@ -215,10 +200,10 @@ CREATE TABLE `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `phone`, `log`, `last_message_time`, `state`, `roles_id`) VALUES
-(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', '2017-01-28 17:32:32', '2017-01-28 17:32:20', 1, 3),
-(2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$BAIDb13ttkZ9Bif8bfFxuOGvMCwB6LRHlmKq3BvOa9ePvEFeOx9/i', '0631230409', '2017-01-30 08:33:56', '2017-01-30 08:10:45', 1, 3),
-(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '2017-01-30 08:08:57', NULL, 1, 2);
+INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `temp_hash`, `phone`, `log`, `last_message_time`, `state`, `roles_id`) VALUES
+(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', '', '2017-01-28 17:32:32', '2017-01-28 17:32:20', 1, 3),
+(2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$nWNVV8ufrxQ52MkIlzNJau65yWxDIWZ3borlVS3e6f5rNtRZCiuPK', '$2y$10$QEZ.BCIiaFfAAu8ltYwJu.qbJXswba2.qolJSPCdiVVGNRWWgHQu2', '', '2017-01-30 13:45:22', NULL, 1, 3),
+(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '', '2017-01-30 14:19:54', NULL, 1, 2);
 
 --
 -- Index pour les tables exportées
@@ -291,7 +276,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `messages`
 --
@@ -316,7 +301,7 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT pour la table `projects_has_users`
 --
 ALTER TABLE `projects_has_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `roles`
 --
@@ -326,7 +311,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Contraintes pour les tables exportées
 --

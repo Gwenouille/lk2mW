@@ -89,7 +89,7 @@ class UserController extends Controller
     $listUsers = $usersList -> findAllConfirmedMembers();
 
 		// die(var_dump($listUsers));
-		$this->show("admin/adminUsersView",['usersList'=>$listUsers,"connectLinkChoice" => true]);
+		$this->show("admin/AdminUsersView",['usersList'=>$listUsers,"connectLinkChoice" => true]);
 	}
 
 	public function login()
