@@ -129,10 +129,6 @@ class ProjectsController extends Controller
 		//insertion dudit message en BDD
 		$newMessage -> insert($data);
 
-		//Récupération des messages le concernant
-		$message = new MessagesModel();
-		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
-
 		$this->showJson(["Success" =>true]);
 	}
 
