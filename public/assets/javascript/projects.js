@@ -36,12 +36,20 @@ $(function(){
       processData:false,
       contentType:false,
       success: function(value) {
+        $(".projects_title .projects_error").html("");
+        $(".projects_description .projects_error").html("");
+        $(".projects_file .projects_error").html("");
         if(value.success) {
+            if(typeof(value.errorsType) != "undefined") {
+              for(var i = 0; i < value.errorsType.length;i++) {
+                $(".projects_file .projects_error").append("<p>"+ value.errorsType[i] + "</p>");
+              }
+            }
+
           // vide les champs si tous les données,champs sont respectés
           $(".projects_title input[name='titleProject']").val("");
           $(".projects_description textarea[name='contentProject']").val("");
           $(".projects_file input[type='file']").val("");
-
           // vide la partie du menu de gauche et la remplace par sa maj
           $.ajax({
             url: "projectsAjaxModify",
@@ -49,21 +57,20 @@ $(function(){
             data: data,
             dataType:"html",
             processData:false,
+            contentType:false,
             success: function(value) {
-              console.log("fdfd");
               $(".listProjectContent").html(value);
               $('.project').on("click",'.glyphicon-trash', ajaxDelete);
               $('.project').on("click",'.glyphicon-eye-open',ajaxFillForm);
             }
           });
         } else { // affichage des messages d'erreur pour les champs mal remplis
-            
             if(typeof(value.errorsChamp) != "undefined") {
               if(typeof(value.errorsChamp['content']) != "undefined") {
-                $(".projects_description .projects_error").val(value.errorsChamp['content']);
+                $(".projects_description .projects_error").html("Veuillez remplir ce champ");
               }
               if(typeof(value.errorsChamp['title']) != "undefined") {
-                $(".projects_title .projects_error").val(value.errorsChamp['title']);
+                $(".projects_title .projects_error").html("Veuillez remplir ce champ");
               }
             }
         }
