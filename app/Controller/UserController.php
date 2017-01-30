@@ -13,7 +13,8 @@ use Model\MailModel;
 class UserController extends Controller
 {
 
-	public function getUserData(){
+	public function getUserData()
+	{
 
 		$user_id = substr($_POST['id'],6,strlen($_POST['id'])-6 );
 
@@ -64,14 +65,16 @@ class UserController extends Controller
 		$this->showJson(["coords" =>$coordsContent,"projects"=>$projectsContent]);
 	}
 
-	public function getMessagesFromUser($user_id=''){
+	public function getMessagesFromUser($user_id='')
+	{
 		//Récupération des messages le concernant
 		$message = new MessagesModel();
 		return($message->search(array('users_id'=>$user_id, 'to_users_id'=>$user_id)));
 	}
 
 	// récupère la liste des utilisateurs
-	public function showUsers() {
+	public function showUsers()
+	{
 		unset($_SESSION['to_user']);
 
 		// cette page est accessible si on est admin ou superadmin seulement.
@@ -131,7 +134,8 @@ class UserController extends Controller
 		//Remise à zéro de la super-globale $_SESSION
   }
 
-	public function validateSignIn(){
+	public function validateSignIn()
+	{
 		$temphash=$_GET['temphash'];
 		$user=new UserModel();
 		//On cherche le hash temporaire chez l'un des utilisateurs
