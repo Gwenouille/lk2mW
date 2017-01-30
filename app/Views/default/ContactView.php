@@ -65,7 +65,7 @@
   		<img src="<?= $this->assetUrl('logos/partenaires/normandie.jpg');?>" alt="logo de la région Normandie">
   		<img src="<?= $this->assetUrl('logos/partenaires/dieppe.png');?>" alt="logo de Dieppe Maritime">
   		<img src="<?= $this->assetUrl('logos/partenaires/pdtc.jpg');?>" alt="logo de Pays Dieppois Terroir de Caux">
-  		<img src="<?= $this->assetUrl('logos/partenaires/CCISMN');?>" alt="logo de la CCI SEINE MER NORMANDIE">
+  		<img src="<?= $this->assetUrl('logos/partenaires/CCISMN.png');?>" alt="logo de la CCI SEINE MER NORMANDIE">
   		<img src="<?= $this->assetUrl('logos/partenaires/cmasm.gif');?>" alt="logo de la Chambre des métiers et de l'Artisanat">
   		<img src="<?= $this->assetUrl('logos/partenaires/SME.jpg');?>" alt="logo de Seine-Maritime Expansion">
   		<img src="<?= $this->assetUrl('logos/partenaires/ADNormandie.jpg');?>" alt="logo de l'Agence de Développement Normandie">
