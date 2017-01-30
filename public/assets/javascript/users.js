@@ -13,13 +13,11 @@ $(function(){
       type: "post",
       data: data,
       success: function(value) {
-        console.log(value);
-        console.log(value.coords);
 
         var coords=value.coords;
         $("#userCoordinates").empty();
         $("#userCoordinates").append(coords);
-        
+
         var projects=value.projects;
         $("#listProjectContent").empty();
         $("#listProjectContent").append(projects);
