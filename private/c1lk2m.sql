@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 29 Janvier 2017 à 11:22
+-- Généré le :  Lun 30 Janvier 2017 à 09:16
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -40,9 +40,7 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`id`, `name`, `real_name`, `type`, `size`, `projects_id`) VALUES
-(1, 'fichier1', '', 'pdf', 1024, 1),
-(2, 'fichier2', '', 'pdf', 1024, 5),
-(3, 'fichier3', '', 'pdf', 1024, 5);
+(1, 'fichier1', '', 'pdf', 1024, 1);
 
 -- --------------------------------------------------------
 
@@ -65,7 +63,10 @@ CREATE TABLE `messages` (
 INSERT INTO `messages` (`id`, `content`, `date`, `users_id`, `to_users_id`) VALUES
 (56, 'Bonjour Melinda', '2017-01-28 17:31:48', 3, 1),
 (57, 'Ah, Pierre… Ou es-tu ?', '2017-01-28 17:32:03', 1, 3),
-(58, 'Au Brésil !', '2017-01-28 17:32:20', 3, 1);
+(58, 'Au Brésil !', '2017-01-28 17:32:20', 3, 1),
+(59, 'Bonjour', '2017-01-30 08:09:43', 3, 2),
+(60, 'Comment vas-tu ?', '2017-01-30 08:09:49', 2, 3),
+(61, 'Ça va bien ?', '2017-01-30 08:10:45', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,8 @@ CREATE TABLE `news` (
 INSERT INTO `news` (`id`, `title`, `content`, `users_id`, `date_creation`, `date_modification`, `state`) VALUES
 (93, 'Ouverture', '<h3>L\'espace Fabrication Additive a ouvert ses portes avec la r&eacute;ception de machines ce 24 octobre.</h3>\r\n<p>De la conception &agrave; la r&eacute;alisation, des sp&eacute;cialistes (dont un partenariat avec le lyc&eacute;e de Pablo Neruda &agrave; Dieppe) de la fabrication additive accompagnent les entreprises et forment leurs collaborateurs &agrave; ces nouvelles technologies. Un parc d\'imprimantes 3D derni&egrave;re g&eacute;n&eacute;ration permet d\'obtenir des prototypes multi-mat&eacute;riaux ou en couleur de qualit&eacute; avec un niveau de d&eacute;tail &eacute;lev&eacute;.</p>', 3, '2016-10-24', '2017-01-27', 1),
 (94, 'Espace de codeurs', '<h3>Dans l\'espace de formation DMI</h3>\r\n<p>Depuis le 10 octobre dernier, l\'espace de formation de DMI accueille la premi&egrave;re session de l\'&eacute;cole de codeur du secteur Dieppois (WebForce3). 20 stagiaires, issus de P&ocirc;le Emploi Dieppe, vont suivre une formation intensive de 3.5 mois et sont pratiquement assur&eacute;s d\'opportunit&eacute;s professionnelles &agrave; la fin.</p>', 3, '2016-11-02', '2017-01-27', 1),
-(95, 'Formation en cours', '<h3>Une formation courte et cibl&eacute;e</h3>\r\n<p>Une quinzaine d\'&eacute;tudiants sont actuellement en formation dans nos locaux, pour une p&eacute;riode de 6 jours. Cette formation, &agrave; l\'initiative de la CCI, a pour but de sensibiliser les lyc&eacute;ens Dieppois aux possibilit&eacute;s nouvelles offertes par la fabrication additive.</p>\r\n<p>Une journ&eacute;e "portes ouvertes" aura lieu le 1 f&eacute;vrier 2017</p>', 3, '2016-12-11', '2017-01-27', 1);
+(95, 'Formation en cours', '<h3>Une formation courte et cibl&eacute;e</h3>\r\n<p>Une quinzaine d\'&eacute;tudiants sont actuellement en formation dans nos locaux, pour une p&eacute;riode de 6 jours. Cette formation, &agrave; l\'initiative de la CCI, a pour but de sensibiliser les lyc&eacute;ens Dieppois aux possibilit&eacute;s nouvelles offertes par la fabrication additive.</p>\r\n<p>Une journ&eacute;e "portes ouvertes" aura lieu le 1 f&eacute;vrier 2017</p>', 3, '2016-12-11', '2017-01-27', 1),
+(96, 'asdfsd', '<p>asdfsad</p>', 3, '2017-01-30', '2017-01-30', 1);
 
 -- --------------------------------------------------------
 
@@ -141,7 +143,8 @@ INSERT INTO `projects` (`id`, `name`, `date`, `description`) VALUES
 (3, 'Pierre projet 1', '2017-01-20 00:00:00', '1er projet de Pierre'),
 (4, 'Gwen projet 1', '2017-01-20 03:00:00', '1er projet de Gwen'),
 (5, 'Gwen projet 2', '2017-01-21 03:00:00', 'Mon 2eme projet'),
-(9, 'Gwen Projet 3', '2017-01-27 13:05:09', 'Et voici le 3eme');
+(9, 'Gwen Projet 3', '2017-01-27 13:05:09', 'Et voici le 3eme'),
+(10, '', '2017-01-30 08:34:04', '');
 
 -- --------------------------------------------------------
 
@@ -166,7 +169,8 @@ INSERT INTO `projects_has_users` (`id`, `projects_id`, `users_id`, `chief_id`) V
 (3, 3, 3, 3),
 (4, 4, 2, 2),
 (5, 5, 2, 2),
-(7, 9, 2, 2);
+(7, 9, 2, 2),
+(8, 10, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -213,8 +217,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `phone`, `log`, `last_message_time`, `state`, `roles_id`) VALUES
 (1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', '2017-01-28 17:32:32', '2017-01-28 17:32:20', 1, 3),
-(2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$BAIDb13ttkZ9Bif8bfFxuOGvMCwB6LRHlmKq3BvOa9ePvEFeOx9/i', '0631230409', '2017-01-28 16:37:04', '2017-01-28 16:36:54', 1, 3),
-(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '2017-01-28 17:31:17', NULL, 1, 2);
+(2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$BAIDb13ttkZ9Bif8bfFxuOGvMCwB6LRHlmKq3BvOa9ePvEFeOx9/i', '0631230409', '2017-01-30 08:33:56', '2017-01-30 08:10:45', 1, 3),
+(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '2017-01-30 08:08:57', NULL, 1, 2);
 
 --
 -- Index pour les tables exportées
@@ -292,12 +296,12 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT pour la table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 --
 -- AUTO_INCREMENT pour la table `news_pictures`
 --
@@ -307,12 +311,12 @@ ALTER TABLE `news_pictures`
 -- AUTO_INCREMENT pour la table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `projects_has_users`
 --
 ALTER TABLE `projects_has_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `roles`
 --

@@ -40,8 +40,8 @@
 		// route du compte de l'utilisateur(données personnelles: affichage/modification)
 		['POST', '/fabrication_additive/user/modifyCoordinates', 'User#modifyCoordinates', 'user_modifyCoordinates'],
 
-		// route de l'envoi de mail
-		["GET", "/mail", "Mail#essai", "mail_essai"],
+		// route de validation du nouvel utilisateur
+		["GET", "/fabrication_additive/validate", "User#validateSignIn", "user_validateSignIn"],
 
 		// route de l'affichage des projets: demande au modele ProjectsModel de chercher les projets de l'utilisateur, envoie à la view ces projets, un projet vide a creer et le chat
 		["GET", "/fabrication_additive/projects/", "Projects#home", "projects_home"],

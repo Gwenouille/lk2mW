@@ -16,6 +16,7 @@ $w_config = [
 	'security_userfirstname_property' => 'firstname',		//nom de la colonne pour le "prénom"
 	'security_email_property' => 'mail',			//nom de la colonne pour l'"email"
 	'security_password_property' => 'password',		//nom de la colonne pour le "mot de passe"
+	'security_temphash_property' => 'temp_hash',		//nom de la colonne pour le hashage temporaire
 	'security_phone_property' => 'phone',		//nom de la colonne pour le "n° Tel"
 	'security_log_property' => 'log',		//nom de la colonne pour le "log"
 	'security_role_property' => 'roles_id',				//nom de la colonne pour le "role"
@@ -28,4 +29,3 @@ $w_config = [
 ];
 
 require('routes.php');
-// require_once realpath('..\vendor\phpmailer\phpmailer\PHPMailerAutoload.php');

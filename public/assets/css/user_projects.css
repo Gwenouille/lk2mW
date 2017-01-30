@@ -74,6 +74,11 @@
   cursor: pointer;
 }
 
+.news_error {
+  display: none;
+  color: red;
+}
+
 @media (max-width: 600px) {
   .projectSection {
     flex-direction: column;
