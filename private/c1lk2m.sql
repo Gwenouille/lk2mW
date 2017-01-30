@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 30 Janvier 2017 à 14:22
+-- Généré le :  Lun 30 Janvier 2017 à 14:55
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -201,7 +201,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `temp_hash`, `phone`, `log`, `last_message_time`, `state`, `roles_id`) VALUES
-(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', '', '2017-01-28 17:32:32', '2017-01-28 17:32:20', 1, 3),
+(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', '', '2017-01-28 17:32:32', '2017-01-30 14:52:54', 1, 3),
 (2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$nWNVV8ufrxQ52MkIlzNJau65yWxDIWZ3borlVS3e6f5rNtRZCiuPK', '$2y$10$QEZ.BCIiaFfAAu8ltYwJu.qbJXswba2.qolJSPCdiVVGNRWWgHQu2', '', '2017-01-30 13:45:22', NULL, 1, 3),
 (3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '', '2017-01-30 14:19:54', NULL, 1, 2);
 
@@ -281,7 +281,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT pour la table `news`
 --

@@ -68,14 +68,17 @@ class NewsModel extends Model {
   }
 
   public function fulfillForm($dataPost,$dataFiles) {
+    // die(var_dump($dataPost,$dataFiles));
 
     // format tolérés pour les images
     $imgExt = array(".jpg",".jpeg",".gif",".png",".bmp");
     // répertoire où sont stockées les images
     $dir = __DIR__;
-    $cherche="app\Model";
-    $remplace="public\assets\images\\news\\";
+    $cherche="app/Model";
+    $remplace="public/assets/images/news/";
     $imgTargetDir = str_replace($cherche,$remplace,$dir);
+
+    // die(var_dump($dir,$imgTargetDir));
 
     // Vérifie que le champ du titre de l'article est bien rempli
     if(isset($dataPost['article_title']) && empty($dataPost['article_title'])) {
@@ -101,7 +104,7 @@ class NewsModel extends Model {
         $ArticleData = array(
           "title" => htmlentities($dataPost['article_title']),
           "content" => $dataPost['news_content'],
-              "date_modification" => date('Y-m-d H:i:s'),
+          "date_modification" => date('Y-m-d H:i:s'),
             );
         // mise à jour des données en BDD
         $errorMaj = $majArticle-> update($ArticleData,$dataPost['article_id'],false);
