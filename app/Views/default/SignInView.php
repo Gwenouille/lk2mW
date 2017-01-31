@@ -41,7 +41,7 @@
     <!--formulaire d'inscription du user -->
     <div class="main-login_inscription">
       <form class="form-inscription" method="post" action="<?= $this->url("user_signin"); ?>">
-        <h3 class="form_section center">S'incrire</h3>
+        <h3 class="form_section center">S'inscrire</h3>
         <!-- Erreurs dans les données inscrites dans les champs -->
         <?php if(isset($errorSignIn)) {
           echo ($errorSignIn);
