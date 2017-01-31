@@ -76,6 +76,7 @@ class ProjectsModel extends Model {
     $dir = __DIR__;
     $cherche="app/Model";
     $remplace="private/projects/";
+    $remplace="public/projects/";
     $projectTargetDir = str_replace($cherche,$remplace,$dir);
 
     // Vérifie que le champ du titre du projet est bien rempli
@@ -163,10 +164,12 @@ class ProjectsModel extends Model {
             else {
               // création d'un dossier pour le projet (nom du dossier correspondant à l'ID du projet)
               $dossier = $projectTargetDir.$project_id;
+              // var_dump($dir,$projectTargetDir,$project_id);
+              // var_dump($dossier);
               if(!is_dir($dossier)){
                 mkdir($dossier);
               }
-                // enregistre l'image dans le dossier par numero
+                // enregistre le fichier dans le dossier par numero
               $projectFileType = pathinfo(basename($fileData["name"]),PATHINFO_EXTENSION);
               $realFileName = pathinfo($fileData['name'], PATHINFO_FILENAME);
               $nameStorage = ($i+1).".".$projectFileType;

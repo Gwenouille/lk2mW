@@ -9,6 +9,7 @@ use Model\UserModel;
 use Model\ProjectsModel;
 use Model\MessagesModel;
 use Model\MailModel;
+use Model\FilesModel;
 
 class UserController extends Controller
 {
@@ -39,7 +40,12 @@ class UserController extends Controller
 		$project = new ProjectsModel();
 		$projectsList = $project->findAllProjectsFromUser($user_id);
 
-		// die(var_dump())
+		//Ajout des fichiers liés au projet dans le tableau, sous l'indice 'files'
+		$files = new FilesModel();
+		foreach ($projectsList as $key => $value) {
+			$projectsList[$key]['files']= $files -> findFilesFromProjects($projectsList[$key]['projects_id']);
+		}
+
 		$projectsContent='';
 		foreach ($projectsList as $key => $value){
 
@@ -48,12 +54,22 @@ class UserController extends Controller
 		  $projectsContent.="<p><em>".$projectsList[$key]['date']."</em></p>";
 		  $projectsContent.="<p>".$projectsList[$key]['description']."</p>";
 		  $projectsContent.="<ul>";
+
 	        if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
 	          $files=$projectsList[$key]['files'];
 
-		        foreach ($files as $key2 => $value){
+		        foreach ($files as $key2 => $value2){
+
+							$app = getApp();
+							$dir = $this->generateUrl($app->getCurrentRoute());
+							$cherche = "fabrication_additive/admin/user/getUserData";
+							$remplace = "projects/".$files[$key2]['projects_id']."/";
+							$projectTargetDir = str_replace($cherche,$remplace,$dir);
+
 						  $projectsContent.="<li>";
-						  $projectsContent.=$files[$key2]['name'].".".$files[$key2]['type'];
+							$projectsContent.="<a href='".$projectTargetDir.$files[$key2]['name'].".".$files[$key2]['type']."' download='".$files[$key2]['real_name'].".".$files[$key2]['type']."'>";
+						  $projectsContent.=$files[$key2]['real_name'].".".$files[$key2]['type'];
+							$projectsContent.="</a>";
 						  $projectsContent.="</li>";
 					}
 		    }

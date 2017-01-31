@@ -84,10 +84,15 @@ class ProjectsController extends Controller
 					$newLeftMenu .= "<li id=lifileID".$files[$key2]['id']." >";
 
 					$app = getApp();
-		 			$dir = $this->generateUrl($app->getCurrentRoute());
-					$cherche = "public/fabrication_additive/projects/projectsAjaxModify";
-					$remplace = "private/projects/".$files[$key2]['projects_id']."/";
+					$dir = $this->generateUrl($app->getCurrentRoute());
+					$cherche = "fabrication_additive/projects/projectsAjaxModify";
+
+					// $remplace = "private/projects/".$files[$key2]['projects_id']."/";
+					$remplace = "projects/".$files[$key2]['projects_id']."/";
+
 					$projectTargetDir = str_replace($cherche,$remplace,$dir);
+					// $projectTargetDir = "../private/projects/".$files[$key2]['projects_id']."/";
+
 					$newLeftMenu .= "<a href='".$projectTargetDir.$files[$key2]['name'].".".$files[$key2]['type']."' download='".$files[$key2]['real_name'].".".$files[$key2]['type']."'>";
 					$newLeftMenu .= $files[$key2]['real_name'].".".$files[$key2]['type'];
 					$newLeftMenu .= "</a>";
