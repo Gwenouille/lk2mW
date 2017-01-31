@@ -6,6 +6,9 @@ function reloadChat(){
       if(value.Success) {
         $(".chat_content").empty();
         $(".chat_content").html(value.reloadChat);
+      } else {
+        $(".chat_content").empty();
+        $(".chat_content").html(value.reloadChat);
       }
     }
   });
@@ -28,7 +31,8 @@ $(function(){
           // Scrolle le chat vers le bas automatiquement.
           var to=setTimeout(function(){var objDiv = document.getElementById("chat_content");
           objDiv.scrollTop = objDiv.scrollHeight;},200)
-
+        } else {
+          alert("Votre message n'a pas pu être envoyé");
         }
       }
     });

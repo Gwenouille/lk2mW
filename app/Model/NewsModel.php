@@ -153,6 +153,7 @@ class NewsModel extends Model {
             else {
               // création d'un dossier pour l'article (nom du dossier correspondant à l'ID de l'article)
               $dossier = $imgTargetDir.$news_id;
+
               if(!is_dir($dossier)){
                 mkdir($dossier);
               }

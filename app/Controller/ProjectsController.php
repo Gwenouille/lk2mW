@@ -84,10 +84,15 @@ class ProjectsController extends Controller
 					$newLeftMenu .= "<li id=lifileID".$files[$key2]['id']." >";
 
 					$app = getApp();
-		 			$dir = $this->generateUrl($app->getCurrentRoute());
-					$cherche = "public/fabrication_additive/projects/projectsAjaxModify";
-					$remplace = "private/projects/".$files[$key2]['projects_id']."/";
+					$dir = $this->generateUrl($app->getCurrentRoute());
+					$cherche = "fabrication_additive/projects/projectsAjaxModify";
+
+					// $remplace = "private/projects/".$files[$key2]['projects_id']."/";
+					$remplace = "projects/".$files[$key2]['projects_id']."/";
+
 					$projectTargetDir = str_replace($cherche,$remplace,$dir);
+					// $projectTargetDir = "../private/projects/".$files[$key2]['projects_id']."/";
+
 					$newLeftMenu .= "<a href='".$projectTargetDir.$files[$key2]['name'].".".$files[$key2]['type']."' download='".$files[$key2]['real_name'].".".$files[$key2]['type']."'>";
 					$newLeftMenu .= $files[$key2]['real_name'].".".$files[$key2]['type'];
 					$newLeftMenu .= "</a>";
@@ -127,9 +132,10 @@ class ProjectsController extends Controller
 				'to_users_id'=>$newMessage->to_users_id );
 
 		//insertion dudit message en BDD
-		$newMessage -> insert($data);
+		if($newMessage -> insert($data)) $success = true;
+		else $success= false;
 
-		$this->showJson(["Success" =>true]);
+		$this->showJson(["Success" =>$success]);
 	}
 
 	// Fonction de reload du chat pour les utilisateurs lambda
@@ -144,19 +150,24 @@ class ProjectsController extends Controller
 		//Récupération des messages le concernant
 		$message = new MessagesModel();
 		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
-
 		$newChat ="";
-		foreach ($messages as $key => $value) {
-			$class = ($messages[$key]['users_id']!=='3') ? 'chat_users' : 'chat_admin';
-			$newChat .= "<li>";
-			$newChat .= "<div class='chat_message ". $class."'>";
-			$newChat .= "<p>".$messages[$key]['content']."</p>";
-			$newChat .= "<p class='chat_date'>".$messages[$key]['date']."</p>";
-			$newChat .= "</div>";
-			$newChat .= "</li>";
-		}
 
-		$this->showJson(["Success" =>true,'reloadChat' => $newChat]);
+		if($messages != false) {
+			foreach ($messages as $key => $value) {
+				$class = ($messages[$key]['users_id']!=='3') ? 'chat_users' : 'chat_admin';
+				$newChat .= "<li>";
+				$newChat .= "<div class='chat_message ". $class."'>";
+				$newChat .= "<p>".$messages[$key]['content']."</p>";
+				$newChat .= "<p class='chat_date'>".$messages[$key]['date']."</p>";
+				$newChat .= "</div>";
+				$newChat .= "</li>";
+			}
+			$success = true;
+		} else {
+			$newChat .= "Pas de messages à afficher";
+			$success = false;
+		}
+		$this->showJson(["Success" =>$success,'reloadChat' => $newChat]);
 	}
 
 	// Fonction de suppression d'un fichier d'un projet de l'utilisateur

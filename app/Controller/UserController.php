@@ -9,6 +9,7 @@ use Model\UserModel;
 use Model\ProjectsModel;
 use Model\MessagesModel;
 use Model\MailModel;
+use Model\FilesModel;
 
 class UserController extends Controller
 {
@@ -39,7 +40,12 @@ class UserController extends Controller
 		$project = new ProjectsModel();
 		$projectsList = $project->findAllProjectsFromUser($user_id);
 
-		// die(var_dump())
+		//Ajout des fichiers liés au projet dans le tableau, sous l'indice 'files'
+		$files = new FilesModel();
+		foreach ($projectsList as $key => $value) {
+			$projectsList[$key]['files']= $files -> findFilesFromProjects($projectsList[$key]['projects_id']);
+		}
+
 		$projectsContent='';
 		foreach ($projectsList as $key => $value){
 
@@ -48,12 +54,22 @@ class UserController extends Controller
 		  $projectsContent.="<p><em>".$projectsList[$key]['date']."</em></p>";
 		  $projectsContent.="<p>".$projectsList[$key]['description']."</p>";
 		  $projectsContent.="<ul>";
+
 	        if (isset($projectsList[$key]['files']) && !empty ($projectsList[$key]['files'])) {
 	          $files=$projectsList[$key]['files'];
 
-		        foreach ($files as $key2 => $value){
+		        foreach ($files as $key2 => $value2){
+
+							$app = getApp();
+							$dir = $this->generateUrl($app->getCurrentRoute());
+							$cherche = "fabrication_additive/admin/user/getUserData";
+							$remplace = "projects/".$files[$key2]['projects_id']."/";
+							$projectTargetDir = str_replace($cherche,$remplace,$dir);
+
 						  $projectsContent.="<li>";
-						  $projectsContent.=$files[$key2]['name'].".".$files[$key2]['type'];
+							$projectsContent.="<a href='".$projectTargetDir.$files[$key2]['name'].".".$files[$key2]['type']."' download='".$files[$key2]['real_name'].".".$files[$key2]['type']."'>";
+						  $projectsContent.=$files[$key2]['real_name'].".".$files[$key2]['type'];
+							$projectsContent.="</a>";
 						  $projectsContent.="</li>";
 					}
 		    }
@@ -284,7 +300,8 @@ class UserController extends Controller
 				'to_users_id'=>$newMessage->to_users_id );
 
 		//insertion dudit message en BDD
-		$newMessage -> insert($data);
+		if($newMessage -> insert($data)) $success = true;
+		else $success =false;
 
 		//mise a jour en BDD sur la table du user concerné de la date du dernier message envoyé.
 		$userModel = new UserModel();
@@ -293,11 +310,8 @@ class UserController extends Controller
 		$userModel -> update($last_message_time, $to_users_id);
 
 
-		//Récupération des messages le concernant
-		$message = new MessagesModel();
-		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
 
-		$this->showJson(["Success" =>true]);
+		$this->showJson(["Success" =>$success]);
 	}
 
 	//Fonction de reload des messages du point de vue admin
@@ -314,17 +328,23 @@ class UserController extends Controller
 		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
 
 		$newChat ="";
-		foreach ($messages as $key => $value) {
-			$class = ($messages[$key]['users_id']!=='3') ? 'chat_users' : 'chat_admin';
-			$newChat .= "<li>";
-			$newChat .= "<div class='chat_message ". $class."'>";
-			$newChat .= "<p>".$messages[$key]['content']."</p>";
-			$newChat .= "<p class='chat_date'>".$messages[$key]['date']."</p>";
-			$newChat .= "</div>";
-			$newChat .= "</li>";
+		if($messages != false) {
+			foreach ($messages as $key => $value) {
+				$class = ($messages[$key]['users_id']!=='3') ? 'chat_users' : 'chat_admin';
+				$newChat .= "<li>";
+				$newChat .= "<div class='chat_message ". $class."'>";
+				$newChat .= "<p>".$messages[$key]['content']."</p>";
+				$newChat .= "<p class='chat_date'>".$messages[$key]['date']."</p>";
+				$newChat .= "</div>";
+				$newChat .= "</li>";
+			}
+			$success = true;
+		} else {
+			$newChat .= "Pas de messages à afficher";
+			$success = false;
 		}
 
-		$this->showJson(["Success" =>true,'reloadChat' => $newChat]);
+		$this->showJson(["Success" =>$success,'reloadChat' => $newChat]);
 	}
 
 	public function generateRandomString($length = 10) {

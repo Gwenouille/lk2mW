@@ -62,8 +62,8 @@
 										<li id=lifileID<?= $files[$key2]['id'] ?>>
 								 			<?php
 								 			$dir = $this->url($w_current_route);
-											$cherche = "public/fabrication_additive/projects/";
-											$remplace = "private/projects/".$files[$key2]['projects_id']."/";
+											$cherche = "fabrication_additive/projects/";
+											$remplace = "projects/".$files[$key2]['projects_id']."/";
 											$projectTargetDir = str_replace($cherche,$remplace,$dir);
 								 			?>
 											<a href="<?= $projectTargetDir.$files[$key2]['name'].'.'.$files[$key2]['type'] ?>" download="<?php echo($files[$key2]['real_name'].".".$files[$key2]['type']) ?>">

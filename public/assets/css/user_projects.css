@@ -15,6 +15,7 @@
 
 .listProject {
   min-width: 23%;
+	max-width: 50%;
   display: flex;
   align-items: stretch;
   flex-direction: column;
