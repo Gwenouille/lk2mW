@@ -284,7 +284,8 @@ class UserController extends Controller
 				'to_users_id'=>$newMessage->to_users_id );
 
 		//insertion dudit message en BDD
-		$newMessage -> insert($data);
+		if($newMessage -> insert($data)) $success = true;
+		else $success =false;
 
 		//mise a jour en BDD sur la table du user concerné de la date du dernier message envoyé.
 		$userModel = new UserModel();
@@ -293,11 +294,8 @@ class UserController extends Controller
 		$userModel -> update($last_message_time, $to_users_id);
 
 
-		//Récupération des messages le concernant
-		$message = new MessagesModel();
-		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
 
-		$this->showJson(["Success" =>true]);
+		$this->showJson(["Success" =>$success]);
 	}
 
 	//Fonction de reload des messages du point de vue admin
@@ -314,17 +312,23 @@ class UserController extends Controller
 		$messages = $message -> searchMessages(array('users_id'=>$user_id, 'to_users_id'=>$to_users_id));
 
 		$newChat ="";
-		foreach ($messages as $key => $value) {
-			$class = ($messages[$key]['users_id']!=='3') ? 'chat_users' : 'chat_admin';
-			$newChat .= "<li>";
-			$newChat .= "<div class='chat_message ". $class."'>";
-			$newChat .= "<p>".$messages[$key]['content']."</p>";
-			$newChat .= "<p class='chat_date'>".$messages[$key]['date']."</p>";
-			$newChat .= "</div>";
-			$newChat .= "</li>";
+		if($messages != false) {
+			foreach ($messages as $key => $value) {
+				$class = ($messages[$key]['users_id']!=='3') ? 'chat_users' : 'chat_admin';
+				$newChat .= "<li>";
+				$newChat .= "<div class='chat_message ". $class."'>";
+				$newChat .= "<p>".$messages[$key]['content']."</p>";
+				$newChat .= "<p class='chat_date'>".$messages[$key]['date']."</p>";
+				$newChat .= "</div>";
+				$newChat .= "</li>";
+			}
+			$success = true;
+		} else {
+			$newChat .= "Une erreur s'est produite lors de l'affichage des messages";
+			$success = false;
 		}
 
-		$this->showJson(["Success" =>true,'reloadChat' => $newChat]);
+		$this->showJson(["Success" =>$success,'reloadChat' => $newChat]);
 	}
 
 	public function generateRandomString($length = 10) {
