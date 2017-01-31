@@ -9,7 +9,6 @@ function reloadChat(){
       } else {
         $(".chat_content").empty();
         $(".chat_content").html(value.reloadChat);
-        $('#chat_input').val('');
       }
     }
   });

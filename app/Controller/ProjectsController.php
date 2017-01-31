@@ -159,7 +159,7 @@ class ProjectsController extends Controller
 			}
 			$success = true;
 		} else {
-			$newChat .= "Une erreur s'est produite lors de l'affichage des messages";
+			$newChat .= "Pas de messages à afficher";
 			$success = false;
 		}
 		$this->showJson(["Success" =>$success,'reloadChat' => $newChat]);
