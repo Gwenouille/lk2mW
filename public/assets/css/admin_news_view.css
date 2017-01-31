@@ -4,32 +4,26 @@
 }
 
 .buttonCreateNews {
-	margin: 0.2em 0 0.3em 0;
+	margin: 0.2em 0 0.3em;
 	text-align: right;
 }
-
 /* -----------------------------------------------
   La section des news
 ----------------------------------------------- */
-
 .newsSection {
-  display: flex;
-  align-items: stretch;
+	display: flex;
+	align-items: stretch;
 }
-
 /* ****************************************************************
 	 Partie gauche du site : affichage des articles
 	**************************************************************** */
-
 .listNews {
 	min-width: 23%;
 	display: flex;
 	align-items: stretch;
 	flex-direction: column;
 	background-color: white;
-
 }
-
 /* section partie gauche du site */
 .listNewsContent {
 	overflow-y: scroll;
@@ -44,47 +38,45 @@
 }
 
 .newsEditListArticle .listNewsContent ul {
-  list-style: none;
+	list-style: none;
 	padding: 0;
 }
 
 .newsEditListArticle .listNewsContent ul li {
-  background-color: white;
-  display: flex;
-  padding: 5px;
-  border: 1px solid grey;
-  margin: 1em 0 2em;
+	background-color: white;
+	display: flex;
+	padding: 5px;
+	border: 1px solid grey;
+	margin: 1em 0 2em;
 }
 
 .newsEditListArticle input[value="Créer"] {
-  display: block;
-  margin-left: auto;
+	display: block;
+	margin-left: auto;
 }
 
 .newsListContent {
-  width: 100%;
-  max-width: 300px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+	width: 100%;
+	max-width: 300px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
 
 .newsListContent h2 + p {
-  font-size: 0.8em;
+	font-size: 0.8em;
 }
-
 /*	****************************************************************
 	 Partie droite du site pour création/modification d'articles
 	**************************************************************** */
-
 /* section partie droite du site */
 .newsEditShowArticle {
-  flex: 2;
-  padding: 1em 2em;
+	flex: 2;
+	padding: 1em 2em;
 }
 
 .newsEditShowArticle h2 {
 	text-align: center;
-	font-size:1.8em;
+	font-size: 1.8em;
 	color: #456789;
 }
 
@@ -92,103 +84,96 @@
 	/*max-width: 80%;*/
 	border-radius: 10px;
 }
-
-	/*	Formulaire */
+/*	Formulaire */
 .newsEditShowArticle .form_news {
 	display: flex;
 	flex-direction: column;
 }
-
-	/* DIV dans le form */
-.newsEditShowArticle .news_title,
+/* DIV dans le form */
 .newsEditShowArticle .news_content,
 .newsEditShowArticle .news_file,
-.newsEditShowArticle .news_file_preview {
+.newsEditShowArticle .news_file_preview,
+.newsEditShowArticle .news_title {
 	display: flex;
 	flex-direction: column;
 }
 
 .newsEditShowArticle .default_inputFile {
-	padding-top:10px;
+	padding-top: 10px;
 }
-
-	/* titre des zones */
-.newsEditShowArticle .news_title label,
+/* titre des zones */
 .newsEditShowArticle .news_content label,
 .newsEditShowArticle .news_file label,
-.newsEditShowArticle .news_file_preview label {
-	padding-top:5px;
-	font-weight:bold;
-	font-size:1.3em;
+.newsEditShowArticle .news_file_preview label,
+.newsEditShowArticle .news_title label {
+	padding-top: 5px;
+	font-weight: bold;
+	font-size: 1.3em;
 }
 
-.newsEditShowArticle .news_title input[name="article_title"],
-.newsEditShowArticle .news_content textarea {
-	margin-top:10px;
-	padding-top:10px;
+.newsEditShowArticle .news_content textarea,
+.newsEditShowArticle .news_title input[name="article_title"] {
+	margin-top: 10px;
+	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
 .newsEditShowArticle .news_content textarea {
-	min-height:200px;
+	min-height: 200px;
 }
-
-	/* bouton submit */
+/* bouton submit */
 .newsEditShowArticle .form_news [name="news_submit"] {
-	align-self:center;
+	align-self: center;
 	margin-top: 20px;
 	padding: 10px 20px;
-	font-weight:bold;
+	font-weight: bold;
 }
-
-	/* zone affichage des images */
+/* zone affichage des images */
 .newsEditShowArticle .news_file_preview {
 	display: flex;
 	text-align: center;
-	flex-direction:row;
-	flex-wrap:wrap;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
-
-	/* div contenant input file+image+bouton supprimer */
+/* div contenant input file+image+bouton supprimer */
 .newsEditShowArticle .news_file_preview .div_area {
-  border: 1px solid grey;
-  position: relative;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 30%;
-  margin: 5px auto;
+	border: 1px solid grey;
+	position: relative;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 30%;
+	margin: 5px auto;
 }
-
-  /* bouton supprimer image */
+/* bouton supprimer image */
 .newsEditShowArticle .file_delete {
-  position: absolute;
-  top: 0;
-  right: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
-
-  /* image preview */
+/* image preview */
 .newsEditShowArticle .news_file_preview .div_area img {
-  align-self: center;
-  max-width: 33%;
+	align-self: center;
+	max-width: 33%;
 }
 
-.newsEditShowArticle .news_title .news_error,
+.newsEditShowArticle .news .news_error,
 .newsEditShowArticle .news_content .news_error,
 .newsEditShowArticle .news_file .news_error,
-.newsEditShowArticle .news .news_error {
-  display: none;
-  color: red;
+.newsEditShowArticle .news_title .news_error {
+	display: none;
+	color: red;
 }
-
 /*	****************
 		Responsive
 	**************** */
-
-@media (max-width: 600px) {
-
+@media (max-width: 770px) {
 	/* partie de droite passe sous la partie de gauche */
 	.newsEditMain {
 		flex-direction: column;
 	}
 
+	.newsSection {
+		display: flex;
+		flex-direction: column;
+	}
 }
