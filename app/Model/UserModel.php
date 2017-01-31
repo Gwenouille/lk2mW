@@ -23,6 +23,20 @@ class UserModel extends UsersModel {
 		return $sth -> fetchAll();
 	}
 
+  /**
+	 * Récupère tous les users dont le statut est confirmé.
+	 */
+	public function findMemberFromHash($temphash)
+	{
+		$sql = 'SELECT * FROM ' . $this -> table;
+		$sql .= ' WHERE temp_hash="'.$temphash.'"';
+
+		$sth = $this -> dbh -> prepare($sql);
+		$sth -> execute();
+
+		return $sth -> fetch();
+	}
+
   public function login(array $data) {
 
     // les champs sont remplis ?

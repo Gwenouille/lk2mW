@@ -8,11 +8,13 @@ use \W\Model\UsersModel;
 use Model\UserModel;
 use Model\ProjectsModel;
 use Model\MessagesModel;
+use Model\MailModel;
 
 class UserController extends Controller
 {
 
-	public function getUserData(){
+	public function getUserData()
+	{
 
 		$user_id = substr($_POST['id'],6,strlen($_POST['id'])-6 );
 
@@ -63,14 +65,16 @@ class UserController extends Controller
 		$this->showJson(["coords" =>$coordsContent,"projects"=>$projectsContent]);
 	}
 
-	public function getMessagesFromUser($user_id=''){
+	public function getMessagesFromUser($user_id='')
+	{
 		//Récupération des messages le concernant
 		$message = new MessagesModel();
 		return($message->search(array('users_id'=>$user_id, 'to_users_id'=>$user_id)));
 	}
 
 	// récupère la liste des utilisateurs
-	public function showUsers() {
+	public function showUsers()
+	{
 		unset($_SESSION['to_user']);
 
 		// cette page est accessible si on est admin ou superadmin seulement.
@@ -85,7 +89,7 @@ class UserController extends Controller
     $listUsers = $usersList -> findAllConfirmedMembers();
 
 		// die(var_dump($listUsers));
-		$this->show("admin/adminUsersView",['usersList'=>$listUsers,"connectLinkChoice" => true]);
+		$this->show("admin/AdminUsersView",['usersList'=>$listUsers,"connectLinkChoice" => true]);
 	}
 
 	public function login()
@@ -130,9 +134,32 @@ class UserController extends Controller
 		//Remise à zéro de la super-globale $_SESSION
   }
 
+	public function validateSignIn()
+	{
+		$temphash=$_GET['temphash'];
+		$user=new UserModel();
+		//On cherche le hash temporaire chez l'un des utilisateurs
+		$userFound=$user->findMemberFromHash($temphash);
+		//Si on trouve un user, on passe son state à 1 et on efface le hash temporaire
+		if (!empty($userFound)){
+			//Si le compte n'est pas encore activé
+			if ($userFound['state']==0){
+				$user->update(array('state'=>1),$userFound['id']);
+				//On le renvoie sur la page de sign-in pour qu'il effectue sa connexion
+				$this->show("default/SignInView",['validateSignIn'=>1]);
+			} else {
+				$this->show("default/SignInView",['validateSignIn'=>0]);
+			}
+		} else {
+			$this->show("default/SignInView",['validateSignIn'=>-1]);
+		}
+	}
+
   public function signIn()
   {
+		$temp = $this->generateRandomString(16);
     $userLog = new AuthentificationModel();
+		$temphash = $userLog -> hashPassword($temp);
 
     // si utilisateur connecté, redirige vers la page utilisateur
     if(!is_null($userLog ->getLoggedUser())) { $this->redirectToRoute('user_home'); }
@@ -145,13 +172,35 @@ class UserController extends Controller
             "firstname" => htmlentities($_POST['firstname']),
             "mail" => htmlentities($_POST['email']),
             "password" => htmlentities($_POST['password']),
+						"temp_hash" => $temphash,
             "phone" => htmlentities($_POST['numTel']),
         );
 
         $userLog = new UserModel();
         $errors = $userLog -> signIn($userData);
-        // pas d'erreur lors de l'inscription donc renvoi vers la view d'inscription avec la donnée de réussite d'inscription
-        if(is_null($errors)) { $this->show("default/SignInView",['successSignIn'=>true]); }
+
+        // pas d'erreur lors de l'inscription donc renvoi vers la view d'inscription avec la donnée de réussite d'inscription. Envoi du mail.
+        if(is_null($errors)) {
+
+					$text_body="Bienvenue sur le site DMI, section Fabrication additive. Vous trouverez ci-dessous un lien pour valider votre inscription sur notre site.";
+					$text_body.="http://lk2m.fredericnoel.com/fabrication_additive/validate?temphash=$temphash";
+					$text_body.="Bien cordialement, l'équipe de DMI";
+
+					$body="<p>Bienvenue sur le site DMI, section Fabrication additive.</p>
+					<p>Vous trouverez ci-dessous un lien pour valider votre inscription sur notre site.</p>";
+					$body.="<a href='http://lk2m.fredericnoel.com/fabrication_additive/validate?temphash=$temphash'>Cliquez ici pour valider votre inscription</a>";
+					$body.="<p>Bien cordialement,</p>
+					<p>L'equipe de DMI</p>";
+
+					$mail=new MailModel();
+					$mail->setSubject('Inscription DMI');
+					$mail->setBody($body);
+					$mail->setTextBody($text_body);
+					$mail->addTarget(htmlentities($_POST['email']));
+					$mail->sendmail();
+
+ 					$this->show("default/SignInView",['successSignIn'=>true]);
+				}
         // Erreur lors de l'inscription donc renvoi vers la view d'inscription avec la donnée des erreurs
         else { $this -> show("default/SignInView",['errorSignIn'=>$errors]); }
     }
@@ -276,6 +325,16 @@ class UserController extends Controller
 		}
 
 		$this->showJson(["Success" =>true,'reloadChat' => $newChat]);
+	}
+
+	public function generateRandomString($length = 10) {
+			$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			$charactersLength = strlen($characters);
+			$randomString = '';
+			for ($i = 0; $i < $length; $i++) {
+					$randomString .= $characters[rand(0, $charactersLength - 1)];
+			}
+			return $randomString;
 	}
 
 }

@@ -37,7 +37,7 @@
 				<?php endforeach ?>
 			</ul>
 			<form class="chat_input" action="<?= $this->url("projects_sendmsg"); ?>" method="post">
-				<input class ="chatMessage" type="text" name="newMessage" value="">
+				<input id="chat_input" class ="chatMessage" type="text" name="newMessage" value="">
 				<button type="submit">Envoyer</button>
 			</form>
 		</div>

@@ -23,7 +23,21 @@
 
 <?php } else { ?>
 
+  <?php if (isset($validateSignIn)) {
+    if ($validateSignIn==1){?>
+      <p class="big center">Votre compte est activé. Vous pouvez désormais vous connecter.</p>
+    <?php
+  } else if ($validateSignIn==0){?>
+      <p class="big center">Votre compte est déjà activé. Veuillez vous connecter.</p>
+    <?php
+  } else if ($validateSignIn==-1){?>
+      <p class="big center">Votre compte n'a pas pu être activé.</p>
+    <?php
+    }
+  }?>
+
   <main class="main-login">
+
     <!--formulaire d'inscription du user -->
     <div class="main-login_inscription">
       <form class="form-inscription" method="post" action="<?= $this->url("user_signin"); ?>">

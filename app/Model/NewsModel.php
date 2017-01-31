@@ -73,8 +73,8 @@ class NewsModel extends Model {
     $imgExt = array(".jpg",".jpeg",".gif",".png",".bmp");
     // répertoire où sont stockées les images
     $dir = __DIR__;
-    $cherche="app\Model";
-    $remplace="public\assets\images\\news\\";
+    $cherche="app/Model";
+    $remplace="public/assets/images/news/";
     $imgTargetDir = str_replace($cherche,$remplace,$dir);
 
     // Vérifie que le champ du titre de l'article est bien rempli
@@ -101,7 +101,7 @@ class NewsModel extends Model {
         $ArticleData = array(
           "title" => htmlentities($dataPost['article_title']),
           "content" => $dataPost['news_content'],
-              "date_modification" => date('Y-m-d H:i:s'),
+          "date_modification" => date('Y-m-d H:i:s'),
             );
         // mise à jour des données en BDD
         $errorMaj = $majArticle-> update($ArticleData,$dataPost['article_id'],false);
@@ -128,6 +128,11 @@ class NewsModel extends Model {
 			} else {
         // Récupère l'ID de l'article qui vient d'etre créé
 				$news_id = $errorMaj['id'];
+
+        //Récupère le nombre d'images déja présentes dans la news
+        $pictures = new NewsPicturesModel();
+        $offset=count($pictures->search(array('news_id'=>$news_id)));
+
 				// boucle pour examiner chaque input file
 				for($i = 0; $i < count($dataFiles['news_files_input']['name']); $i++) {
           // S'il y a des fichiers et pas d'erreur dans la création de l'article
@@ -154,13 +159,13 @@ class NewsModel extends Model {
               // enregistre l'image dans le dossier par numero
               $imageFileType = pathinfo(basename($fileData["name"]),PATHINFO_EXTENSION);
               $realFileName = pathinfo($fileData['name'], PATHINFO_FILENAME);
-              $nameStorage = ($i+1).".".$imageFileType;
+              $nameStorage = ($i+$offset+1).".".$imageFileType;
 
               $instance=ConnectionModel::getDbh();
               $sql = "INSERT INTO news_pictures(name,real_name,type,size,alt,news_id,state) VALUES(:name,:real_name,:type,:size,:alt,:news_id,:state)";
               $requestImg = $instance ->prepare($sql);
               $requestImgOk = $requestImg->execute(array(
-                      "name"=>(string)($i+1),
+                      "name"=>(string)($i+$offset+1),
                       "real_name"=>$realFileName,
                       "type"=> $imageFileType,
                       "size"=> $fileData['size'],

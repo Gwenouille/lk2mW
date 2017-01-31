@@ -74,8 +74,8 @@ class ProjectsModel extends Model {
 
     // répertoire où sont stockées les fichiers
     $dir = __DIR__;
-    $cherche="app\Model";
-    $remplace="private\\projects\\";
+    $cherche="app/Model";
+    $remplace="private/projects/";
     $projectTargetDir = str_replace($cherche,$remplace,$dir);
 
     // Vérifie que le champ du titre du projet est bien rempli

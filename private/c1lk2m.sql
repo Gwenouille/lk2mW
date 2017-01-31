@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 29 Janvier 2017 à 11:22
+-- Généré le :  Lun 30 Janvier 2017 à 14:55
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -40,9 +40,8 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`id`, `name`, `real_name`, `type`, `size`, `projects_id`) VALUES
-(1, 'fichier1', '', 'pdf', 1024, 1),
-(2, 'fichier2', '', 'pdf', 1024, 5),
-(3, 'fichier3', '', 'pdf', 1024, 5);
+(8, '1', 'CVFrancais2017', 'pdf', 17617, 4),
+(9, '1', 'CVFrancais2017', 'pdf', 17617, 4);
 
 -- --------------------------------------------------------
 
@@ -57,15 +56,6 @@ CREATE TABLE `messages` (
   `users_id` int(11) NOT NULL,
   `to_users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `messages`
---
-
-INSERT INTO `messages` (`id`, `content`, `date`, `users_id`, `to_users_id`) VALUES
-(56, 'Bonjour Melinda', '2017-01-28 17:31:48', 3, 1),
-(57, 'Ah, Pierre… Ou es-tu ?', '2017-01-28 17:32:03', 1, 3),
-(58, 'Au Brésil !', '2017-01-28 17:32:20', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -138,7 +128,6 @@ CREATE TABLE `projects` (
 INSERT INTO `projects` (`id`, `name`, `date`, `description`) VALUES
 (1, '1er projet', '2017-01-20 00:00:00', '1er projet de Melinda'),
 (2, '2em projet', '2017-01-20 03:00:00', '2eme projet de Melinda'),
-(3, 'Pierre projet 1', '2017-01-20 00:00:00', '1er projet de Pierre'),
 (4, 'Gwen projet 1', '2017-01-20 03:00:00', '1er projet de Gwen'),
 (5, 'Gwen projet 2', '2017-01-21 03:00:00', 'Mon 2eme projet'),
 (9, 'Gwen Projet 3', '2017-01-27 13:05:09', 'Et voici le 3eme');
@@ -163,10 +152,9 @@ CREATE TABLE `projects_has_users` (
 INSERT INTO `projects_has_users` (`id`, `projects_id`, `users_id`, `chief_id`) VALUES
 (1, 1, 1, 1),
 (2, 2, 1, 1),
-(3, 3, 3, 3),
-(4, 4, 2, 2),
-(5, 5, 2, 2),
-(7, 9, 2, 2);
+(9, 4, 2, 2),
+(10, 5, 2, 2),
+(11, 9, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -200,6 +188,7 @@ CREATE TABLE `users` (
   `firstname` varchar(45) NOT NULL,
   `mail` varchar(45) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `temp_hash` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `log` datetime DEFAULT NULL,
   `last_message_time` datetime DEFAULT NULL,
@@ -211,10 +200,10 @@ CREATE TABLE `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `phone`, `log`, `last_message_time`, `state`, `roles_id`) VALUES
-(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', '2017-01-28 17:32:32', '2017-01-28 17:32:20', 1, 3),
-(2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$BAIDb13ttkZ9Bif8bfFxuOGvMCwB6LRHlmKq3BvOa9ePvEFeOx9/i', '0631230409', '2017-01-28 16:37:04', '2017-01-28 16:36:54', 1, 3),
-(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '2017-01-28 17:31:17', NULL, 1, 2);
+INSERT INTO `users` (`id`, `lastname`, `firstname`, `mail`, `password`, `temp_hash`, `phone`, `log`, `last_message_time`, `state`, `roles_id`) VALUES
+(1, 'kh', 'mely', 'mely@mail.fr', '$2y$10$smiwHfZw53Q.Rn7PnvAWKOCY3c3eH7qGqyrXcoegyRfYkuuos9c3y', '', '', '2017-01-28 17:32:32', '2017-01-30 14:52:54', 1, 3),
+(2, 'Le Page', 'Gwenael', 'gwenael.le-page@orange.fr', '$2y$10$nWNVV8ufrxQ52MkIlzNJau65yWxDIWZ3borlVS3e6f5rNtRZCiuPK', '$2y$10$QEZ.BCIiaFfAAu8ltYwJu.qbJXswba2.qolJSPCdiVVGNRWWgHQu2', '', '2017-01-30 13:45:22', NULL, 1, 3),
+(3, 'Veron', 'Pierre', 'pv@dmi.fr', '$2y$10$SwtO0Fmg0BXy.LiZA7kfAOP828eum.kfXkM2iuKSuQoTXGnc8wlDK', '', '', '2017-01-30 14:19:54', NULL, 1, 2);
 
 --
 -- Index pour les tables exportées
@@ -287,17 +276,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT pour la table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 --
 -- AUTO_INCREMENT pour la table `news_pictures`
 --
@@ -307,12 +296,12 @@ ALTER TABLE `news_pictures`
 -- AUTO_INCREMENT pour la table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `projects_has_users`
 --
 ALTER TABLE `projects_has_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `roles`
 --
@@ -322,7 +311,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Contraintes pour les tables exportées
 --

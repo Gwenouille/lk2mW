@@ -401,15 +401,14 @@ CSS de la page Se Connecter / S'inscrire
 .main-login {
   display: flex;
   justify-content: space-around;
-  /*align-items: center;*/
+  align-items: center;
 }
 
 .main-login_connexion,
 .main-login_inscription {
   /*border: 1px solid rgba(101, 101, 101, 0.25);*/
   flex-grow: 1;
-  margin: 12%;
-  /* 10 ? */
+  margin: 5% 12%;
 }
 
 .form-connexion,
